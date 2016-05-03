@@ -1,0 +1,26 @@
+{
+  "name": "react-redux-starter",
+  "version": "1.0.0",
+  "description": "react redux starter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukeLin/react-redux-starter.git"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "webpack",
+    "babel",
+    "es2015"
+  ],
+  "author": "LukeLin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LukeLin/react-redux-starter/issues"
+  },
+  "homepage": "https://github.com/LukeLin/react-redux-starter#readme"
+}
