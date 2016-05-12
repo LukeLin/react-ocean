@@ -18,7 +18,7 @@
 <div id="page"><%- locals.html %></div>
 <textarea style="display:none;" id="get-initial-state"><%- locals.state %></textarea>
 <script>
-    window.__AppConfig__ = <%- locals.appConfig %>;
+    window.__App_CONFIG__ = <%- locals.appConfig %>;
     window.__INITIAL_STATE__ = JSON.parse(document.getElementById('get-initial-state').value);;
 </script>
 <% if(locals.debug) { %>

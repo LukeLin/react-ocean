@@ -27,8 +27,8 @@
     "immutable": "^3.8.1",
     "moment": "^2.13.0",
     "morgan": "^1.7.0",
-    "react": "^15.0.1",
-    "react-dom": "^15.0.1",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
@@ -60,8 +60,8 @@
     "webpack": "^1.13.0"
   },
   "scripts": {
-    "build-dev": "npm install && set NODE_ENV=development && gulp dev",
+    "build:dev": "npm install && set NODE_ENV=development && gulp build-dev",
     "start": "node index.js",
-    "build": "npm install && set NODE_ENV=production && gulp"
+    "build": "set NODE_ENV=production && gulp build"
   }
 }

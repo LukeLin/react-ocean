@@ -10,7 +10,7 @@ let ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = function(DEBUG){
     let plugins = [
-        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new ProgressBarPlugin({
             format: '  build libs [:bar] :percent (:elapsed seconds)',
             clear: false
@@ -47,6 +47,7 @@ module.exports = function(DEBUG){
         'redux',
         'react-redux',
         'redux-thunk',
+        'immutable',
         'fastclick'
     ];
     if(DEBUG) {
@@ -86,9 +87,13 @@ module.exports = function(DEBUG){
             loader: 'expose?ReduxThunk'
         },
         {
+            test: require.resolve('immutable'),
+            loader: 'expose?Immutable'
+        },
+        {
             test: require.resolve('fastclick'),
             loader: 'expose?Fastclick'
-        }
+        },
     ];
     if(DEBUG) {
         loaders.push({
@@ -104,7 +109,7 @@ module.exports = function(DEBUG){
             libs: libs
         },
         output: {
-            path: './client/release/',
+            path: './public/',
             filename: DEBUG ? "./js/[name]-debug.js" : "./js/[name]-min.js",
             chunkFilename: DEBUG ? "./js/[name]-debug.js" : "./js/[name]-min.js",
             publicPath: '',
@@ -144,7 +149,7 @@ module.exports = function(DEBUG){
         },
 
         devServer: DEBUG && {
-            contentBase: './client/release/',
+            contentBase: '../public/',
             hot: true,
             noInfo: false,
             inline: true,

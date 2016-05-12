@@ -18,7 +18,7 @@ module.exports = function(DEBUG){
         //     // ensures that no other module goes inti the libs chunk
         //     minChunks: Infinity
         // }),
-        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
         //new NyanProgressPlugin()
         new ProgressBarPlugin({
             format: '  build [:bar] :percent (:elapsed seconds)',
@@ -83,6 +83,7 @@ module.exports = function(DEBUG){
             //     'redux',
             //     'react-redux',
             //     'redux-thunk',
+            //     'immutable',
             //     'fastclick'
             // ]
         };
@@ -98,7 +99,7 @@ module.exports = function(DEBUG){
         target: 'web',
         entry: getPagesNames(__dirname + '/client/js/pages'),
         output: {
-            path: './client/release/',
+            path: './public/',
             filename: DEBUG ? "./js/[name]-debug.js" : "./js/[name]-min.js",
             chunkFilename: DEBUG ? "./js/[name]-debug.js" : "./js/[name]-min.js",
             publicPath: '',
@@ -163,6 +164,7 @@ module.exports = function(DEBUG){
             'redux': 'Redux',
             'react-redux': 'ReactRedux',
             'redux-thunk': 'ReduxThunk',
+            'immutable': 'Immutable',
             'fastclick': 'Fastclick'
         },
 
@@ -183,7 +185,7 @@ module.exports = function(DEBUG){
         },
 
         devServer: DEBUG && {
-            contentBase: './client/release/',
+            contentBase: './public/',
             hot: true,
             noInfo: false,
             inline: true,
