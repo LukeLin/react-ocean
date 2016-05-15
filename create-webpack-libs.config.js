@@ -48,6 +48,7 @@ module.exports = function(DEBUG){
         'react-redux',
         'redux-thunk',
         'immutable',
+        'redux-immutablejs',
         'fastclick'
     ];
     if(DEBUG) {
@@ -89,6 +90,10 @@ module.exports = function(DEBUG){
         {
             test: require.resolve('immutable'),
             loader: 'expose?Immutable'
+        },
+        {
+            test: require.resolve('redux-immutablejs'),
+            loader: 'expose?ReduxImmutableJS'
         },
         {
             test: require.resolve('fastclick'),

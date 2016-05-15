@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import fastclick from 'fastclick';
+import Immutable from 'immutable';
 
 
 import App from '../../../common/App.jsx';
@@ -9,7 +10,8 @@ import configureStore from '../../../common/store/index';
 
 
 export default function initializeRender(rootReducer, component){
-    const store = configureStore(window.__INITIAL_STATE__, rootReducer);
+    let transformedData = Immutable.fromJS(window.__INITIAL_STATE__);
+    const store = configureStore(transformedData, rootReducer);
 
     if(process.env.NODE_ENV !== 'production'){
         // React.addons.Perf性能分析使用

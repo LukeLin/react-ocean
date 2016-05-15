@@ -1,5 +1,6 @@
 import ejs from 'ejs';
 import React from 'react';
+import Immutable from 'immutable';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import fs from 'fs';
@@ -17,7 +18,8 @@ export default function createRenderString(req, opts = {}) {
         locals = {},
         pageConfig = {}
     } = opts;
-    let store = configureStore(renderData, rootReducer);
+    let transformedData = Immutable.fromJS(renderData);
+    let store = configureStore(transformedData, rootReducer);
     let html = ''
     try {
         html = renderToString((

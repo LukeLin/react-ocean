@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react'
+import Immutable from 'immutable';
 import Base from '../../pages/Base';
 
 export default class Todo extends Base {
-    constructor(props, context) {
+  constructor(props, context) {
     super(props, context);
   }
 

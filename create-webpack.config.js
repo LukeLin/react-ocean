@@ -165,6 +165,7 @@ module.exports = function(DEBUG){
             'react-redux': 'ReactRedux',
             'redux-thunk': 'ReduxThunk',
             'immutable': 'Immutable',
+            'redux-immutablejs': 'ReduxImmutableJS',
             'fastclick': 'Fastclick'
         },
 

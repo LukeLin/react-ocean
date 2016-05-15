@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import { List } from 'immutable';
 import Base from '../Base';
 import { addTodo, completeTodo, setVisibilityFilter, VisibilityFilters } from './indexActions'
 import AddTodo from '../../components/index/AddTodo'
@@ -36,10 +37,7 @@ class Page extends Base {
 }
 
 Page.propTypes = {
-    visibleTodos: PropTypes.arrayOf(PropTypes.shape({
-        text: PropTypes.string.isRequired,
-        completed: PropTypes.bool.isRequired
-    }).isRequired).isRequired,
+    visibleTodos: PropTypes.instanceOf(List).isRequired,
     visibilityFilter: PropTypes.oneOf([
         'SHOW_ALL',
         'SHOW_COMPLETED',
@@ -52,9 +50,9 @@ function selectTodos(todos, filter) {
         case VisibilityFilters.SHOW_ALL:
             return todos
         case VisibilityFilters.SHOW_COMPLETED:
-            return todos.filter(todo => todo.completed)
+            return todos.filter(todo => todo.get('completed'))
         case VisibilityFilters.SHOW_ACTIVE:
-            return todos.filter(todo => !todo.completed)
+            return todos.filter(todo => !todo.get('completed'))
     }
 }
 
@@ -62,8 +60,8 @@ function selectTodos(todos, filter) {
 // Note: use https://github.com/faassen/reselect for better performance.
 function select(state) {
     return {
-        visibleTodos: selectTodos(state.todos, state.visibilityFilter),
-        visibilityFilter: state.visibilityFilter
+        visibleTodos: selectTodos(state.get('todos'), state.get('visibilityFilter')),
+        visibilityFilter: state.get('visibilityFilter')
     }
 }
 
