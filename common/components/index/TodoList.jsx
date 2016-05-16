@@ -25,8 +25,8 @@ export default class TodoList extends Base {
 
 TodoList.propTypes = {
     onTodoClick: PropTypes.func.isRequired,
-    todos: ImmutablePropTypes.ListOf(ImmutablePropTypes.MapOf({
+    todos: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
         text: PropTypes.string.isRequired,
         completed: PropTypes.bool.isRequired
     }))
-}
+};
