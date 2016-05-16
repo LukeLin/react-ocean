@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { List } from 'immutable';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import Todo from './Todo'
 import Base from '../../pages/Base';
 
@@ -24,5 +25,8 @@ export default class TodoList extends Base {
 
 TodoList.propTypes = {
     onTodoClick: PropTypes.func.isRequired,
-    todos: PropTypes.instanceOf(List).isRequired
+    todos: ImmutablePropTypes.ListOf(ImmutablePropTypes.MapOf({
+        text: PropTypes.string.isRequired,
+        completed: PropTypes.bool.isRequired
+    }))
 }

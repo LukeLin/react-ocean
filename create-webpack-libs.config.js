@@ -49,6 +49,7 @@ module.exports = function(DEBUG){
         'redux-thunk',
         'immutable',
         'redux-immutablejs',
+        'react-immutable-proptypes',
         'fastclick'
     ];
     if(DEBUG) {
@@ -94,6 +95,10 @@ module.exports = function(DEBUG){
         {
             test: require.resolve('redux-immutablejs'),
             loader: 'expose?ReduxImmutableJS'
+        },
+        {
+            test: require.resolve('react-immutable-proptypes'),
+            loader: 'expose?ImmutablePropsTypes'
         },
         {
             test: require.resolve('fastclick'),

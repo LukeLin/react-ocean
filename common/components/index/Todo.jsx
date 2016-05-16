@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react';
 import Immutable from 'immutable';
 import Base from '../../pages/Base';
 
