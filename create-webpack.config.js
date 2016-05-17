@@ -122,8 +122,9 @@ module.exports = function(DEBUG){
                     loader: 'babel',
                     query: {
                         cacheDirectory: true,
-                        "presets": ["react", "es2015"],
-                        "plugins": ["transform-runtime"]
+                        // fixed resolve path in parent directory error
+                        "presets": ["react", "es2015"].map((preset) => require.resolve(`babel-preset-${ preset }`)),
+                        "plugins": ["transform-runtime"].map((preset) => require.resolve(`babel-plugin-${ preset }`))
                     }
                 },
 
