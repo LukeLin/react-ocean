@@ -4,6 +4,7 @@ import Immutable from 'immutable';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import fs from 'fs';
+import SecureFilters from 'secure-filters';
 
 import configureStore from '../../common/store/index';
 import App from '../../common/App.jsx';
@@ -35,7 +36,7 @@ export default function createRenderString(req, opts = {}) {
     }
 
     let debug = req.query.debug && (req.query.debug === config.application.debugName);
-    let state = JSON.stringify(renderData);
+    let state = SecureFilters.jsObj(renderData);
     let version = config.application.version[locals.appName || 'index'];
     template = template || fs.readFileSync(__dirname + '/../views/index.html', 'utf8');
 
@@ -46,7 +47,7 @@ export default function createRenderString(req, opts = {}) {
         title: '',
         test: process.env.NODE_ENV !== 'production',
         debug: debug,
-        appConfig: JSON.stringify(pageConfig),
+        appConfig: SecureFilters.jsObj(pageConfig),
         version: {
             js: version && version.js,
             css: version && version.css
