@@ -3,6 +3,7 @@ import React from 'react';
 import Immutable from 'immutable';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
+import { createReducer } from 'redux-immutablejs';
 import fs from 'fs';
 import SecureFilters from 'secure-filters';
 
@@ -20,8 +21,9 @@ export default function createRenderString(req, opts = {}) {
         pageConfig = {}
     } = opts;
     let transformedData = Immutable.fromJS(renderData);
+    rootReducer = typeof rootReducer === 'object' ? createReducer(transformedData, rootReducer) : rootReducer;
     let store = configureStore(transformedData, rootReducer);
-    let html = ''
+    let html = '';
     try {
         html = renderToString((
             <Provider store={ store }>
