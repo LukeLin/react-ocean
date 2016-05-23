@@ -6,6 +6,7 @@ technology stack:
     redux
     immutable
     express
+    ES6
     webpack
     babel
 
