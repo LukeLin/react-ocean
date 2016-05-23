@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { is } from 'immutable';
+import EventEmitter from 'events';
 
 function excludeFns(obj){
     if(obj == null) return obj;
@@ -16,9 +17,13 @@ function excludeFns(obj){
     return newObj;
 }
 
+let mediator = new EventEmitter();
+
 export default class Base extends Component {
     constructor(props, context){
         super(props, context);
+        
+        this.emitter = mediator;
     }
 
     /**
