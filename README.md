@@ -14,4 +14,6 @@ start:
     npm run build:dev   // for development
     npm run build:pord  // for pruduction
     npm run build       // both
-    
+
+todo:
+    add more examples
