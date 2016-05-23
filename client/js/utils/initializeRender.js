@@ -3,14 +3,21 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import fastclick from 'fastclick';
 import Immutable from 'immutable';
+import { createReducer } from 'redux-immutablejs';
 
 
 import App from '../../../common/App.jsx';
 import configureStore from '../../../common/store/index';
 
+if(process.env.NODE_ENV !== 'production'){
+    var whyDidYouUpdate = require('why-did-you-update').default;
+    whyDidYouUpdate(React);
+}
+
 
 export default function initializeRender(rootReducer, component){
     let transformedData = Immutable.fromJS(window.__INITIAL_STATE__);
+    rootReducer = typeof rootReducer === 'object' ? createReducer(transformedData, rootReducer) : rootReducer;
     const store = configureStore(transformedData, rootReducer);
 
     if(process.env.NODE_ENV !== 'production'){

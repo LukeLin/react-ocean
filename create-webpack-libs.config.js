@@ -53,7 +53,10 @@ module.exports = function(DEBUG){
         'fastclick'
     ];
     if(DEBUG) {
-        libs.push('react/lib/ReactDefaultPerf');
+        libs.push(
+            'why-did-you-update',
+            'react-addons-perf'
+            );
     }
 
     let loaders = [
@@ -107,7 +110,11 @@ module.exports = function(DEBUG){
     ];
     if(DEBUG) {
         loaders.push({
-            test: require.resolve('react/lib/ReactDefaultPerf'),
+            test: require.resolve('why-did-you-update'),
+            loader: 'expose?ReactUpdateAvoid'
+        });
+        loaders.push({
+            test: require.resolve('react-addons-perf'),
             loader: 'expose?ReactPerf'
         });
     }

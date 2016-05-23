@@ -10,7 +10,7 @@ let ExtractTextPlugin = require('extract-text-webpack-plugin');
 let ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 
-module.exports = function(DEBUG){
+module.exports = function (DEBUG) {
     let plugins = [
         // new webpack.optimize.CommonsChunkPlugin({
         //     name: 'libs',
@@ -67,14 +67,14 @@ module.exports = function(DEBUG){
     let appEntry = [
         //'babel-polyfill'
     ];
-    if(DEBUG) {
+    if (DEBUG) {
         appEntry.push(
             //'webpack-dev-server/client?http://0.0.0.0:8000',
             'webpack/hot/dev-server'
         );
     }
 
-    function getPagesNames(dirPath){
+    function getPagesNames(dirPath) {
         let filesNames = fs.readdirSync(dirPath);
         let entries = {
             // libs: [
@@ -88,12 +88,30 @@ module.exports = function(DEBUG){
             // ]
         };
 
-        for(let fileName of filesNames){
-            entries[fileName.split('.').shift() || fileName] = `${ dirPath }/${ fileName }`;
+        for (let fileName of filesNames) {
+            entries[fileName.split('.').shift() || fileName] = `${dirPath}/${fileName}`;
         }
 
         return entries;
     }
+
+    let externals = {
+        'zepto': 'Zepto',
+        'react': 'React',
+        'react-dom': 'ReactDOM',
+        'redux': 'Redux',
+        'react-redux': 'ReactRedux',
+        'redux-thunk': 'ReduxThunk',
+        'immutable': 'Immutable',
+        'redux-immutablejs': 'ReduxImmutableJS',
+        'react-immutable-proptypes': 'ImmutablePropsTypes',
+        'fastclick': 'Fastclick'
+    };
+    if (DEBUG) {
+        externals['react-addons-perf'] = 'ReactPerf';
+        externals['why-did-you-update'] = 'ReactUpdateAvoid';
+    }
+
 
     return {
         target: 'web',
@@ -119,12 +137,12 @@ module.exports = function(DEBUG){
                 {
                     test: /\.jsx?$/,
                     exclude: /(node_modules|bower_components)/,
-                    loader: 'babel',
+                    loader: require.resolve('babel-loader'),
                     query: {
                         cacheDirectory: true,
                         // fixed resolve path in parent directory error
-                        "presets": ["react", "es2015"].map((preset) => require.resolve(`babel-preset-${ preset }`)),
-                        "plugins": ["transform-runtime"].map((preset) => require.resolve(`babel-plugin-${ preset }`))
+                        "presets": ["react", "es2015"].map((preset) => require.resolve(`babel-preset-${preset}`)),
+                        "plugins": ["transform-runtime"].map((preset) => require.resolve(`babel-plugin-${preset}`))
                     }
                 },
 
@@ -140,7 +158,7 @@ module.exports = function(DEBUG){
                     loader:
                     //DEBUG
                     //? "style!css" :
-                        ExtractTextPlugin.extract("style-loader", "css-loader")
+                    ExtractTextPlugin.extract("style-loader", "css-loader")
                 },
 
                 // Load images
@@ -158,18 +176,7 @@ module.exports = function(DEBUG){
 
         plugins: plugins,
 
-        externals: {
-            'zepto': 'Zepto',
-            'react': 'React',
-            'react-dom': 'ReactDOM',
-            'redux': 'Redux',
-            'react-redux': 'ReactRedux',
-            'redux-thunk': 'ReduxThunk',
-            'immutable': 'Immutable',
-            'redux-immutablejs': 'ReduxImmutableJS',
-            'react-immutable-proptypes': 'ImmutablePropsTypes',
-            'fastclick': 'Fastclick'
-        },
+        externals: externals,
 
         resolve: {
             modulesDirectories: [
@@ -192,7 +199,7 @@ module.exports = function(DEBUG){
             hot: true,
             noInfo: false,
             inline: true,
-            stats: {colors: true}
+            stats: { colors: true }
         }
     };
 
