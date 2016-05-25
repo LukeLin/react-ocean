@@ -22,7 +22,7 @@
     "body-parser": "^1.15.0",
     "compression": "^1.6.2",
     "cookie-parser": "^1.4.2",
-    "ejs": "^2.4.1",
+    "ejs": "^2.4.2",
     "express": "^4.13.4",
     "fastclick": "^1.0.6",
     "immutable": "^3.8.1",
@@ -66,9 +66,9 @@
     "why-did-you-update": "0.0.8"
   },
   "scripts": {
-    "build:dev": "npm install && set NODE_ENV=development && gulp build-dev",
+    "build:dev": "set NODE_ENV=development && gulp build-dev",
     "start": "node index.js",
-    "build": "npm run build:dev && npm run build:prod",
-    "build:prod": "set NODE_ENV=production && gulp build"
+    "build": "npm run build:prod && npm run build:dev",
+    "build:prod": "npm install && set NODE_ENV=production && gulp build"
   }
 }
