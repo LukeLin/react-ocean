@@ -54,7 +54,9 @@ export default function createRenderString(req, opts = {}) {
             js: version && version.js,
             css: version && version.css
         }
-    }, locals));
+    }, locals), {
+        compileDebug: !!debug
+    });
 
     return pageStr;
 }
