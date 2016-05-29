@@ -12,7 +12,7 @@ export default class TodoList extends Base {
     render() {
         return (
             <ul>
-                {this.props.todos.map((todo, index) =>
+                { this.props.todos.map((todo, index) =>
                     <Todo text={ todo.get('text') }
                         completed={ todo.get('completed') }
                         key={index}

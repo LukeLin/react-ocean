@@ -7,14 +7,31 @@ var gulp = require('gulp');
 var webpack = require('webpack');
 var createLibsWebpackConfig = require('./create-webpack-libs.config.js');
 var createWebpackConfig = require('./create-webpack.config.js');
+var del = require('del');
 
 gulp.task('default', ['build-dev', 'build']);
 
-gulp.task('build', function(cb){
-    webpack(createWebpackConfig(), function(err, stats){
+gulp.task('clean', function (cb) {
+    return del([
+        './public/js/app-*/',
+    ], {
+            force: true
+        });
+});
+
+gulp.task('clean:dev', function (cb) {
+    return del([
+        './public/js/debug/',
+    ], {
+            force: true
+        });
+});
+
+gulp.task('build', ['clean'], function (cb) {
+    webpack(createWebpackConfig(), function (err, stats) {
         if (err) throw new Error(err);
 
-        if(stats.compilation.errors.length) {
+        if (stats.compilation.errors.length) {
             console.log(stats.compilation.errors[0].error.message);
         }
 
@@ -22,10 +39,10 @@ gulp.task('build', function(cb){
         cb();
     });
 
-    webpack(createLibsWebpackConfig(), function(err, stats){
+    webpack(createLibsWebpackConfig(), function (err, stats) {
         if (err) throw new Error(err);
 
-        if(stats.compilation.errors.length) {
+        if (stats.compilation.errors.length) {
             console.log(stats.compilation.errors[0].error.message);
         }
 
@@ -34,11 +51,11 @@ gulp.task('build', function(cb){
     });
 });
 
-gulp.task('build-dev', function(cb){
-    webpack(createWebpackConfig(true), function(err, stats){
+gulp.task('build-dev', ['clean:dev'], function (cb) {
+    webpack(createWebpackConfig(true), function (err, stats) {
         if (err) throw new Error(err);
 
-        if(stats.compilation.errors.length) {
+        if (stats.compilation.errors.length) {
             console.log(stats.compilation.errors[0].error.message);
         }
 
@@ -46,10 +63,10 @@ gulp.task('build-dev', function(cb){
         cb();
     });
 
-    webpack(createLibsWebpackConfig(true), function(err, stats){
+    webpack(createLibsWebpackConfig(true), function (err, stats) {
         if (err) throw new Error(err);
 
-        if(stats.compilation.errors.length) {
+        if (stats.compilation.errors.length) {
             console.log(stats.compilation.errors[0].error.message);
         }
 

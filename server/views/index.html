@@ -28,11 +28,11 @@
 <script src="http://cdn.com/js/libs-min.js"></script>
 <% } %>
 <% if(locals.debug) { %>
-<script src="/static/js/<%= locals.appName %>-debug.js"></script>
+<script src="/static/js/debug/<%= locals.appName %>-debug.js"></script>
 <% } else if(locals.test){ %>
-<script src="/static/js/<%= locals.appName %>-min.js"></script>
+<script src="/static/js/app-<%= locals.version.js %>/<%= locals.appName %>-min.js"></script>
 <% } else { %>
-<script src="http://cdn.com/js/<%= locals.appName %>-min-<%= locals.version.js %>.js"></script>
+<script src="http://cdn.com/js/app-<%= locals.version.js %>/<%= locals.appName %>-min.js"></script>
 <% } %>
 </body>
 </html>

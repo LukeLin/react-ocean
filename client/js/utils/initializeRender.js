@@ -15,9 +15,8 @@ if(process.env.NODE_ENV !== 'production'){
 }
 
 
-export default function initializeRender(rootReducer, component){
+export default function initializeRender(rootReducer = () => {}, component){
     let transformedData = Immutable.fromJS(window.__INITIAL_STATE__);
-    rootReducer = rootReducer || (() => {});
     rootReducer = typeof rootReducer === 'object' ? createReducer(transformedData, rootReducer) : rootReducer;
     const store = configureStore(transformedData, rootReducer);
 
