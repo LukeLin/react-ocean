@@ -21,6 +21,7 @@ export default function createRenderString(req, opts = {}) {
         pageConfig = {}
     } = opts;
     let transformedData = Immutable.fromJS(renderData);
+    rootReducer = rootReducer || (() => {});
     rootReducer = typeof rootReducer === 'object' ? createReducer(transformedData, rootReducer) : rootReducer;
     let store = configureStore(transformedData, rootReducer);
     let html = '';
