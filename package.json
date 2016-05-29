@@ -47,7 +47,7 @@
       "react"
     ]
   },
-  "description": "nodejs server for apkStore",
+  "description": "isomophic-react-redux-starter",
   "devDependencies": {
     "babel-loader": "^6.2.4",
     "css-loader": "^0.23.1",
