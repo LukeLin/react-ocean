@@ -1,7 +1,7 @@
 isomophic react redux application
 
 
-technology stack:\n
+technology stack:
     react
     redux
     immutable
@@ -10,10 +10,10 @@ technology stack:\n
     webpack
     babel
 
-start:\n
+start:
     npm run build:dev   // for development
     npm run build:pord  // for pruduction
     npm run build       // both
 
-todo:\n
+todo:
     add more examples
