@@ -50,8 +50,9 @@ export default function createRenderString(req, opts = {}) {
     let debug = req.query.debug && (req.query.debug === config.application.debugName);
     let state = SecureFilters.jsObj(renderData);
     let version = config.application.version;
+    let jsVersion = process.env.NODE_ENV === 'production' && version && version.js || defaultJSVersion;
     template = template || defaultTemplate;
-    
+
     let pageStr = ejs.render(template, Object.assign({
         html: html,
         state: state,
@@ -61,7 +62,7 @@ export default function createRenderString(req, opts = {}) {
         debug: debug,
         appConfig: SecureFilters.jsObj(pageConfig),
         version: {
-            js: version && version.js || defaultJSVersion,
+            js: jsVersion,
             css: version && version.css
         }
     }, locals), {
