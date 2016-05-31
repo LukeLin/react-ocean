@@ -133,7 +133,12 @@ module.exports = function (DEBUG) {
                         cacheDirectory: true,
                         // fixed resolve path in parent directory error
                         "presets": ["react", "es2015"].map((preset) => require.resolve(`babel-preset-${preset}`)),
-                        "plugins": ["transform-runtime"].map((preset) => require.resolve(`babel-plugin-${preset}`))
+                        "plugins": ["transform-runtime"].map((preset) => require.resolve(`babel-plugin-${preset}`)),
+                        "env": {
+                            "development": {
+                                "presets": ["react-hmre"].map((preset) => require.resolve(`babel-preset-${preset}`))
+                            }
+                        }
                     }
                 },
 
