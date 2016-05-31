@@ -70,27 +70,17 @@ module.exports = function (DEBUG) {
     ];
     if (DEBUG) {
         appEntry.push(
-            //'webpack-dev-server/client?http://0.0.0.0:8000',
-            'webpack/hot/dev-server'
+            'webpack-hot-middleware/client'
         );
     }
 
     function getPagesNames(dirPath) {
         let filesNames = fs.readdirSync(dirPath);
         let entries = {
-            // libs: [
-            //     'react',
-            //     'react-dom',
-            //     'redux',
-            //     'react-redux',
-            //     'redux-thunk',
-            //     'immutable',
-            //     'fastclick'
-            // ]
         };
 
         for (let fileName of filesNames) {
-            entries[fileName.split('.').shift() || fileName] = `${dirPath}/${fileName}`;
+            entries[fileName.split('.').shift() || fileName] = [`${dirPath}/${fileName}`, 'webpack-hot-middleware/client'];
         }
 
         return entries;
@@ -118,7 +108,7 @@ module.exports = function (DEBUG) {
         target: 'web',
         entry: getPagesNames(__dirname + '/client/js/pages'),
         output: {
-            path: './public/',
+            path: __dirname + '/public/',
             filename: DEBUG ? "./js/debug/[name]-debug.js" : "./js/app-[hash]/[name]-min.js",
             chunkFilename: DEBUG ? "./js/debug/[name]-debug.js" : "./js/app-[hash]/[name]-min.js",
             publicPath: '',

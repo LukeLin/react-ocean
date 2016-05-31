@@ -11,6 +11,16 @@ import { renderFile } from 'ejs';
 
 let app = express();
 
+if(process.env.NODE_ENV !== 'production'){
+    let webpack = require('webpack');
+    let config = require('../create-webpack.config')(true);
+    let webpackDevMiddleware = require('webpack-dev-middleware');
+    let webpackHotMiddleware = require('webpack-hot-middleware');
+    let compiler = webpack(config);
+    app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
+    app.use(webpackHotMiddleware(compiler));
+}
+
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.engine('html', renderFile);
