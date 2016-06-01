@@ -163,14 +163,6 @@ module.exports = function(DEBUG){
             extensions: ["", ".js", ".jsx", ".es6", '.json'],
 
             alias: {}
-        },
-
-        devServer: DEBUG && {
-            contentBase: '../public/',
-            hot: true,
-            noInfo: false,
-            inline: true,
-            stats: {colors: true}
         }
     };
 

@@ -183,14 +183,6 @@ module.exports = function (DEBUG) {
             alias: {
                 // 'libs': path.join(__dirname, './common/libs')
             }
-        },
-
-        devServer: DEBUG && {
-            contentBase: './public/',
-            hot: true,
-            noInfo: false,
-            inline: true,
-            stats: { colors: true }
         }
     };
 
