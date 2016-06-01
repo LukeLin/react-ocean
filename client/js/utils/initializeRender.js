@@ -14,6 +14,9 @@ if (process.env.NODE_ENV !== 'production') {
     whyDidYouUpdate(React);
 }
 
+// fastclick解决ios和部分安卓click事件的问题
+fastclick.attach(document.body);
+
 let store = null;
 
 export default function initializeRender({
@@ -32,10 +35,6 @@ export default function initializeRender({
                 ReactPerf.start();
             }
         }
-
-        // fastclick解决ios和部分安卓click事件的问题
-        fastclick.attach(document.body);
-
     }
     // hot load from hmr
     else if (process.env.NODE_ENV !== 'production') {
