@@ -27,4 +27,4 @@ export default class AddTodo extends Base {
 
 AddTodo.propTypes = {
     onAddClick: PropTypes.func.isRequired
-}
+};

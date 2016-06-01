@@ -65,22 +65,13 @@ module.exports = function (DEBUG) {
         );
     }
 
-    let appEntry = [
-        //'babel-polyfill'
-    ];
-    if (DEBUG) {
-        appEntry.push(
-            'webpack-hot-middleware/client'
-        );
-    }
-
     function getPagesNames(dirPath) {
         let filesNames = fs.readdirSync(dirPath);
         let entries = {
         };
 
         for (let fileName of filesNames) {
-            entries[fileName.split('.').shift() || fileName] = [`${dirPath}/${fileName}`, 'webpack-hot-middleware/client'];
+            entries[fileName.split('.').shift() || fileName] = ['webpack-hot-middleware/client', `${dirPath}/${fileName}`];
         }
 
         return entries;
@@ -111,7 +102,7 @@ module.exports = function (DEBUG) {
             path: __dirname + '/public/',
             filename: DEBUG ? "./js/debug/[name]-debug.js" : "./js/app-[hash]/[name]-min.js",
             chunkFilename: DEBUG ? "./js/debug/[name]-debug.js" : "./js/app-[hash]/[name]-min.js",
-            publicPath: '',
+            publicPath: '/static',
             pathinfo: false
         },
 
