@@ -13,7 +13,7 @@ gulp.task('default', ['build-dev', 'build']);
 
 gulp.task('clean', function (cb) {
     return del([
-        './public/js/app-*/',
+        './public/js/min/',
     ], {
             force: true
         });

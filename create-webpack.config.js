@@ -71,7 +71,11 @@ module.exports = function (DEBUG) {
         };
 
         for (let fileName of filesNames) {
-            entries[fileName.split('.').shift() || fileName] = ['webpack-hot-middleware/client', `${dirPath}/${fileName}`];
+            if(DEBUG) {
+                entries[fileName.split('.').shift() || fileName] = ['webpack-hot-middleware/client', `${dirPath}/${fileName}`];
+            } else {
+                entries[fileName.split('.').shift() || fileName] = [`${dirPath}/${fileName}`];
+            }
         }
 
         return entries;
@@ -100,8 +104,8 @@ module.exports = function (DEBUG) {
         entry: getPagesNames(__dirname + '/client/js/pages'),
         output: {
             path: __dirname + '/public/',
-            filename: DEBUG ? "./js/debug/[name]-debug.js" : "./js/app-[hash]/[name]-min.js",
-            chunkFilename: DEBUG ? "./js/debug/[name]-debug.js" : "./js/app-[hash]/[name]-min.js",
+            filename: DEBUG ? "./js/debug/[name].js" : "./js/min/[name].js",
+            chunkFilename: DEBUG ? "./js/debug/[name].js" : "./js/min/[name].js",
             publicPath: '/static',
             pathinfo: false
         },

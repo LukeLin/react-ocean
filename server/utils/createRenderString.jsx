@@ -12,14 +12,6 @@ import App from '../../common/App.jsx';
 import config from '../config/config.json';
 
 const defaultTemplate = fs.readFileSync(__dirname + '/../views/index.html', 'utf8');
-const assets = fs.readFileSync(__dirname + '/../../webpack-assets.json', 'utf-8');
-let defaultJSVersion = '';
-try {
-    let assetsobj = JSON.parse(assets);
-    defaultJSVersion = assetsobj.hash;
-} catch(ex) {
-    console.log(ex.message);
-}
 
 export default function createRenderString(req, opts = {}) {
     let {
@@ -50,7 +42,8 @@ export default function createRenderString(req, opts = {}) {
     let debug = req.query.debug && (req.query.debug === config.application.debugName);
     let state = SecureFilters.jsObj(renderData);
     let version = config.application.version;
-    let jsVersion = process.env.NODE_ENV === 'production' && version && version.js || defaultJSVersion;
+    let jsVersion = process.env.NODE_ENV === 'production' && version && version.js || '';
+    jsVersion = jsVersion ? `app-${ jsVersion }` : 'app';
     template = template || defaultTemplate;
 
     let pageStr = ejs.render(template, Object.assign({
