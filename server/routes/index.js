@@ -1,14 +1,15 @@
-'use strict';
-
-let express = require('express');
+import express from 'express';
 let router = new express.Router();
 
-let getIndex = require('./pages/index.jsx');
+import IndexPage from './pages/index';
+import AsyncPage from './pages/async';
+
 
 /**
  * 首页请求
  */
-router.get('/', getIndex);
+router.get('/', IndexPage);
+router.get('/async', AsyncPage);
 
 
 /**
