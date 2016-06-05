@@ -5,6 +5,7 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { createReducer } from 'redux-immutablejs';
 import fs from 'fs';
+// for xss protection
 import SecureFilters from 'secure-filters';
 
 import configureStore from '../../common/store/index';

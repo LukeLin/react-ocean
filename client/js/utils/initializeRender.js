@@ -24,8 +24,8 @@ export default function initializeRender({
     },
     component = null
 }) {
+    let transformedData = Immutable.fromJS(window.__INITIAL_STATE__);
     if (!store) {
-        let transformedData = Immutable.fromJS(window.__INITIAL_STATE__);
         rootReducer = typeof rootReducer === 'object' ? createReducer(transformedData, rootReducer) : rootReducer;
         store = configureStore(transformedData, rootReducer);
 
@@ -38,7 +38,6 @@ export default function initializeRender({
     }
     // hot load from hmr
     else if (process.env.NODE_ENV !== 'production') {
-        let transformedData = Immutable.fromJS(window.__INITIAL_STATE__);
         rootReducer = typeof rootReducer === 'object' ? createReducer(transformedData, rootReducer) : rootReducer;
         store.replaceReducer(rootReducer);
     }
