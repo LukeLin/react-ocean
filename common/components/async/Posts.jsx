@@ -1,4 +1,5 @@
 import React, { PropTypes, Component } from 'react'
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import Base from '../../pages/Base';
 
 export default class Posts extends Base {
@@ -6,7 +7,7 @@ export default class Posts extends Base {
     return (
       <ul>
         {this.props.posts.map((post, i) =>
-          <li key={i}>{post.title}</li>
+          <li key={i}>{post.get('title')}</li>
         )}
       </ul>
     )
@@ -14,5 +15,5 @@ export default class Posts extends Base {
 }
 
 Posts.propTypes = {
-  posts: PropTypes.array.isRequired
+  posts: ImmutablePropTypes.list.isRequired
 }

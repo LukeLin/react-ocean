@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import Immutable from 'immutable';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { selectReddit, fetchPostsIfNeeded, invalidateReddit } from './actions'
 import Picker from '../../components/async/Picker.jsx'
 import Posts from '../../components/async/Posts.jsx'
@@ -39,18 +41,22 @@ class AsyncPage extends Base {
 
   render() {
     const { selectedReddit, posts, isFetching, lastUpdated } = this.props
-    const isEmpty = posts.length === 0
+    const isEmpty = posts.size === 0
     return (
       <div>
         <Picker value={selectedReddit}
                 onChange={this.handleChange}
-                options={[ 'reactjs', 'frontend' ]} />
+                options={ defaultOptions } />
         <p>
-          {lastUpdated &&
-            <span>
-              Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
-              {' '}
-            </span>
+          { 
+            lastUpdated ? (
+              <span>
+                Last updated at {new Date(lastUpdated).toLocaleTimeString('en-US', {
+                  hour12: false
+                })}.
+                {' '}
+              </span>
+            ) : ''
           }
           {!isFetching &&
             <a href="#"
@@ -69,25 +75,32 @@ class AsyncPage extends Base {
     )
   }
 }
-
+AsyncPage.defaultProps = {
+  selectedReddit: '',
+  posts: new Immutable.List(),
+  isFetching: false,
+  lastUpdated: 0
+  
+};
 AsyncPage.propTypes = {
   selectedReddit: PropTypes.string.isRequired,
-  posts: PropTypes.array.isRequired,
+  posts: ImmutablePropTypes.list.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  lastUpdated: PropTypes.number,
-  dispatch: PropTypes.func.isRequired
+  lastUpdated: PropTypes.number
 }
 
+const defaultOptions = [ 'reactjs', 'frontend' ];
+
 function mapStateToProps(state) {
-  const { selectedReddit, postsByReddit } = state
-  const {
-    isFetching,
-    lastUpdated,
-    items: posts
-  } = postsByReddit[selectedReddit] || {
+  const selectedReddit = state.get('selectedReddit');
+  const postsByReddit = state.get('postsByReddit');
+  const data = postsByReddit.get(state.get('selectedReddit')) || new Immutable.Map({
     isFetching: true,
-    items: []
-  }
+    items: new Immutable.List()
+  });
+  const isFetching = data.get('isFetching');
+  const lastUpdated = data.get('lastUpdated');
+  const posts = data.get('items');
 
   return {
     selectedReddit,

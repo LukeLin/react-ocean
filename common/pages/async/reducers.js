@@ -1,4 +1,6 @@
-import { combineReducers } from 'redux'
+// import { combineReducers } from 'redux'
+import Immutable from 'immutable';
+import { combineReducers } from 'redux-immutablejs';
 import {
   SELECT_REDDIT, INVALIDATE_REDDIT,
   REQUEST_POSTS, RECEIVE_POSTS
@@ -13,41 +15,37 @@ function selectedReddit(state = 'reactjs', action) {
   }
 }
 
-function posts(state = {
+function posts(state = new Immutable.Map({
   isFetching: false,
   didInvalidate: false,
-  items: []
-}, action) {
+  items: new Immutable.List()
+}), action) {
   switch (action.type) {
     case INVALIDATE_REDDIT:
-      return Object.assign({}, state, {
-        didInvalidate: true
-      })
+      return state.set('didInvalidate', true)
     case REQUEST_POSTS:
-      return Object.assign({}, state, {
+      return state.merge({
         isFetching: true,
         didInvalidate: false
-      })
+      });
     case RECEIVE_POSTS:
-      return Object.assign({}, state, {
+      return state.merge({
         isFetching: false,
         didInvalidate: false,
         items: action.posts,
         lastUpdated: action.receivedAt
-      })
+      });
     default:
       return state
   }
 }
 
-function postsByReddit(state = { }, action) {
+function postsByReddit(state = new Immutable.Map(), action) {
   switch (action.type) {
     case INVALIDATE_REDDIT:
     case RECEIVE_POSTS:
     case REQUEST_POSTS:
-      return Object.assign({}, state, {
-        [action.reddit]: posts(state[action.reddit], action)
-      })
+      return state.set(action.reddit, posts(state[action.reddit], action));
     default:
       return state
   }
