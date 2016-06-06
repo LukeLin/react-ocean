@@ -28,7 +28,6 @@ app.use(cookieParser());
 app.use(session({
     resave: true,
     saveUninitialized: true,
-    secret: "notagoodsecret",
     cookie: {httpOnly: true}
 }));
 
@@ -85,8 +84,7 @@ process.on('rejectionHandled', (reason, p) => {
 });
 
 let server = app.listen(app.get('port'), app.get('host'), function() {
-    let host = server.address().address;
-    let port = server.address().port;
-    console.log(`${ config.serverName } server listening at http://%s:%s`, host, port);
+    let { address, port } = server.address().address;
+    console.log(`${ config.serverName } server listening at http://%s:%s`, address, port);
 });
 
