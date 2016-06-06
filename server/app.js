@@ -4,12 +4,38 @@ import favicon from 'serve-favicon';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
+import session from 'express-session';
+import csurf from 'csurf';
 import config from './config/config.json';
 import routes from './routes';
 import allowCrossDomain from './config/allowCrossDomain'
 import { renderFile } from 'ejs';
 
 let app = express();
+
+app.set('host', process.env.IP || '127.0.0.1');
+app.set('port', process.env.PORT || 36000);
+app.disable('x-powered-by');
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+app.engine('html', renderFile);
+
+app.use(compress());
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: "notagoodsecret",
+    cookie: {httpOnly: true}
+}));
+
+// app.use(favicon(__dirname + '/../public/favicon.ico'));
+app.use('/static', express.static(__dirname + '/../public', {
+    maxAge: 86400000
+}));
 
 if(process.env.NODE_ENV !== 'production'){
     let webpack = require('webpack');
@@ -21,20 +47,32 @@ if(process.env.NODE_ENV !== 'production'){
     app.use(webpackHotMiddleware(compiler));
 }
 
-app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views');
-app.engine('html', renderFile);
+app.use('/', allowCrossDomain);
 
-app.use(compress());
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
+app.use(csurf());
+app.use(function (req, res, next) {
+    res.locals.csrftoken = req.session._csrf;
+    next();
+});
 
-// app.use(favicon(__dirname + '/../public/favicon.ico'));
-app.use('/static', express.static(__dirname + '/../public', {
-    maxAge: 86400000
-}));
+app.use('/', routes);
+
+// error handlers
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+    console.dir(err);
+    res.status(err.status || 500);
+    if(err.status === 500) {
+        console.error(err.stack);
+        res.json({error: 'Internal Server Error'});
+    }
+    else if(err.status === 404) {
+        res.render('error');    //render error page
+    } else {
+        res.json({error: err.message})
+    }
+});
+
 
 process.on('uncaughtException', err => {
     console.error(err.message + '\n' + err.stack);
@@ -45,37 +83,6 @@ process.on('unhandledRejection', (reason, p) => {
 process.on('rejectionHandled', (reason, p) => {
     console.warn("rejectionHandled at: Promise ", p, " reason: ", reason);
 });
-
-app.use('/', allowCrossDomain);
-app.use('/', routes);
-
-// error handlers
-if (app.get('env') === 'development') {
-    // development error handler
-    // will print stacktrace
-    app.use(function(err, req, res, next) {
-        console.error(`${ err.message }|${ err.status }|${ err.stack }`);
-        res.status(err.status || 500);
-        res.send({
-            message: err.message,
-            error: err
-        });
-    });
-} else {
-    // production error handler
-    // no stacktraces leaked to user
-    app.use(function(err, req, res, next) {
-        console.error(`${ err.message }|${ err.status }|${ err.stack }`);
-        res.status(err.status || 500);
-        res.send({
-            message: err.message,
-            error: {}
-        });
-    });
-}
-
-app.set('host', process.env.IP || '127.0.0.1');
-app.set('port', process.env.PORT || 36000);
 
 let server = app.listen(app.get('port'), app.get('host'), function() {
     let host = server.address().address;
