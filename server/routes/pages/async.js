@@ -10,7 +10,10 @@ module.exports = function (req, res, next) {
         selectedReddit: 'reactjs'
     };
 
-    fetch(`https://www.reddit.com/r/${state.selectedReddit}.json`)
+    fetch(`https://www.reddit.com/r/${state.selectedReddit}.json`, {
+        method: 'GET',
+        timeout: 5000
+    })
         .then(response => response.json())
         .then(json => {
             state.postsByReddit[state.selectedReddit] = {
@@ -35,7 +38,7 @@ module.exports = function (req, res, next) {
         }).catch((msg) => {
 
         console.log(msg);
-        
+
         let pageStr = createRenderString(req, {
             component: <Page/>,
             locals: {
