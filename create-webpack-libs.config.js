@@ -138,8 +138,8 @@ module.exports = function(DEBUG){
         debug: DEBUG,
 
         // For options, see http://webpack.github.io/docs/configuration.html#devtool
-        // devtool: DEBUG && "eval-source-map",
-        devtool: DEBUG && "cheap-module-eval-source-map",
+        devtool: DEBUG && "eval-source-map",
+        // devtool: DEBUG && "cheap-module-eval-source-map",
 
         module: {
             loaders: loaders,
