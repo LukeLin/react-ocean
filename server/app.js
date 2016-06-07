@@ -27,6 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session({
     resave: true,
+    secret: 'isomorphic',
     saveUninitialized: true,
     cookie: {httpOnly: true}
 }));
@@ -84,7 +85,7 @@ process.on('rejectionHandled', (reason, p) => {
 });
 
 let server = app.listen(app.get('port'), app.get('host'), function() {
-    let { address, port } = server.address().address;
+    let { address, port } = server.address();
     console.log(`${ config.serverName } server listening at http://%s:%s`, address, port);
 });
 
