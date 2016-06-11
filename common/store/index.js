@@ -8,21 +8,17 @@ if(process.env.NODE_ENV !== 'production' && process.browser){
 const middlewareBuilder = () => {
     let middleware = applyMiddleware(thunk);
 
-    if(process.browser){
-        if(process.env.NODE_ENV !== 'production'){
-            middleware = applyMiddleware(thunk, createLogger());
-        }
+    if(process.browser && process.env.NODE_ENV !== 'production'){
+        middleware = applyMiddleware(thunk, createLogger());
     }
 
     let allComposeElements = [
         middleware
     ];
 
-    if(process.browser){
-        if(process.env.NODE_ENV !== 'production'){
-            if(window.devToolsExtension){
-                allComposeElements.push(window.devToolsExtension());
-            }
+    if(process.browser && process.env.NODE_ENV !== 'production'){
+        if(window.devToolsExtension){
+            allComposeElements.push(window.devToolsExtension());
         }
     }
 
