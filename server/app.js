@@ -14,7 +14,7 @@ import { renderFile } from 'ejs';
 let app = express();
 
 app.set('host', process.env.IP || '127.0.0.1');
-app.set('port', process.env.PORT || 36000);
+app.set('port', process.env.PORT || 3000);
 app.disable('x-powered-by');
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
