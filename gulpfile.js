@@ -46,7 +46,7 @@ gulp.task('build', ['clean'], function (cb) {
             console.log(stats.compilation.errors[0].error.message);
         }
 
-        console.log('webpack end');
+        console.log('webpack libs end');
         // cb();
     });
 });
@@ -59,7 +59,7 @@ gulp.task('build-dev', ['clean:dev'], function (cb) {
             console.log(stats.compilation.errors[0].error.message);
         }
 
-        console.log('webpack libs dev end');
+        console.log('webpack dev end');
         cb();
     });
 
