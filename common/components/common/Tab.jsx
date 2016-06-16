@@ -8,8 +8,6 @@ export class Tabs extends Base {
         this.state = {
             selectedTab: null
         };
-
-        this.onSelect = this.onSelect.bind(this);
     }
 
     onSelect(tab, ...rest) {

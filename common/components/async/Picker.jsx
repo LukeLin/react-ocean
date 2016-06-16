@@ -6,8 +6,6 @@ import Base from '../../pages/Base';
 export default class Picker extends Base {
   constructor(props, context) {
     super(props, context);
-
-    this.onChange = this.onChange.bind(this);
   }
 
   onChange(e) {
