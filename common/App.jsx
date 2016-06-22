@@ -1,9 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 
 class App extends Component {
     constructor(props, context) {
         super(props, context);
+    }
+
+    getChildContext(){
+        return {
+            user: {
+                name: 'anonymous'
+            }
+        };
     }
 
     componentDidMount(){
@@ -24,5 +32,10 @@ class App extends Component {
         );
     }
 }
+App.childContextTypes = {
+    user: PropTypes.shape({
+        name: PropTypes.string
+    })
+};
 
 export default App;

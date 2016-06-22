@@ -12,6 +12,10 @@ class Page extends Base {
         super(props, context);
     }
 
+    componentDidMount(){
+        console.log(this.context.user);
+    }
+
     render() {
         // Injected by connect() call:
         const { dispatch, visibleTodos, visibilityFilter } = this.props
@@ -43,7 +47,11 @@ Page.propTypes = {
         'SHOW_COMPLETED',
         'SHOW_ACTIVE'
     ]).isRequired
-}
+};
+
+Page.contextTypes = {
+    user: PropTypes.object
+};
 
 function selectTodos(todos, filter) {
     switch (filter) {
