@@ -17,7 +17,7 @@
     - redux-dev-tool(window.devToolsExtension)
     - 'why-did-you-update' avoidable re-render checking
     - react hot module replacing
-- npm run build:prod  // for pruduction
+- npm run build:prod  // for production
 - npm run build       // both
 
 ### how to add a page?
