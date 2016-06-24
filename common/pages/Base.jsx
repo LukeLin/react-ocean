@@ -63,4 +63,16 @@ export default class Base extends Component {
     shouldComponentUpdate(nextProps, nextState){
         return !is(excludeFns(this.props), excludeFns(nextProps)) || !is(excludeFns(this.state), excludeFns(nextState));
     }
+
+    componentWillUnmount(clearEmitterName = ''){
+        if(typeof clearEmitterName === 'string'){
+            this.emitter.removeAllListeners(clearEmitterName);
+        } else if(Array.isArray(clearEmitterName)){
+            for(let eventName of clearEmitterName){
+                if(typeof eventName === 'string') {
+                    this.emitter.removeAllListeners(eventName);
+                }
+            }
+        }
+    }
 }
