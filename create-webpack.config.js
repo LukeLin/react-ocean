@@ -8,6 +8,7 @@ let path = require('path');
 let fs = require('fs');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
 let ProgressBarPlugin = require('progress-bar-webpack-plugin');
+let HappyPack = require('happypack');
 
 
 module.exports = function (DEBUG) {
@@ -18,6 +19,7 @@ module.exports = function (DEBUG) {
         //     // ensures that no other module goes inti the libs chunk
         //     minChunks: Infinity
         // }),
+        new HappyPack({ id: 'js' }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         //new NyanProgressPlugin()
         new ProgressBarPlugin({
@@ -134,7 +136,8 @@ module.exports = function (DEBUG) {
                                 "presets": ["react-hmre"].map((preset) => require.resolve(`babel-preset-${preset}`))
                             }
                         }
-                    }
+                    },
+                    happy: { id: 'js' }
                 },
 
                 {
@@ -170,6 +173,7 @@ module.exports = function (DEBUG) {
         externals: externals,
 
         resolve: {
+            root: path.resolve('/'),
             modulesDirectories: [
                 "node_modules",
 

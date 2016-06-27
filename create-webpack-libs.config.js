@@ -7,9 +7,11 @@ let webpack = require('webpack');
 let path = require('path');
 let fs = require('fs');
 let ProgressBarPlugin = require('progress-bar-webpack-plugin');
+let HappyPack = require('happypack');
 
 module.exports = function(DEBUG){
     let plugins = [
+        new HappyPack({ id: 'libs' }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new ProgressBarPlugin({
             format: '  build libs [:bar] :percent (:elapsed seconds)',
@@ -69,7 +71,8 @@ module.exports = function(DEBUG){
                 cacheDirectory: true,
                 "presets": ["es2015"],
                 "plugins": ["transform-runtime"]
-            }
+            },
+            happy: { id: 'libs' }
         },
         {
             test: require.resolve('react'),
@@ -131,7 +134,8 @@ module.exports = function(DEBUG){
             chunkFilename: DEBUG ? "./js/[name]-debug.js" : "./js/[name]-min.js",
             publicPath: '',
             pathinfo: false,
-            libraryTarget: 'umd'
+            libraryTarget: 'umd',
+            library: '[name]_lib'
         },
 
         cache: DEBUG,
@@ -152,6 +156,7 @@ module.exports = function(DEBUG){
         },
 
         resolve: {
+            root: path.resolve('/'),
             modulesDirectories: [
                 "node_modules",
 
