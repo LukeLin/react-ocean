@@ -138,7 +138,7 @@ module.exports = function(DEBUG){
             library: '[name]_lib'
         },
 
-        cache: DEBUG,
+        cache: true,
         debug: DEBUG,
 
         // For options, see http://webpack.github.io/docs/configuration.html#devtool
