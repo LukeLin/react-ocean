@@ -39,7 +39,8 @@ export default class Base extends Component {
     constructor(props, context){
         super(props, context);
 
-        this.emitter = mediator;
+        this.__eventBus = mediator;
+        this.__eventNames = {};
 
         this.__bindFunctions();
     }
@@ -54,6 +55,48 @@ export default class Base extends Component {
         }
     }
 
+    on(eventName, fn){
+        if(typeof fn !== 'function') throw new Error('fn should be a function');
+
+        if(!this.__eventNames[eventName]){
+            this.__eventNames[eventName] = [fn];
+        } else {
+            this.__eventNames[eventName].push(fn);
+        }
+
+        return this.__eventBus.addListener(eventName, fn);
+    }
+
+    emit(eventName, ...args){
+        return this.__eventBus.emit(eventName, ...args);
+    }
+
+    off(eventName, fn){
+        let events = this.__eventNames[eventName];
+        if(events){
+            let index = events.indexOf(fn);
+
+            if(index >= 0) {
+                this.__eventBus.removeListener(eventName, fn);
+
+                events.splice(index, 1);
+
+                if(!events.length) {
+                    delete this.__eventNames[eventName];
+                }
+            } else {
+                console.warn('event: ' + eventName + ' did not registered in ' + this._reactInternalInstance.getName() + ' Component');
+            }
+
+            return true;
+        } else {
+            console.warn('event: ' + eventName + ' did not registered in ' + this._reactInternalInstance.getName() + ' Component');
+
+            return false;
+        }
+    }
+
+
     /**
      * 检验组件更新
      * @param nextProps
@@ -64,13 +107,11 @@ export default class Base extends Component {
         return !is(excludeFns(this.props), excludeFns(nextProps)) || !is(excludeFns(this.state), excludeFns(nextState));
     }
 
-    componentWillUnmount(clearEmitterName = ''){
-        if(typeof clearEmitterName === 'string'){
-            this.emitter.removeAllListeners(clearEmitterName);
-        } else if(Array.isArray(clearEmitterName)){
-            for(let eventName of clearEmitterName){
-                if(typeof eventName === 'string') {
-                    this.emitter.removeAllListeners(eventName);
+    componentWillUnmount(){
+        for(let eventName in this.__eventNames){
+            if(this.__eventNames.hasOwnProperty(eventName)){
+                for(let fn of this.__eventNames[eventName]){
+                    this.off(eventName, fn);
                 }
             }
         }

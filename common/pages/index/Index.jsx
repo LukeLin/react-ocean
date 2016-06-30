@@ -14,6 +14,8 @@ class Page extends Base {
 
     componentDidMount(){
         console.log(this.context.user);
+        
+        this.emit('test');
     }
 
     render() {
