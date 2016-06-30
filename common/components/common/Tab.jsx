@@ -1,12 +1,23 @@
 import React, { Component, PropTypes } from 'react';
 import Base from '../../pages/Base.jsx';
 
-export class Tabs extends Base {
+export default class Tabs extends Base {
     constructor(props, context) {
         super(props, context);
 
         this.state = {
             selectedTab: null
+        };
+
+        this.firstLink = null;
+    }
+
+    getChildContext(){
+        return {
+            onSelect: this.onSelect.bind(this),
+            selectedTab: this.state.selectedTab || this.props.defaultSelectedTab,
+            activeStyle: this.props.activeLinkStyle || defaultActiveStyle,
+            firstLink: this.firstLink
         };
     }
 
@@ -22,69 +33,48 @@ export class Tabs extends Base {
         }
     }
 
-    transformChildren(children, { onSelect, selectedTab, firstLinkFound }) {
-        if (typeof children !== 'object') {
-            return children;
+    findFirstLink(children){
+        if (typeof children !== 'object' || this.firstLink) {
+            return;
         }
 
-        return React.Children.map(children, (child) => {
-            if (child.props && child.props.to) {
-                const { activeLinkStyle } = this.props;
-                const firstLink = !firstLinkFound;
-
-                firstLinkFound = true;
-
-                return React.cloneElement(child, {
-                    onSelect,
-                    isActive: child.props.to === selectedTab,
-                    activeStyle: activeLinkStyle,
-                    firstLink
-                });
+        React.Children.forEach(children, (child) => {
+            if(child.props && child.props.to) {
+                if(this.firstLink == null){
+                    this.firstLink = child.props.to;
+                    return;
+                }
             }
 
-            if (child.props && child.props.for) {
-                return React.cloneElement(child, {
-                    isVisible: child.props.for === selectedTab
-                });
-            }
-
-            return React.cloneElement(
-                child,
-                null,   // perf optimization
-                this.transformChildren(child.props && child.props.children, {
-                    onSelect,
-                    selectedTab,
-                    firstLinkFound
-                })
-            );
+            this.findFirstLink(child.props && child.props.children);
         });
     }
 
     render() {
-        const onSelect = this.onSelect;
-        const selectedTab = this.state.selectedTab || this.props.defaultSelectedTab;
-
-        const children = this.transformChildren(this.props.children, {
-            onSelect,
-            selectedTab
-        });
+        this.findFirstLink(this.props.children);
 
         return (
             <div {...this.props}>
-                {children}
+                {this.props.children}
             </div>
         );
     }
 }
 Tabs.defaultProps = {
     onSelect: null,
-    defaultSelectedTab: '',
-    activeLinkStyle: {}
+    activeLinkStyle: null,
+    defaultSelectedTab: ''
 };
 Tabs.propTypes = {
     onSelect: PropTypes.func,
-    defaultSelectedTab: PropTypes.string,
-    activeLinkStyle: PropTypes.object
+    activeLinkStyle: PropTypes.object,
+    defaultSelectedTab: PropTypes.string
+};
+Tabs.childContextTypes = {
+    onSelect: PropTypes.func,
+    selectedTab: PropTypes.string,
+    activeStyle: PropTypes.object,
+    firstLink: PropTypes.string
 };
 
 const defaultActiveStyle = {
@@ -97,31 +87,29 @@ export class TabLink extends Base {
 
         this.onSelect = this.onSelect.bind(this);
     }
-    componentDidMount() {
-        if (this.props.firstLink || this.props.default) {
-            this.onSelect();
-        }
+
+    onSelect(){
+        this.context.onSelect(this.props.to);
     }
 
-    onSelect(e){
-        e && e.preventDefault();
-
-        if(typeof this.props.onSelect === 'function') {
-            this.props.onSelect(this.props.to);
+    componentDidMount() {
+        if (this.context.selectedTab === this.props.to || this.context.firstLink === this.props.to) {
+            this.context.onSelect(this.props.to);
         }
     }
 
     render() {
         let style = null;
-        if (this.props.isActive) {
-            style = this.props.activeStyle;
+        let isActive = this.context.selectedTab === this.props.to;
+        if (isActive) {
+            style = this.context.activeStyle;
         }
 
         return (
             <div
-                className={ this.props.className + (this.props.isActive ? ' active' : '') }
+                className={ this.props.className + (isActive ? ' active' : '') }
                 style={style}
-                onClick={this.onSelect}
+                onClick={ this.onSelect }
             >
                 {this.props.children}
             </div>
@@ -130,19 +118,19 @@ export class TabLink extends Base {
 }
 TabLink.defaultProps = {
     to: '',
-    onSelect: null,
-    isActive: false,
-    activeStyle: defaultActiveStyle,
-    firstLink: false,
-    className: 'tab-link'
+    className: 'tab-link',
+    // default: false
 };
 TabLink.propTypes = {
     to: PropTypes.string.isRequired,
+    className: PropTypes.string,
+    default: PropTypes.bool
+};
+TabLink.contextTypes = {
     onSelect: PropTypes.func,
-    isActive: PropTypes.bool,
+    firstLink: PropTypes.string,
     activeStyle: PropTypes.object,
-    firstLink: PropTypes.bool,
-    className: PropTypes.string
+    selectedTab: PropTypes.string
 };
 
 const styles = {
@@ -160,7 +148,7 @@ export class TabContent extends Base {
     }
 
     render() {
-        const displayStyle = this.props.isVisible ? styles.visible : styles.hidden;
+        const displayStyle = this.context.selectedTab === this.props.for ? styles.visible : styles.hidden;
 
         return (
             <div
@@ -174,11 +162,12 @@ export class TabContent extends Base {
 }
 TabContent.defaultProps = {
     for: '',
-    isVisible: false,
     className: 'tab-content'
 };
 TabContent.propTypes = {
     for: PropTypes.string.isRequired,
-    isVisible: PropTypes.bool,
     className: PropTypes.string
+};
+TabContent.contextTypes = {
+    selectedTab: PropTypes.string
 };
