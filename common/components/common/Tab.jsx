@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import Base from '../../pages/Base.jsx';
 
-export default class Tabs extends Base {
+export default class Tabs extends Component {
     constructor(props, context) {
         super(props, context);
 
@@ -9,7 +8,7 @@ export default class Tabs extends Base {
             selectedTab: null
         };
 
-        this.firstLink = null;
+        this.firstTabLabel = null;
     }
 
     getChildContext(){
@@ -17,7 +16,7 @@ export default class Tabs extends Base {
             onSelect: this.onSelect.bind(this),
             selectedTab: this.state.selectedTab || this.props.defaultSelectedTab,
             activeStyle: this.props.activeLinkStyle || defaultActiveStyle,
-            firstLink: this.firstLink
+            firstTabLabel: this.firstTabLabel
         };
     }
 
@@ -33,28 +32,28 @@ export default class Tabs extends Base {
         }
     }
 
-    findFirstLink(children){
-        if (typeof children !== 'object' || this.firstLink) {
+    findFirstTabLabel(children){
+        if (typeof children !== 'object' || this.firstTabLabel) {
             return;
         }
 
         React.Children.forEach(children, (child) => {
-            if(child.props && child.props.to) {
-                if(this.firstLink == null){
-                    this.firstLink = child.props.to;
+            if(child.props && child.props.label) {
+                if(this.firstTabLabel == null){
+                    this.firstTabLabel = child.props.label;
                     return;
                 }
             }
 
-            this.findFirstLink(child.props && child.props.children);
+            this.findFirstTabLabel(child.props && child.props.children);
         });
     }
 
     render() {
-        this.findFirstLink(this.props.children);
+        this.findFirstTabLabel(this.props.children);
 
         return (
-            <div {...this.props}>
+            <div className={ this.props.className } style={ this.props.style }>
                 {this.props.children}
             </div>
         );
@@ -63,25 +62,29 @@ export default class Tabs extends Base {
 Tabs.defaultProps = {
     onSelect: null,
     activeLinkStyle: null,
-    defaultSelectedTab: ''
+    defaultSelectedTab: '',
+    className: '',
+    style: null
 };
 Tabs.propTypes = {
     onSelect: PropTypes.func,
     activeLinkStyle: PropTypes.object,
-    defaultSelectedTab: PropTypes.string
+    defaultSelectedTab: PropTypes.string,
+    className: PropTypes.string,
+    style: PropTypes.object
 };
 Tabs.childContextTypes = {
     onSelect: PropTypes.func,
     selectedTab: PropTypes.string,
     activeStyle: PropTypes.object,
-    firstLink: PropTypes.string
+    firstTabLabel: PropTypes.string
 };
 
 const defaultActiveStyle = {
     fontWeight: 'bold'
 };
 
-export class TabLink extends Base {
+export class TabTitle extends Component {
     constructor(props, context){
         super(props, context);
 
@@ -89,18 +92,18 @@ export class TabLink extends Base {
     }
 
     onSelect(){
-        this.context.onSelect(this.props.to);
+        this.context.onSelect(this.props.label);
     }
 
     componentDidMount() {
-        if (this.context.selectedTab === this.props.to || this.context.firstLink === this.props.to) {
-            this.context.onSelect(this.props.to);
+        if (this.context.selectedTab === this.props.label || this.context.firstTabLabel === this.props.label) {
+            this.context.onSelect(this.props.label);
         }
     }
 
     render() {
         let style = null;
-        let isActive = this.context.selectedTab === this.props.to;
+        let isActive = this.context.selectedTab === this.props.label;
         if (isActive) {
             style = this.context.activeStyle;
         }
@@ -116,19 +119,17 @@ export class TabLink extends Base {
         );
     }
 }
-TabLink.defaultProps = {
-    to: '',
-    className: 'tab-link',
-    // default: false
+TabTitle.defaultProps = {
+    label: '',
+    className: 'tab-link'
 };
-TabLink.propTypes = {
-    to: PropTypes.string.isRequired,
-    className: PropTypes.string,
-    default: PropTypes.bool
+TabTitle.propTypes = {
+    label: PropTypes.string.isRequired,
+    className: PropTypes.string
 };
-TabLink.contextTypes = {
+TabTitle.contextTypes = {
     onSelect: PropTypes.func,
-    firstLink: PropTypes.string,
+    firstTabLabel: PropTypes.string,
     activeStyle: PropTypes.object,
     selectedTab: PropTypes.string
 };
@@ -142,32 +143,40 @@ const styles = {
     }
 };
 
-export class TabContent extends Base {
+export class TabPanel extends Component {
     constructor(props, context){
         super(props, context);
+
+        for(let style in styles){
+            if(styles.hasOwnProperty(style)){
+                Object.assign(styles[style], this.props.style);
+            }
+        }
     }
 
     render() {
-        const displayStyle = this.context.selectedTab === this.props.for ? styles.visible : styles.hidden;
+        let displayStyle = this.context.selectedTab === this.props.for
+            ? styles.visible : styles.hidden;
 
         return (
             <div
                 className={ this.props.className }
-                style={ displayStyle }
-            >
+                style={ displayStyle }>
                 {this.props.children}
             </div>
         );
     }
 }
-TabContent.defaultProps = {
+TabPanel.defaultProps = {
     for: '',
-    className: 'tab-content'
+    className: 'tab-content',
+    style: null
 };
-TabContent.propTypes = {
+TabPanel.propTypes = {
     for: PropTypes.string.isRequired,
-    className: PropTypes.string
+    className: PropTypes.string,
+    style: PropTypes.object
 };
-TabContent.contextTypes = {
+TabPanel.contextTypes = {
     selectedTab: PropTypes.string
 };

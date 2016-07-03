@@ -6,7 +6,7 @@ import { addTodo, completeTodo, setVisibilityFilter, VisibilityFilters } from '.
 import AddTodo from '../../components/index/AddTodo'
 import TodoList from '../../components/index/TodoList'
 import Footer from '../../components/index/Footer';
-import Tabs, { TabLink, TabContent } from '../../components/common/Tab';
+import Tabs, { TabTitle, TabPanel } from '../../components/common/Tab';
 
 class Page extends Base {
     constructor(props, context) {
@@ -39,18 +39,18 @@ class Page extends Base {
                         dispatch(setVisibilityFilter(nextFilter))
                     } />
                 <Tabs defaultSelectedTab="2">
-                    <TabLink to="1">
+                    <TabTitle label="1">
                         tab1
-                    </TabLink>
-                    <TabLink to="2">
+                    </TabTitle>
+                    <TabTitle label="2">
                         tab2
-                    </TabLink>
-                    <TabContent for="1">
+                    </TabTitle>
+                    <TabPanel for="1">
                         TabContent1
-                    </TabContent>
-                    <TabContent for="2">
+                    </TabPanel>
+                    <TabPanel for="2">
                         TabContent2
-                    </TabContent>
+                    </TabPanel>
                 </Tabs>
             </div>
         )
