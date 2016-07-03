@@ -1,6 +1,37 @@
 import React, { PropTypes, Component } from 'react';
-import { is } from 'immutable';
 import EventEmitter from 'events';
+
+/**
+ * https://github.com/facebook/immutable-js/blob/master/src/is.js
+ * @param valueA
+ * @param valueB
+ * @returns {boolean}
+ */
+function is(valueA, valueB) {
+    if (valueA === valueB || (valueA !== valueA && valueB !== valueB)) {
+        return true;
+    }
+    if (!valueA || !valueB) {
+        return false;
+    }
+    if (typeof valueA.valueOf === 'function' &&
+        typeof valueB.valueOf === 'function') {
+        valueA = valueA.valueOf();
+        valueB = valueB.valueOf();
+        if (valueA === valueB || (valueA !== valueA && valueB !== valueB)) {
+            return true;
+        }
+        if (!valueA || !valueB) {
+            return false;
+        }
+    }
+    if (typeof valueA.equals === 'function' &&
+        typeof valueB.equals === 'function' &&
+        valueA.equals(valueB)) {
+        return true;
+    }
+    return false;
+}
 
 function excludeFns(obj){
     if(obj == null) return obj;
