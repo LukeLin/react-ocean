@@ -12,6 +12,7 @@ isomorphic react app
 - babel 6
 
 ## start:
+- npm install react-ocean
 - npm run build:dev   // for development
     - contains 'in-line-source-map' for debugging
     - redux-logger
