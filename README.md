@@ -1,4 +1,5 @@
-# isomorphic react redux application
+# react-ocean
+isomorphic react app
 
 
 ## technology stack:
