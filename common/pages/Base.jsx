@@ -1,21 +1,6 @@
 import React, { PropTypes, Component } from 'react';
-import shallowEqual from 'fbjs/lib/shallowEqual';
+import shallowEqual from '../utils/shallowEqual';
 import EventEmitter from 'events';
-
-function excludeFns(obj){
-    if(obj == null) return obj;
-
-    let newObj = {};
-
-    let keys = Object.keys(obj);
-    for(let key of keys){
-        if(typeof obj[key] !== 'function'){
-            newObj[key] = obj[key];
-        }
-    }
-
-    return newObj;
-}
 
 const eventMatchReg = /^on[A-Z]/;
 function getEventMethodsProps(instance){
@@ -104,7 +89,13 @@ export default class Base extends Component {
      * @returns {*}
      */
     shouldComponentUpdate(nextProps, nextState){
-        return !shallowEqual(excludeFns(this.props), excludeFns(nextProps)) || !shallowEqual(excludeFns(this.state), excludeFns(nextState));
+        let shouldUpdate = !shallowEqual(this.props, nextProps) || !shallowEqual(this.state, nextState);
+
+        if(shouldUpdate && process.env.NODE_ENV !== 'production') {
+            console.log('Component: ' + this._reactInternalInstance.getName() + ' will update');
+        }
+
+        return shouldUpdate;
     }
 
     componentWillUnmount(){

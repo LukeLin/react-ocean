@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
+import Base from '../../pages/Base';
 
-export default class Tabs extends Component {
+export default class Tabs extends Base {
     constructor(props, context) {
         super(props, context);
 
         this.state = {
-            selectedTab: null
+            selectedTab: props.defaultSelectedTab || null
         };
 
         this.firstTabLabel = null;
@@ -84,7 +85,7 @@ const defaultActiveStyle = {
     fontWeight: 'bold'
 };
 
-export class TabTitle extends Component {
+export class TabTitle extends Base {
     constructor(props, context){
         super(props, context);
 
@@ -96,7 +97,7 @@ export class TabTitle extends Component {
     }
 
     componentDidMount() {
-        if (this.context.selectedTab === this.props.label || this.context.firstTabLabel === this.props.label) {
+        if (this.context.selectedTab === this.props.label || (!this.context.selectedTab && this.context.firstTabLabel === this.props.label)) {
             this.context.onSelect(this.props.label);
         }
     }
@@ -143,7 +144,7 @@ const styles = {
     }
 };
 
-export class TabPanel extends Component {
+export class TabPanel extends Base {
     constructor(props, context){
         super(props, context);
 
