@@ -85,7 +85,7 @@ const defaultActiveStyle = {
     fontWeight: 'bold'
 };
 
-export class TabTitle extends Base {
+export class TabTitle extends Component {
     constructor(props, context){
         super(props, context);
 
@@ -144,7 +144,7 @@ const styles = {
     }
 };
 
-export class TabPanel extends Base {
+export class TabPanel extends Component {
     constructor(props, context){
         super(props, context);
 
