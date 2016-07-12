@@ -97,6 +97,7 @@ module.exports = function (DEBUG) {
     };
     if (DEBUG) {
         externals['react-addons-perf'] = 'ReactPerf';
+        externals['redux-logger'] = 'ReduxLogger';
         externals['why-did-you-update'] = 'ReactUpdateAvoid';
     }
 

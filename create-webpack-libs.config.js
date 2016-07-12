@@ -57,6 +57,7 @@ module.exports = function(DEBUG){
     if(DEBUG) {
         libs.push(
             'why-did-you-update',
+            'redux-logger',
             'react-addons-perf'
             );
     }
@@ -93,6 +94,10 @@ module.exports = function(DEBUG){
         {
             test: require.resolve('redux-thunk'),
             loader: 'expose?ReduxThunk'
+        },
+        {
+            test: require.resolve('redux-logger'),
+            loader: 'expose?ReduxLogger'
         },
         {
             test: require.resolve('immutable'),

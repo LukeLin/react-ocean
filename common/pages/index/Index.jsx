@@ -38,7 +38,7 @@ class Page extends Base {
                     onFilterChange={nextFilter =>
                         dispatch(setVisibilityFilter(nextFilter))
                     } />
-                <Tabs defaultSelectedTab="2">
+                <Tabs defaultSelectedTab="1">
                     <TabTitle label="1">
                         tab1
                     </TabTitle>
