@@ -1,6 +1,5 @@
 import express from 'express';
 import compress from 'compression';
-import favicon from 'serve-favicon';
 import logger from 'morgan';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
@@ -10,6 +9,8 @@ import config from './config/config.json';
 import routes from './routes';
 import allowCrossDomain from './config/allowCrossDomain'
 import { renderFile } from 'ejs';
+import reactRender from './utils/renderReactMiddleware';
+import Immutable from 'immutable';
 
 let app = express();
 
@@ -54,6 +55,11 @@ app.use(function (req, res, next) {
     res.locals.csrftoken = req.session._csrf;
     next();
 });
+app.use(reactRender({
+    transformer: function(data){
+        return Immutable.fromJS(data);
+    }
+}));
 
 app.use('/', routes);
 

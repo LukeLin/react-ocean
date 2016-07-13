@@ -1,5 +1,5 @@
 import React from 'react';
-import createRenderString from '../../utils/createRenderString.jsx';
+import createRenderString from '../../utils/renderReactMiddleware.jsx';
 import rootReducer from '../../../common/pages/index/indexReducers';
 import Page from '../../../common/pages/index';
 
@@ -18,7 +18,7 @@ let fakeData = {
 };
 
 module.exports = function (req, res, next) {
-    let pageStr = createRenderString(req, {
+    res.renderReactHTML({
         component: <Page/>,
         locals: {
             appName: 'index',
@@ -27,5 +27,4 @@ module.exports = function (req, res, next) {
         renderData: fakeData,
         rootReducer
     });
-    res.status(200).send(pageStr);
 };

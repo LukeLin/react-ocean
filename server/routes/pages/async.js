@@ -1,6 +1,6 @@
 import React from 'react';
 import fetch from 'isomorphic-fetch';
-import createRenderString from '../../utils/createRenderString.jsx';
+import createRenderString from '../../utils/renderReactMiddleware.jsx';
 import rootReducer from '../../../common/pages/async/reducers';
 import Page from '../../../common/pages/async/Page.jsx';
 
@@ -23,7 +23,7 @@ module.exports = function (req, res, next) {
                 items: json.data.children.map(child => child.data)
             };
 
-            let pageStr = createRenderString(req, {
+            res.renderReactHTML({
                 component: <Page/>,
                 locals: {
                     appName: 'async',
@@ -33,13 +33,11 @@ module.exports = function (req, res, next) {
                 rootReducer
             });
 
-            res.status(200).send(pageStr);
-
         }).catch((msg) => {
 
         console.log(msg);
 
-        let pageStr = createRenderString(req, {
+        res.renderReactHTML({
             component: <Page/>,
             locals: {
                 appName: 'async',
@@ -48,7 +46,6 @@ module.exports = function (req, res, next) {
             renderData: state,
             rootReducer
         });
-        res.status(200).send(pageStr);
     });
 
 

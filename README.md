@@ -1,17 +1,17 @@
 # react-ocean
-isomorphic react app
+isomorphic/universal react app
 
 
-## technology stack:
+## Technology Stack:
 - react
 - redux
-- immutableJS
+- immutableJS (optional)
 - express
 - ES2015
 - webpack
 - babel 6
 
-## start:
+## Start:
 - npm install react-ocean
 - npm run build:dev   // for development
     - contains 'in-line-source-map' for debugging
@@ -22,8 +22,8 @@ isomorphic react app
 - npm run build:prod  // for production
 - npm run build       // both
 
-### how to add a page?
-#### for server
+### How To Add A Page?
+#### For Server Side
 * register server route
 ``` javascript
     router.get('/', getIndex);
@@ -31,7 +31,7 @@ isomorphic react app
 * define appName and renderData for server render
 ``` javascript
     module.exports = function (req, res, next) {
-        let pageStr = createRenderString(req, {
+        res.renderReactHTML({
             component: <Page/>,
             locals: {
                 appName: 'index',
@@ -40,11 +40,10 @@ isomorphic react app
             renderData: fakeData,
             rootReducer
         });
-        res.status(200).send(pageStr);
     };
 ```
 
-#### for client
+#### For Client
 * add a client page whose name is the same as appName
 ``` javascript
     initializeRender({
@@ -54,9 +53,9 @@ isomorphic react app
 ```
 *
 
-## examples:
+## Examples:
 * todos
 * async action
 
-##todo:
+## Todo:
 * add pm2 module
