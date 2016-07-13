@@ -1,7 +1,7 @@
 {
   "name": "react-ocean",
   "license": "ISC",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "author": "LukeLin",
   "keywords": [
     "react",
@@ -32,16 +32,14 @@
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.13.0",
     "morgan": "^1.7.0",
-    "react": "^15.2.0",
-    "react-addons-pure-render-mixin": "^15.2.0",
-    "react-dom": "^15.2.0",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
     "react-immutable-proptypes": "^1.7.1",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
     "redux-immutablejs": "0.0.8",
     "redux-thunk": "^2.1.0",
-    "secure-filters": "^1.0.5",
-    "serve-favicon": "^2.3.0"
+    "secure-filters": "^1.0.5"
   },
   "babel": {
     "plugins": [
@@ -65,13 +63,13 @@
     "happypack": "^2.1.1",
     "json-loader": "^0.5.4",
     "progress-bar-webpack-plugin": "^1.8.0",
-    "react-addons-perf": "^15.2.0",
+    "react-addons-perf": "^15.2.1",
     "redux-logger": "^2.6.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^2.1.0-beta.13",
+    "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.12.0",
+    "webpack-hot-middleware": "^2.12.1",
     "why-did-you-update": "0.0.8"
   },
   "scripts": {

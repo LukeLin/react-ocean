@@ -24,7 +24,7 @@ module.exports = function (req, res, next) {
             appName: 'index',
             title: 'index page'
         },
-        renderData: fakeData,
+        data: fakeData,
         rootReducer
     });
 };

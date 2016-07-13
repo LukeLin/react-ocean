@@ -29,7 +29,7 @@ module.exports = function (req, res, next) {
                     appName: 'async',
                     title: 'async page'
                 },
-                renderData: state,
+                data: state,
                 rootReducer
             });
 
@@ -43,7 +43,7 @@ module.exports = function (req, res, next) {
                 appName: 'async',
                 title: 'async page'
             },
-            renderData: state,
+            data: state,
             rootReducer
         });
     });
