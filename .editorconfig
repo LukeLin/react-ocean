@@ -11,3 +11,7 @@ trim_trailing_whitespace = true
 [*.{js,json,jshintrc,html,jsx}]
 indent_style = space
 indent_size = 4
+
+[{package.json,.travis.yml}]
+indent_style = space
+indent_size = 2

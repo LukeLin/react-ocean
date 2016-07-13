@@ -1,5 +1,5 @@
 # react-ocean
-isomorphic/universal react app
+isomorphic/universal react app for high performance mobile web application
 
 
 ## Technology Stack:
@@ -8,7 +8,7 @@ isomorphic/universal react app
 - immutableJS (optional)
 - express
 - ES2015
-- webpack
+- webpack 2.0 (tree shaking optimization)
 - babel 6
 
 ## Start:
