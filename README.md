@@ -8,7 +8,7 @@ isomorphic/universal react app for high performance mobile web application
 - immutableJS (optional)
 - express
 - ES2015
-- webpack 2.0 (tree shaking optimization)
+- webpack 2.0 (tree shaking optimization, see: [webpack tree shaking](http://www.2ality.com/2015/12/webpack-tree-shaking.html))
 - babel 6
 
 ## Start:
