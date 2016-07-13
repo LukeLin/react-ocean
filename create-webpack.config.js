@@ -95,10 +95,17 @@ module.exports = function (DEBUG) {
         'react-immutable-proptypes': 'ImmutablePropsTypes',
         'fastclick': 'Fastclick'
     };
+    let babelENV = {};
     if (DEBUG) {
         externals['react-addons-perf'] = 'ReactPerf';
         externals['redux-logger'] = 'ReduxLogger';
         externals['why-did-you-update'] = 'ReactUpdateAvoid';
+
+        babelENV = {
+            "development": {
+                "presets": ["react-hmre"].map((preset) => require.resolve(`babel-preset-${preset}`))
+            }
+        };
     }
 
 
@@ -132,11 +139,7 @@ module.exports = function (DEBUG) {
                         // fixed resolve path in parent directory error
                         "presets": ["react", "es2015"].map((preset) => require.resolve(`babel-preset-${preset}`)),
                         "plugins": ["transform-runtime"].map((preset) => require.resolve(`babel-plugin-${preset}`)),
-                        "env": {
-                            "development": {
-                                "presets": ["react-hmre"].map((preset) => require.resolve(`babel-preset-${preset}`))
-                            }
-                        }
+                        "env": babelENV
                     },
                     happy: { id: 'js' }
                 },
