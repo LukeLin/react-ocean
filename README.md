@@ -37,7 +37,7 @@ isomorphic/universal react app
                 appName: 'index',
                 title: 'index page'
             },
-            renderData: fakeData,
+            data: fakeData,
             rootReducer
         });
     };
