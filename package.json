@@ -79,5 +79,8 @@
     "start": "node index.js",
     "build": "npm run build:prod && npm run build:dev",
     "build:prod": "npm install && set NODE_ENV=production && gulp build"
+  },
+  "engines": {
+    "node": ">=6.0.0"
   }
 }
