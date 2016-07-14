@@ -3,7 +3,6 @@ import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import fastclick from 'fastclick';
 import Immutable from 'immutable';
-import {createReducer} from 'redux-immutablejs';
 
 
 import App from '../../../common/App.jsx';
@@ -26,7 +25,6 @@ export default function initializeRender({
 }) {
     let transformedData = Immutable.fromJS(window.__INITIAL_STATE__);
     if (!store) {
-        rootReducer = typeof rootReducer === 'object' ? createReducer(transformedData, rootReducer) : rootReducer;
         store = configureStore(transformedData, rootReducer);
 
         if (process.env.NODE_ENV !== 'production') {
@@ -38,7 +36,6 @@ export default function initializeRender({
     }
     // hot load from hmr
     else if (process.env.NODE_ENV !== 'production') {
-        rootReducer = typeof rootReducer === 'object' ? createReducer(transformedData, rootReducer) : rootReducer;
         store.replaceReducer(rootReducer);
     }
 
