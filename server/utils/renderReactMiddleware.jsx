@@ -12,7 +12,7 @@ import config from '../config/config.json';
 
 const defaultTemplate = fs.readFileSync(__dirname + '/../views/index.html', 'utf8');
 
-export default function reactRender(renderConfig = {}) {
+export default function reactRender(middlewareConfig = {}) {
     return function(req, res, next){
         res.renderReactHTML = function(opts = {}){
             let {
@@ -24,8 +24,8 @@ export default function reactRender(renderConfig = {}) {
                 pageConfig = {},
                 needTransform = true
             } = opts;
-            let transformedData = (typeof renderConfig.transformer === 'function' && needTransform)
-                ? renderConfig.transformer(data) : data;
+            let transformedData = (typeof middlewareConfig.transformer === 'function' && needTransform)
+                ? middlewareConfig.transformer(data) : data;
             let store = configureStore(transformedData, rootReducer);
             let html = '';
             try {
@@ -46,7 +46,7 @@ export default function reactRender(renderConfig = {}) {
             let version = config.application.version;
             let jsVersion = process.env.NODE_ENV === 'production' && version && version.js || '';
             jsVersion = jsVersion ? `app-${ jsVersion }` : 'app';
-            template = template || renderConfig.defaultTemplate || defaultTemplate;
+            template = template || middlewareConfig.defaultTemplate || defaultTemplate;
 
             let finalLocals = Object.assign({
                 html: html,
@@ -60,7 +60,7 @@ export default function reactRender(renderConfig = {}) {
                     js: jsVersion,
                     css: version && version.css
                 }
-            }, typeof renderConfig.locals === 'object' && renderConfig.locals, locals);
+            }, typeof middlewareConfig.locals === 'object' && middlewareConfig.locals, locals);
 
             let pageStr = ejs.render(template, finalLocals, {
                 compileDebug: false
