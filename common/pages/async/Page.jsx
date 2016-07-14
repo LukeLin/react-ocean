@@ -5,9 +5,9 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import {selectReddit, fetchPostsIfNeeded, invalidateReddit} from './actions'
 import Picker from '../../components/async/Picker.jsx'
 import Posts from '../../components/async/Posts.jsx'
-import BasePage from '../BasePage.jsx';
+import Base from '../Base.jsx';
 
-class AsyncPage extends BasePage {
+class AsyncPage extends Base {
     constructor(props) {
         super(props);
     }

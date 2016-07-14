@@ -95,7 +95,7 @@ module.exports = function (DEBUG) {
         'react-immutable-proptypes': 'ImmutablePropsTypes',
         'fastclick': 'Fastclick'
     };
-    let babelENV = {};
+    let babelENV = null;
     if (DEBUG) {
         externals['react-addons-perf'] = 'ReactPerf';
         externals['redux-logger'] = 'ReduxLogger';

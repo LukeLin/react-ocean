@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import Base from '../Base';
+import classnames from 'classnames';
+import Base from '../../pages/Base';
 
 export default class Tabs extends Base {
     constructor(props, context) {
@@ -108,10 +109,11 @@ export class TabTitle extends Component {
         if (isActive) {
             style = this.context.activeStyle;
         }
+        let clsNames = classnames(this.props.className, { active: isActive });
 
         return (
             <div
-                className={ this.props.className + (isActive ? ' active' : '') }
+                className={ clsNames }
                 style={style}
                 onClick={ this.onSelect }
             >

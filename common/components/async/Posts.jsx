@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import Base from '../Base';
+import Base from '../../pages/Base';
 
 export default class Posts extends Base {
   render() {
