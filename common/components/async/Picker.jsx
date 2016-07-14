@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import Base from '../../pages/Base';
+import Base from '../Base';
 
 export default class Picker extends Base {
   constructor(props, context) {

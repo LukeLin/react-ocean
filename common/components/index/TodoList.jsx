@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { List } from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import Todo from './Todo'
-import Base from '../../pages/Base';
+import Base from '../Base';
 
 export default class TodoList extends Base {
     constructor(props, context) {

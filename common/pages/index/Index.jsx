@@ -1,14 +1,14 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { List } from 'immutable';
-import Base from '../Base';
+import BasePage from '../BasePage.jsx';
 import { addTodo, completeTodo, setVisibilityFilter, VisibilityFilters } from './indexActions'
 import AddTodo from '../../components/index/AddTodo'
 import TodoList from '../../components/index/TodoList'
 import Footer from '../../components/index/Footer';
 import Tabs, { TabTitle, TabPanel } from '../../components/common/Tab';
 
-class Page extends Base {
+class Page extends BasePage {
     constructor(props, context) {
         super(props, context);
     }

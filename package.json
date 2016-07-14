@@ -1,7 +1,7 @@
 {
   "name": "react-ocean",
   "license": "ISC",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "author": "LukeLin",
   "keywords": [
     "react",
@@ -54,12 +54,12 @@
   "description": "isomophic-react-redux-starter",
   "devDependencies": {
     "babel-loader": "^6.2.4",
-    "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react-hmre": "^1.1.1",
     "css-loader": "^0.23.1",
     "del": "^2.2.1",
     "expose-loader": "^0.7.1",
-    "extract-text-webpack-plugin": "^2.0.0-beta",
+    "extract-text-webpack-plugin": "^2.0.0-beta.1",
     "file-loader": "^0.8.5",
     "gulp": ">=3.9.0",
     "happypack": "^2.1.1",

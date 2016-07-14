@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import Base from '../../pages/Base';
+import Base from '../Base';
 
 export default class Todo extends Base {
     constructor(props, context) {
