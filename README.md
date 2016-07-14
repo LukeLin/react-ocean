@@ -11,6 +11,9 @@ isomorphic/universal react app for high performance mobile web application
 - webpack 2.0 (tree shaking optimization, see: [webpack tree shaking](http://www.2ality.com/2015/12/webpack-tree-shaking.html))
 - babel 6
 
+## Before Start
+- we recommend using ES6 module for tree shaking optimization.
+
 ## Start:
 - npm install react-ocean
 - npm run build:dev   // for development
