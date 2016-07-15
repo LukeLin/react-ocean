@@ -11,6 +11,7 @@ import allowCrossDomain from './config/allowCrossDomain'
 import { renderFile } from 'ejs';
 import reactRender from './utils/renderReactMiddleware';
 import Immutable from 'immutable';
+import helmet from 'helmet';
 
 let app = express();
 
@@ -21,6 +22,7 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.engine('html', renderFile);
 
+app.use(helmet());
 app.use(compress());
 app.use(logger('dev'));
 app.use(bodyParser.json());
