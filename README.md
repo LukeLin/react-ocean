@@ -1,5 +1,5 @@
 # react-ocean
-isomorphic/universal react app for high performance mobile web application
+isomorphic/universal react app for high performance mobile web application. Multi-page architecture without heavy react-router
 
 
 ## Technology Stack:
@@ -54,7 +54,6 @@ isomorphic/universal react app for high performance mobile web application
         component: <Page/>
     })
 ```
-*
 
 ## Examples:
 * todos
