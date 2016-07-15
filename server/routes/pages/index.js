@@ -1,5 +1,4 @@
 import React from 'react';
-import createRenderString from '../../utils/renderReactMiddleware.jsx';
 import rootReducer from '../../../common/pages/index/indexReducers';
 import Page from '../../../common/pages/index';
 

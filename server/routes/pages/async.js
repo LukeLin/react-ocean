@@ -1,6 +1,5 @@
 import React from 'react';
 import fetch from 'isomorphic-fetch';
-import createRenderString from '../../utils/renderReactMiddleware.jsx';
 import rootReducer from '../../../common/pages/async/reducers';
 import Page from '../../../common/pages/async/Page.jsx';
 
