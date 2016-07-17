@@ -8,7 +8,6 @@ import csurf from 'csurf';
 import config from './config/config.json';
 import routes from './routes';
 import allowCrossDomain from './config/allowCrossDomain'
-import { renderFile } from 'ejs';
 import reactRender from './utils/renderReactMiddleware';
 import Immutable from 'immutable';
 import helmet from 'helmet';
@@ -18,9 +17,6 @@ let app = express();
 app.set('host', process.env.IP || '127.0.0.1');
 app.set('port', process.env.PORT || 3000);
 app.disable('x-powered-by');
-app.set('view engine', 'ejs');
-app.set('views', __dirname + '/views');
-app.engine('html', renderFile);
 
 app.use(helmet());
 app.use(compress());
