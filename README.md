@@ -24,6 +24,8 @@ isomorphic/universal react app for high performance mobile web application. Mult
     - react hot module replacing
 - npm run build:prod  // for production
 - npm run build       // both
+- npm run start       // start server
+
 
 ### How To Add A Page?
 #### For Server Side
@@ -58,6 +60,3 @@ isomorphic/universal react app for high performance mobile web application. Mult
 ## Examples:
 * todos
 * async action
-
-## Todo:
-* add pm2 module

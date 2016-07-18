@@ -121,6 +121,7 @@ module.exports = function (DEBUG) {
         },
 
         cache: true,
+        watch: DEBUG,
         debug: DEBUG,
 
         // For options, see http://webpack.github.io/docs/configuration.html#devtool
