@@ -78,7 +78,8 @@
     "why-did-you-update": "0.0.8"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node starter.js",
+    "kill": "node_modules/.bin/pm2 delete react-ocean",
     "build:dev": "set NODE_ENV=development && gulp build-dev",
     "build": "npm run build:prod && npm run build:dev",
     "build:prod": "npm install && set NODE_ENV=production && gulp build"
