@@ -95,17 +95,10 @@ module.exports = function (DEBUG) {
         'react-immutable-proptypes': 'ImmutablePropsTypes',
         'fastclick': 'Fastclick'
     };
-    let babelENV = null;
     if (DEBUG) {
         externals['react-addons-perf'] = 'ReactPerf';
         externals['redux-logger'] = 'ReduxLogger';
         externals['why-did-you-update'] = 'ReactUpdateAvoid';
-
-        babelENV = {
-            "development": {
-                "presets": ["react-hmre"].map((preset) => require.resolve(`babel-preset-${preset}`))
-            }
-        };
     }
 
 
@@ -121,7 +114,6 @@ module.exports = function (DEBUG) {
         },
 
         cache: true,
-        watch: DEBUG,
         debug: DEBUG,
 
         // For options, see http://webpack.github.io/docs/configuration.html#devtool
@@ -167,8 +159,7 @@ module.exports = function (DEBUG) {
                                 return require.resolve(`babel-plugin-${preset}`);
                             else if(Array.isArray(preset))
                                 return require.resolve(`babel-plugin-${preset[0]}`);
-                        }),
-                        "env": babelENV
+                        })
                     },
                     happy: { id: 'js' }
                 },
