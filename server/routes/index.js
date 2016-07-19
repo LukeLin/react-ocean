@@ -16,4 +16,4 @@ router.get('/async', AsyncPage);
  * AJAX请求
  */
 
-module.exports = router;
+export default router;

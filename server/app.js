@@ -7,7 +7,7 @@ import session from 'express-session';
 import csurf from 'csurf';
 import config from './config/config.json';
 import routes from './routes';
-import allowCrossDomain from './config/allowCrossDomain'
+import allowCrossDomain from './utils/allowCrossDomain'
 import reactRender from './utils/renderReactMiddleware';
 import Immutable from 'immutable';
 import helmet from 'helmet';

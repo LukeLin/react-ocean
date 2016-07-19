@@ -1,5 +1,5 @@
-'use strict'
-let allowCrossDomain = function(req, res, next) {
+
+export default function allowCrossDomain(req, res, next) {
     let allowedOrigins = [
         'http://www.test.com'
     ];
@@ -9,5 +9,3 @@ let allowCrossDomain = function(req, res, next) {
     }
     next();
 }
-
-module.exports = allowCrossDomain;
