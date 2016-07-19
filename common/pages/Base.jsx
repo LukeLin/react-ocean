@@ -75,7 +75,7 @@ export default class Base extends Component {
 
             return true;
         } else {
-            console.warn('event: ' + eventName + ' did not registered in ' + this._reactInternalInstance.getName() + ' Component');
+            console.warn('event: ' + eventName + ' did not registered in ' + this.constructor.name + ' Component');
 
             return false;
         }
@@ -92,7 +92,7 @@ export default class Base extends Component {
         let shouldUpdate = !shallowEqual(this.props, nextProps) || !shallowEqual(this.state, nextState);
 
         if(shouldUpdate && process.env.NODE_ENV !== 'production') {
-            console.log('Component: ' + this._reactInternalInstance.getName() + ' will update');
+            console.log('Component: ' + this.constructor.name + ' will update');
         }
 
         return shouldUpdate;
