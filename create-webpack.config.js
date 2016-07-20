@@ -95,10 +95,40 @@ module.exports = function (DEBUG) {
         'react-immutable-proptypes': 'ImmutablePropsTypes',
         'fastclick': 'Fastclick'
     };
+    let babelPlugins = [
+        'transform-runtime',
+
+        // exclude commonjs for webpack 2.0 tree shaking optimization
+        'transform-es2015-template-literals',
+        'transform-es2015-literals',
+        'transform-es2015-function-name',
+        'transform-es2015-arrow-functions',
+        'transform-es2015-block-scoped-functions',
+        'transform-es2015-classes',
+        'transform-es2015-object-super',
+        'transform-es2015-shorthand-properties',
+        'transform-es2015-computed-properties',
+        'transform-es2015-for-of',
+        'transform-es2015-sticky-regex',
+        'transform-es2015-unicode-regex',
+        'check-es2015-constants',
+        'transform-es2015-spread',
+        'transform-es2015-parameters',
+        'transform-es2015-destructuring',
+        'transform-es2015-block-scoping',
+        'transform-es2015-typeof-symbol',
+        ['transform-regenerator', { async: false, asyncGenerators: false }]
+    ];
     if (DEBUG) {
         externals['react-addons-perf'] = 'ReactPerf';
         externals['redux-logger'] = 'ReduxLogger';
         externals['why-did-you-update'] = 'ReactUpdateAvoid';
+
+        babelPlugins.push(
+            'transform-react-remove-prop-types',
+            'transform-react-constant-elements',
+            'transform-react-inline-elements'
+        );
     }
 
 
@@ -131,34 +161,11 @@ module.exports = function (DEBUG) {
                         cacheDirectory: true,
                         // fixed resolve path in parent directory error
                         "presets": ["react"].map((preset) => require.resolve(`babel-preset-${preset}`)),
-                        "plugins": [
-                            'transform-runtime',
-
-                            // exclude commonjs for webpack 2.0 tree shaking optimization
-                            'transform-es2015-template-literals',
-                            'transform-es2015-literals',
-                            'transform-es2015-function-name',
-                            'transform-es2015-arrow-functions',
-                            'transform-es2015-block-scoped-functions',
-                            'transform-es2015-classes',
-                            'transform-es2015-object-super',
-                            'transform-es2015-shorthand-properties',
-                            'transform-es2015-computed-properties',
-                            'transform-es2015-for-of',
-                            'transform-es2015-sticky-regex',
-                            'transform-es2015-unicode-regex',
-                            'check-es2015-constants',
-                            'transform-es2015-spread',
-                            'transform-es2015-parameters',
-                            'transform-es2015-destructuring',
-                            'transform-es2015-block-scoping',
-                            'transform-es2015-typeof-symbol',
-                            ['transform-regenerator', { async: false, asyncGenerators: false }]
-                        ].map((preset) => {
+                        "plugins": babelPlugins.map((preset) => {
                             if(typeof preset === 'string')
                                 return require.resolve(`babel-plugin-${preset}`);
                             else if(Array.isArray(preset))
-                                return require.resolve(`babel-plugin-${preset[0]}`);
+                                return [require.resolve(`babel-plugin-${preset[0]}`), ...preset];
                         })
                     },
                     happy: { id: 'js' }
