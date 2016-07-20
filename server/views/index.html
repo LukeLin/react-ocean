@@ -20,6 +20,25 @@
     window.__App_CONFIG__ = <%- locals.appConfig %>;
     window.__INITIAL_STATE__ = <%- locals.state %>;
 </script>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js').then(function(reg) {
+            window.useSW = -1;
+            if (reg.installing) {
+                window.console && console.log('===Service worker installing===');
+            }
+            if (reg.waiting) {
+                window.console && console.log('===Service worker waiting===');
+            }
+            if (reg.active) {
+                window.console && console.log('===Service worker active===');
+                window.useSW = 1;
+            }
+        }).catch(function(error) {
+            window.console && console.log('===Registration failed with ' + error + '===');
+        });
+    }
+</script>
 <% if(locals.debug) { %>
 <script src="/static/js/libs-debug.js"></script>
 <% } else if(locals.test){ %>
