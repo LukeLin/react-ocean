@@ -1,11 +1,15 @@
 import React from 'react';
+import Immutable from 'immutable';
 
-import initializeRender from '../utils/initializeRender';
-
+import createRender from '../utils/initializeRender';
 import Page from '../../../common/pages/async/Page.jsx';
 import rootReducer from '../../../common/pages/async/reducers';
 
 import '../../css/main.css';
+
+let initializeRender = createRender({
+    transformer: Immutable.fromJS
+});
 
 initializeRender({
     rootReducer,
