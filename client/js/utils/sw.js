@@ -1,9 +1,14 @@
 'use strict';
 
-var CACHE_NAME = 'react-ocean-v1';
-var urlsToCache = [
+/**
+ * http://www.html5rocks.com/en/tutorials/service-worker/introduction/
+ */
+
+let CACHE_NAME = 'react-ocean-v1';
+let urlsToCache = [
     '/static/css/main-min.css',
-    '/static/js/libs-debug.js'
+    '/static/js/libs-min.js',
+    '/static/js/min/index.js'
 ];
 
 self.addEventListener('install', function (event) {
@@ -18,7 +23,21 @@ self.addEventListener('install', function (event) {
 });
 
 self.addEventListener('fetch', function(event) {
-    console.log('service worker fetching');
+    let match = false;
+    for(let url of urlsToCache){
+        if(event.request.url.indexOf(url) >= 0){
+            match = true;
+            break;
+        }
+    }
+
+    if(!match) {
+        event.respondWith(fetch(event.request));
+        return;
+    }
+
+    console.log(`service worker fetching ${ event.request.url }`);
+
     event.respondWith(
         caches.match(event.request)
             .then(function(response) {
@@ -32,12 +51,15 @@ self.addEventListener('fetch', function(event) {
                 // can only be consumed once. Since we are consuming this
                 // once by cache and once by the browser for fetch, we need
                 // to clone the response
-                var fetchRequest = event.request.clone();
+                let fetchRequest = event.request.clone();
 
-                return fetch(fetchRequest).then(
+                return fetch(fetchRequest, {
+                    mode: 'cors',
+                    credentials: 'omit'
+                }).then(
                     function(response) {
                         // Check if we received a valid response
-                        if(!response || response.status !== 200 || response.type !== 'basic') {
+                        if (!response || response.status !== 200 || (response.type !== 'basic' && response.type !== 'cors')) {
                             return response;
                         }
 
@@ -45,7 +67,7 @@ self.addEventListener('fetch', function(event) {
                         // and because we want the browser to consume the response
                         // as well as the cache consuming the response, we need
                         // to clone it so we have 2 stream.
-                        var responseToCache = response.clone();
+                        let responseToCache = response.clone();
 
                         caches.open(CACHE_NAME)
                             .then(function(cache) {
@@ -60,8 +82,7 @@ self.addEventListener('fetch', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
-
-    var cacheWhitelist = ['pages-cache-v1', 'blog-posts-cache-v1'];
+    let cacheWhitelist = ['pages-cache-v1'];
 
     event.waitUntil(
         caches.keys().then(function(cacheNames) {

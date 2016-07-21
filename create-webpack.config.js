@@ -123,14 +123,13 @@ module.exports = function (DEBUG) {
         externals['react-addons-perf'] = 'ReactPerf';
         externals['redux-logger'] = 'ReduxLogger';
         externals['why-did-you-update'] = 'ReactUpdateAvoid';
-
+    } else {
         babelPlugins.push(
             'transform-react-remove-prop-types',
             'transform-react-constant-elements',
             'transform-react-inline-elements'
         );
     }
-
 
     return {
         target: 'web',
