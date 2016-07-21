@@ -1,3 +1,4 @@
+import http from 'http';
 import express from 'express';
 import compress from 'compression';
 import logger from 'morgan';
@@ -88,7 +89,7 @@ process.on('rejectionHandled', (reason, p) => {
     console.warn("rejectionHandled at: Promise ", p, " reason: ", reason);
 });
 
-let server = app.listen(app.get('port'), app.get('host'), function() {
+let server = http.createServer(app).listen(app.get('port'), app.get('host'), function() {
     let { address, port } = server.address();
     console.log(`${ config.serverName } server listening at http://%s:%s`, address, port);
 });
