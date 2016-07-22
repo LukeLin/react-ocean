@@ -6,26 +6,30 @@
 
 let CACHE_NAME = 'react-ocean-v1';
 let urlsToCache = [
+    /app-\w+\/index-min.js/gi,
     '/static/css/main-min.css',
     '/static/js/libs-min.js',
     '/static/js/min/index.js'
 ];
 
 self.addEventListener('install', function (event) {
+    console.info('---on service worker install---');
     // Perform install steps
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(function (cache) {
-                console.log('Opened cache');
-                return cache.addAll(urlsToCache);
-            })
-    );
+    // event.waitUntil(
+    //     caches.open(CACHE_NAME)
+    //         .then(function (cache) {
+    //             console.log('Opened cache');
+    //             return cache.addAll(urlsToCache);
+    //         })
+    // );
 });
 
 self.addEventListener('fetch', function(event) {
     let match = false;
     for(let url of urlsToCache){
-        if(event.request.url.indexOf(url) >= 0){
+        if(url instanceof RegExp){
+            match = url.test(event.request.url);
+        } else if(event.request.url.indexOf(url) >= 0){
             match = true;
             break;
         }
@@ -44,6 +48,7 @@ self.addEventListener('fetch', function(event) {
                 console.log('response: ' + response);
                 // Cache hit - return response
                 if (response) {
+                    console.log(`${ event.request.url } cache hit`);
                     return response;
                 }
 
@@ -71,6 +76,7 @@ self.addEventListener('fetch', function(event) {
 
                         caches.open(CACHE_NAME)
                             .then(function(cache) {
+                                console.log(`${ event.request.url } put into cache`);
                                 cache.put(event.request, responseToCache);
                             });
 
@@ -82,6 +88,8 @@ self.addEventListener('fetch', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
+    console.info('---on service worker activate---');
+
     let cacheWhitelist = ['pages-cache-v1'];
 
     event.waitUntil(
@@ -89,6 +97,7 @@ self.addEventListener('activate', function(event) {
             return Promise.all(
                 cacheNames.map(function(cacheName) {
                     if (cacheWhitelist.indexOf(cacheName) === -1) {
+                        console.log(`cache ${ cacheName } deleted`);
                         return caches.delete(cacheName);
                     }
                 })
