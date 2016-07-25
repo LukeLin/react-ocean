@@ -5,6 +5,7 @@ let router = new Router();
 
 import IndexPage from './pages/index';
 import AsyncPage from './pages/async';
+import ChatPage from './pages/chat';
 
 
 /**
@@ -12,6 +13,7 @@ import AsyncPage from './pages/async';
  */
 router.get('/', IndexPage);
 router.get('/async', AsyncPage);
+router.get('/chat', ChatPage);
 
 
 /**

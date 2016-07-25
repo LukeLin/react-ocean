@@ -12,6 +12,7 @@ import allowCrossDomain from './utils/allowCrossDomain'
 import reactRender from './utils/renderReactMiddleware';
 import Immutable from 'immutable';
 import helmet from 'helmet';
+import socket from './routes/socket';
 
 let app = express();
 
@@ -89,7 +90,13 @@ process.on('rejectionHandled', (reason, p) => {
     console.warn("rejectionHandled at: Promise ", p, " reason: ", reason);
 });
 
-let server = http.createServer(app).listen(app.get('port'), app.get('host'), function() {
+let server = http.createServer(app);
+
+/* Socket.io Communication */
+let io = require('socket.io').listen(server);
+io.sockets.on('connection', socket);
+
+server.listen(app.get('port'), app.get('host'), function() {
     let { address, port } = server.address();
     console.log(`${ config.serverName } server listening at http://%s:%s`, address, port);
 });

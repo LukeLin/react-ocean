@@ -8,8 +8,8 @@ import Posts from '../../components/async/Posts.jsx'
 import Base from '../Base.jsx';
 
 class AsyncPage extends Base {
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
     }
 
     componentDidMount() {

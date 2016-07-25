@@ -14,9 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
 // fastclick解决ios和部分安卓click事件的问题
 fastclick.attach(document.body);
 
-export default function createRender({
-    transformer
-}){
+export default function createRender(middlewareConfig = {}){
     let store = null;
     let page = document.getElementById('page');
 
@@ -32,8 +30,8 @@ export default function createRender({
         },
         component = null
     }) {
-        let transformedData = typeof transformer === 'function'
-            ? transformer(window.__INITIAL_STATE__) : window.__INITIAL_STATE__;
+        let transformedData = typeof middlewareConfig.transformer === 'function'
+            ? middlewareConfig.transformer(window.__INITIAL_STATE__) : window.__INITIAL_STATE__;
         if (!store) {
             store = configureStore(transformedData, rootReducer);
         }
