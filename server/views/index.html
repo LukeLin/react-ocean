@@ -10,7 +10,7 @@
      <% if(locals.test) { %>
     <link rel="stylesheet" href="/static/css/main-min.css">
     <% } else { %>
-    <link rel="stylesheet" href="http://cdn.com/css/main-min-<%= locals.version.css %>.css">
+    <link rel="stylesheet" href="//cdn.com/css/main-min-<%= locals.version.css %>.css">
     <% } %>
     <link rel= "shortcut icon" media="all" type="image/x-icon" href="/favicon.ico" />
 </head>
@@ -45,14 +45,14 @@
 <% } else if(locals.test){ %>
 <script src="/static/js/libs-min.js"></script>
 <% } else { %>
-<script src="http://cdn.com/js/libs-min.js"></script>
+<script src="//cdn.com/js/libs-min.js"></script>
 <% } %>
 <% if(locals.debug) { %>
 <script src="/static/js/debug/<%= locals.appName %>.js"></script>
 <% } else if(locals.test){ %>
 <script src="/static/js/min/<%= locals.appName %>.js"></script>
 <% } else { %>
-<script src="http://cdn.com/js/<%= locals.version.js %>/<%= locals.appName %>-min.js"></script>
+<script src="//cdn.com/js/<%= locals.version.js %>/<%= locals.appName %>-min.js"></script>
 <% } %>
 </body>
 </html>

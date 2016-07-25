@@ -9,7 +9,9 @@ const middlewareBuilder = () => {
     let middleware = applyMiddleware(thunk);
 
     if(process.browser && process.env.NODE_ENV !== 'production'){
-        middleware = applyMiddleware(thunk, createLogger());
+        if(!window.devToolsExtension) {
+            middleware = applyMiddleware(thunk, createLogger());
+        }
     }
 
     let allComposeElements = [
