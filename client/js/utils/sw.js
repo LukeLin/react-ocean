@@ -36,7 +36,7 @@ self.addEventListener('fetch', function(event) {
     }
 
     if(!match) {
-        event.respondWith(fetch(event.request));
+        // event.respondWith(fetch(event.request));
         return;
     }
 
