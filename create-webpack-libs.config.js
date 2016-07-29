@@ -67,21 +67,6 @@ module.exports = function(DEBUG){
             );
     }
 
-    let loaders = [
-        // Load ES6/JSX
-        {
-            test: /\.jsx?$/,
-            exclude: /(node_modules|bower_components)/,
-            loader: 'babel',
-            query: {
-                cacheDirectory: true,
-                "presets": ["es2015"],
-                "plugins": ["transform-runtime"]
-            },
-            happy: { id: 'libs' }
-        }
-    ];
-    
     return {
         target: 'web',
         entry: {
@@ -105,7 +90,20 @@ module.exports = function(DEBUG){
         // devtool: DEBUG && "cheap-module-eval-source-map",
 
         module: {
-            loaders: loaders,
+            loaders: [
+                // Load ES6/JSX
+                {
+                    test: /\.jsx?$/,
+                    exclude: /(node_modules|bower_components)/,
+                    loader: 'babel',
+                    query: {
+                        cacheDirectory: true,
+                        "presets": ["es2015"],
+                        "plugins": ["transform-runtime"]
+                    },
+                    happy: { id: 'libs' }
+                }
+            ],
             noParse: []
         },
 
