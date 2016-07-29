@@ -81,18 +81,7 @@ module.exports = function(DEBUG){
             happy: { id: 'libs' }
         }
     ];
-    if(DEBUG) {
-        loaders.push({
-            test: require.resolve('why-did-you-update'),
-            loader: 'expose?ReactUpdateAvoid'
-        });
-        loaders.push({
-            test: require.resolve('react-addons-perf'),
-            loader: 'expose?ReactPerf'
-        });
-    }
-
-
+    
     return {
         target: 'web',
         entry: {

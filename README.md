@@ -1,5 +1,5 @@
 # react-ocean
-isomorphic/universal react app for high performance mobile web application. Multi-page architecture without heavy react-router
+isomorphic/universal react app for high performance mobile web application. Multi-page architecture without heavy react-router.
 
 
 ## Technology Stack:
@@ -9,6 +9,7 @@ isomorphic/universal react app for high performance mobile web application. Mult
 - express
 - ES2015
 - webpack 2.0 (tree shaking optimization, see: [webpack tree shaking](http://www.2ality.com/2015/12/webpack-tree-shaking.html))
+  We've optimized the building speed.
 - babel 6
 - Service Worker cache static files
 
@@ -24,6 +25,7 @@ isomorphic/universal react app for high performance mobile web application. Mult
     - 'why-did-you-update' avoidable re-render checking
     - react hot module replacing
 - npm run build:prod  // for production
+- npm run build:lib   // build libs file
 - npm run build       // both
 - npm run start       // start server
 
