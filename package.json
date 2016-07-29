@@ -1,7 +1,7 @@
 {
   "name": "react-ocean",
   "license": "ISC",
-  "version": "0.12.0",
+  "version": "0.12.2",
   "author": "LukeLin",
   "keywords": [
     "react",
@@ -81,7 +81,7 @@
   },
   "scripts": {
     "start": "node starter.js",
-    "kill": "node_modules/.bin/pm2 delete react-ocean",
+    "kill": "pm2 delete react-ocean",
     "build:lib": "gulp build:lib:dev && gulp build:lib",
     "build:dev": "set NODE_ENV=development && gulp build:dev",
     "build": "npm run build:prod && npm run build:dev",
