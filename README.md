@@ -9,7 +9,7 @@ isomorphic/universal react app for high performance mobile web application. Mult
 - express
 - ES2015
 - webpack 2.0 (tree shaking optimization, see: [webpack tree shaking](http://www.2ality.com/2015/12/webpack-tree-shaking.html))
-  We've optimized the building speed.
+  We've done a lot of optimization in build performance, so you no longer have to wait anxiously
 - babel 6
 - Service Worker cache static files
 
