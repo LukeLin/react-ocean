@@ -9,6 +9,8 @@ import configureStore from '../../../common/store/index';
 if (process.env.NODE_ENV !== 'production') {
     var whyDidYouUpdate = require('why-did-you-update').default;
     whyDidYouUpdate(React);
+    var ReactPerf = require('react-addons-perf');
+    window.ReactPerf = ReactPerf;
 }
 
 // fastclick解决ios和部分安卓click事件的问题

@@ -13,18 +13,16 @@ let HappyPack = require('happypack');
 
 module.exports = function (DEBUG) {
     let plugins = [
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'libs',
-        //     filename: DEBUG ? './js/libs-debug.js' : './js/libs-[chunkhash].js',
-        //     // ensures that no other module goes inti the libs chunk
-        //     minChunks: Infinity
-        // }),
         new HappyPack({ id: 'js' }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         //new NyanProgressPlugin()
         new ProgressBarPlugin({
             format: '  build [:bar] :percent (:elapsed seconds)',
             clear: false
+        }),
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: require('./' + (DEBUG ? 'manifest-debug.json' : 'manifest.json'))
         }),
         new ExtractTextPlugin(DEBUG ? './css/main.css' : './css/main-min.css', {
             allChunks: true
@@ -83,18 +81,6 @@ module.exports = function (DEBUG) {
         return entries;
     }
 
-    let externals = {
-        'zepto': 'Zepto',
-        'react': 'React',
-        'react-dom': 'ReactDOM',
-        'redux': 'Redux',
-        'react-redux': 'ReactRedux',
-        'redux-thunk': 'ReduxThunk',
-        'immutable': 'Immutable',
-        'redux-immutablejs': 'ReduxImmutableJS',
-        'react-immutable-proptypes': 'ImmutablePropsTypes',
-        'fastclick': 'Fastclick'
-    };
     let babelPlugins = [
         'transform-runtime',
 
@@ -119,11 +105,7 @@ module.exports = function (DEBUG) {
         'transform-es2015-typeof-symbol',
         ['transform-regenerator', { async: false, asyncGenerators: false }]
     ];
-    if (DEBUG) {
-        externals['react-addons-perf'] = 'ReactPerf';
-        externals['redux-logger'] = 'ReduxLogger';
-        externals['why-did-you-update'] = 'ReactUpdateAvoid';
-    } else {
+    if (!DEBUG) {
         babelPlugins.push(
             'transform-react-remove-prop-types',
             'transform-react-constant-elements',
@@ -200,7 +182,7 @@ module.exports = function (DEBUG) {
 
         plugins: plugins,
 
-        externals: externals,
+        externals: {},
 
         resolve: {
             root: path.resolve('/'),

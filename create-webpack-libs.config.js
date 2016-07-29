@@ -16,6 +16,11 @@ module.exports = function(DEBUG){
         new ProgressBarPlugin({
             format: '  build libs [:bar] :percent (:elapsed seconds)',
             clear: false
+        }),
+        new webpack.DllPlugin({
+            path: DEBUG ? 'manifest-debug.json' : 'manifest.json',
+            name: '[name]_lib',
+            context: __dirname
         })
     ];
     if (DEBUG) {
@@ -74,47 +79,7 @@ module.exports = function(DEBUG){
                 "plugins": ["transform-runtime"]
             },
             happy: { id: 'libs' }
-        },
-        {
-            test: require.resolve('react'),
-            loader: 'expose?React'
-        },
-        {
-            test: require.resolve('react-dom'),
-            loader: 'expose?ReactDOM'
-        },
-        {
-            test: require.resolve('redux'),
-            loader: 'expose?Redux'
-        },
-        {
-            test: require.resolve('react-redux'),
-            loader: 'expose?ReactRedux'
-        },
-        {
-            test: require.resolve('redux-thunk'),
-            loader: 'expose?ReduxThunk'
-        },
-        {
-            test: require.resolve('redux-logger'),
-            loader: 'expose?ReduxLogger'
-        },
-        {
-            test: require.resolve('immutable'),
-            loader: 'expose?Immutable'
-        },
-        {
-            test: require.resolve('redux-immutablejs'),
-            loader: 'expose?ReduxImmutableJS'
-        },
-        {
-            test: require.resolve('react-immutable-proptypes'),
-            loader: 'expose?ImmutablePropsTypes'
-        },
-        {
-            test: require.resolve('fastclick'),
-            loader: 'expose?Fastclick'
-        },
+        }
     ];
     if(DEBUG) {
         loaders.push({

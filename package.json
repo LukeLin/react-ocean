@@ -64,7 +64,6 @@
     "babel-preset-react-hmre": "^1.1.1",
     "css-loader": "^0.23.1",
     "del": "^2.2.1",
-    "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "^2.0.0-beta.1",
     "file-loader": "^0.8.5",
     "gulp": ">=3.9.0",
@@ -83,9 +82,9 @@
   "scripts": {
     "start": "node starter.js",
     "kill": "node_modules/.bin/pm2 delete react-ocean",
-    "build:dev": "set NODE_ENV=development && gulp build-dev",
+    "build:dev": "set NODE_ENV=development && gulp build:lib:dev && gulp build:dev",
     "build": "npm run build:prod && npm run build:dev",
-    "build:prod": "npm install && set NODE_ENV=production && gulp build"
+    "build:prod": "npm install && set NODE_ENV=production && gulp build:lib && gulp build"
   },
   "engines": {
     "node": ">=6.0.0"
