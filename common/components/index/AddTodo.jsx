@@ -10,7 +10,7 @@ export default class AddTodo extends Base {
         return (
             <div>
                 <input type='text' ref='input' />
-                <button onClick={(e) => this.handleClick(e) }>
+                <button onClick={ this.handleClick }>
                     Add
                 </button>
             </div>
@@ -18,10 +18,10 @@ export default class AddTodo extends Base {
     }
 
     handleClick(e) {
-        const node = this.refs.input
-        const text = node.value.trim()
-        this.props.onAddClick(text)
-        node.value = ''
+        const node = this.refs.input;
+        const text = node.value.trim();
+        this.props.onAddClick(text);
+        node.value = '';
     }
 }
 
