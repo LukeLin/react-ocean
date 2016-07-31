@@ -10,8 +10,10 @@ let ProgressBarPlugin = require('progress-bar-webpack-plugin');
 let HappyPack = require('happypack');
 
 module.exports = function(DEBUG){
+    let happyId = DEBUG ? 'libs-debug' : 'libs';
+
     let plugins = [
-        new HappyPack({ id: 'libs' }),
+        new HappyPack({ id: happyId }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new ProgressBarPlugin({
             format: '  build libs [:bar] :percent (:elapsed seconds)',
@@ -78,7 +80,7 @@ module.exports = function(DEBUG){
                 "presets": ["es2015"],
                 "plugins": ["transform-runtime"]
             },
-            happy: { id: 'libs' }
+            happy: { id: happyId }
         }
     ];
     
