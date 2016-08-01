@@ -18,13 +18,11 @@ function getEventMethodsProps(instance){
     return methods
 }
 
-let mediator = new EventEmitter();
 
 export default class Base extends Component {
     constructor(props, context){
         super(props, context);
 
-        this.__eventBus = mediator;
         this.__eventNames = {};
 
         this.__bindFunctions();
@@ -49,11 +47,11 @@ export default class Base extends Component {
             this.__eventNames[eventName].push(fn);
         }
 
-        return this.__eventBus.addListener(eventName, fn);
+        return this.context.$eventBus.addListener(eventName, fn);
     }
 
     emit(eventName, ...args){
-        return this.__eventBus.emit(eventName, ...args);
+        return this.context.$eventBus.emit(eventName, ...args);
     }
 
     off(eventName, fn){
@@ -62,7 +60,7 @@ export default class Base extends Component {
             let index = events.indexOf(fn);
 
             if(index >= 0) {
-                this.__eventBus.removeListener(eventName, fn);
+                this.context.$eventBus.removeListener(eventName, fn);
 
                 events.splice(index, 1);
 
@@ -108,3 +106,6 @@ export default class Base extends Component {
         }
     }
 }
+Base.contextTypes = {
+    $eventBus: PropTypes.instanceOf(EventEmitter)
+};

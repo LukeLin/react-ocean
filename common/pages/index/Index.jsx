@@ -66,9 +66,9 @@ Page.propTypes = {
     ]).isRequired
 };
 
-Page.contextTypes = {
+Object.assign(Page.contextTypes, {
     user: PropTypes.object
-};
+});
 
 function selectTodos(todos, filter) {
     switch (filter) {

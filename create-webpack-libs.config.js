@@ -10,8 +10,10 @@ let ProgressBarPlugin = require('progress-bar-webpack-plugin');
 let HappyPack = require('happypack');
 
 module.exports = function(DEBUG){
+    let happyId = DEBUG ? 'libs-debug' : 'libs';
+
     let plugins = [
-        new HappyPack({ id: 'libs' }),
+        new HappyPack({ id: happyId }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new ProgressBarPlugin({
             format: '  build libs [:bar] :percent (:elapsed seconds)',
@@ -67,6 +69,21 @@ module.exports = function(DEBUG){
             );
     }
 
+    let loaders = [
+        // Load ES6/JSX
+        {
+            test: /\.jsx?$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: 'babel',
+            query: {
+                cacheDirectory: true,
+                "presets": ["es2015"],
+                "plugins": ["transform-runtime"]
+            },
+            happy: { id: happyId }
+        }
+    ];
+    
     return {
         target: 'web',
         entry: {
@@ -90,20 +107,7 @@ module.exports = function(DEBUG){
         // devtool: DEBUG && "cheap-module-eval-source-map",
 
         module: {
-            loaders: [
-                // Load ES6/JSX
-                {
-                    test: /\.jsx?$/,
-                    exclude: /(node_modules|bower_components)/,
-                    loader: 'babel',
-                    query: {
-                        cacheDirectory: true,
-                        "presets": ["es2015"],
-                        "plugins": ["transform-runtime"]
-                    },
-                    happy: { id: 'libs' }
-                }
-            ],
+            loaders: loaders,
             noParse: []
         },
 

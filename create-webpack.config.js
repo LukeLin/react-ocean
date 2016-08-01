@@ -12,8 +12,11 @@ let HappyPack = require('happypack');
 
 
 module.exports = function (DEBUG) {
+    let happyId = DEBUG ? 'app-debug' : 'app';
+
+
     let plugins = [
-        new HappyPack({ id: 'js' }),
+        new HappyPack({ id: happyId }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         //new NyanProgressPlugin()
         new ProgressBarPlugin({
@@ -149,7 +152,7 @@ module.exports = function (DEBUG) {
                                 return [require.resolve(`babel-plugin-${preset[0]}`), ...preset];
                         })
                     },
-                    happy: { id: 'js' }
+                    happy: { id: happyId }
                 },
 
                 {

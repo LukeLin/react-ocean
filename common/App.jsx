@@ -1,4 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import EventEmitter from 'events';
+
+let mediator = new EventEmitter();
 
 
 class App extends Component {
@@ -10,8 +13,9 @@ class App extends Component {
         return {
             user: {
                 name: 'anonymous'
-            }
-        };
+            },
+            $eventBus: mediator
+        }
     }
 
     componentDidMount(){
@@ -35,7 +39,8 @@ class App extends Component {
 App.childContextTypes = {
     user: PropTypes.shape({
         name: PropTypes.string
-    })
+    }),
+    $eventBus: PropTypes.instanceOf(EventEmitter)
 };
 
 export default App;
