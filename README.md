@@ -12,6 +12,7 @@ isomorphic/universal react app for high performance mobile web application. Mult
   We've done a lot of optimization in build performance, so you no longer have to wait anxiously
 - babel 6
 - Service Worker cache static files
+- Web Security support
 
 ## Before Start
 - we recommend using ES6 module for tree shaking optimization.
