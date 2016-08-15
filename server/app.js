@@ -20,7 +20,11 @@ app.set('host', process.env.IP || '127.0.0.1');
 app.set('port', process.env.PORT || 3000);
 app.disable('x-powered-by');
 
-app.use(helmet());
+app.use(helmet.contentSecurityPolicy());
+app.use(helmet.frameguard());
+app.use(helmet.noSniff());
+app.use(helmet.xssFilter());
+app.use(helmet.hsts());
 app.use(compress());
 app.use(logger('dev'));
 app.use(bodyParser.json());
