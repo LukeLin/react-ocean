@@ -45,9 +45,13 @@ export default function reactRender(middlewareConfig = {}) {
             let debug = req.query.debug && (req.query.debug === config.application.debugName);
             let state = SecureFilters.jsObj(data);
             let version = config.application.version;
+            let jsVersion = '';
             // prefer config version, useful when using CDN config
-            let jsVersion = process.env.NODE_ENV === 'production' && version && version.js || '';
-            if(!jsVersion) jsVersion = webpackAssets[locals.appName || 'index'];
+            if(process.env.NODE_ENV === 'production') {
+                jsVersion = version && version.js;
+            } else {
+                jsVersion = webpackAssets[locals.appName || 'index'];
+            }
             template = template || middlewareConfig.defaultTemplate || defaultTemplate;
 
             let finalLocals = Object.assign({
