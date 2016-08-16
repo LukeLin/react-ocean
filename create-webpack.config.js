@@ -37,6 +37,7 @@ module.exports = function (DEBUG) {
         );
     } else {
         plugins.push(
+            new webpack.optimize.DedupePlugin(),
             new webpack.optimize.UglifyJsPlugin({
                 output: {
                     comments: false
