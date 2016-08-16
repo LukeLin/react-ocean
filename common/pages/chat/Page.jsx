@@ -22,19 +22,19 @@ class Page extends Base {
     }
 
     componentDidMount() {
-        socket.on('init', this._initialize.bind(this));
-        socket.on('send:message', this._messageRecieve.bind(this));
-        socket.on('user:join', this._userJoined.bind(this));
-        socket.on('user:left', this._userLeft.bind(this));
-        socket.on('change:name', this._userChangedName.bind(this));
+        socket.on('init', this.initialize.bind(this));
+        socket.on('send:message', this.messageRecieve.bind(this));
+        socket.on('user:join', this.userJoined.bind(this));
+        socket.on('user:left', this.userLeft.bind(this));
+        socket.on('change:name', this.userChangedName.bind(this));
     }
 
-    _initialize(data) {
+    initialize(data) {
         let {users, name} = data;
         this.setState({users, user: name});
     }
 
-    _messageRecieve(message) {
+    messageRecieve(message) {
         let {messages} = this.state;
 
         this.setState({
@@ -45,7 +45,7 @@ class Page extends Base {
         });
     }
 
-    _userJoined(data) {
+    userJoined(data) {
         let {users, messages} = this.state;
         let {name} = data;
 
@@ -64,7 +64,7 @@ class Page extends Base {
         });
     }
 
-    _userLeft(data) {
+    userLeft(data) {
         let {users, messages} = this.state;
         let {name} = data;
         let index = users.indexOf(name);
@@ -84,7 +84,7 @@ class Page extends Base {
         });
     }
 
-    _userChangedName(data) {
+    userChangedName(data) {
         let {oldName, newName} = data;
         let {users, messages} = this.state;
         let index = users.indexOf(oldName);
