@@ -9,6 +9,7 @@ import SecureFilters from 'secure-filters';
 import configureStore from '../../common/store/index';
 import App from '../../common/App.jsx';
 import config from '../config/config.json';
+import webpackAssets from '../../webpack-assets.json';
 
 const defaultTemplate = fs.readFileSync(__dirname + '/../views/index.html', 'utf8');
 
@@ -44,8 +45,9 @@ export default function reactRender(middlewareConfig = {}) {
             let debug = req.query.debug && (req.query.debug === config.application.debugName);
             let state = SecureFilters.jsObj(data);
             let version = config.application.version;
+            // prefer config version, useful when using CDN config
             let jsVersion = process.env.NODE_ENV === 'production' && version && version.js || '';
-            jsVersion = jsVersion ? `app-${ jsVersion }` : 'app';
+            if(!jsVersion) jsVersion = webpackAssets[locals.appName || 'index'];
             template = template || middlewareConfig.defaultTemplate || defaultTemplate;
 
             let finalLocals = Object.assign({

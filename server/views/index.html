@@ -49,9 +49,9 @@
 <% if(locals.debug) { %>
 <script src="/static/js/debug/<%= locals.appName %>.js"></script>
 <% } else if(locals.test){ %>
-<script src="/static/js/min/<%= locals.appName %>.js"></script>
+<script src="/static/js/min/<%= locals.appName %>-<%= locals.version.js %>.js"></script>
 <% } else { %>
-<script src="//cdn.com/js/<%= locals.version.js %>/<%= locals.appName %>-min.js"></script>
+<script src="//cdn.com/js/<%= locals.appName %>-<%= locals.version.js %>.js"></script>
 <% } %>
 </body>
 </html>

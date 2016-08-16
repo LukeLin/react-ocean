@@ -51,7 +51,18 @@ module.exports = function (DEBUG) {
                     let jsonStats = stats.toJson({
                         chunkModules: true
                     });
-                    let obj = Object.assign(jsonStats.assetsByChunkName, { hash: jsonStats.hash })
+                    let assetsByChunkName = jsonStats.assetsByChunkName;
+                    let obj = {};
+                    for(let key in assetsByChunkName){
+                        if(!assetsByChunkName.hasOwnProperty(key)) continue;
+
+                        let value = assetsByChunkName[key];
+                        let match = value[0].match(/-(\w+)\.js$/);
+                        if(match) {
+                            obj[key] = match[1];
+                        }
+                    }
+
                     fs.writeFileSync(
                         __dirname + "/webpack-assets.json",
                         JSON.stringify(obj)
@@ -121,9 +132,10 @@ module.exports = function (DEBUG) {
         entry: getPagesNames(__dirname + '/client/js/pages'),
         output: {
             path: __dirname + '/public/',
-            // filename: DEBUG ? "./js/debug/[name].js" : "./js/min/[name]-[chunkhash].js",
-            filename: DEBUG ? "./js/debug/[name].js" : "./js/min/[name].js",
-            chunkFilename: DEBUG ? "./js/debug/[name].js" : "./js/min/[name].js",
+            filename: DEBUG ? "/js/debug/[name].js" : "/js/min/[name]-[chunkhash].js",
+            // filename: DEBUG ? "./js/debug/[name].js" : "./js/min/[name].js",
+            chunkFilename: DEBUG ? "/js/debug/[name].js" : "/js/min/[name]-[chunkhash].js",
+            // chunkFilename: DEBUG ? "./js/debug/[name].js" : "./js/min/[name].js",
             publicPath: '/static',
             pathinfo: false
         },
