@@ -44,7 +44,7 @@ export default function createRender(middlewareConfig = {}){
 
         render((
             <Provider store={ store }>
-                <App>
+                <App appConfig={ window.__App_CONFIG__ }>
                     { component }
                 </App>
             </Provider>

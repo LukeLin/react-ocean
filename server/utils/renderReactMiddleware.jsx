@@ -32,7 +32,7 @@ export default function reactRender(middlewareConfig = {}) {
             try {
                 html = renderToString((
                     <Provider store={ store }>
-                        <App>
+                        <App appconfig={ pageConfig }>
                             { component }
                         </App>
                     </Provider>

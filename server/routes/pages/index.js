@@ -24,6 +24,9 @@ module.exports = function (req, res, next) {
             title: 'index page'
         },
         data: fakeData,
-        rootReducer
+        rootReducer,
+        pageConfig: {
+            user: 'test'
+        }
     });
 };

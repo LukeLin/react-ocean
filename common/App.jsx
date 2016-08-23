@@ -11,10 +11,8 @@ class App extends Component {
 
     getChildContext(){
         return {
-            user: {
-                name: 'anonymous'
-            },
-            $eventBus: mediator
+            $eventBus: mediator,
+            $appConfig: this.props.appConfig
         }
     }
 
@@ -36,11 +34,15 @@ class App extends Component {
         );
     }
 }
+App.defaultProps = {
+    appConfig: null
+};
+App.propTypes = {
+    appConfig: PropTypes.object
+};
 App.childContextTypes = {
-    user: PropTypes.shape({
-        name: PropTypes.string
-    }),
-    $eventBus: PropTypes.instanceOf(EventEmitter)
+    $eventBus: PropTypes.instanceOf(EventEmitter),
+    $appConfig: PropTypes.object
 };
 
 export default App;

@@ -14,7 +14,7 @@ class Page extends Base {
     }
 
     componentDidMount(){
-        console.log(this.context.user);
+        console.log(this.context.$appConfig.user);
 
         this.emit('test');
     }
@@ -65,10 +65,10 @@ Page.propTypes = {
         'SHOW_ACTIVE'
     ]).isRequired
 };
-
-Object.assign(Page.contextTypes, {
-    user: PropTypes.object
-});
+Page.contextTypes = {
+    $appConfig: PropTypes.object,
+    $eventBus: PropTypes.object
+};
 
 function selectTodos(todos, filter) {
     switch (filter) {
