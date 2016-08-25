@@ -68,4 +68,5 @@ isomorphic/universal react app for high performance mobile web application. Mult
 
 ## TodoList
 * add docker support
+* add cli tool
 
