@@ -85,7 +85,8 @@
     "build:lib": "gulp build:lib:dev && gulp build:lib",
     "build:dev": "set NODE_ENV=development && gulp build:dev",
     "build": "npm run build:prod && npm run build:dev",
-    "build:prod": "npm install && set NODE_ENV=production && gulp build"
+    "build:prod": "npm install && set NODE_ENV=production && gulp build",
+    "build:server": "webpack --config ./webpack.config-server.js"
   },
   "engines": {
     "node": ">=6.0.0"
