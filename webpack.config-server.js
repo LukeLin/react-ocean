@@ -8,7 +8,7 @@ module.exports = {
     entry: path.resolve(__dirname, './server/app.js'),
 
     output: {
-        path: path.resolve(__dirname, "./dist"),
+        path: path.resolve(__dirname, "./"),
         filename: 'server.js',
         libraryTarget: 'commonjs2'
     },
@@ -55,7 +55,7 @@ module.exports = {
         ],
     },
     plugins: [
-        new webpack.DefinePlugin({"process.env": {NODE_ENV: '"production"'}}),
+        // new webpack.DefinePlugin({"process.env": {NODE_ENV: '"production"'}}),
         // new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         // new webpack.BannerPlugin('require("source-map-support").install();',
