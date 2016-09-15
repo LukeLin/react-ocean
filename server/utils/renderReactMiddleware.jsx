@@ -9,9 +9,20 @@ import SecureFilters from 'secure-filters';
 import configureStore from '../../common/store/index';
 import App from '../../common/App.jsx';
 import config from '../config/config.json';
-import webpackAssets from '../../webpack-assets.json';
 
 const defaultTemplate = fs.readFileSync(__dirname + '/../views/index.html', 'utf8');
+
+function getDefaultJSVersion(name){
+    let webpackAssets = fs.readFileSync(__dirname + '/../../webpack-assets.json', 'utf8');
+
+    try {
+        webpackAssets = JSON.parse(webpackAssets);
+    } catch(ex){
+        console.log('webpack-assets.json parsed error');
+        webpackAssets = {};
+    }
+    return webpackAssets[name];
+}
 
 export default function reactRender(middlewareConfig = {}) {
     return function(req, res, next){
@@ -50,7 +61,7 @@ export default function reactRender(middlewareConfig = {}) {
             if(process.env.NODE_ENV === 'production') {
                 jsVersion = version && version.js;
             } else {
-                jsVersion = webpackAssets[locals.appName || 'index'];
+                jsVersion = getDefaultJSVersion(locals.appName || 'index');
             }
             template = template || middlewareConfig.defaultTemplate || defaultTemplate;
 

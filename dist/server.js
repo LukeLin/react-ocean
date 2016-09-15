@@ -102,11 +102,11 @@ module.exports =
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _helmet = __webpack_require__(/*! helmet */ 54);
+	var _helmet = __webpack_require__(/*! helmet */ 53);
 
 	var _helmet2 = _interopRequireDefault(_helmet);
 
-	var _socket = __webpack_require__(/*! ./routes/socket */ 55);
+	var _socket = __webpack_require__(/*! ./routes/socket */ 54);
 
 	var _socket2 = _interopRequireDefault(_socket);
 
@@ -193,7 +193,7 @@ module.exports =
 	let server = _http2.default.createServer(app);
 
 	/* Socket.io Communication */
-	let io = __webpack_require__(/*! socket.io */ 56).listen(server);
+	let io = __webpack_require__(/*! socket.io */ 55).listen(server);
 	io.sockets.on('connection', _socket2.default);
 
 	server.listen(app.get('port'), app.get('host'), function () {
@@ -2432,14 +2432,23 @@ module.exports =
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _webpackAssets = __webpack_require__(/*! ../../webpack-assets.json */ 53);
-
-	var _webpackAssets2 = _interopRequireDefault(_webpackAssets);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	const defaultTemplate = _fs2.default.readFileSync(__dirname + '/../views/index.html', 'utf8');
 	// for xss protection
+	const defaultTemplate = _fs2.default.readFileSync(__dirname + '/../views/index.html', 'utf8');
+
+	function getDefaultJSVersion(name) {
+	    let webpackAssets = _fs2.default.readFileSync(__dirname + '/../../webpack-assets.json', 'utf8');
+
+	    try {
+	        webpackAssets = JSON.parse(webpackAssets);
+	    } catch (ex) {
+	        console.log('webpack-assets.json parsed error');
+	        webpackAssets = {};
+	    }
+	    return webpackAssets[name];
+	}
+
 	function reactRender(middlewareConfig = {}) {
 	    return function (req, res, next) {
 	        res.renderReactHTML = function (opts = {}) {
@@ -2478,7 +2487,7 @@ module.exports =
 	            if (process.env.NODE_ENV === 'production') {
 	                jsVersion = version && version.js;
 	            } else {
-	                jsVersion = _webpackAssets2.default[locals.appName || 'index'];
+	                jsVersion = getDefaultJSVersion(locals.appName || 'index');
 	            }
 	            template = template || middlewareConfig.defaultTemplate || defaultTemplate;
 
@@ -2900,19 +2909,6 @@ module.exports =
 
 /***/ },
 /* 53 */
-/*!*****************************!*\
-  !*** ./webpack-assets.json ***!
-  \*****************************/
-/***/ function(module, exports) {
-
-	module.exports = {
-		"chat": "b3eccc63bd98c2af836f",
-		"async": "f413181bb874a285deea",
-		"index": "18aceccf234075a9f08b"
-	};
-
-/***/ },
-/* 54 */
 /*!*************************!*\
   !*** external "helmet" ***!
   \*************************/
@@ -2921,7 +2917,7 @@ module.exports =
 	module.exports = require("helmet");
 
 /***/ },
-/* 55 */
+/* 54 */
 /*!*********************************!*\
   !*** ./server/routes/socket.js ***!
   \*********************************/
@@ -3037,7 +3033,7 @@ module.exports =
 	;
 
 /***/ },
-/* 56 */
+/* 55 */
 /*!****************************!*\
   !*** external "socket.io" ***!
   \****************************/
