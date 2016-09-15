@@ -96,7 +96,10 @@ module.exports = function (DEBUG) {
     }
 
     let babelPlugins = [
-        // 'transform-runtime',
+        ["transform-runtime", {
+            "polyfill": false,
+            "regenerator": true
+        }],
 
         // exclude commonjs for webpack 2.0 tree shaking optimization
         "transform-es2015-modules-commonjs",
