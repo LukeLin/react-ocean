@@ -8,7 +8,8 @@ module.exports = {
     entry: path.resolve(__dirname, './server/app.js'),
 
     output: {
-        path: path.resolve(__dirname, "./"),
+        path: path.resolve(__dirname, "./dist"),
+        pathinfo: true,
         filename: 'server.js',
         libraryTarget: 'commonjs2'
     },
@@ -30,13 +31,15 @@ module.exports = {
         ],
     },
 
-    externals: Object.keys(packageJson.dependencies),
+    externals: Object.keys(packageJson.dependencies).concat([
+        'react-dom/server'
+    ]),
 
     module: {
         loaders: [
             {
                 test: /\.jsx?$/,
-                exclude: /node_modules|jce/,
+                exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
                     presets: [
@@ -45,7 +48,6 @@ module.exports = {
                     plugins: [
                         "transform-es2015-modules-commonjs",
                         "transform-async-to-generator",
-                        "transform-runtime"
                     ]
                 },
             }, {

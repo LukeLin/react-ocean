@@ -8,7 +8,7 @@ const maxMemory = process.env.WEB_MEMORY || 512;    // " " "
 
 pm2.connect(function() {
     pm2.start({
-        script    : './index.js',
+        script    : './dist/server.js',
         name      : 'react-ocean',
         exec_mode : 'cluster',
         instances : instances,

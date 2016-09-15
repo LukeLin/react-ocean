@@ -96,9 +96,10 @@ module.exports = function (DEBUG) {
     }
 
     let babelPlugins = [
-        'transform-runtime',
+        // 'transform-runtime',
 
         // exclude commonjs for webpack 2.0 tree shaking optimization
+        "transform-es2015-modules-commonjs",
         'transform-es2015-template-literals',
         'transform-es2015-literals',
         'transform-es2015-function-name',

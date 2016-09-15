@@ -32,7 +32,7 @@ gulp.task('build:lib', function(cb){
         if (err) throw new Error(err);
 
         if (stats.compilation.errors.length) {
-            console.log(stats.compilation.errors[0].error.message);
+            console.log(stats.compilation.errors[0]);
         }
 
         console.log('webpack libs end');
@@ -45,7 +45,7 @@ gulp.task('build', ['clean'], function (cb) {
         if (err) throw new Error(err);
 
         if (stats.compilation.errors.length) {
-            console.log(stats.compilation.errors[0].error.message);
+            console.log(stats.compilation.errors[0]);
         }
 
         console.log('webpack end');
@@ -58,7 +58,7 @@ gulp.task('build:lib:dev', function(cb){
         if (err) throw new Error(err);
 
         if (stats.compilation.errors.length) {
-            console.log(stats.compilation.errors[0].error.message);
+            console.log(stats.compilation.errors[0]);
         }
 
         console.log('webpack libs dev end');
@@ -71,7 +71,7 @@ gulp.task('build:dev', ['clean:dev'], function (cb) {
         if (err) throw new Error(err);
 
         if (stats.compilation.errors.length) {
-            console.log(stats.compilation.errors[0].error.message);
+            console.log(stats.compilation.errors[0].error);
         }
 
         console.log('webpack dev end');
