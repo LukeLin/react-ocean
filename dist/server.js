@@ -130,9 +130,12 @@ module.exports =
 	app.use((0, _cookieParser2.default)());
 	app.use((0, _expressSession2.default)({
 	    resave: true,
-	    secret: 'isomorphic',
+	    secret: 'mySecretCookieSalt',
+	    key: 'myCookieSessionId',
 	    saveUninitialized: true,
-	    cookie: { httpOnly: true }
+	    cookie: {
+	        httpOnly: true
+	    }
 	}));
 
 	// app.use(favicon(__dirname + '/../public/favicon.ico'));
@@ -154,7 +157,7 @@ module.exports =
 
 	app.use((0, _csurf2.default)());
 	app.use(function (req, res, next) {
-	    res.locals.csrftoken = req.session._csrf;
+	    res.locals.csrftoken = req.csrfToken();
 	    next();
 	});
 	app.use((0, _renderReactMiddleware2.default)({
@@ -2492,18 +2495,18 @@ module.exports =
 	            template = template || middlewareConfig.defaultTemplate || defaultTemplate;
 
 	            let finalLocals = Object.assign({
-	                html: html,
-	                state: state,
+	                html,
+	                state,
 	                appName: 'index',
 	                title: '',
 	                test: process.env.NODE_ENV !== 'production',
-	                debug: debug,
+	                debug,
 	                appConfig: _secureFilters2.default.jsObj(pageConfig),
 	                version: {
 	                    js: jsVersion,
 	                    css: version && version.css
 	                }
-	            }, typeof middlewareConfig.locals === 'object' && middlewareConfig.locals, locals);
+	            }, res.locals, locals);
 
 	            let pageStr = _ejs2.default.render(template, finalLocals, {
 	                compileDebug: false

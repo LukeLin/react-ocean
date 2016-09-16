@@ -66,18 +66,18 @@ export default function reactRender(middlewareConfig = {}) {
             template = template || middlewareConfig.defaultTemplate || defaultTemplate;
 
             let finalLocals = Object.assign({
-                html: html,
-                state: state,
+                html,
+                state,
                 appName: 'index',
                 title: '',
                 test: process.env.NODE_ENV !== 'production',
-                debug: debug,
+                debug,
                 appConfig: SecureFilters.jsObj(pageConfig),
                 version: {
                     js: jsVersion,
                     css: version && version.css
                 }
-            }, typeof middlewareConfig.locals === 'object' && middlewareConfig.locals, locals);
+            }, res.locals, locals);
 
             let pageStr = ejs.render(template, finalLocals, {
                 compileDebug: false

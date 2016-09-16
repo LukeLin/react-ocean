@@ -32,9 +32,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session({
     resave: true,
-    secret: 'isomorphic',
+    secret: 'mySecretCookieSalt',
+    key: 'myCookieSessionId',
     saveUninitialized: true,
-    cookie: {httpOnly: true}
+    cookie: {
+        httpOnly: true,
+    }
 }));
 
 // app.use(favicon(__dirname + '/../public/favicon.ico'));
@@ -56,7 +59,7 @@ app.use('/', allowCrossDomain);
 
 app.use(csurf());
 app.use(function (req, res, next) {
-    res.locals.csrftoken = req.session._csrf;
+    res.locals.csrftoken = req.csrfToken();
     next();
 });
 app.use(reactRender({

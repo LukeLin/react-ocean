@@ -16,6 +16,7 @@
 </head>
 <body>
 <div id="page"><%- locals.html %></div>
+<input type="hidden" name="_csrf" value="<%= locals.csrftoken %>">
 <script>
     window.__App_CONFIG__ = <%- locals.appConfig %>;
     window.__INITIAL_STATE__ = <%- locals.state %>;
