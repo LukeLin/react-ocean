@@ -50,35 +50,35 @@ module.exports =
 
 	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
 
-	var _http = __webpack_require__(/*! http */ 1);
+	var _http = __webpack_require__(/*! http */ 50);
 
 	var _http2 = _interopRequireDefault(_http);
 
-	var _express = __webpack_require__(/*! express */ 2);
+	var _express = __webpack_require__(/*! express */ 11);
 
 	var _express2 = _interopRequireDefault(_express);
 
-	var _compression = __webpack_require__(/*! compression */ 3);
+	var _compression = __webpack_require__(/*! compression */ 44);
 
 	var _compression2 = _interopRequireDefault(_compression);
 
-	var _morgan = __webpack_require__(/*! morgan */ 4);
+	var _morgan = __webpack_require__(/*! morgan */ 51);
 
 	var _morgan2 = _interopRequireDefault(_morgan);
 
-	var _cookieParser = __webpack_require__(/*! cookie-parser */ 5);
+	var _cookieParser = __webpack_require__(/*! cookie-parser */ 45);
 
 	var _cookieParser2 = _interopRequireDefault(_cookieParser);
 
-	var _bodyParser = __webpack_require__(/*! body-parser */ 6);
+	var _bodyParser = __webpack_require__(/*! body-parser */ 42);
 
 	var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
-	var _expressSession = __webpack_require__(/*! express-session */ 7);
+	var _expressSession = __webpack_require__(/*! express-session */ 48);
 
 	var _expressSession2 = _interopRequireDefault(_expressSession);
 
-	var _csurf = __webpack_require__(/*! csurf */ 8);
+	var _csurf = __webpack_require__(/*! csurf */ 46);
 
 	var _csurf2 = _interopRequireDefault(_csurf);
 
@@ -86,27 +86,27 @@ module.exports =
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _routes = __webpack_require__(/*! ./routes */ 10);
+	var _routes = __webpack_require__(/*! ./routes */ 34);
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _allowCrossDomain = __webpack_require__(/*! ./utils/allowCrossDomain */ 44);
+	var _allowCrossDomain = __webpack_require__(/*! ./utils/allowCrossDomain */ 39);
 
 	var _allowCrossDomain2 = _interopRequireDefault(_allowCrossDomain);
 
-	var _renderReactMiddleware = __webpack_require__(/*! ./utils/renderReactMiddleware */ 45);
+	var _renderReactMiddleware = __webpack_require__(/*! ./utils/renderReactMiddleware */ 40);
 
 	var _renderReactMiddleware2 = _interopRequireDefault(_renderReactMiddleware);
 
-	var _immutable = __webpack_require__(/*! immutable */ 15);
+	var _immutable = __webpack_require__(/*! immutable */ 3);
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _helmet = __webpack_require__(/*! helmet */ 53);
+	var _helmet = __webpack_require__(/*! helmet */ 49);
 
 	var _helmet2 = _interopRequireDefault(_helmet);
 
-	var _socket = __webpack_require__(/*! ./routes/socket */ 54);
+	var _socket = __webpack_require__(/*! ./routes/socket */ 38);
 
 	var _socket2 = _interopRequireDefault(_socket);
 
@@ -207,221 +207,6 @@ module.exports =
 
 /***/ },
 /* 1 */
-/*!***********************!*\
-  !*** external "http" ***!
-  \***********************/
-/***/ function(module, exports) {
-
-	module.exports = require("http");
-
-/***/ },
-/* 2 */
-/*!**************************!*\
-  !*** external "express" ***!
-  \**************************/
-/***/ function(module, exports) {
-
-	module.exports = require("express");
-
-/***/ },
-/* 3 */
-/*!******************************!*\
-  !*** external "compression" ***!
-  \******************************/
-/***/ function(module, exports) {
-
-	module.exports = require("compression");
-
-/***/ },
-/* 4 */
-/*!*************************!*\
-  !*** external "morgan" ***!
-  \*************************/
-/***/ function(module, exports) {
-
-	module.exports = require("morgan");
-
-/***/ },
-/* 5 */
-/*!********************************!*\
-  !*** external "cookie-parser" ***!
-  \********************************/
-/***/ function(module, exports) {
-
-	module.exports = require("cookie-parser");
-
-/***/ },
-/* 6 */
-/*!******************************!*\
-  !*** external "body-parser" ***!
-  \******************************/
-/***/ function(module, exports) {
-
-	module.exports = require("body-parser");
-
-/***/ },
-/* 7 */
-/*!**********************************!*\
-  !*** external "express-session" ***!
-  \**********************************/
-/***/ function(module, exports) {
-
-	module.exports = require("express-session");
-
-/***/ },
-/* 8 */
-/*!************************!*\
-  !*** external "csurf" ***!
-  \************************/
-/***/ function(module, exports) {
-
-	module.exports = require("csurf");
-
-/***/ },
-/* 9 */
-/*!***********************************!*\
-  !*** ./server/config/config.json ***!
-  \***********************************/
-/***/ function(module, exports) {
-
-	module.exports = {
-		"application": {
-			"version": {
-				"css": "",
-				"js": ""
-			},
-			"debugName": "test"
-		},
-		"serverName": "isomophic-react-redux-starter"
-	};
-
-/***/ },
-/* 10 */
-/*!********************************!*\
-  !*** ./server/routes/index.js ***!
-  \********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _express = __webpack_require__(/*! express */ 2);
-
-	var _fs = __webpack_require__(/*! fs */ 11);
-
-	var _fs2 = _interopRequireDefault(_fs);
-
-	var _index = __webpack_require__(/*! ./pages/index */ 12);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	var _async = __webpack_require__(/*! ./pages/async */ 30);
-
-	var _async2 = _interopRequireDefault(_async);
-
-	var _chat = __webpack_require__(/*! ./pages/chat */ 37);
-
-	var _chat2 = _interopRequireDefault(_chat);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { return step("next", value); }, function (err) { return step("throw", err); }); } } return step("next"); }); }; }
-
-	let router = new _express.Router();
-
-	/**
-	 * 首页请求
-	 */
-	router.get('/', _index2.default);
-	router.get('/async', _async2.default);
-	router.get('/chat', _chat2.default);
-
-	/**
-	 * AJAX请求
-	 */
-
-	/**
-	 * 静态资源
-	 */
-	router.get('/sw.js', (() => {
-	  var _ref = _asyncToGenerator(function* (req, res) {
-	    let content = _fs2.default.readFileSync(__dirname + '/../../client/js/utils/sw.js', 'utf8');
-
-	    res.set('Content-Type', 'application/javascript');
-	    res.send(content);
-	  });
-
-	  return function (_x, _x2) {
-	    return _ref.apply(this, arguments);
-	  };
-	})());
-
-	exports.default = router;
-	/* WEBPACK VAR INJECTION */}.call(exports, "server\\routes"))
-
-/***/ },
-/* 11 */
-/*!*********************!*\
-  !*** external "fs" ***!
-  \*********************/
-/***/ function(module, exports) {
-
-	module.exports = require("fs");
-
-/***/ },
-/* 12 */
-/*!**************************************!*\
-  !*** ./server/routes/pages/index.js ***!
-  \**************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _react = __webpack_require__(/*! react */ 13);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _indexReducers = __webpack_require__(/*! ../../../common/pages/index/indexReducers */ 14);
-
-	var _indexReducers2 = _interopRequireDefault(_indexReducers);
-
-	var _index = __webpack_require__(/*! ../../../common/pages/index */ 18);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	let fakeData = {
-	    visibilityFilter: 'SHOW_ALL',
-	    todos: [{
-	        text: 'one',
-	        completed: false
-	    }, {
-	        text: 'two',
-	        completed: true
-	    }]
-	};
-
-	module.exports = function (req, res, next) {
-	    res.renderReactHTML({
-	        component: _react2.default.createElement(_index2.default, null),
-	        locals: {
-	            appName: 'index',
-	            title: 'index page'
-	        },
-	        data: fakeData,
-	        rootReducer: _indexReducers2.default,
-	        pageConfig: {
-	            user: 'test'
-	        }
-	    });
-	};
-
-/***/ },
-/* 13 */
 /*!************************!*\
   !*** external "react" ***!
   \************************/
@@ -430,267 +215,7 @@ module.exports =
 	module.exports = require("react");
 
 /***/ },
-/* 14 */
-/*!*********************************************!*\
-  !*** ./common/pages/index/indexReducers.js ***!
-  \*********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _immutable = __webpack_require__(/*! immutable */ 15);
-
-	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 16);
-
-	var _indexActions = __webpack_require__(/*! ./indexActions */ 17);
-
-	const { SHOW_ALL } = _indexActions.VisibilityFilters; // import { combineReducers } from 'redux'
-
-
-	function visibilityFilter(state = SHOW_ALL, action) {
-	    switch (action.type) {
-	        case _indexActions.SET_VISIBILITY_FILTER:
-	            return action.filter;
-	        default:
-	            return state;
-	    }
-	}
-
-	function todos(state = new _immutable.List(), action) {
-	    switch (action.type) {
-	        case _indexActions.ADD_TODO:
-	            return state.push(new _immutable.Map({
-	                text: action.text,
-	                completed: false
-	            }));
-	        case _indexActions.COMPLETE_TODO:
-	            return state.update(action.index, function (item) {
-	                return item.update('completed', true);
-	            });
-	        default:
-	            return state;
-	    }
-	}
-
-	const todoApp = (0, _reduxImmutablejs.combineReducers)({
-	    visibilityFilter,
-	    todos
-	});
-
-	exports.default = todoApp;
-
-/***/ },
-/* 15 */
-/*!****************************!*\
-  !*** external "immutable" ***!
-  \****************************/
-/***/ function(module, exports) {
-
-	module.exports = require("immutable");
-
-/***/ },
-/* 16 */
-/*!************************************!*\
-  !*** external "redux-immutablejs" ***!
-  \************************************/
-/***/ function(module, exports) {
-
-	module.exports = require("redux-immutablejs");
-
-/***/ },
-/* 17 */
-/*!********************************************!*\
-  !*** ./common/pages/index/indexActions.js ***!
-  \********************************************/
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.addTodo = addTodo;
-	exports.completeTodo = completeTodo;
-	exports.setVisibilityFilter = setVisibilityFilter;
-	/*
-	 * action 类型
-	 */
-
-	const ADD_TODO = exports.ADD_TODO = 'ADD_TODO';
-	const COMPLETE_TODO = exports.COMPLETE_TODO = 'COMPLETE_TODO';
-	const SET_VISIBILITY_FILTER = exports.SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
-
-	/*
-	 * 其它的常量
-	 */
-
-	const VisibilityFilters = exports.VisibilityFilters = {
-	    SHOW_ALL: 'SHOW_ALL',
-	    SHOW_COMPLETED: 'SHOW_COMPLETED',
-	    SHOW_ACTIVE: 'SHOW_ACTIVE'
-	};
-
-	/*
-	 * action 创建函数
-	 */
-
-	function addTodo(text) {
-	    return { type: ADD_TODO, text };
-	}
-
-	function completeTodo(index) {
-	    return { type: COMPLETE_TODO, index };
-	}
-
-	function setVisibilityFilter(filter) {
-	    return { type: SET_VISIBILITY_FILTER, filter };
-	}
-
-/***/ },
-/* 18 */
-/*!**************************************!*\
-  !*** ./common/pages/index/index.jsx ***!
-  \**************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(/*! react */ 13);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(/*! react-redux */ 19);
-
-	var _immutable = __webpack_require__(/*! immutable */ 15);
-
-	var _Base = __webpack_require__(/*! ../Base.jsx */ 20);
-
-	var _Base2 = _interopRequireDefault(_Base);
-
-	var _indexActions = __webpack_require__(/*! ./indexActions */ 17);
-
-	var _AddTodo = __webpack_require__(/*! ../../components/index/AddTodo */ 23);
-
-	var _AddTodo2 = _interopRequireDefault(_AddTodo);
-
-	var _TodoList = __webpack_require__(/*! ../../components/index/TodoList */ 24);
-
-	var _TodoList2 = _interopRequireDefault(_TodoList);
-
-	var _Footer = __webpack_require__(/*! ../../components/index/Footer */ 27);
-
-	var _Footer2 = _interopRequireDefault(_Footer);
-
-	var _Tab = __webpack_require__(/*! ../../components/common/Tab */ 28);
-
-	var _Tab2 = _interopRequireDefault(_Tab);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	class Page extends _Base2.default {
-	    constructor(props, context) {
-	        super(props, context);
-	    }
-
-	    componentDidMount() {
-	        console.log(this.context.$appConfig.user);
-
-	        this.emit('test');
-	    }
-
-	    render() {
-	        // Injected by connect() call:
-	        const { dispatch, visibleTodos, visibilityFilter } = this.props;
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(_AddTodo2.default, {
-	                onAddClick: text => dispatch((0, _indexActions.addTodo)(text)) }),
-	            _react2.default.createElement(_TodoList2.default, {
-	                todos: visibleTodos,
-	                onTodoClick: index => dispatch((0, _indexActions.completeTodo)(index)) }),
-	            _react2.default.createElement(_Footer2.default, {
-	                filter: visibilityFilter,
-	                onFilterChange: nextFilter => dispatch((0, _indexActions.setVisibilityFilter)(nextFilter)) }),
-	            _react2.default.createElement(
-	                _Tab2.default,
-	                { defaultSelectedTab: '1' },
-	                _react2.default.createElement(
-	                    _Tab.TabTitle,
-	                    { label: '1' },
-	                    'tab1'
-	                ),
-	                _react2.default.createElement(
-	                    _Tab.TabTitle,
-	                    { label: '2' },
-	                    'tab2'
-	                ),
-	                _react2.default.createElement(
-	                    _Tab.TabPanel,
-	                    { 'for': '1' },
-	                    'TabContent1'
-	                ),
-	                _react2.default.createElement(
-	                    _Tab.TabPanel,
-	                    { 'for': '2' },
-	                    'TabContent2'
-	                )
-	            )
-	        );
-	    }
-	}
-
-	Page.propTypes = {
-	    visibleTodos: _react.PropTypes.instanceOf(_immutable.List).isRequired,
-	    visibilityFilter: _react.PropTypes.oneOf(['SHOW_ALL', 'SHOW_COMPLETED', 'SHOW_ACTIVE']).isRequired
-	};
-	Page.contextTypes = {
-	    $appConfig: _react.PropTypes.object,
-	    $eventBus: _react.PropTypes.object
-	};
-
-	function selectTodos(todos, filter) {
-	    switch (filter) {
-	        case _indexActions.VisibilityFilters.SHOW_ALL:
-	            return todos;
-	        case _indexActions.VisibilityFilters.SHOW_COMPLETED:
-	            return todos.filter(todo => todo.get('completed'));
-	        case _indexActions.VisibilityFilters.SHOW_ACTIVE:
-	            return todos.filter(todo => !todo.get('completed'));
-	    }
-	}
-
-	// Which props do we want to inject, given the global state?
-	// Note: use https://github.com/faassen/reselect for better performance.
-	function select(state) {
-	    return {
-	        visibleTodos: selectTodos(state.get('todos'), state.get('visibilityFilter')),
-	        visibilityFilter: state.get('visibilityFilter')
-	    };
-	}
-
-	// 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
-	exports.default = (0, _reactRedux.connect)(select)(Page);
-
-/***/ },
-/* 19 */
-/*!******************************!*\
-  !*** external "react-redux" ***!
-  \******************************/
-/***/ function(module, exports) {
-
-	module.exports = require("react-redux");
-
-/***/ },
-/* 20 */
+/* 2 */
 /*!*******************************!*\
   !*** ./common/pages/Base.jsx ***!
   \*******************************/
@@ -702,15 +227,15 @@ module.exports =
 	    value: true
 	});
 
-	var _react = __webpack_require__(/*! react */ 13);
+	var _react = __webpack_require__(/*! react */ 1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _shallowEqual = __webpack_require__(/*! ../utils/shallowEqual */ 21);
+	var _shallowEqual = __webpack_require__(/*! ../utils/shallowEqual */ 33);
 
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 
-	var _events = __webpack_require__(/*! events */ 22);
+	var _events = __webpack_require__(/*! events */ 10);
 
 	var _events2 = _interopRequireDefault(_events);
 
@@ -822,85 +347,201 @@ module.exports =
 	};
 
 /***/ },
-/* 21 */
-/*!**************************************!*\
-  !*** ./common/utils/shallowEqual.js ***!
-  \**************************************/
+/* 3 */
+/*!****************************!*\
+  !*** external "immutable" ***!
+  \****************************/
 /***/ function(module, exports) {
 
-	// modified
-	/**
-	 * Copyright (c) 2013-present, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @typechecks
-	 *
-	 */
+	module.exports = require("immutable");
 
-	/*eslint-disable no-self-compare */
+/***/ },
+/* 4 */
+/*!********************************************!*\
+  !*** external "react-immutable-proptypes" ***!
+  \********************************************/
+/***/ function(module, exports) {
+
+	module.exports = require("react-immutable-proptypes");
+
+/***/ },
+/* 5 */
+/*!******************************!*\
+  !*** external "react-redux" ***!
+  \******************************/
+/***/ function(module, exports) {
+
+	module.exports = require("react-redux");
+
+/***/ },
+/* 6 */
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/***/ function(module, exports) {
+
+	module.exports = require("fs");
+
+/***/ },
+/* 7 */
+/*!***************************************!*\
+  !*** ./common/pages/async/actions.js ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var hasOwnProperty = Object.prototype.hasOwnProperty;
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.INVALIDATE_REDDIT = exports.SELECT_REDDIT = exports.RECEIVE_POSTS = exports.REQUEST_POSTS = undefined;
+	exports.selectReddit = selectReddit;
+	exports.invalidateReddit = invalidateReddit;
+	exports.fetchPostsIfNeeded = fetchPostsIfNeeded;
 
-	/**
-	 * inlined Object.is polyfill to avoid requiring consumers ship their own
-	 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
-	 */
-	function is(x, y) {
-	    // SameValue algorithm
-	    if (x === y) {
-	        // Steps 1-5, 7-10
-	        // Steps 6.b-6.e: +0 != -0
-	        return x !== 0 || 1 / x === 1 / y;
-	    } else {
-	        if (typeof x === 'function' && typeof y === 'function') {
-	            return x.toString() === y.toString();
-	        }
-	        // Step 6.a: NaN == NaN
-	        return x !== x && y !== y;
-	    }
+	var _isomorphicFetch = __webpack_require__(/*! isomorphic-fetch */ 12);
+
+	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
+
+	var _immutable = __webpack_require__(/*! immutable */ 3);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	const REQUEST_POSTS = exports.REQUEST_POSTS = 'REQUEST_POSTS';
+	const RECEIVE_POSTS = exports.RECEIVE_POSTS = 'RECEIVE_POSTS';
+	const SELECT_REDDIT = exports.SELECT_REDDIT = 'SELECT_REDDIT';
+	const INVALIDATE_REDDIT = exports.INVALIDATE_REDDIT = 'INVALIDATE_REDDIT';
+
+	function selectReddit(reddit) {
+	    return {
+	        type: SELECT_REDDIT,
+	        reddit
+	    };
 	}
 
-	/**
-	 * Performs equality by iterating through keys on an object and returning false
-	 * when any key has values which are not strictly equal between the arguments.
-	 * Returns true when the values of all keys are strictly equal.
-	 */
-	function shallowEqual(objA, objB) {
-	    if (is(objA, objB)) {
+	function invalidateReddit(reddit) {
+	    return {
+	        type: INVALIDATE_REDDIT,
+	        reddit
+	    };
+	}
+
+	function requestPosts(reddit) {
+	    return {
+	        type: REQUEST_POSTS,
+	        reddit
+	    };
+	}
+
+	function receivePosts(reddit, json) {
+	    return {
+	        type: RECEIVE_POSTS,
+	        reddit,
+	        posts: _immutable2.default.fromJS(json.data.children.map(child => child.data)),
+	        receivedAt: Date.now()
+	    };
+	}
+
+	function fetchPosts(reddit) {
+	    return dispatch => {
+	        dispatch(requestPosts(reddit));
+	        return (0, _isomorphicFetch2.default)(`https://www.reddit.com/r/${ reddit }.json`, {
+	            method: 'GET',
+	            timeout: 5000
+	        }).then(response => response.json()).then(json => dispatch(receivePosts(reddit, json)));
+	    };
+	}
+
+	function shouldFetchPosts(state, reddit) {
+	    const posts = state.get('postsByReddit').get(reddit);
+	    if (!posts) {
 	        return true;
 	    }
-
-	    if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+	    if (posts.get('isFetching')) {
 	        return false;
 	    }
-
-	    var keysA = Object.keys(objA);
-	    var keysB = Object.keys(objB);
-
-	    if (keysA.length !== keysB.length) {
-	        return false;
-	    }
-
-	    // Test for A's keys different from B.
-	    for (var i = 0; i < keysA.length; i++) {
-	        if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
-	            return false;
-	        }
-	    }
-
-	    return true;
+	    return posts.get('didInvalidate');
 	}
 
-	module.exports = shallowEqual;
+	function fetchPostsIfNeeded(reddit) {
+	    return (dispatch, getState) => {
+	        if (shouldFetchPosts(getState(), reddit)) {
+	            return dispatch(fetchPosts(reddit));
+	        }
+	    };
+	}
 
 /***/ },
-/* 22 */
+/* 8 */
+/*!********************************************!*\
+  !*** ./common/pages/index/indexActions.js ***!
+  \********************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.addTodo = addTodo;
+	exports.completeTodo = completeTodo;
+	exports.setVisibilityFilter = setVisibilityFilter;
+	/*
+	 * action 类型
+	 */
+
+	const ADD_TODO = exports.ADD_TODO = 'ADD_TODO';
+	const COMPLETE_TODO = exports.COMPLETE_TODO = 'COMPLETE_TODO';
+	const SET_VISIBILITY_FILTER = exports.SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
+
+	/*
+	 * 其它的常量
+	 */
+
+	const VisibilityFilters = exports.VisibilityFilters = {
+	    SHOW_ALL: 'SHOW_ALL',
+	    SHOW_COMPLETED: 'SHOW_COMPLETED',
+	    SHOW_ACTIVE: 'SHOW_ACTIVE'
+	};
+
+	/*
+	 * action 创建函数
+	 */
+
+	function addTodo(text) {
+	    return { type: ADD_TODO, text };
+	}
+
+	function completeTodo(index) {
+	    return { type: COMPLETE_TODO, index };
+	}
+
+	function setVisibilityFilter(filter) {
+	    return { type: SET_VISIBILITY_FILTER, filter };
+	}
+
+/***/ },
+/* 9 */
+/*!***********************************!*\
+  !*** ./server/config/config.json ***!
+  \***********************************/
+/***/ function(module, exports) {
+
+	module.exports = {
+		"application": {
+			"version": {
+				"css": "",
+				"js": ""
+			},
+			"debugName": "test"
+		},
+		"serverName": "isomophic-react-redux-starter"
+	};
+
+/***/ },
+/* 10 */
 /*!*************************!*\
   !*** external "events" ***!
   \*************************/
@@ -909,10 +550,46 @@ module.exports =
 	module.exports = require("events");
 
 /***/ },
-/* 23 */
-/*!*********************************************!*\
-  !*** ./common/components/index/AddTodo.jsx ***!
-  \*********************************************/
+/* 11 */
+/*!**************************!*\
+  !*** external "express" ***!
+  \**************************/
+/***/ function(module, exports) {
+
+	module.exports = require("express");
+
+/***/ },
+/* 12 */
+/*!***********************************!*\
+  !*** external "isomorphic-fetch" ***!
+  \***********************************/
+/***/ function(module, exports) {
+
+	module.exports = require("isomorphic-fetch");
+
+/***/ },
+/* 13 */
+/*!************************!*\
+  !*** external "redux" ***!
+  \************************/
+/***/ function(module, exports) {
+
+	module.exports = require("redux");
+
+/***/ },
+/* 14 */
+/*!************************************!*\
+  !*** external "redux-immutablejs" ***!
+  \************************************/
+/***/ function(module, exports) {
+
+	module.exports = require("redux-immutablejs");
+
+/***/ },
+/* 15 */
+/*!************************!*\
+  !*** ./common/App.jsx ***!
+  \************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -921,17 +598,263 @@ module.exports =
 	    value: true
 	});
 
-	var _react = __webpack_require__(/*! react */ 13);
+	var _react = __webpack_require__(/*! react */ 1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Base = __webpack_require__(/*! ../../pages/Base */ 20);
+	var _events = __webpack_require__(/*! events */ 10);
+
+	var _events2 = _interopRequireDefault(_events);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	let mediator = new _events2.default();
+
+	class App extends _react.Component {
+	    constructor(props, context) {
+	        super(props, context);
+	    }
+
+	    getChildContext() {
+	        return {
+	            $eventBus: mediator,
+	            $appConfig: this.props.appConfig
+	        };
+	    }
+
+	    componentDidMount() {}
+
+	    componentDidUpdate() {}
+
+	    componentWillUnmount() {}
+
+	    render() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            this.props.children
+	        );
+	    }
+	}
+	App.defaultProps = {
+	    appConfig: null
+	};
+	App.propTypes = {
+	    appConfig: _react.PropTypes.object
+	};
+	App.childContextTypes = {
+	    $eventBus: _react.PropTypes.instanceOf(_events2.default),
+	    $appConfig: _react.PropTypes.object
+	};
+
+	exports.default = App;
+
+/***/ },
+/* 16 */
+/*!********************************************!*\
+  !*** ./common/components/async/Picker.jsx ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(/*! react */ 1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _immutable = __webpack_require__(/*! immutable */ 3);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 4);
+
+	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
+
+	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
 
 	var _Base2 = _interopRequireDefault(_Base);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	class AddTodo extends _Base2.default {
+	class Picker extends _Base2.default {
+	  constructor(props, context) {
+	    super(props, context);
+	  }
+
+	  onChange(e) {
+	    this.props.onChange(e.target.value);
+	  }
+
+	  render() {
+	    const { value, onChange, options } = this.props;
+
+	    return _react2.default.createElement(
+	      'span',
+	      null,
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        value
+	      ),
+	      _react2.default.createElement(
+	        'select',
+	        { onChange: this.onChange,
+	          value: value },
+	        options.map(option => _react2.default.createElement(
+	          'option',
+	          { value: option, key: option },
+	          option
+	        ))
+	      )
+	    );
+	  }
+	}
+
+	exports.default = Picker;
+	Picker.propTypes = {
+	  options: _react.PropTypes.arrayOf(_react.PropTypes.string.isRequired).isRequired,
+	  value: _react.PropTypes.string.isRequired,
+	  onChange: _react.PropTypes.func.isRequired
+	};
+
+/***/ },
+/* 17 */
+/*!*******************************************!*\
+  !*** ./common/components/async/Posts.jsx ***!
+  \*******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(/*! react */ 1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 4);
+
+	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
+
+	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
+
+	var _Base2 = _interopRequireDefault(_Base);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	class Posts extends _Base2.default {
+	  render() {
+	    return _react2.default.createElement(
+	      'ul',
+	      null,
+	      this.props.posts.map((post, i) => _react2.default.createElement(
+	        'li',
+	        { key: i },
+	        post.get('title')
+	      ))
+	    );
+	  }
+	}
+
+	exports.default = Posts;
+	Posts.propTypes = {
+	  posts: _reactImmutableProptypes2.default.list.isRequired
+	};
+
+/***/ },
+/* 18 */
+/*!***************************************************!*\
+  !*** ./common/components/chat/ChangeNameForm.jsx ***!
+  \***************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(/*! react */ 1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
+
+	var _Base2 = _interopRequireDefault(_Base);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	class ChangeNameForm extends _Base2.default {
+	    constructor(props, context) {
+	        super(props, context);
+
+	        this.state = { newName: '' };
+	    }
+
+	    onKey(e) {
+	        this.setState({ newName: e.target.value });
+	    }
+
+	    onSubmit(e) {
+	        e.preventDefault();
+	        var newName = this.state.newName;
+	        this.props.onChangeName(newName);
+	        this.setState({ newName: '' });
+	    }
+
+	    render() {
+	        return _react2.default.createElement(
+	            'div',
+	            { className: 'change_name_form' },
+	            _react2.default.createElement(
+	                'h3',
+	                null,
+	                ' Change Name '
+	            ),
+	            _react2.default.createElement(
+	                'form',
+	                { onSubmit: this.onSubmit },
+	                _react2.default.createElement('input', {
+	                    onChange: this.onKey,
+	                    value: this.state.newName
+	                })
+	            )
+	        );
+	    }
+	}
+	exports.default = ChangeNameForm;
+
+/***/ },
+/* 19 */
+/*!*********************************************!*\
+  !*** ./common/components/chat/Messages.jsx ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.MessageForm = exports.MessageList = exports.Message = undefined;
+
+	var _react = __webpack_require__(/*! react */ 1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
+
+	var _Base2 = _interopRequireDefault(_Base);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	class Message extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
 	    }
@@ -939,33 +862,96 @@ module.exports =
 	    render() {
 	        return _react2.default.createElement(
 	            'div',
-	            null,
-	            _react2.default.createElement('input', { type: 'text', ref: 'input' }),
+	            { className: 'message' },
 	            _react2.default.createElement(
-	                'button',
-	                { onClick: this.handleClick },
-	                'Add'
+	                'strong',
+	                null,
+	                this.props.user,
+	                ' :'
+	            ),
+	            _react2.default.createElement(
+	                'span',
+	                null,
+	                this.props.text
 	            )
 	        );
 	    }
+	}
 
-	    handleClick(e) {
-	        const node = this.refs.input;
-	        const text = node.value.trim();
-	        this.props.onAddClick(text);
-	        node.value = '';
+	exports.Message = Message;
+	class MessageList extends _Base2.default {
+	    constructor(props, context) {
+	        super(props, context);
+	    }
+
+	    render() {
+	        return _react2.default.createElement(
+	            'div',
+	            { className: 'messages' },
+	            _react2.default.createElement(
+	                'h2',
+	                null,
+	                ' Conversation: '
+	            ),
+	            this.props.messages.map((message, i) => {
+	                return _react2.default.createElement(Message, {
+	                    key: i,
+	                    user: message.user,
+	                    text: message.text
+	                });
+	            })
+	        );
 	    }
 	}
 
-	exports.default = AddTodo;
-	AddTodo.propTypes = {
-	    onAddClick: _react.PropTypes.func.isRequired
-	};
+	exports.MessageList = MessageList;
+	class MessageForm extends _Base2.default {
+	    constructor(props, context) {
+	        super(props, context);
+
+	        this.state = { text: '' };
+	    }
+
+	    onSubmit(e) {
+	        e.preventDefault();
+	        var message = {
+	            user: this.props.user,
+	            text: this.state.text
+	        };
+	        this.props.onMessageSubmit(message);
+	        this.setState({ text: '' });
+	    }
+
+	    onChange(e) {
+	        this.setState({ text: e.target.value });
+	    }
+
+	    render() {
+	        return _react2.default.createElement(
+	            'div',
+	            { className: 'message_form' },
+	            _react2.default.createElement(
+	                'h3',
+	                null,
+	                'Write New Message'
+	            ),
+	            _react2.default.createElement(
+	                'form',
+	                { onSubmit: this.onSubmit },
+	                _react2.default.createElement('input', {
+	                    onChange: this.onChange,
+	                    value: this.state.text
+	                })
+	            )
+	        );
+	    }
+	}
+	exports.MessageForm = MessageForm;
 
 /***/ },
-/* 24 */
+/* 20 */
 /*!**********************************************!*\
-  !*** ./common/components/index/TodoList.jsx ***!
+  !*** ./common/components/chat/UsersList.jsx ***!
   \**********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
@@ -975,194 +961,48 @@ module.exports =
 	    value: true
 	});
 
-	var _react = __webpack_require__(/*! react */ 13);
+	var _react = __webpack_require__(/*! react */ 1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _immutable = __webpack_require__(/*! immutable */ 15);
-
-	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 25);
-
-	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
-
-	var _Todo = __webpack_require__(/*! ./Todo */ 26);
-
-	var _Todo2 = _interopRequireDefault(_Todo);
-
-	var _Base = __webpack_require__(/*! ../../pages/Base */ 20);
+	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
 
 	var _Base2 = _interopRequireDefault(_Base);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	class TodoList extends _Base2.default {
+	class UsersList extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
 	    }
 
 	    render() {
 	        return _react2.default.createElement(
-	            'ul',
-	            null,
-	            this.props.todos.map((todo, index) => _react2.default.createElement(_Todo2.default, { text: todo.get('text'),
-	                completed: todo.get('completed'),
-	                key: index,
-	                onClick: () => this.props.onTodoClick(index) }))
+	            'div',
+	            { className: 'users' },
+	            _react2.default.createElement(
+	                'h3',
+	                null,
+	                ' Online Users '
+	            ),
+	            _react2.default.createElement(
+	                'ul',
+	                null,
+	                this.props.users.map((user, i) => {
+	                    return _react2.default.createElement(
+	                        'li',
+	                        { key: i },
+	                        user
+	                    );
+	                })
+	            )
 	        );
 	    }
 	}
-
-	exports.default = TodoList;
-	TodoList.propTypes = {
-	    onTodoClick: _react.PropTypes.func.isRequired,
-	    todos: _reactImmutableProptypes2.default.listOf(_reactImmutableProptypes2.default.contains({
-	        text: _react.PropTypes.string.isRequired,
-	        completed: _react.PropTypes.bool.isRequired
-	    }))
-	};
+	exports.default = UsersList;
 
 /***/ },
-/* 25 */
-/*!********************************************!*\
-  !*** external "react-immutable-proptypes" ***!
-  \********************************************/
-/***/ function(module, exports) {
-
-	module.exports = require("react-immutable-proptypes");
-
-/***/ },
-/* 26 */
-/*!******************************************!*\
-  !*** ./common/components/index/Todo.jsx ***!
-  \******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(/*! react */ 13);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Base = __webpack_require__(/*! ../../pages/Base */ 20);
-
-	var _Base2 = _interopRequireDefault(_Base);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	let styles = {
-	    completed: {
-	        textDecoration: 'line-through',
-	        cursor: 'default'
-	    },
-	    uncompleted: {
-	        textDecoration: 'none',
-	        cursor: 'pointer'
-	    }
-	};
-
-	class Todo extends _Base2.default {
-	    constructor(props, context) {
-	        super(props, context);
-	    }
-
-	    componentDidMount() {
-	        this.on('test', function () {
-	            console.log('test event bus');
-	        });
-	    }
-
-	    render() {
-	        return _react2.default.createElement(
-	            'li',
-	            { onClick: this.props.onClick,
-	                style: this.props.completed ? styles.completed : styles.uncompleted },
-	            this.props.text
-	        );
-	    }
-	}
-	exports.default = Todo;
-	Todo.defaultProps = {
-	    onClick: function () {},
-	    text: '',
-	    completed: false
-	};
-	Todo.propTypes = {
-	    onClick: _react.PropTypes.func.isRequired,
-	    text: _react.PropTypes.string.isRequired,
-	    completed: _react.PropTypes.bool.isRequired
-	};
-
-/***/ },
-/* 27 */
-/*!********************************************!*\
-  !*** ./common/components/index/Footer.jsx ***!
-  \********************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(/*! react */ 13);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Base = __webpack_require__(/*! ../../pages/Base */ 20);
-
-	var _Base2 = _interopRequireDefault(_Base);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	class Footer extends _Base2.default {
-	    constructor(props, context) {
-	        super(props, context);
-	    }
-
-	    renderFilter(filter, name) {
-	        if (filter === this.props.filter) {
-	            return name;
-	        }
-
-	        return _react2.default.createElement(
-	            'a',
-	            { href: '#', onClick: e => {
-	                    e.preventDefault();
-	                    this.props.onFilterChange(filter);
-	                } },
-	            name
-	        );
-	    }
-
-	    render() {
-	        return _react2.default.createElement(
-	            'p',
-	            null,
-	            'Show:',
-	            ' ',
-	            this.renderFilter('SHOW_ALL', 'All'),
-	            ', ',
-	            this.renderFilter('SHOW_COMPLETED', 'Completed'),
-	            ', ',
-	            this.renderFilter('SHOW_ACTIVE', 'Active'),
-	            '.'
-	        );
-	    }
-	}
-
-	exports.default = Footer;
-	Footer.propTypes = {
-	    onFilterChange: _react.PropTypes.func.isRequired,
-	    filter: _react.PropTypes.oneOf(['SHOW_ALL', 'SHOW_COMPLETED', 'SHOW_ACTIVE']).isRequired
-	};
-
-/***/ },
-/* 28 */
+/* 21 */
 /*!******************************************!*\
   !*** ./common/components/common/Tab.jsx ***!
   \******************************************/
@@ -1175,15 +1015,15 @@ module.exports =
 	});
 	exports.TabPanel = exports.TabTitle = undefined;
 
-	var _react = __webpack_require__(/*! react */ 13);
+	var _react = __webpack_require__(/*! react */ 1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(/*! classnames */ 29);
+	var _classnames = __webpack_require__(/*! classnames */ 43);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _Base = __webpack_require__(/*! ../../pages/Base */ 20);
+	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
 
 	var _Base2 = _interopRequireDefault(_Base);
 
@@ -1374,173 +1214,10 @@ module.exports =
 	};
 
 /***/ },
-/* 29 */
-/*!*****************************!*\
-  !*** external "classnames" ***!
-  \*****************************/
-/***/ function(module, exports) {
-
-	module.exports = require("classnames");
-
-/***/ },
-/* 30 */
-/*!**************************************!*\
-  !*** ./server/routes/pages/async.js ***!
-  \**************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _react = __webpack_require__(/*! react */ 13);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _isomorphicFetch = __webpack_require__(/*! isomorphic-fetch */ 31);
-
-	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
-
-	var _reducers = __webpack_require__(/*! ../../../common/pages/async/reducers */ 32);
-
-	var _reducers2 = _interopRequireDefault(_reducers);
-
-	var _Page = __webpack_require__(/*! ../../../common/pages/async/Page.jsx */ 34);
-
-	var _Page2 = _interopRequireDefault(_Page);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	module.exports = function (req, res, next) {
-	    let state = {
-	        postsByReddit: {},
-	        selectedReddit: 'reactjs'
-	    };
-
-	    (0, _isomorphicFetch2.default)(`https://www.reddit.com/r/${ state.selectedReddit }.json`, {
-	        method: 'GET',
-	        timeout: 5000
-	    }).then(response => response.json()).then(json => {
-	        state.postsByReddit[state.selectedReddit] = {
-	            didInvalidate: false,
-	            isFetching: false,
-	            lastUpdated: Date.now(),
-	            items: json.data.children.map(child => child.data)
-	        };
-
-	        res.renderReactHTML({
-	            component: _react2.default.createElement(_Page2.default, null),
-	            locals: {
-	                appName: 'async',
-	                title: 'async page'
-	            },
-	            data: state,
-	            rootReducer: _reducers2.default
-	        });
-	    }).catch(msg => {
-
-	        console.log(msg);
-
-	        res.renderReactHTML({
-	            component: _react2.default.createElement(_Page2.default, null),
-	            locals: {
-	                appName: 'async',
-	                title: 'async page'
-	            },
-	            data: state,
-	            rootReducer: _reducers2.default
-	        });
-	    });
-	};
-
-/***/ },
-/* 31 */
-/*!***********************************!*\
-  !*** external "isomorphic-fetch" ***!
-  \***********************************/
-/***/ function(module, exports) {
-
-	module.exports = require("isomorphic-fetch");
-
-/***/ },
-/* 32 */
-/*!****************************************!*\
-  !*** ./common/pages/async/reducers.js ***!
-  \****************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _immutable = __webpack_require__(/*! immutable */ 15);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 16);
-
-	var _actions = __webpack_require__(/*! ./actions */ 33);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function selectedReddit(state = 'reactjs', action) {
-	  switch (action.type) {
-	    case _actions.SELECT_REDDIT:
-	      return action.reddit;
-	    default:
-	      return state;
-	  }
-	} // import { combineReducers } from 'redux'
-
-
-	function posts(state = new _immutable2.default.Map({
-	  isFetching: false,
-	  didInvalidate: false,
-	  items: new _immutable2.default.List()
-	}), action) {
-	  switch (action.type) {
-	    case _actions.INVALIDATE_REDDIT:
-	      return state.set('didInvalidate', true);
-	    case _actions.REQUEST_POSTS:
-	      return state.merge({
-	        isFetching: true,
-	        didInvalidate: false
-	      });
-	    case _actions.RECEIVE_POSTS:
-	      return state.merge({
-	        isFetching: false,
-	        didInvalidate: false,
-	        items: action.posts,
-	        lastUpdated: action.receivedAt
-	      });
-	    default:
-	      return state;
-	  }
-	}
-
-	function postsByReddit(state = new _immutable2.default.Map(), action) {
-	  switch (action.type) {
-	    case _actions.INVALIDATE_REDDIT:
-	    case _actions.RECEIVE_POSTS:
-	    case _actions.REQUEST_POSTS:
-	      return state.set(action.reddit, posts(state[action.reddit], action));
-	    default:
-	      return state;
-	  }
-	}
-
-	const rootReducer = (0, _reduxImmutablejs.combineReducers)({
-	  postsByReddit,
-	  selectedReddit
-	});
-
-	exports.default = rootReducer;
-
-/***/ },
-/* 33 */
-/*!***************************************!*\
-  !*** ./common/pages/async/actions.js ***!
-  \***************************************/
+/* 22 */
+/*!*********************************************!*\
+  !*** ./common/components/index/AddTodo.jsx ***!
+  \*********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1548,87 +1225,240 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.INVALIDATE_REDDIT = exports.SELECT_REDDIT = exports.RECEIVE_POSTS = exports.REQUEST_POSTS = undefined;
-	exports.selectReddit = selectReddit;
-	exports.invalidateReddit = invalidateReddit;
-	exports.fetchPostsIfNeeded = fetchPostsIfNeeded;
 
-	var _isomorphicFetch = __webpack_require__(/*! isomorphic-fetch */ 31);
+	var _react = __webpack_require__(/*! react */ 1);
 
-	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
+	var _react2 = _interopRequireDefault(_react);
 
-	var _immutable = __webpack_require__(/*! immutable */ 15);
+	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
 
-	var _immutable2 = _interopRequireDefault(_immutable);
+	var _Base2 = _interopRequireDefault(_Base);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	const REQUEST_POSTS = exports.REQUEST_POSTS = 'REQUEST_POSTS';
-	const RECEIVE_POSTS = exports.RECEIVE_POSTS = 'RECEIVE_POSTS';
-	const SELECT_REDDIT = exports.SELECT_REDDIT = 'SELECT_REDDIT';
-	const INVALIDATE_REDDIT = exports.INVALIDATE_REDDIT = 'INVALIDATE_REDDIT';
-
-	function selectReddit(reddit) {
-	    return {
-	        type: SELECT_REDDIT,
-	        reddit
-	    };
-	}
-
-	function invalidateReddit(reddit) {
-	    return {
-	        type: INVALIDATE_REDDIT,
-	        reddit
-	    };
-	}
-
-	function requestPosts(reddit) {
-	    return {
-	        type: REQUEST_POSTS,
-	        reddit
-	    };
-	}
-
-	function receivePosts(reddit, json) {
-	    return {
-	        type: RECEIVE_POSTS,
-	        reddit,
-	        posts: _immutable2.default.fromJS(json.data.children.map(child => child.data)),
-	        receivedAt: Date.now()
-	    };
-	}
-
-	function fetchPosts(reddit) {
-	    return dispatch => {
-	        dispatch(requestPosts(reddit));
-	        return (0, _isomorphicFetch2.default)(`https://www.reddit.com/r/${ reddit }.json`, {
-	            method: 'GET',
-	            timeout: 5000
-	        }).then(response => response.json()).then(json => dispatch(receivePosts(reddit, json)));
-	    };
-	}
-
-	function shouldFetchPosts(state, reddit) {
-	    const posts = state.get('postsByReddit').get(reddit);
-	    if (!posts) {
-	        return true;
+	class AddTodo extends _Base2.default {
+	    constructor(props, context) {
+	        super(props, context);
 	    }
-	    if (posts.get('isFetching')) {
-	        return false;
+
+	    render() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement('input', { type: 'text', ref: 'input' }),
+	            _react2.default.createElement(
+	                'button',
+	                { onClick: this.handleClick },
+	                'Add'
+	            )
+	        );
 	    }
-	    return posts.get('didInvalidate');
+
+	    handleClick(e) {
+	        const node = this.refs.input;
+	        const text = node.value.trim();
+	        this.props.onAddClick(text);
+	        node.value = '';
+	    }
 	}
 
-	function fetchPostsIfNeeded(reddit) {
-	    return (dispatch, getState) => {
-	        if (shouldFetchPosts(getState(), reddit)) {
-	            return dispatch(fetchPosts(reddit));
-	        }
-	    };
-	}
+	exports.default = AddTodo;
+	AddTodo.propTypes = {
+	    onAddClick: _react.PropTypes.func.isRequired
+	};
 
 /***/ },
-/* 34 */
+/* 23 */
+/*!********************************************!*\
+  !*** ./common/components/index/Footer.jsx ***!
+  \********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(/*! react */ 1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
+
+	var _Base2 = _interopRequireDefault(_Base);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	class Footer extends _Base2.default {
+	    constructor(props, context) {
+	        super(props, context);
+	    }
+
+	    renderFilter(filter, name) {
+	        if (filter === this.props.filter) {
+	            return name;
+	        }
+
+	        return _react2.default.createElement(
+	            'a',
+	            { href: '#', onClick: e => {
+	                    e.preventDefault();
+	                    this.props.onFilterChange(filter);
+	                } },
+	            name
+	        );
+	    }
+
+	    render() {
+	        return _react2.default.createElement(
+	            'p',
+	            null,
+	            'Show:',
+	            ' ',
+	            this.renderFilter('SHOW_ALL', 'All'),
+	            ', ',
+	            this.renderFilter('SHOW_COMPLETED', 'Completed'),
+	            ', ',
+	            this.renderFilter('SHOW_ACTIVE', 'Active'),
+	            '.'
+	        );
+	    }
+	}
+
+	exports.default = Footer;
+	Footer.propTypes = {
+	    onFilterChange: _react.PropTypes.func.isRequired,
+	    filter: _react.PropTypes.oneOf(['SHOW_ALL', 'SHOW_COMPLETED', 'SHOW_ACTIVE']).isRequired
+	};
+
+/***/ },
+/* 24 */
+/*!******************************************!*\
+  !*** ./common/components/index/Todo.jsx ***!
+  \******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(/*! react */ 1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
+
+	var _Base2 = _interopRequireDefault(_Base);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	let styles = {
+	    completed: {
+	        textDecoration: 'line-through',
+	        cursor: 'default'
+	    },
+	    uncompleted: {
+	        textDecoration: 'none',
+	        cursor: 'pointer'
+	    }
+	};
+
+	class Todo extends _Base2.default {
+	    constructor(props, context) {
+	        super(props, context);
+	    }
+
+	    componentDidMount() {
+	        this.on('test', function () {
+	            console.log('test event bus');
+	        });
+	    }
+
+	    render() {
+	        return _react2.default.createElement(
+	            'li',
+	            { onClick: this.props.onClick,
+	                style: this.props.completed ? styles.completed : styles.uncompleted },
+	            this.props.text
+	        );
+	    }
+	}
+	exports.default = Todo;
+	Todo.defaultProps = {
+	    onClick: function () {},
+	    text: '',
+	    completed: false
+	};
+	Todo.propTypes = {
+	    onClick: _react.PropTypes.func.isRequired,
+	    text: _react.PropTypes.string.isRequired,
+	    completed: _react.PropTypes.bool.isRequired
+	};
+
+/***/ },
+/* 25 */
+/*!**********************************************!*\
+  !*** ./common/components/index/TodoList.jsx ***!
+  \**********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(/*! react */ 1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _immutable = __webpack_require__(/*! immutable */ 3);
+
+	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 4);
+
+	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
+
+	var _Todo = __webpack_require__(/*! ./Todo */ 24);
+
+	var _Todo2 = _interopRequireDefault(_Todo);
+
+	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
+
+	var _Base2 = _interopRequireDefault(_Base);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	class TodoList extends _Base2.default {
+	    constructor(props, context) {
+	        super(props, context);
+	    }
+
+	    render() {
+	        return _react2.default.createElement(
+	            'ul',
+	            null,
+	            this.props.todos.map((todo, index) => _react2.default.createElement(_Todo2.default, { text: todo.get('text'),
+	                completed: todo.get('completed'),
+	                key: index,
+	                onClick: () => this.props.onTodoClick(index) }))
+	        );
+	    }
+	}
+
+	exports.default = TodoList;
+	TodoList.propTypes = {
+	    onTodoClick: _react.PropTypes.func.isRequired,
+	    todos: _reactImmutableProptypes2.default.listOf(_reactImmutableProptypes2.default.contains({
+	        text: _react.PropTypes.string.isRequired,
+	        completed: _react.PropTypes.bool.isRequired
+	    }))
+	};
+
+/***/ },
+/* 26 */
 /*!*************************************!*\
   !*** ./common/pages/async/Page.jsx ***!
   \*************************************/
@@ -1640,31 +1470,31 @@ module.exports =
 	    value: true
 	});
 
-	var _react = __webpack_require__(/*! react */ 13);
+	var _react = __webpack_require__(/*! react */ 1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(/*! react-redux */ 19);
+	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
 
-	var _immutable = __webpack_require__(/*! immutable */ 15);
+	var _immutable = __webpack_require__(/*! immutable */ 3);
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 25);
+	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 4);
 
 	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
 
-	var _actions = __webpack_require__(/*! ./actions */ 33);
+	var _actions = __webpack_require__(/*! ./actions */ 7);
 
-	var _Picker = __webpack_require__(/*! ../../components/async/Picker.jsx */ 35);
+	var _Picker = __webpack_require__(/*! ../../components/async/Picker.jsx */ 16);
 
 	var _Picker2 = _interopRequireDefault(_Picker);
 
-	var _Posts = __webpack_require__(/*! ../../components/async/Posts.jsx */ 36);
+	var _Posts = __webpack_require__(/*! ../../components/async/Posts.jsx */ 17);
 
 	var _Posts2 = _interopRequireDefault(_Posts);
 
-	var _Base = __webpack_require__(/*! ../Base.jsx */ 20);
+	var _Base = __webpack_require__(/*! ../Base.jsx */ 2);
 
 	var _Base2 = _interopRequireDefault(_Base);
 
@@ -1782,10 +1612,10 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AsyncPage);
 
 /***/ },
-/* 35 */
-/*!********************************************!*\
-  !*** ./common/components/async/Picker.jsx ***!
-  \********************************************/
+/* 27 */
+/*!****************************************!*\
+  !*** ./common/pages/async/reducers.js ***!
+  \****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1794,186 +1624,71 @@ module.exports =
 	  value: true
 	});
 
-	var _react = __webpack_require__(/*! react */ 13);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _immutable = __webpack_require__(/*! immutable */ 15);
+	var _immutable = __webpack_require__(/*! immutable */ 3);
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 25);
+	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 14);
 
-	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
-
-	var _Base = __webpack_require__(/*! ../../pages/Base */ 20);
-
-	var _Base2 = _interopRequireDefault(_Base);
+	var _actions = __webpack_require__(/*! ./actions */ 7);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	class Picker extends _Base2.default {
-	  constructor(props, context) {
-	    super(props, context);
+	function selectedReddit(state = 'reactjs', action) {
+	  switch (action.type) {
+	    case _actions.SELECT_REDDIT:
+	      return action.reddit;
+	    default:
+	      return state;
 	  }
+	} // import { combineReducers } from 'redux'
 
-	  onChange(e) {
-	    this.props.onChange(e.target.value);
-	  }
 
-	  render() {
-	    const { value, onChange, options } = this.props;
-
-	    return _react2.default.createElement(
-	      'span',
-	      null,
-	      _react2.default.createElement(
-	        'h1',
-	        null,
-	        value
-	      ),
-	      _react2.default.createElement(
-	        'select',
-	        { onChange: this.onChange,
-	          value: value },
-	        options.map(option => _react2.default.createElement(
-	          'option',
-	          { value: option, key: option },
-	          option
-	        ))
-	      )
-	    );
+	function posts(state = new _immutable2.default.Map({
+	  isFetching: false,
+	  didInvalidate: false,
+	  items: new _immutable2.default.List()
+	}), action) {
+	  switch (action.type) {
+	    case _actions.INVALIDATE_REDDIT:
+	      return state.set('didInvalidate', true);
+	    case _actions.REQUEST_POSTS:
+	      return state.merge({
+	        isFetching: true,
+	        didInvalidate: false
+	      });
+	    case _actions.RECEIVE_POSTS:
+	      return state.merge({
+	        isFetching: false,
+	        didInvalidate: false,
+	        items: action.posts,
+	        lastUpdated: action.receivedAt
+	      });
+	    default:
+	      return state;
 	  }
 	}
 
-	exports.default = Picker;
-	Picker.propTypes = {
-	  options: _react.PropTypes.arrayOf(_react.PropTypes.string.isRequired).isRequired,
-	  value: _react.PropTypes.string.isRequired,
-	  onChange: _react.PropTypes.func.isRequired
-	};
-
-/***/ },
-/* 36 */
-/*!*******************************************!*\
-  !*** ./common/components/async/Posts.jsx ***!
-  \*******************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(/*! react */ 13);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 25);
-
-	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
-
-	var _Base = __webpack_require__(/*! ../../pages/Base */ 20);
-
-	var _Base2 = _interopRequireDefault(_Base);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	class Posts extends _Base2.default {
-	  render() {
-	    return _react2.default.createElement(
-	      'ul',
-	      null,
-	      this.props.posts.map((post, i) => _react2.default.createElement(
-	        'li',
-	        { key: i },
-	        post.get('title')
-	      ))
-	    );
+	function postsByReddit(state = new _immutable2.default.Map(), action) {
+	  switch (action.type) {
+	    case _actions.INVALIDATE_REDDIT:
+	    case _actions.RECEIVE_POSTS:
+	    case _actions.REQUEST_POSTS:
+	      return state.set(action.reddit, posts(state[action.reddit], action));
+	    default:
+	      return state;
 	  }
 	}
 
-	exports.default = Posts;
-	Posts.propTypes = {
-	  posts: _reactImmutableProptypes2.default.list.isRequired
-	};
-
-/***/ },
-/* 37 */
-/*!*************************************!*\
-  !*** ./server/routes/pages/chat.js ***!
-  \*************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
-
-	var _react = __webpack_require__(/*! react */ 13);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reducers = __webpack_require__(/*! ../../../common/pages/chat/reducers */ 38);
-
-	var _reducers2 = _interopRequireDefault(_reducers);
-
-	var _Page = __webpack_require__(/*! ../../../common/pages/chat/Page */ 40);
-
-	var _Page2 = _interopRequireDefault(_Page);
-
-	var _fs = __webpack_require__(/*! fs */ 11);
-
-	var _fs2 = _interopRequireDefault(_fs);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	let template = _fs2.default.readFileSync(__dirname + '/../../views/chat.html', 'utf8');
-	let fakeData = {};
-
-	module.exports = function (req, res, next) {
-	    res.renderReactHTML({
-	        template,
-	        component: _react2.default.createElement(_Page2.default, null),
-	        locals: {
-	            appName: 'chat',
-	            title: 'chat page'
-	        },
-	        data: fakeData,
-	        rootReducer: _reducers2.default,
-	        needTransform: false
-	    });
-	};
-	/* WEBPACK VAR INJECTION */}.call(exports, "server\\routes\\pages"))
-
-/***/ },
-/* 38 */
-/*!***************************************!*\
-  !*** ./common/pages/chat/reducers.js ***!
-  \***************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	const rootReducer = (0, _reduxImmutablejs.combineReducers)({
+	  postsByReddit,
+	  selectedReddit
 	});
-
-	var _redux = __webpack_require__(/*! redux */ 39);
-
-	const rootReducer = (0, _redux.combineReducers)({});
 
 	exports.default = rootReducer;
 
 /***/ },
-/* 39 */
-/*!************************!*\
-  !*** external "redux" ***!
-  \************************/
-/***/ function(module, exports) {
-
-	module.exports = require("redux");
-
-/***/ },
-/* 40 */
+/* 28 */
 /*!************************************!*\
   !*** ./common/pages/chat/Page.jsx ***!
   \************************************/
@@ -1985,23 +1700,23 @@ module.exports =
 	    value: true
 	});
 
-	var _react = __webpack_require__(/*! react */ 13);
+	var _react = __webpack_require__(/*! react */ 1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(/*! react-redux */ 19);
+	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
 
-	var _Base = __webpack_require__(/*! ../Base.jsx */ 20);
+	var _Base = __webpack_require__(/*! ../Base.jsx */ 2);
 
 	var _Base2 = _interopRequireDefault(_Base);
 
-	var _UsersList = __webpack_require__(/*! ../../components/chat/UsersList */ 41);
+	var _UsersList = __webpack_require__(/*! ../../components/chat/UsersList */ 20);
 
 	var _UsersList2 = _interopRequireDefault(_UsersList);
 
-	var _Messages = __webpack_require__(/*! ../../components/chat/Messages */ 42);
+	var _Messages = __webpack_require__(/*! ../../components/chat/Messages */ 19);
 
-	var _ChangeNameForm = __webpack_require__(/*! ../../components/chat/ChangeNameForm */ 43);
+	var _ChangeNameForm = __webpack_require__(/*! ../../components/chat/ChangeNameForm */ 18);
 
 	var _ChangeNameForm2 = _interopRequireDefault(_ChangeNameForm);
 
@@ -2134,10 +1849,29 @@ module.exports =
 	exports.default = Page;
 
 /***/ },
-/* 41 */
-/*!**********************************************!*\
-  !*** ./common/components/chat/UsersList.jsx ***!
-  \**********************************************/
+/* 29 */
+/*!***************************************!*\
+  !*** ./common/pages/chat/reducers.js ***!
+  \***************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _redux = __webpack_require__(/*! redux */ 13);
+
+	const rootReducer = (0, _redux.combineReducers)({});
+
+	exports.default = rootReducer;
+
+/***/ },
+/* 30 */
+/*!**************************************!*\
+  !*** ./common/pages/index/index.jsx ***!
+  \**************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2146,50 +1880,127 @@ module.exports =
 	    value: true
 	});
 
-	var _react = __webpack_require__(/*! react */ 13);
+	var _react = __webpack_require__(/*! react */ 1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Base = __webpack_require__(/*! ../../pages/Base */ 20);
+	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
+
+	var _immutable = __webpack_require__(/*! immutable */ 3);
+
+	var _Base = __webpack_require__(/*! ../Base.jsx */ 2);
 
 	var _Base2 = _interopRequireDefault(_Base);
 
+	var _indexActions = __webpack_require__(/*! ./indexActions */ 8);
+
+	var _AddTodo = __webpack_require__(/*! ../../components/index/AddTodo */ 22);
+
+	var _AddTodo2 = _interopRequireDefault(_AddTodo);
+
+	var _TodoList = __webpack_require__(/*! ../../components/index/TodoList */ 25);
+
+	var _TodoList2 = _interopRequireDefault(_TodoList);
+
+	var _Footer = __webpack_require__(/*! ../../components/index/Footer */ 23);
+
+	var _Footer2 = _interopRequireDefault(_Footer);
+
+	var _Tab = __webpack_require__(/*! ../../components/common/Tab */ 21);
+
+	var _Tab2 = _interopRequireDefault(_Tab);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	class UsersList extends _Base2.default {
+	class Page extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
 	    }
 
+	    componentDidMount() {
+	        console.log(this.context.$appConfig.user);
+
+	        this.emit('test');
+	    }
+
 	    render() {
+	        // Injected by connect() call:
+	        const { dispatch, visibleTodos, visibilityFilter } = this.props;
 	        return _react2.default.createElement(
 	            'div',
-	            { className: 'users' },
+	            null,
+	            _react2.default.createElement(_AddTodo2.default, {
+	                onAddClick: text => dispatch((0, _indexActions.addTodo)(text)) }),
+	            _react2.default.createElement(_TodoList2.default, {
+	                todos: visibleTodos,
+	                onTodoClick: index => dispatch((0, _indexActions.completeTodo)(index)) }),
+	            _react2.default.createElement(_Footer2.default, {
+	                filter: visibilityFilter,
+	                onFilterChange: nextFilter => dispatch((0, _indexActions.setVisibilityFilter)(nextFilter)) }),
 	            _react2.default.createElement(
-	                'h3',
-	                null,
-	                ' Online Users '
-	            ),
-	            _react2.default.createElement(
-	                'ul',
-	                null,
-	                this.props.users.map((user, i) => {
-	                    return _react2.default.createElement(
-	                        'li',
-	                        { key: i },
-	                        user
-	                    );
-	                })
+	                _Tab2.default,
+	                { defaultSelectedTab: '1' },
+	                _react2.default.createElement(
+	                    _Tab.TabTitle,
+	                    { label: '1' },
+	                    'tab1'
+	                ),
+	                _react2.default.createElement(
+	                    _Tab.TabTitle,
+	                    { label: '2' },
+	                    'tab2'
+	                ),
+	                _react2.default.createElement(
+	                    _Tab.TabPanel,
+	                    { 'for': '1' },
+	                    'TabContent1'
+	                ),
+	                _react2.default.createElement(
+	                    _Tab.TabPanel,
+	                    { 'for': '2' },
+	                    'TabContent2'
+	                )
 	            )
 	        );
 	    }
 	}
-	exports.default = UsersList;
+
+	Page.propTypes = {
+	    visibleTodos: _react.PropTypes.instanceOf(_immutable.List).isRequired,
+	    visibilityFilter: _react.PropTypes.oneOf(['SHOW_ALL', 'SHOW_COMPLETED', 'SHOW_ACTIVE']).isRequired
+	};
+	Page.contextTypes = {
+	    $appConfig: _react.PropTypes.object,
+	    $eventBus: _react.PropTypes.object
+	};
+
+	function selectTodos(todos, filter) {
+	    switch (filter) {
+	        case _indexActions.VisibilityFilters.SHOW_ALL:
+	            return todos;
+	        case _indexActions.VisibilityFilters.SHOW_COMPLETED:
+	            return todos.filter(todo => todo.get('completed'));
+	        case _indexActions.VisibilityFilters.SHOW_ACTIVE:
+	            return todos.filter(todo => !todo.get('completed'));
+	    }
+	}
+
+	// Which props do we want to inject, given the global state?
+	// Note: use https://github.com/faassen/reselect for better performance.
+	function select(state) {
+	    return {
+	        visibleTodos: selectTodos(state.get('todos'), state.get('visibilityFilter')),
+	        visibilityFilter: state.get('visibilityFilter')
+	    };
+	}
+
+	// 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
+	exports.default = (0, _reactRedux.connect)(select)(Page);
 
 /***/ },
-/* 42 */
+/* 31 */
 /*!*********************************************!*\
-  !*** ./common/components/chat/Messages.jsx ***!
+  !*** ./common/pages/index/indexReducers.js ***!
   \*********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
@@ -2198,117 +2009,53 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.MessageForm = exports.MessageList = exports.Message = undefined;
 
-	var _react = __webpack_require__(/*! react */ 13);
+	var _immutable = __webpack_require__(/*! immutable */ 3);
 
-	var _react2 = _interopRequireDefault(_react);
+	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 14);
 
-	var _Base = __webpack_require__(/*! ../../pages/Base */ 20);
+	var _indexActions = __webpack_require__(/*! ./indexActions */ 8);
 
-	var _Base2 = _interopRequireDefault(_Base);
+	const { SHOW_ALL } = _indexActions.VisibilityFilters; // import { combineReducers } from 'redux'
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	class Message extends _Base2.default {
-	    constructor(props, context) {
-	        super(props, context);
-	    }
-
-	    render() {
-	        return _react2.default.createElement(
-	            'div',
-	            { className: 'message' },
-	            _react2.default.createElement(
-	                'strong',
-	                null,
-	                this.props.user,
-	                ' :'
-	            ),
-	            _react2.default.createElement(
-	                'span',
-	                null,
-	                this.props.text
-	            )
-	        );
+	function visibilityFilter(state = SHOW_ALL, action) {
+	    switch (action.type) {
+	        case _indexActions.SET_VISIBILITY_FILTER:
+	            return action.filter;
+	        default:
+	            return state;
 	    }
 	}
 
-	exports.Message = Message;
-	class MessageList extends _Base2.default {
-	    constructor(props, context) {
-	        super(props, context);
-	    }
-
-	    render() {
-	        return _react2.default.createElement(
-	            'div',
-	            { className: 'messages' },
-	            _react2.default.createElement(
-	                'h2',
-	                null,
-	                ' Conversation: '
-	            ),
-	            this.props.messages.map((message, i) => {
-	                return _react2.default.createElement(Message, {
-	                    key: i,
-	                    user: message.user,
-	                    text: message.text
-	                });
-	            })
-	        );
+	function todos(state = new _immutable.List(), action) {
+	    switch (action.type) {
+	        case _indexActions.ADD_TODO:
+	            return state.push(new _immutable.Map({
+	                text: action.text,
+	                completed: false
+	            }));
+	        case _indexActions.COMPLETE_TODO:
+	            return state.update(action.index, function (item) {
+	                return item.update('completed', true);
+	            });
+	        default:
+	            return state;
 	    }
 	}
 
-	exports.MessageList = MessageList;
-	class MessageForm extends _Base2.default {
-	    constructor(props, context) {
-	        super(props, context);
+	const todoApp = (0, _reduxImmutablejs.combineReducers)({
+	    visibilityFilter,
+	    todos
+	});
 
-	        this.state = { text: '' };
-	    }
-
-	    onSubmit(e) {
-	        e.preventDefault();
-	        var message = {
-	            user: this.props.user,
-	            text: this.state.text
-	        };
-	        this.props.onMessageSubmit(message);
-	        this.setState({ text: '' });
-	    }
-
-	    onChange(e) {
-	        this.setState({ text: e.target.value });
-	    }
-
-	    render() {
-	        return _react2.default.createElement(
-	            'div',
-	            { className: 'message_form' },
-	            _react2.default.createElement(
-	                'h3',
-	                null,
-	                'Write New Message'
-	            ),
-	            _react2.default.createElement(
-	                'form',
-	                { onSubmit: this.onSubmit },
-	                _react2.default.createElement('input', {
-	                    onChange: this.onChange,
-	                    value: this.state.text
-	                })
-	            )
-	        );
-	    }
-	}
-	exports.MessageForm = MessageForm;
+	exports.default = todoApp;
 
 /***/ },
-/* 43 */
-/*!***************************************************!*\
-  !*** ./common/components/chat/ChangeNameForm.jsx ***!
-  \***************************************************/
+/* 32 */
+/*!*******************************!*\
+  !*** ./common/store/index.js ***!
+  \*******************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2316,59 +2063,476 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
+	exports.default = configureStore;
 
-	var _react = __webpack_require__(/*! react */ 13);
+	var _redux = __webpack_require__(/*! redux */ 13);
 
-	var _react2 = _interopRequireDefault(_react);
+	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 53);
 
-	var _Base = __webpack_require__(/*! ../../pages/Base */ 20);
-
-	var _Base2 = _interopRequireDefault(_Base);
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	class ChangeNameForm extends _Base2.default {
-	    constructor(props, context) {
-	        super(props, context);
-
-	        this.state = { newName: '' };
-	    }
-
-	    onKey(e) {
-	        this.setState({ newName: e.target.value });
-	    }
-
-	    onSubmit(e) {
-	        e.preventDefault();
-	        var newName = this.state.newName;
-	        this.props.onChangeName(newName);
-	        this.setState({ newName: '' });
-	    }
-
-	    render() {
-	        return _react2.default.createElement(
-	            'div',
-	            { className: 'change_name_form' },
-	            _react2.default.createElement(
-	                'h3',
-	                null,
-	                ' Change Name '
-	            ),
-	            _react2.default.createElement(
-	                'form',
-	                { onSubmit: this.onSubmit },
-	                _react2.default.createElement('input', {
-	                    onChange: this.onKey,
-	                    value: this.state.newName
-	                })
-	            )
-	        );
-	    }
+	if (process.env.NODE_ENV !== 'production' && process.browser) {
+	    var createLogger = __webpack_require__(/*! redux-logger */ 41);
 	}
-	exports.default = ChangeNameForm;
+
+	const middlewareBuilder = () => {
+	    let middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default);
+
+	    if (process.browser && process.env.NODE_ENV !== 'production') {
+	        if (!window.devToolsExtension) {
+	            middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default, createLogger());
+	        }
+	    }
+
+	    let allComposeElements = [middleware];
+
+	    if (process.browser && process.env.NODE_ENV !== 'production') {
+	        if (window.devToolsExtension) {
+	            allComposeElements.push(window.devToolsExtension());
+	        }
+	    }
+
+	    return allComposeElements;
+	};
+
+	const finalCreateStore = (0, _redux.compose)(...middlewareBuilder())(_redux.createStore);
+
+	function configureStore(initialState, rootReducer) {
+	    const store = finalCreateStore(rootReducer, initialState);
+
+	    return store;
+	}
 
 /***/ },
-/* 44 */
+/* 33 */
+/*!**************************************!*\
+  !*** ./common/utils/shallowEqual.js ***!
+  \**************************************/
+/***/ function(module, exports) {
+
+	// modified
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @typechecks
+	 *
+	 */
+
+	/*eslint-disable no-self-compare */
+
+	'use strict';
+
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+	/**
+	 * inlined Object.is polyfill to avoid requiring consumers ship their own
+	 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+	 */
+	function is(x, y) {
+	    // SameValue algorithm
+	    if (x === y) {
+	        // Steps 1-5, 7-10
+	        // Steps 6.b-6.e: +0 != -0
+	        return x !== 0 || 1 / x === 1 / y;
+	    } else {
+	        if (typeof x === 'function' && typeof y === 'function') {
+	            return x.toString() === y.toString();
+	        }
+	        // Step 6.a: NaN == NaN
+	        return x !== x && y !== y;
+	    }
+	}
+
+	/**
+	 * Performs equality by iterating through keys on an object and returning false
+	 * when any key has values which are not strictly equal between the arguments.
+	 * Returns true when the values of all keys are strictly equal.
+	 */
+	function shallowEqual(objA, objB) {
+	    if (is(objA, objB)) {
+	        return true;
+	    }
+
+	    if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+	        return false;
+	    }
+
+	    var keysA = Object.keys(objA);
+	    var keysB = Object.keys(objB);
+
+	    if (keysA.length !== keysB.length) {
+	        return false;
+	    }
+
+	    // Test for A's keys different from B.
+	    for (var i = 0; i < keysA.length; i++) {
+	        if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
+	            return false;
+	        }
+	    }
+
+	    return true;
+	}
+
+	module.exports = shallowEqual;
+
+/***/ },
+/* 34 */
+/*!********************************!*\
+  !*** ./server/routes/index.js ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _express = __webpack_require__(/*! express */ 11);
+
+	var _fs = __webpack_require__(/*! fs */ 6);
+
+	var _fs2 = _interopRequireDefault(_fs);
+
+	var _index = __webpack_require__(/*! ./pages/index */ 37);
+
+	var _index2 = _interopRequireDefault(_index);
+
+	var _async = __webpack_require__(/*! ./pages/async */ 35);
+
+	var _async2 = _interopRequireDefault(_async);
+
+	var _chat = __webpack_require__(/*! ./pages/chat */ 36);
+
+	var _chat2 = _interopRequireDefault(_chat);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { return step("next", value); }, function (err) { return step("throw", err); }); } } return step("next"); }); }; }
+
+	let router = new _express.Router();
+
+	/**
+	 * 首页请求
+	 */
+	router.get('/', _index2.default);
+	router.get('/async', _async2.default);
+	router.get('/chat', _chat2.default);
+
+	/**
+	 * AJAX请求
+	 */
+
+	/**
+	 * 静态资源
+	 */
+	let content = _fs2.default.readFileSync(__dirname + '/../../client/js/utils/sw.js', 'utf8');
+
+	router.get('/sw.js', (() => {
+	  var _ref = _asyncToGenerator(function* (req, res) {
+	    let content = _fs2.default.readFileSync(__dirname + '/../../client/js/utils/sw.js', 'utf8');
+
+	    res.set('Content-Type', 'application/javascript');
+	    res.send(content);
+	  });
+
+	  return function (_x, _x2) {
+	    return _ref.apply(this, arguments);
+	  };
+	})());
+
+	exports.default = router;
+	/* WEBPACK VAR INJECTION */}.call(exports, "server\\routes"))
+
+/***/ },
+/* 35 */
+/*!**************************************!*\
+  !*** ./server/routes/pages/async.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _react = __webpack_require__(/*! react */ 1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _isomorphicFetch = __webpack_require__(/*! isomorphic-fetch */ 12);
+
+	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
+
+	var _reducers = __webpack_require__(/*! ../../../common/pages/async/reducers */ 27);
+
+	var _reducers2 = _interopRequireDefault(_reducers);
+
+	var _Page = __webpack_require__(/*! ../../../common/pages/async/Page.jsx */ 26);
+
+	var _Page2 = _interopRequireDefault(_Page);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	module.exports = function (req, res, next) {
+	    let state = {
+	        postsByReddit: {},
+	        selectedReddit: 'reactjs'
+	    };
+
+	    (0, _isomorphicFetch2.default)(`https://www.reddit.com/r/${ state.selectedReddit }.json`, {
+	        method: 'GET',
+	        timeout: 5000
+	    }).then(response => response.json()).then(json => {
+	        state.postsByReddit[state.selectedReddit] = {
+	            didInvalidate: false,
+	            isFetching: false,
+	            lastUpdated: Date.now(),
+	            items: json.data.children.map(child => child.data)
+	        };
+
+	        res.renderReactHTML({
+	            component: _react2.default.createElement(_Page2.default, null),
+	            locals: {
+	                appName: 'async',
+	                title: 'async page'
+	            },
+	            data: state,
+	            rootReducer: _reducers2.default
+	        });
+	    }).catch(msg => {
+
+	        console.log(msg);
+
+	        res.renderReactHTML({
+	            component: _react2.default.createElement(_Page2.default, null),
+	            locals: {
+	                appName: 'async',
+	                title: 'async page'
+	            },
+	            data: state,
+	            rootReducer: _reducers2.default
+	        });
+	    });
+	};
+
+/***/ },
+/* 36 */
+/*!*************************************!*\
+  !*** ./server/routes/pages/chat.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
+
+	var _react = __webpack_require__(/*! react */ 1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reducers = __webpack_require__(/*! ../../../common/pages/chat/reducers */ 29);
+
+	var _reducers2 = _interopRequireDefault(_reducers);
+
+	var _Page = __webpack_require__(/*! ../../../common/pages/chat/Page */ 28);
+
+	var _Page2 = _interopRequireDefault(_Page);
+
+	var _fs = __webpack_require__(/*! fs */ 6);
+
+	var _fs2 = _interopRequireDefault(_fs);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	let template = _fs2.default.readFileSync(__dirname + '/../../views/chat.html', 'utf8');
+	let fakeData = {};
+
+	module.exports = function (req, res, next) {
+	    res.renderReactHTML({
+	        template,
+	        component: _react2.default.createElement(_Page2.default, null),
+	        locals: {
+	            appName: 'chat',
+	            title: 'chat page'
+	        },
+	        data: fakeData,
+	        rootReducer: _reducers2.default,
+	        needTransform: false
+	    });
+	};
+	/* WEBPACK VAR INJECTION */}.call(exports, "server\\routes\\pages"))
+
+/***/ },
+/* 37 */
+/*!**************************************!*\
+  !*** ./server/routes/pages/index.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _react = __webpack_require__(/*! react */ 1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _indexReducers = __webpack_require__(/*! ../../../common/pages/index/indexReducers */ 31);
+
+	var _indexReducers2 = _interopRequireDefault(_indexReducers);
+
+	var _index = __webpack_require__(/*! ../../../common/pages/index */ 30);
+
+	var _index2 = _interopRequireDefault(_index);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	let fakeData = {
+	    visibilityFilter: 'SHOW_ALL',
+	    todos: [{
+	        text: 'one',
+	        completed: false
+	    }, {
+	        text: 'two',
+	        completed: true
+	    }]
+	};
+
+	module.exports = function (req, res, next) {
+	    res.renderReactHTML({
+	        component: _react2.default.createElement(_index2.default, null),
+	        locals: {
+	            appName: 'index',
+	            title: 'index page'
+	        },
+	        data: fakeData,
+	        rootReducer: _indexReducers2.default,
+	        pageConfig: {
+	            user: 'test'
+	        }
+	    });
+	};
+
+/***/ },
+/* 38 */
+/*!*********************************!*\
+  !*** ./server/routes/socket.js ***!
+  \*********************************/
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	exports.default = function (socket) {
+	    let name = userNames.getGuestName();
+
+	    // send the new user their name and a list of users
+	    socket.emit('init', {
+	        name: name,
+	        users: userNames.get()
+	    });
+
+	    // notify other clients that a new user has joined
+	    socket.broadcast.emit('user:join', {
+	        name: name
+	    });
+
+	    // broadcast a user's message to other users
+	    socket.on('send:message', function (data) {
+	        socket.broadcast.emit('send:message', {
+	            user: name,
+	            text: data.text
+	        });
+	    });
+
+	    // validate a user's name change, and broadcast it on success
+	    socket.on('change:name', function (data, fn) {
+	        if (userNames.claim(data.name)) {
+	            let oldName = name;
+	            userNames.free(oldName);
+
+	            name = data.name;
+
+	            socket.broadcast.emit('change:name', {
+	                oldName: oldName,
+	                newName: name
+	            });
+
+	            fn(true);
+	        } else {
+	            fn(false);
+	        }
+	    });
+
+	    // clean up when a user leaves, and broadcast it to other users
+	    socket.on('disconnect', function () {
+	        socket.broadcast.emit('user:left', {
+	            name: name
+	        });
+	        userNames.free(name);
+	    });
+	};
+
+	// Keep track of which names are used so that there are no duplicates
+	let userNames = function () {
+	    let names = {};
+
+	    let claim = function (name) {
+	        if (!name || names[name]) {
+	            return false;
+	        } else {
+	            names[name] = true;
+	            return true;
+	        }
+	    };
+
+	    // find the lowest unused "guest" name and claim it
+	    let getGuestName = function () {
+	        let name,
+	            nextUserId = 1;
+
+	        do {
+	            name = 'Guest ' + nextUserId;
+	            nextUserId += 1;
+	        } while (!claim(name));
+
+	        return name;
+	    };
+
+	    // serialize claimed names as an array
+	    let get = function () {
+	        let res = [];
+	        for (let user in names) {
+	            res.push(user);
+	        }
+
+	        return res;
+	    };
+
+	    let free = function (name) {
+	        if (names[name]) {
+	            delete names[name];
+	        }
+	    };
+
+	    return {
+	        claim: claim,
+	        free: free,
+	        get: get,
+	        getGuestName: getGuestName
+	    };
+	}();
+
+	// export function for listening to the socket
+	;
+
+/***/ },
+/* 39 */
 /*!******************************************!*\
   !*** ./server/utils/allowCrossDomain.js ***!
   \******************************************/
@@ -2390,7 +2554,7 @@ module.exports =
 	}
 
 /***/ },
-/* 45 */
+/* 40 */
 /*!************************************************!*\
   !*** ./server/utils/renderReactMiddleware.jsx ***!
   \************************************************/
@@ -2403,31 +2567,31 @@ module.exports =
 	});
 	exports.default = reactRender;
 
-	var _ejs = __webpack_require__(/*! ejs */ 46);
+	var _ejs = __webpack_require__(/*! ejs */ 47);
 
 	var _ejs2 = _interopRequireDefault(_ejs);
 
-	var _react = __webpack_require__(/*! react */ 13);
+	var _react = __webpack_require__(/*! react */ 1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _server = __webpack_require__(/*! react-dom/server */ 47);
+	var _server = __webpack_require__(/*! react-dom/server */ 52);
 
-	var _reactRedux = __webpack_require__(/*! react-redux */ 19);
+	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
 
-	var _fs = __webpack_require__(/*! fs */ 11);
+	var _fs = __webpack_require__(/*! fs */ 6);
 
 	var _fs2 = _interopRequireDefault(_fs);
 
-	var _secureFilters = __webpack_require__(/*! secure-filters */ 48);
+	var _secureFilters = __webpack_require__(/*! secure-filters */ 54);
 
 	var _secureFilters2 = _interopRequireDefault(_secureFilters);
 
-	var _index = __webpack_require__(/*! ../../common/store/index */ 49);
+	var _index = __webpack_require__(/*! ../../common/store/index */ 32);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _App = __webpack_require__(/*! ../../common/App.jsx */ 52);
+	var _App = __webpack_require__(/*! ../../common/App.jsx */ 15);
 
 	var _App2 = _interopRequireDefault(_App);
 
@@ -2521,97 +2685,7 @@ module.exports =
 	/* WEBPACK VAR INJECTION */}.call(exports, "server\\utils"))
 
 /***/ },
-/* 46 */
-/*!**********************!*\
-  !*** external "ejs" ***!
-  \**********************/
-/***/ function(module, exports) {
-
-	module.exports = require("ejs");
-
-/***/ },
-/* 47 */
-/*!***********************************!*\
-  !*** external "react-dom/server" ***!
-  \***********************************/
-/***/ function(module, exports) {
-
-	module.exports = require("react-dom/server");
-
-/***/ },
-/* 48 */
-/*!*********************************!*\
-  !*** external "secure-filters" ***!
-  \*********************************/
-/***/ function(module, exports) {
-
-	module.exports = require("secure-filters");
-
-/***/ },
-/* 49 */
-/*!*******************************!*\
-  !*** ./common/store/index.js ***!
-  \*******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.default = configureStore;
-
-	var _redux = __webpack_require__(/*! redux */ 39);
-
-	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 50);
-
-	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	if (process.env.NODE_ENV !== 'production' && process.browser) {
-	    var createLogger = __webpack_require__(/*! redux-logger */ 51);
-	}
-
-	const middlewareBuilder = () => {
-	    let middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default);
-
-	    if (process.browser && process.env.NODE_ENV !== 'production') {
-	        if (!window.devToolsExtension) {
-	            middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default, createLogger());
-	        }
-	    }
-
-	    let allComposeElements = [middleware];
-
-	    if (process.browser && process.env.NODE_ENV !== 'production') {
-	        if (window.devToolsExtension) {
-	            allComposeElements.push(window.devToolsExtension());
-	        }
-	    }
-
-	    return allComposeElements;
-	};
-
-	const finalCreateStore = (0, _redux.compose)(...middlewareBuilder())(_redux.createStore);
-
-	function configureStore(initialState, rootReducer) {
-	    const store = finalCreateStore(rootReducer, initialState);
-
-	    return store;
-	}
-
-/***/ },
-/* 50 */
-/*!******************************!*\
-  !*** external "redux-thunk" ***!
-  \******************************/
-/***/ function(module, exports) {
-
-	module.exports = require("redux-thunk");
-
-/***/ },
-/* 51 */
+/* 41 */
 /*!*************************************!*\
   !*** ./~/redux-logger/lib/index.js ***!
   \*************************************/
@@ -2847,71 +2921,70 @@ module.exports =
 	module.exports = createLogger;
 
 /***/ },
-/* 52 */
-/*!************************!*\
-  !*** ./common/App.jsx ***!
-  \************************/
-/***/ function(module, exports, __webpack_require__) {
+/* 42 */
+/*!******************************!*\
+  !*** external "body-parser" ***!
+  \******************************/
+/***/ function(module, exports) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(/*! react */ 13);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _events = __webpack_require__(/*! events */ 22);
-
-	var _events2 = _interopRequireDefault(_events);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	let mediator = new _events2.default();
-
-	class App extends _react.Component {
-	    constructor(props, context) {
-	        super(props, context);
-	    }
-
-	    getChildContext() {
-	        return {
-	            $eventBus: mediator,
-	            $appConfig: this.props.appConfig
-	        };
-	    }
-
-	    componentDidMount() {}
-
-	    componentDidUpdate() {}
-
-	    componentWillUnmount() {}
-
-	    render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            this.props.children
-	        );
-	    }
-	}
-	App.defaultProps = {
-	    appConfig: null
-	};
-	App.propTypes = {
-	    appConfig: _react.PropTypes.object
-	};
-	App.childContextTypes = {
-	    $eventBus: _react.PropTypes.instanceOf(_events2.default),
-	    $appConfig: _react.PropTypes.object
-	};
-
-	exports.default = App;
+	module.exports = require("body-parser");
 
 /***/ },
-/* 53 */
+/* 43 */
+/*!*****************************!*\
+  !*** external "classnames" ***!
+  \*****************************/
+/***/ function(module, exports) {
+
+	module.exports = require("classnames");
+
+/***/ },
+/* 44 */
+/*!******************************!*\
+  !*** external "compression" ***!
+  \******************************/
+/***/ function(module, exports) {
+
+	module.exports = require("compression");
+
+/***/ },
+/* 45 */
+/*!********************************!*\
+  !*** external "cookie-parser" ***!
+  \********************************/
+/***/ function(module, exports) {
+
+	module.exports = require("cookie-parser");
+
+/***/ },
+/* 46 */
+/*!************************!*\
+  !*** external "csurf" ***!
+  \************************/
+/***/ function(module, exports) {
+
+	module.exports = require("csurf");
+
+/***/ },
+/* 47 */
+/*!**********************!*\
+  !*** external "ejs" ***!
+  \**********************/
+/***/ function(module, exports) {
+
+	module.exports = require("ejs");
+
+/***/ },
+/* 48 */
+/*!**********************************!*\
+  !*** external "express-session" ***!
+  \**********************************/
+/***/ function(module, exports) {
+
+	module.exports = require("express-session");
+
+/***/ },
+/* 49 */
 /*!*************************!*\
   !*** external "helmet" ***!
   \*************************/
@@ -2920,120 +2993,49 @@ module.exports =
 	module.exports = require("helmet");
 
 /***/ },
+/* 50 */
+/*!***********************!*\
+  !*** external "http" ***!
+  \***********************/
+/***/ function(module, exports) {
+
+	module.exports = require("http");
+
+/***/ },
+/* 51 */
+/*!*************************!*\
+  !*** external "morgan" ***!
+  \*************************/
+/***/ function(module, exports) {
+
+	module.exports = require("morgan");
+
+/***/ },
+/* 52 */
+/*!***********************************!*\
+  !*** external "react-dom/server" ***!
+  \***********************************/
+/***/ function(module, exports) {
+
+	module.exports = require("react-dom/server");
+
+/***/ },
+/* 53 */
+/*!******************************!*\
+  !*** external "redux-thunk" ***!
+  \******************************/
+/***/ function(module, exports) {
+
+	module.exports = require("redux-thunk");
+
+/***/ },
 /* 54 */
 /*!*********************************!*\
-  !*** ./server/routes/socket.js ***!
+  !*** external "secure-filters" ***!
   \*********************************/
 /***/ function(module, exports) {
 
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	exports.default = function (socket) {
-	    let name = userNames.getGuestName();
-
-	    // send the new user their name and a list of users
-	    socket.emit('init', {
-	        name: name,
-	        users: userNames.get()
-	    });
-
-	    // notify other clients that a new user has joined
-	    socket.broadcast.emit('user:join', {
-	        name: name
-	    });
-
-	    // broadcast a user's message to other users
-	    socket.on('send:message', function (data) {
-	        socket.broadcast.emit('send:message', {
-	            user: name,
-	            text: data.text
-	        });
-	    });
-
-	    // validate a user's name change, and broadcast it on success
-	    socket.on('change:name', function (data, fn) {
-	        if (userNames.claim(data.name)) {
-	            let oldName = name;
-	            userNames.free(oldName);
-
-	            name = data.name;
-
-	            socket.broadcast.emit('change:name', {
-	                oldName: oldName,
-	                newName: name
-	            });
-
-	            fn(true);
-	        } else {
-	            fn(false);
-	        }
-	    });
-
-	    // clean up when a user leaves, and broadcast it to other users
-	    socket.on('disconnect', function () {
-	        socket.broadcast.emit('user:left', {
-	            name: name
-	        });
-	        userNames.free(name);
-	    });
-	};
-
-	// Keep track of which names are used so that there are no duplicates
-	let userNames = function () {
-	    let names = {};
-
-	    let claim = function (name) {
-	        if (!name || names[name]) {
-	            return false;
-	        } else {
-	            names[name] = true;
-	            return true;
-	        }
-	    };
-
-	    // find the lowest unused "guest" name and claim it
-	    let getGuestName = function () {
-	        let name,
-	            nextUserId = 1;
-
-	        do {
-	            name = 'Guest ' + nextUserId;
-	            nextUserId += 1;
-	        } while (!claim(name));
-
-	        return name;
-	    };
-
-	    // serialize claimed names as an array
-	    let get = function () {
-	        let res = [];
-	        for (let user in names) {
-	            res.push(user);
-	        }
-
-	        return res;
-	    };
-
-	    let free = function (name) {
-	        if (names[name]) {
-	            delete names[name];
-	        }
-	    };
-
-	    return {
-	        claim: claim,
-	        free: free,
-	        get: get,
-	        getGuestName: getGuestName
-	    };
-	}();
-
-	// export function for listening to the socket
-	;
+	module.exports = require("secure-filters");
 
 /***/ },
 /* 55 */

@@ -57,11 +57,14 @@ module.exports = {
         ],
     },
     plugins: [
-        // new webpack.DefinePlugin({"process.env": {NODE_ENV: '"production"'}}),
-        // new webpack.optimize.OccurrenceOrderPlugin(),
+        // new webpack.DefinePlugin({
+        //     '__dirname': '__dirname.replace(new RegExp("\\\\\\\\", "i"), "/")'
+        // }),
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         // new webpack.BannerPlugin('require("source-map-support").install();',
         //     { raw: true, entryOnly: false }),
         new webpack.IgnorePlugin(/(\.(css|less)$)|zepto/)
     ],
 };
+

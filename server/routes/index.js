@@ -23,6 +23,8 @@ router.get('/chat', ChatPage);
 /**
  * 静态资源
  */
+let content = fs.readFileSync(__dirname + '/../../client/js/utils/sw.js', 'utf8');
+
 router.get('/sw.js', async function(req, res){
     let content = fs.readFileSync(__dirname + '/../../client/js/utils/sw.js', 'utf8');
 
