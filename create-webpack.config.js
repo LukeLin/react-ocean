@@ -16,7 +16,7 @@ module.exports = function (DEBUG) {
 
 
     let plugins = [
-        new HappyPack({ id: happyId }),
+        new HappyPack({id: happyId}),
         new webpack.optimize.OccurrenceOrderPlugin(),
         //new NyanProgressPlugin()
         new ProgressBarPlugin({
@@ -53,12 +53,12 @@ module.exports = function (DEBUG) {
                     });
                     let assetsByChunkName = jsonStats.assetsByChunkName;
                     let obj = {};
-                    for(let key in assetsByChunkName){
-                        if(!assetsByChunkName.hasOwnProperty(key)) continue;
+                    for (let key in assetsByChunkName) {
+                        if (!assetsByChunkName.hasOwnProperty(key)) continue;
 
                         let value = assetsByChunkName[key];
                         let match = value[0].match(/-(\w+)\.js$/);
-                        if(match) {
+                        if (match) {
                             obj[key] = match[1];
                         }
                     }
@@ -81,11 +81,10 @@ module.exports = function (DEBUG) {
 
     function getPagesNames(dirPath) {
         let filesNames = fs.readdirSync(dirPath);
-        let entries = {
-        };
+        let entries = {};
 
         for (let fileName of filesNames) {
-            if(DEBUG) {
+            if (DEBUG) {
                 entries[fileName.split('.').shift() || fileName] = ['webpack-hot-middleware/client', `${dirPath}/${fileName}`];
             } else {
                 entries[fileName.split('.').shift() || fileName] = [`${dirPath}/${fileName}`];
@@ -97,31 +96,32 @@ module.exports = function (DEBUG) {
 
     let babelPlugins = [
         ["transform-runtime", {
+            // "helpers": false,
             "polyfill": false,
             "regenerator": true
         }],
 
         // exclude commonjs for webpack 2.0 tree shaking optimization
-        "transform-es2015-modules-commonjs",
-        'transform-es2015-template-literals',
-        'transform-es2015-literals',
-        'transform-es2015-function-name',
-        'transform-es2015-arrow-functions',
-        'transform-es2015-block-scoped-functions',
-        'transform-es2015-classes',
-        'transform-es2015-object-super',
-        'transform-es2015-shorthand-properties',
-        'transform-es2015-computed-properties',
-        'transform-es2015-for-of',
-        'transform-es2015-sticky-regex',
-        'transform-es2015-unicode-regex',
-        'check-es2015-constants',
-        'transform-es2015-spread',
-        'transform-es2015-parameters',
-        'transform-es2015-destructuring',
-        'transform-es2015-block-scoping',
-        'transform-es2015-typeof-symbol',
-        ['transform-regenerator', { async: false, asyncGenerators: false }]
+        // "transform-es2015-modules-commonjs",
+        // 'transform-es2015-template-literals',
+        // 'transform-es2015-literals',
+        // 'transform-es2015-function-name',
+        // 'transform-es2015-arrow-functions',
+        // 'transform-es2015-block-scoped-functions',
+        // 'transform-es2015-classes',
+        // 'transform-es2015-object-super',
+        // 'transform-es2015-shorthand-properties',
+        // 'transform-es2015-computed-properties',
+        // 'transform-es2015-for-of',
+        // 'transform-es2015-sticky-regex',
+        // 'transform-es2015-unicode-regex',
+        // 'check-es2015-constants',
+        // 'transform-es2015-spread',
+        // 'transform-es2015-parameters',
+        // 'transform-es2015-destructuring',
+        // 'transform-es2015-block-scoping',
+        // 'transform-es2015-typeof-symbol',
+        // ['transform-regenerator', { async: false, asyncGenerators: false }]
     ];
     if (!DEBUG) {
         babelPlugins.push(
@@ -141,7 +141,7 @@ module.exports = function (DEBUG) {
             chunkFilename: DEBUG ? "/js/debug/[name].js" : "/js/min/[name]-[chunkhash].js",
             // chunkFilename: DEBUG ? "./js/debug/[name].js" : "./js/min/[name].js",
             publicPath: '/static',
-            pathinfo: false
+            pathinfo: true
         },
 
         cache: true,
@@ -161,15 +161,26 @@ module.exports = function (DEBUG) {
                     query: {
                         cacheDirectory: true,
                         // fixed resolve path in parent directory error
-                        "presets": ["react"].map((preset) => require.resolve(`babel-preset-${preset}`)),
+                        "presets": [
+                            "react",
+                            [
+                                "es2015",
+                                { loose: true }
+                            ]
+                        ].map((preset) => {
+                            if (typeof preset === 'string')
+                                return require.resolve(`babel-preset-${preset}`);
+                            else if (Array.isArray(preset))
+                                return [require.resolve(`babel-preset-${preset[0]}`), preset[1]];
+                        }),
                         "plugins": babelPlugins.map((preset) => {
-                            if(typeof preset === 'string')
+                            if (typeof preset === 'string')
                                 return require.resolve(`babel-plugin-${preset}`);
-                            else if(Array.isArray(preset))
-                                return [require.resolve(`babel-plugin-${preset[0]}`), ...preset];
+                            else if (Array.isArray(preset))
+                                return [require.resolve(`babel-plugin-${preset[0]}`), preset[1]];
                         })
                     },
-                    happy: { id: happyId }
+                    happy: {id: happyId}
                 },
 
                 {
@@ -181,21 +192,23 @@ module.exports = function (DEBUG) {
                 // Load styles
                 {
                     test: /\.css$/,
-                    loader:
-                    //DEBUG
+                    loader: //DEBUG
                     //? "style!css" :
-                    ExtractTextPlugin.extract("style-loader", "css-loader")
+                        ExtractTextPlugin.extract("style-loader", "css-loader")
                 },
 
                 // Load images
-                { test: /\.jpg/, loader: "url-loader?limit=1024&mimetype=image/jpg&name=./img/[name].[ext]" },
-                { test: /\.gif/, loader: "url-loader?limit=1024&mimetype=image/gif&name=./img/[name].[ext]" },
-                { test: /\.png/, loader: "url-loader?limit=1024&mimetype=image/png&name=./img/[name].[ext]" },
-                { test: /\.svg/, loader: "url-loader?limit=1024&mimetype=image/svg&name=./img/[name].[ext]" },
+                {test: /\.jpg/, loader: "url-loader?limit=1024&mimetype=image/jpg&name=./img/[name].[ext]"},
+                {test: /\.gif/, loader: "url-loader?limit=1024&mimetype=image/gif&name=./img/[name].[ext]"},
+                {test: /\.png/, loader: "url-loader?limit=1024&mimetype=image/png&name=./img/[name].[ext]"},
+                {test: /\.svg/, loader: "url-loader?limit=1024&mimetype=image/svg&name=./img/[name].[ext]"},
 
                 // Load fonts
-                { test: /\.woff$/, loader: "url-loader?limit=1024&minetype=application/font-woff&name=./font/[name].[ext]" },
-                { test: /\.(ttf|eot|svg)$/, loader: "file-loader?name=./font/[name].[ext]" }
+                {
+                    test: /\.woff$/,
+                    loader: "url-loader?limit=1024&minetype=application/font-woff&name=./font/[name].[ext]"
+                },
+                {test: /\.(ttf|eot|svg)$/, loader: "file-loader?name=./font/[name].[ext]"}
             ],
             noParse: []
         },
