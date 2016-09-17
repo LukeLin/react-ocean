@@ -68,12 +68,12 @@ export default class Base extends Component {
                     delete this.__eventNames[eventName];
                 }
             } else {
-                console.warn('event: ' + eventName + ' did not registered in ' + this._reactInternalInstance.getName() + ' Component');
+                console.warn('event: ' + eventName + ' is not registered in ' + this._reactInternalInstance.getName() + ' Component');
             }
 
             return true;
         } else {
-            console.warn('event: ' + eventName + ' did not registered in ' + this.constructor.name + ' Component');
+            console.warn('event: ' + eventName + ' is not registered in ' + this.constructor.name + ' Component');
 
             return false;
         }
