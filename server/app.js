@@ -7,12 +7,13 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import csurf from 'csurf';
 import config from './config/config.json';
-import routes from './routes';
+import routes from './Controllers/index';
+import apis from './apis/index';
 import allowCrossDomain from './utils/allowCrossDomain'
 import reactRender from './utils/renderReactMiddleware';
 import Immutable from 'immutable';
 import helmet from 'helmet';
-import socket from './routes/socket';
+import socket from './sockets/socket';
 
 let app = express();
 
@@ -55,7 +56,7 @@ app.use('/static', express.static(__dirname + '/../public', {
 //     app.use(webpackHotMiddleware(compiler));
 // }
 
-app.use('/', allowCrossDomain);
+app.use(allowCrossDomain);
 
 app.use(csurf());
 app.use(function (req, res, next) {
@@ -69,6 +70,7 @@ app.use(reactRender({
 }));
 
 app.use('/', routes);
+app.use('/api', apis);
 
 // error handlers
 // no stacktraces leaked to user

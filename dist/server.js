@@ -50,51 +50,55 @@ module.exports =
 
 	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
 
-	var _http = __webpack_require__(/*! http */ 50);
+	var _http = __webpack_require__(/*! http */ 51);
 
 	var _http2 = _interopRequireDefault(_http);
 
-	var _express = __webpack_require__(/*! express */ 11);
+	var _express = __webpack_require__(/*! express */ 6);
 
 	var _express2 = _interopRequireDefault(_express);
 
-	var _compression = __webpack_require__(/*! compression */ 44);
+	var _compression = __webpack_require__(/*! compression */ 45);
 
 	var _compression2 = _interopRequireDefault(_compression);
 
-	var _morgan = __webpack_require__(/*! morgan */ 51);
+	var _morgan = __webpack_require__(/*! morgan */ 52);
 
 	var _morgan2 = _interopRequireDefault(_morgan);
 
-	var _cookieParser = __webpack_require__(/*! cookie-parser */ 45);
+	var _cookieParser = __webpack_require__(/*! cookie-parser */ 46);
 
 	var _cookieParser2 = _interopRequireDefault(_cookieParser);
 
-	var _bodyParser = __webpack_require__(/*! body-parser */ 42);
+	var _bodyParser = __webpack_require__(/*! body-parser */ 43);
 
 	var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
-	var _expressSession = __webpack_require__(/*! express-session */ 48);
+	var _expressSession = __webpack_require__(/*! express-session */ 49);
 
 	var _expressSession2 = _interopRequireDefault(_expressSession);
 
-	var _csurf = __webpack_require__(/*! csurf */ 46);
+	var _csurf = __webpack_require__(/*! csurf */ 47);
 
 	var _csurf2 = _interopRequireDefault(_csurf);
 
-	var _config = __webpack_require__(/*! ./config/config.json */ 9);
+	var _config = __webpack_require__(/*! ./config/config.json */ 10);
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _routes = __webpack_require__(/*! ./routes */ 34);
+	var _index = __webpack_require__(/*! ./Controllers/index */ 34);
 
-	var _routes2 = _interopRequireDefault(_routes);
+	var _index2 = _interopRequireDefault(_index);
 
-	var _allowCrossDomain = __webpack_require__(/*! ./utils/allowCrossDomain */ 39);
+	var _index3 = __webpack_require__(/*! ./apis/index */ 38);
+
+	var _index4 = _interopRequireDefault(_index3);
+
+	var _allowCrossDomain = __webpack_require__(/*! ./utils/allowCrossDomain */ 40);
 
 	var _allowCrossDomain2 = _interopRequireDefault(_allowCrossDomain);
 
-	var _renderReactMiddleware = __webpack_require__(/*! ./utils/renderReactMiddleware */ 40);
+	var _renderReactMiddleware = __webpack_require__(/*! ./utils/renderReactMiddleware */ 41);
 
 	var _renderReactMiddleware2 = _interopRequireDefault(_renderReactMiddleware);
 
@@ -102,11 +106,11 @@ module.exports =
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _helmet = __webpack_require__(/*! helmet */ 49);
+	var _helmet = __webpack_require__(/*! helmet */ 50);
 
 	var _helmet2 = _interopRequireDefault(_helmet);
 
-	var _socket = __webpack_require__(/*! ./routes/socket */ 38);
+	var _socket = __webpack_require__(/*! ./sockets/socket */ 39);
 
 	var _socket2 = _interopRequireDefault(_socket);
 
@@ -153,7 +157,7 @@ module.exports =
 	//     app.use(webpackHotMiddleware(compiler));
 	// }
 
-	app.use('/', _allowCrossDomain2.default);
+	app.use(_allowCrossDomain2.default);
 
 	app.use((0, _csurf2.default)());
 	app.use(function (req, res, next) {
@@ -166,7 +170,8 @@ module.exports =
 	    }
 	}));
 
-	app.use('/', _routes2.default);
+	app.use('/', _index2.default);
+	app.use('/api', _index4.default);
 
 	// error handlers
 	// no stacktraces leaked to user
@@ -196,7 +201,7 @@ module.exports =
 	let server = _http2.default.createServer(app);
 
 	/* Socket.io Communication */
-	let io = __webpack_require__(/*! socket.io */ 55).listen(server);
+	let io = __webpack_require__(/*! socket.io */ 56).listen(server);
 	io.sockets.on('connection', _socket2.default);
 
 	server.listen(app.get('port'), app.get('host'), function () {
@@ -235,7 +240,7 @@ module.exports =
 
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 
-	var _events = __webpack_require__(/*! events */ 10);
+	var _events = __webpack_require__(/*! events */ 11);
 
 	var _events2 = _interopRequireDefault(_events);
 
@@ -375,6 +380,15 @@ module.exports =
 
 /***/ },
 /* 6 */
+/*!**************************!*\
+  !*** external "express" ***!
+  \**************************/
+/***/ function(module, exports) {
+
+	module.exports = require("express");
+
+/***/ },
+/* 7 */
 /*!*********************!*\
   !*** external "fs" ***!
   \*********************/
@@ -383,7 +397,7 @@ module.exports =
 	module.exports = require("fs");
 
 /***/ },
-/* 7 */
+/* 8 */
 /*!***************************************!*\
   !*** ./common/pages/async/actions.js ***!
   \***************************************/
@@ -474,7 +488,7 @@ module.exports =
 	}
 
 /***/ },
-/* 8 */
+/* 9 */
 /*!********************************************!*\
   !*** ./common/pages/index/indexActions.js ***!
   \********************************************/
@@ -523,7 +537,7 @@ module.exports =
 	}
 
 /***/ },
-/* 9 */
+/* 10 */
 /*!***********************************!*\
   !*** ./server/config/config.json ***!
   \***********************************/
@@ -541,22 +555,13 @@ module.exports =
 	};
 
 /***/ },
-/* 10 */
+/* 11 */
 /*!*************************!*\
   !*** external "events" ***!
   \*************************/
 /***/ function(module, exports) {
 
 	module.exports = require("events");
-
-/***/ },
-/* 11 */
-/*!**************************!*\
-  !*** external "express" ***!
-  \**************************/
-/***/ function(module, exports) {
-
-	module.exports = require("express");
 
 /***/ },
 /* 12 */
@@ -602,7 +607,7 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _events = __webpack_require__(/*! events */ 10);
+	var _events = __webpack_require__(/*! events */ 11);
 
 	var _events2 = _interopRequireDefault(_events);
 
@@ -1019,7 +1024,7 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(/*! classnames */ 43);
+	var _classnames = __webpack_require__(/*! classnames */ 44);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -1484,7 +1489,7 @@ module.exports =
 
 	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
 
-	var _actions = __webpack_require__(/*! ./actions */ 7);
+	var _actions = __webpack_require__(/*! ./actions */ 8);
 
 	var _Picker = __webpack_require__(/*! ../../components/async/Picker.jsx */ 16);
 
@@ -1630,7 +1635,7 @@ module.exports =
 
 	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 14);
 
-	var _actions = __webpack_require__(/*! ./actions */ 7);
+	var _actions = __webpack_require__(/*! ./actions */ 8);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1892,7 +1897,7 @@ module.exports =
 
 	var _Base2 = _interopRequireDefault(_Base);
 
-	var _indexActions = __webpack_require__(/*! ./indexActions */ 8);
+	var _indexActions = __webpack_require__(/*! ./indexActions */ 9);
 
 	var _AddTodo = __webpack_require__(/*! ../../components/index/AddTodo */ 22);
 
@@ -2014,7 +2019,7 @@ module.exports =
 
 	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 14);
 
-	var _indexActions = __webpack_require__(/*! ./indexActions */ 8);
+	var _indexActions = __webpack_require__(/*! ./indexActions */ 9);
 
 	const { SHOW_ALL } = _indexActions.VisibilityFilters; // import { combineReducers } from 'redux'
 
@@ -2067,14 +2072,14 @@ module.exports =
 
 	var _redux = __webpack_require__(/*! redux */ 13);
 
-	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 53);
+	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 54);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	if (process.env.NODE_ENV !== 'production' && process.browser) {
-	    var createLogger = __webpack_require__(/*! redux-logger */ 41);
+	    var createLogger = __webpack_require__(/*! redux-logger */ 42);
 	}
 
 	const middlewareBuilder = () => {
@@ -2185,9 +2190,9 @@ module.exports =
 
 /***/ },
 /* 34 */
-/*!********************************!*\
-  !*** ./server/routes/index.js ***!
-  \********************************/
+/*!*************************************!*\
+  !*** ./server/Controllers/index.js ***!
+  \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
@@ -2196,9 +2201,9 @@ module.exports =
 	  value: true
 	});
 
-	var _express = __webpack_require__(/*! express */ 11);
+	var _express = __webpack_require__(/*! express */ 6);
 
-	var _fs = __webpack_require__(/*! fs */ 6);
+	var _fs = __webpack_require__(/*! fs */ 7);
 
 	var _fs2 = _interopRequireDefault(_fs);
 
@@ -2228,10 +2233,6 @@ module.exports =
 	router.get('/chat', _chat2.default);
 
 	/**
-	 * AJAX请求
-	 */
-
-	/**
 	 * 静态资源
 	 */
 	let content = _fs2.default.readFileSync(__dirname + '/../../client/js/utils/sw.js', 'utf8');
@@ -2250,13 +2251,13 @@ module.exports =
 	})());
 
 	exports.default = router;
-	/* WEBPACK VAR INJECTION */}.call(exports, "server\\routes"))
+	/* WEBPACK VAR INJECTION */}.call(exports, "server\\Controllers"))
 
 /***/ },
 /* 35 */
-/*!**************************************!*\
-  !*** ./server/routes/pages/async.js ***!
-  \**************************************/
+/*!*******************************************!*\
+  !*** ./server/Controllers/pages/async.js ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2323,9 +2324,9 @@ module.exports =
 
 /***/ },
 /* 36 */
-/*!*************************************!*\
-  !*** ./server/routes/pages/chat.js ***!
-  \*************************************/
+/*!******************************************!*\
+  !*** ./server/Controllers/pages/chat.js ***!
+  \******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
@@ -2342,7 +2343,7 @@ module.exports =
 
 	var _Page2 = _interopRequireDefault(_Page);
 
-	var _fs = __webpack_require__(/*! fs */ 6);
+	var _fs = __webpack_require__(/*! fs */ 7);
 
 	var _fs2 = _interopRequireDefault(_fs);
 
@@ -2364,13 +2365,13 @@ module.exports =
 	        needTransform: false
 	    });
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, "server\\routes\\pages"))
+	/* WEBPACK VAR INJECTION */}.call(exports, "server\\Controllers\\pages"))
 
 /***/ },
 /* 37 */
-/*!**************************************!*\
-  !*** ./server/routes/pages/index.js ***!
-  \**************************************/
+/*!*******************************************!*\
+  !*** ./server/Controllers/pages/index.js ***!
+  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2417,9 +2418,36 @@ module.exports =
 
 /***/ },
 /* 38 */
-/*!*********************************!*\
-  !*** ./server/routes/socket.js ***!
-  \*********************************/
+/*!******************************!*\
+  !*** ./server/apis/index.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _express = __webpack_require__(/*! express */ 6);
+
+	let router = new _express.Router();
+
+	router.post('/ajax', function (req, res, next) {
+	    if (error) {
+	        next();
+	    } else {
+	        res.send('test');
+	    }
+	});
+
+	exports.default = router;
+
+/***/ },
+/* 39 */
+/*!**********************************!*\
+  !*** ./server/sockets/socket.js ***!
+  \**********************************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -2532,7 +2560,7 @@ module.exports =
 	;
 
 /***/ },
-/* 39 */
+/* 40 */
 /*!******************************************!*\
   !*** ./server/utils/allowCrossDomain.js ***!
   \******************************************/
@@ -2554,7 +2582,7 @@ module.exports =
 	}
 
 /***/ },
-/* 40 */
+/* 41 */
 /*!************************************************!*\
   !*** ./server/utils/renderReactMiddleware.jsx ***!
   \************************************************/
@@ -2567,7 +2595,7 @@ module.exports =
 	});
 	exports.default = reactRender;
 
-	var _ejs = __webpack_require__(/*! ejs */ 47);
+	var _ejs = __webpack_require__(/*! ejs */ 48);
 
 	var _ejs2 = _interopRequireDefault(_ejs);
 
@@ -2575,15 +2603,15 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _server = __webpack_require__(/*! react-dom/server */ 52);
+	var _server = __webpack_require__(/*! react-dom/server */ 53);
 
 	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
 
-	var _fs = __webpack_require__(/*! fs */ 6);
+	var _fs = __webpack_require__(/*! fs */ 7);
 
 	var _fs2 = _interopRequireDefault(_fs);
 
-	var _secureFilters = __webpack_require__(/*! secure-filters */ 54);
+	var _secureFilters = __webpack_require__(/*! secure-filters */ 55);
 
 	var _secureFilters2 = _interopRequireDefault(_secureFilters);
 
@@ -2595,7 +2623,7 @@ module.exports =
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _config = __webpack_require__(/*! ../config/config.json */ 9);
+	var _config = __webpack_require__(/*! ../config/config.json */ 10);
 
 	var _config2 = _interopRequireDefault(_config);
 
@@ -2685,7 +2713,7 @@ module.exports =
 	/* WEBPACK VAR INJECTION */}.call(exports, "server\\utils"))
 
 /***/ },
-/* 41 */
+/* 42 */
 /*!*************************************!*\
   !*** ./~/redux-logger/lib/index.js ***!
   \*************************************/
@@ -2921,7 +2949,7 @@ module.exports =
 	module.exports = createLogger;
 
 /***/ },
-/* 42 */
+/* 43 */
 /*!******************************!*\
   !*** external "body-parser" ***!
   \******************************/
@@ -2930,7 +2958,7 @@ module.exports =
 	module.exports = require("body-parser");
 
 /***/ },
-/* 43 */
+/* 44 */
 /*!*****************************!*\
   !*** external "classnames" ***!
   \*****************************/
@@ -2939,7 +2967,7 @@ module.exports =
 	module.exports = require("classnames");
 
 /***/ },
-/* 44 */
+/* 45 */
 /*!******************************!*\
   !*** external "compression" ***!
   \******************************/
@@ -2948,7 +2976,7 @@ module.exports =
 	module.exports = require("compression");
 
 /***/ },
-/* 45 */
+/* 46 */
 /*!********************************!*\
   !*** external "cookie-parser" ***!
   \********************************/
@@ -2957,7 +2985,7 @@ module.exports =
 	module.exports = require("cookie-parser");
 
 /***/ },
-/* 46 */
+/* 47 */
 /*!************************!*\
   !*** external "csurf" ***!
   \************************/
@@ -2966,7 +2994,7 @@ module.exports =
 	module.exports = require("csurf");
 
 /***/ },
-/* 47 */
+/* 48 */
 /*!**********************!*\
   !*** external "ejs" ***!
   \**********************/
@@ -2975,7 +3003,7 @@ module.exports =
 	module.exports = require("ejs");
 
 /***/ },
-/* 48 */
+/* 49 */
 /*!**********************************!*\
   !*** external "express-session" ***!
   \**********************************/
@@ -2984,7 +3012,7 @@ module.exports =
 	module.exports = require("express-session");
 
 /***/ },
-/* 49 */
+/* 50 */
 /*!*************************!*\
   !*** external "helmet" ***!
   \*************************/
@@ -2993,7 +3021,7 @@ module.exports =
 	module.exports = require("helmet");
 
 /***/ },
-/* 50 */
+/* 51 */
 /*!***********************!*\
   !*** external "http" ***!
   \***********************/
@@ -3002,7 +3030,7 @@ module.exports =
 	module.exports = require("http");
 
 /***/ },
-/* 51 */
+/* 52 */
 /*!*************************!*\
   !*** external "morgan" ***!
   \*************************/
@@ -3011,7 +3039,7 @@ module.exports =
 	module.exports = require("morgan");
 
 /***/ },
-/* 52 */
+/* 53 */
 /*!***********************************!*\
   !*** external "react-dom/server" ***!
   \***********************************/
@@ -3020,7 +3048,7 @@ module.exports =
 	module.exports = require("react-dom/server");
 
 /***/ },
-/* 53 */
+/* 54 */
 /*!******************************!*\
   !*** external "redux-thunk" ***!
   \******************************/
@@ -3029,7 +3057,7 @@ module.exports =
 	module.exports = require("redux-thunk");
 
 /***/ },
-/* 54 */
+/* 55 */
 /*!*********************************!*\
   !*** external "secure-filters" ***!
   \*********************************/
@@ -3038,7 +3066,7 @@ module.exports =
 	module.exports = require("secure-filters");
 
 /***/ },
-/* 55 */
+/* 56 */
 /*!****************************!*\
   !*** external "socket.io" ***!
   \****************************/

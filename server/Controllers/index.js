@@ -17,10 +17,6 @@ router.get('/chat', ChatPage);
 
 
 /**
- * AJAX请求
- */
-
-/**
  * 静态资源
  */
 let content = fs.readFileSync(__dirname + '/../../client/js/utils/sw.js', 'utf8');
