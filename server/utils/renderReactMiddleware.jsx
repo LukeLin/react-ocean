@@ -1,7 +1,7 @@
 import ejs from 'ejs';
 import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { Provider } from 'react-redux';
+import {renderToString} from 'react-dom/server';
+import {Provider} from 'react-redux';
 import fs from 'fs';
 // for xss protection
 import SecureFilters from 'secure-filters';
@@ -12,12 +12,12 @@ import config from '../config/config.json';
 
 const defaultTemplate = fs.readFileSync(__dirname + '/../views/index.html', 'utf8');
 
-function getDefaultJSVersion(name){
+function getDefaultJSVersion(name) {
     let webpackAssets = fs.readFileSync(__dirname + '/../../webpack-assets.json', 'utf8');
 
     try {
         webpackAssets = JSON.parse(webpackAssets);
-    } catch(ex){
+    } catch (ex) {
         console.log('webpack-assets.json parsed error');
         webpackAssets = {};
     }
@@ -25,13 +25,14 @@ function getDefaultJSVersion(name){
 }
 
 export default function reactRender(middlewareConfig = {}) {
-    return function(req, res, next){
-        res.renderReactHTML = function(opts = {}){
+    return function (req, res, next) {
+        res.renderReactHTML = function (opts = {}) {
             let {
                 template = '',
                 component = '',
                 data = {},
-                rootReducer = (() => {}),
+                rootReducer = (() => {
+                }),
                 locals = {},
                 pageConfig = {},
                 needTransform = true
@@ -40,6 +41,10 @@ export default function reactRender(middlewareConfig = {}) {
                 ? middlewareConfig.transformer(data) : data;
             let store = configureStore(transformedData, rootReducer);
             let html = '';
+            pageConfig = SecureFilters.jsObj(
+                Object.assign(typeof middlewareConfig.appConfig === 'object'
+                    ? middlewareConfig.appConfig : {}, pageConfig));
+
             try {
                 html = renderToString((
                     <Provider store={ store }>
@@ -58,7 +63,7 @@ export default function reactRender(middlewareConfig = {}) {
             let version = config.application.version;
             let jsVersion = '';
             // prefer config version, useful when using CDN config
-            if(process.env.NODE_ENV === 'production') {
+            if (process.env.NODE_ENV === 'production') {
                 jsVersion = version && version.js;
             } else {
                 jsVersion = getDefaultJSVersion(locals.appName || 'index');
@@ -72,7 +77,7 @@ export default function reactRender(middlewareConfig = {}) {
                 title: '',
                 test: process.env.NODE_ENV !== 'production',
                 debug,
-                appConfig: SecureFilters.jsObj(pageConfig),
+                appConfig: pageConfig,
                 version: {
                     js: jsVersion,
                     css: version && version.css
