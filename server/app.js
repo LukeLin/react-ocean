@@ -7,7 +7,7 @@ import bodyParser from 'body-parser';
 import session from 'express-session';
 import csurf from 'csurf';
 import config from './config/config.json';
-import routes from './Controllers/index';
+import routes from './controllers/index';
 import apis from './apis/index';
 import allowCrossDomain from './utils/allowCrossDomain'
 import reactRender from './utils/renderReactMiddleware';
