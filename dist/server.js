@@ -86,11 +86,11 @@ module.exports =
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _index = __webpack_require__(/*! ./Controllers/index */ 34);
+	var _index = __webpack_require__(/*! ./controllers/index */ 35);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _index3 = __webpack_require__(/*! ./apis/index */ 38);
+	var _index3 = __webpack_require__(/*! ./apis/index */ 34);
 
 	var _index4 = _interopRequireDefault(_index3);
 
@@ -2190,8 +2190,35 @@ module.exports =
 
 /***/ },
 /* 34 */
+/*!******************************!*\
+  !*** ./server/apis/index.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _express = __webpack_require__(/*! express */ 6);
+
+	let router = new _express.Router();
+
+	router.post('/ajax', function (req, res, next) {
+	    if (error) {
+	        next();
+	    } else {
+	        res.send('test');
+	    }
+	});
+
+	exports.default = router;
+
+/***/ },
+/* 35 */
 /*!*************************************!*\
-  !*** ./server/Controllers/index.js ***!
+  !*** ./server/controllers/index.js ***!
   \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
@@ -2207,15 +2234,15 @@ module.exports =
 
 	var _fs2 = _interopRequireDefault(_fs);
 
-	var _index = __webpack_require__(/*! ./pages/index */ 37);
+	var _index = __webpack_require__(/*! ./pages/index */ 38);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _async = __webpack_require__(/*! ./pages/async */ 35);
+	var _async = __webpack_require__(/*! ./pages/async */ 36);
 
 	var _async2 = _interopRequireDefault(_async);
 
-	var _chat = __webpack_require__(/*! ./pages/chat */ 36);
+	var _chat = __webpack_require__(/*! ./pages/chat */ 37);
 
 	var _chat2 = _interopRequireDefault(_chat);
 
@@ -2251,12 +2278,12 @@ module.exports =
 	})());
 
 	exports.default = router;
-	/* WEBPACK VAR INJECTION */}.call(exports, "server\\Controllers"))
+	/* WEBPACK VAR INJECTION */}.call(exports, "server\\controllers"))
 
 /***/ },
-/* 35 */
+/* 36 */
 /*!*******************************************!*\
-  !*** ./server/Controllers/pages/async.js ***!
+  !*** ./server/controllers/pages/async.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
@@ -2323,9 +2350,9 @@ module.exports =
 	};
 
 /***/ },
-/* 36 */
+/* 37 */
 /*!******************************************!*\
-  !*** ./server/Controllers/pages/chat.js ***!
+  !*** ./server/controllers/pages/chat.js ***!
   \******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
@@ -2365,12 +2392,12 @@ module.exports =
 	        needTransform: false
 	    });
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, "server\\Controllers\\pages"))
+	/* WEBPACK VAR INJECTION */}.call(exports, "server\\controllers\\pages"))
 
 /***/ },
-/* 37 */
+/* 38 */
 /*!*******************************************!*\
-  !*** ./server/Controllers/pages/index.js ***!
+  !*** ./server/controllers/pages/index.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
@@ -2415,33 +2442,6 @@ module.exports =
 	        }
 	    });
 	};
-
-/***/ },
-/* 38 */
-/*!******************************!*\
-  !*** ./server/apis/index.js ***!
-  \******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _express = __webpack_require__(/*! express */ 6);
-
-	let router = new _express.Router();
-
-	router.post('/ajax', function (req, res, next) {
-	    if (error) {
-	        next();
-	    } else {
-	        res.send('test');
-	    }
-	});
-
-	exports.default = router;
 
 /***/ },
 /* 39 */
@@ -2659,6 +2659,8 @@ module.exports =
 	            let transformedData = typeof middlewareConfig.transformer === 'function' && needTransform ? middlewareConfig.transformer(data) : data;
 	            let store = (0, _index2.default)(transformedData, rootReducer);
 	            let html = '';
+	            pageConfig = Object.assign(typeof middlewareConfig.appConfig === 'object' ? middlewareConfig.appConfig : {}, pageConfig);
+
 	            try {
 	                html = (0, _server.renderToString)(_react2.default.createElement(
 	                    _reactRedux.Provider,

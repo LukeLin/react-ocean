@@ -41,9 +41,8 @@ export default function reactRender(middlewareConfig = {}) {
                 ? middlewareConfig.transformer(data) : data;
             let store = configureStore(transformedData, rootReducer);
             let html = '';
-            pageConfig = SecureFilters.jsObj(
-                Object.assign(typeof middlewareConfig.appConfig === 'object'
-                    ? middlewareConfig.appConfig : {}, pageConfig));
+            pageConfig = Object.assign(typeof middlewareConfig.appConfig === 'object'
+                ? middlewareConfig.appConfig : {}, pageConfig);
 
             try {
                 html = renderToString((
@@ -77,7 +76,7 @@ export default function reactRender(middlewareConfig = {}) {
                 title: '',
                 test: process.env.NODE_ENV !== 'production',
                 debug,
-                appConfig: pageConfig,
+                appConfig: SecureFilters.jsObj(pageConfig),
                 version: {
                     js: jsVersion,
                     css: version && version.css
