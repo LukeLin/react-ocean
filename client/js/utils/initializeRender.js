@@ -28,8 +28,8 @@ export default function createRender(middlewareConfig = {}){
     }
 
     return function ({
-        rootReducer = () => {
-        },
+        rootReducer = (() => {
+        }),
         component = null
     }) {
         let transformedData = typeof middlewareConfig.transformer === 'function'

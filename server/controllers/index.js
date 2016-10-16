@@ -1,6 +1,6 @@
 import React from 'react';
 import rootReducer from '../../common/pages/index/indexReducers';
-import Page from '../../../common/pages/index';
+import Page from '../../common/pages/index';
 
 let fakeData = {
     visibilityFilter: 'SHOW_ALL',

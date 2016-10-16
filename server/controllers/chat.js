@@ -3,7 +3,7 @@ import rootReducer from '../../common/pages/chat/reducers';
 import Page from '../../common/pages/chat/Page';
 import fs from 'fs';
 
-let template = fs.readFileSync(__dirname + '/../../views/chat.html', 'utf8');
+let template = fs.readFileSync(__dirname + '/../views/chat.html', 'utf8');
 let fakeData = {
 
 };

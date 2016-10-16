@@ -2,14 +2,14 @@ import React from 'react';
 
 import createRender from '../utils/initializeRender';
 import Page from '../../../common/pages/chat/Page.jsx';
-import rootReducer from '../../../common/pages/chat/reducers';
+// import rootReducer from '../../../common/pages/chat/reducers';
 
 import '../../css/main.css';
 
 let initializeRender = createRender();
 
 initializeRender({
-    rootReducer,
+    null,
     component: <Page/>
 }).then((store) => {
     if (process.env.NODE_ENV !== 'production' && module.hot) {

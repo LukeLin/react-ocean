@@ -86,7 +86,7 @@ module.exports =
 
 	var _config2 = _interopRequireDefault(_config);
 
-	var _index = __webpack_require__(/*! ./controllers/index */ 35);
+	var _index = __webpack_require__(/*! ./routes/index */ 38);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -2218,73 +2218,8 @@ module.exports =
 /***/ },
 /* 35 */
 /*!*************************************!*\
-  !*** ./server/controllers/index.js ***!
+  !*** ./server/controllers/async.js ***!
   \*************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _express = __webpack_require__(/*! express */ 6);
-
-	var _fs = __webpack_require__(/*! fs */ 7);
-
-	var _fs2 = _interopRequireDefault(_fs);
-
-	var _index = __webpack_require__(/*! ./pages/index */ 38);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	var _async = __webpack_require__(/*! ./pages/async */ 36);
-
-	var _async2 = _interopRequireDefault(_async);
-
-	var _chat = __webpack_require__(/*! ./pages/chat */ 37);
-
-	var _chat2 = _interopRequireDefault(_chat);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { return step("next", value); }, function (err) { return step("throw", err); }); } } return step("next"); }); }; }
-
-	let router = new _express.Router();
-
-	/**
-	 * 首页请求
-	 */
-	router.get('/', _index2.default);
-	router.get('/async', _async2.default);
-	router.get('/chat', _chat2.default);
-
-	/**
-	 * 静态资源
-	 */
-	let content = _fs2.default.readFileSync(__dirname + '/../../client/js/utils/sw.js', 'utf8');
-
-	router.get('/sw.js', (() => {
-	  var _ref = _asyncToGenerator(function* (req, res) {
-	    let content = _fs2.default.readFileSync(__dirname + '/../../client/js/utils/sw.js', 'utf8');
-
-	    res.set('Content-Type', 'application/javascript');
-	    res.send(content);
-	  });
-
-	  return function (_x, _x2) {
-	    return _ref.apply(this, arguments);
-	  };
-	})());
-
-	exports.default = router;
-	/* WEBPACK VAR INJECTION */}.call(exports, "server\\controllers"))
-
-/***/ },
-/* 36 */
-/*!*******************************************!*\
-  !*** ./server/controllers/pages/async.js ***!
-  \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2297,11 +2232,11 @@ module.exports =
 
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 
-	var _reducers = __webpack_require__(/*! ../../../common/pages/async/reducers */ 27);
+	var _reducers = __webpack_require__(/*! ../../common/pages/async/reducers */ 27);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _Page = __webpack_require__(/*! ../../../common/pages/async/Page.jsx */ 26);
+	var _Page = __webpack_require__(/*! ../../common/pages/async/Page.jsx */ 26);
 
 	var _Page2 = _interopRequireDefault(_Page);
 
@@ -2350,10 +2285,10 @@ module.exports =
 	};
 
 /***/ },
-/* 37 */
-/*!******************************************!*\
-  !*** ./server/controllers/pages/chat.js ***!
-  \******************************************/
+/* 36 */
+/*!************************************!*\
+  !*** ./server/controllers/chat.js ***!
+  \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
@@ -2362,11 +2297,11 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reducers = __webpack_require__(/*! ../../../common/pages/chat/reducers */ 29);
+	var _reducers = __webpack_require__(/*! ../../common/pages/chat/reducers */ 29);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _Page = __webpack_require__(/*! ../../../common/pages/chat/Page */ 28);
+	var _Page = __webpack_require__(/*! ../../common/pages/chat/Page */ 28);
 
 	var _Page2 = _interopRequireDefault(_Page);
 
@@ -2376,7 +2311,7 @@ module.exports =
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	let template = _fs2.default.readFileSync(__dirname + '/../../views/chat.html', 'utf8');
+	let template = _fs2.default.readFileSync(__dirname + '/../views/chat.html', 'utf8');
 	let fakeData = {};
 
 	module.exports = function (req, res, next) {
@@ -2392,13 +2327,13 @@ module.exports =
 	        needTransform: false
 	    });
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, "server\\controllers\\pages"))
+	/* WEBPACK VAR INJECTION */}.call(exports, "server\\controllers"))
 
 /***/ },
-/* 38 */
-/*!*******************************************!*\
-  !*** ./server/controllers/pages/index.js ***!
-  \*******************************************/
+/* 37 */
+/*!*************************************!*\
+  !*** ./server/controllers/index.js ***!
+  \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2407,11 +2342,11 @@ module.exports =
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _indexReducers = __webpack_require__(/*! ../../../common/pages/index/indexReducers */ 31);
+	var _indexReducers = __webpack_require__(/*! ../../common/pages/index/indexReducers */ 31);
 
 	var _indexReducers2 = _interopRequireDefault(_indexReducers);
 
-	var _index = __webpack_require__(/*! ../../../common/pages/index */ 30);
+	var _index = __webpack_require__(/*! ../../common/pages/index */ 30);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -2442,6 +2377,71 @@ module.exports =
 	        }
 	    });
 	};
+
+/***/ },
+/* 38 */
+/*!********************************!*\
+  !*** ./server/routes/index.js ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _express = __webpack_require__(/*! express */ 6);
+
+	var _fs = __webpack_require__(/*! fs */ 7);
+
+	var _fs2 = _interopRequireDefault(_fs);
+
+	var _index = __webpack_require__(/*! ../controllers/index */ 37);
+
+	var _index2 = _interopRequireDefault(_index);
+
+	var _async = __webpack_require__(/*! ../controllers/async */ 35);
+
+	var _async2 = _interopRequireDefault(_async);
+
+	var _chat = __webpack_require__(/*! ../controllers/chat */ 36);
+
+	var _chat2 = _interopRequireDefault(_chat);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { return step("next", value); }, function (err) { return step("throw", err); }); } } return step("next"); }); }; }
+
+	let router = new _express.Router();
+
+	/**
+	 * 首页请求
+	 */
+	router.get('/', _index2.default);
+	router.get('/async', _async2.default);
+	router.get('/chat', _chat2.default);
+
+	/**
+	 * 静态资源
+	 */
+	let content = _fs2.default.readFileSync(__dirname + '/../../client/js/utils/sw.js', 'utf8');
+
+	router.get('/sw.js', (() => {
+	  var _ref = _asyncToGenerator(function* (req, res) {
+	    let content = _fs2.default.readFileSync(__dirname + '/../../client/js/utils/sw.js', 'utf8');
+
+	    res.set('Content-Type', 'application/javascript');
+	    res.send(content);
+	  });
+
+	  return function (_x, _x2) {
+	    return _ref.apply(this, arguments);
+	  };
+	})());
+
+	exports.default = router;
+	/* WEBPACK VAR INJECTION */}.call(exports, "server\\routes"))
 
 /***/ },
 /* 39 */
