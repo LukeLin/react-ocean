@@ -1,7 +1,7 @@
 import React from 'react';
 import fetch from 'isomorphic-fetch';
-import rootReducer from '../../../common/pages/async/reducers';
-import Page from '../../../common/pages/async/Page.jsx';
+import rootReducer from '../../common/pages/async/reducers';
+import Page from '../../common/pages/async/Page.jsx';
 
 module.exports = function (req, res, next) {
     let state = {
