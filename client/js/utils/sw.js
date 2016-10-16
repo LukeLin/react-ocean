@@ -6,7 +6,7 @@
 
 let CACHE_NAME = 'react-ocean-v1';
 let urlsToCache = [
-    /app-\w+\/index-min.js/gi,
+    /chat-\w+?.js/,
     '/static/css/main-min.css',
     '/static/js/libs-min.js',
     '/static/js/min/index.js'

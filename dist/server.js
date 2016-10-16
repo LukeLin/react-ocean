@@ -2429,7 +2429,6 @@ module.exports =
 
 	router.get('/sw.js', (() => {
 	  var _ref = _asyncToGenerator(function* (req, res) {
-	    let content = _fs2.default.readFileSync(__dirname + '/../../client/js/utils/sw.js', 'utf8');
 
 	    res.set('Content-Type', 'application/javascript');
 	    res.send(content);
