@@ -2,41 +2,41 @@ module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			exports: {},
 /******/ 			id: moduleId,
 /******/ 			loaded: false
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
+/******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
 /******/ })
@@ -49,79 +49,79 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
-
+	
 	var _http = __webpack_require__(/*! http */ 51);
-
+	
 	var _http2 = _interopRequireDefault(_http);
-
+	
 	var _express = __webpack_require__(/*! express */ 6);
-
+	
 	var _express2 = _interopRequireDefault(_express);
-
+	
 	var _compression = __webpack_require__(/*! compression */ 45);
-
+	
 	var _compression2 = _interopRequireDefault(_compression);
-
+	
 	var _morgan = __webpack_require__(/*! morgan */ 52);
-
+	
 	var _morgan2 = _interopRequireDefault(_morgan);
-
+	
 	var _cookieParser = __webpack_require__(/*! cookie-parser */ 46);
-
+	
 	var _cookieParser2 = _interopRequireDefault(_cookieParser);
-
+	
 	var _bodyParser = __webpack_require__(/*! body-parser */ 43);
-
+	
 	var _bodyParser2 = _interopRequireDefault(_bodyParser);
-
+	
 	var _expressSession = __webpack_require__(/*! express-session */ 49);
-
+	
 	var _expressSession2 = _interopRequireDefault(_expressSession);
-
+	
 	var _csurf = __webpack_require__(/*! csurf */ 47);
-
+	
 	var _csurf2 = _interopRequireDefault(_csurf);
-
+	
 	var _config = __webpack_require__(/*! ./config/config.json */ 10);
-
+	
 	var _config2 = _interopRequireDefault(_config);
-
+	
 	var _index = __webpack_require__(/*! ./routes/index */ 38);
-
+	
 	var _index2 = _interopRequireDefault(_index);
-
+	
 	var _index3 = __webpack_require__(/*! ./apis/index */ 34);
-
+	
 	var _index4 = _interopRequireDefault(_index3);
-
+	
 	var _allowCrossDomain = __webpack_require__(/*! ./utils/allowCrossDomain */ 40);
-
+	
 	var _allowCrossDomain2 = _interopRequireDefault(_allowCrossDomain);
-
+	
 	var _renderReactMiddleware = __webpack_require__(/*! ./utils/renderReactMiddleware */ 41);
-
+	
 	var _renderReactMiddleware2 = _interopRequireDefault(_renderReactMiddleware);
-
+	
 	var _immutable = __webpack_require__(/*! immutable */ 3);
-
+	
 	var _immutable2 = _interopRequireDefault(_immutable);
-
+	
 	var _helmet = __webpack_require__(/*! helmet */ 50);
-
+	
 	var _helmet2 = _interopRequireDefault(_helmet);
-
+	
 	var _socket = __webpack_require__(/*! ./sockets/socket */ 39);
-
+	
 	var _socket2 = _interopRequireDefault(_socket);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	let app = (0, _express2.default)();
-
+	
 	app.set('host', process.env.IP || '127.0.0.1');
 	app.set('port', process.env.PORT || 3000);
 	app.disable('x-powered-by');
-
+	
 	app.use(_helmet2.default.contentSecurityPolicy());
 	app.use(_helmet2.default.frameguard());
 	app.use(_helmet2.default.noSniff());
@@ -141,12 +141,12 @@ module.exports =
 	        httpOnly: true
 	    }
 	}));
-
+	
 	// app.use(favicon(__dirname + '/../public/favicon.ico'));
 	app.use('/static', _express2.default.static(__dirname + '/../public', {
 	    maxAge: 86400000
 	}));
-
+	
 	// if(process.env.NODE_ENV !== 'production'){
 	//     let webpack = require('webpack');
 	//     let config = require('../create-webpack.config')(true);
@@ -156,9 +156,9 @@ module.exports =
 	//     app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
 	//     app.use(webpackHotMiddleware(compiler));
 	// }
-
+	
 	app.use(_allowCrossDomain2.default);
-
+	
 	app.use((0, _csurf2.default)());
 	app.use(function (req, res, next) {
 	    res.locals.csrftoken = req.csrfToken();
@@ -169,10 +169,10 @@ module.exports =
 	        return _immutable2.default.fromJS(data);
 	    }
 	}));
-
+	
 	app.use('/', _index2.default);
 	app.use('/api', _index4.default);
-
+	
 	// error handlers
 	// no stacktraces leaked to user
 	app.use(function (err, req, res, next) {
@@ -187,7 +187,7 @@ module.exports =
 	        res.json({ error: err.message });
 	    }
 	});
-
+	
 	process.on('uncaughtException', err => {
 	    console.error(err.message + '\n' + err.stack);
 	});
@@ -197,13 +197,13 @@ module.exports =
 	process.on('rejectionHandled', (reason, p) => {
 	    console.warn("rejectionHandled at: Promise ", p, " reason: ", reason);
 	});
-
+	
 	let server = _http2.default.createServer(app);
-
+	
 	/* Socket.io Communication */
 	let io = __webpack_require__(/*! socket.io */ 56).listen(server);
 	io.sockets.on('connection', _socket2.default);
-
+	
 	server.listen(app.get('port'), app.get('host'), function () {
 	    let { address, port } = server.address();
 	    console.log(`${ _config2.default.serverName } server listening at http://%s:%s`, address, port);
@@ -227,48 +227,48 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _shallowEqual = __webpack_require__(/*! ../utils/shallowEqual */ 33);
-
+	
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
-
+	
 	var _events = __webpack_require__(/*! events */ 11);
-
+	
 	var _events2 = _interopRequireDefault(_events);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	const eventMatchReg = /^on[A-Z]/;
 	function getEventMethodsProps(instance) {
 	    let methods = Object.getOwnPropertyNames(instance).filter(prop => {
 	        return eventMatchReg.test(prop) && typeof instance[prop] === 'function';
 	    });
-
+	
 	    let instancePrototype = Object.getPrototypeOf(instance);
 	    if (instancePrototype !== Object.prototype) {
 	        methods = methods.concat(getEventMethodsProps(instancePrototype));
 	    }
-
+	
 	    return methods;
 	}
-
+	
 	class Base extends _react.Component {
 	    constructor(props, context) {
 	        super(props, context);
-
+	
 	        this.__eventNames = {};
-
+	
 	        this.__bindFunctions();
 	    }
-
+	
 	    __bindFunctions() {
 	        let props = getEventMethodsProps(this);
 	        for (let prop of props) {
@@ -278,48 +278,48 @@ module.exports =
 	            }
 	        }
 	    }
-
+	
 	    on(eventName, fn) {
 	        if (typeof fn !== 'function') throw new Error('fn should be a function');
-
+	
 	        if (!this.__eventNames[eventName]) {
 	            this.__eventNames[eventName] = [fn];
 	        } else {
 	            this.__eventNames[eventName].push(fn);
 	        }
-
+	
 	        return this.context.$eventBus.addListener(eventName, fn);
 	    }
-
+	
 	    emit(eventName, ...args) {
 	        return this.context.$eventBus.emit(eventName, ...args);
 	    }
-
+	
 	    off(eventName, fn) {
 	        let events = this.__eventNames[eventName];
 	        if (events) {
 	            let index = events.indexOf(fn);
-
+	
 	            if (index >= 0) {
 	                this.context.$eventBus.removeListener(eventName, fn);
-
+	
 	                events.splice(index, 1);
-
+	
 	                if (!events.length) {
 	                    delete this.__eventNames[eventName];
 	                }
 	            } else {
 	                console.warn('event: ' + eventName + ' is not registered in ' + this._reactInternalInstance.getName() + ' Component');
 	            }
-
+	
 	            return true;
 	        } else {
 	            console.warn('event: ' + eventName + ' is not registered in ' + this.constructor.name + ' Component');
-
+	
 	            return false;
 	        }
 	    }
-
+	
 	    /**
 	     * 检验组件更新
 	     * @param nextProps
@@ -328,14 +328,14 @@ module.exports =
 	     */
 	    shouldComponentUpdate(nextProps, nextState) {
 	        let shouldUpdate = !(0, _shallowEqual2.default)(this.props, nextProps) || !(0, _shallowEqual2.default)(this.state, nextState);
-
+	
 	        if (shouldUpdate && process.env.NODE_ENV !== 'production') {
 	            console.log('Component: ' + this.constructor.name + ' will update');
 	        }
-
+	
 	        return shouldUpdate;
 	    }
-
+	
 	    componentWillUnmount() {
 	        for (let eventName in this.__eventNames) {
 	            if (this.__eventNames.hasOwnProperty(eventName)) {
@@ -404,7 +404,7 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
@@ -412,43 +412,43 @@ module.exports =
 	exports.selectReddit = selectReddit;
 	exports.invalidateReddit = invalidateReddit;
 	exports.fetchPostsIfNeeded = fetchPostsIfNeeded;
-
+	
 	var _isomorphicFetch = __webpack_require__(/*! isomorphic-fetch */ 12);
-
+	
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
-
+	
 	var _immutable = __webpack_require__(/*! immutable */ 3);
-
+	
 	var _immutable2 = _interopRequireDefault(_immutable);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	const REQUEST_POSTS = exports.REQUEST_POSTS = 'REQUEST_POSTS';
 	const RECEIVE_POSTS = exports.RECEIVE_POSTS = 'RECEIVE_POSTS';
 	const SELECT_REDDIT = exports.SELECT_REDDIT = 'SELECT_REDDIT';
 	const INVALIDATE_REDDIT = exports.INVALIDATE_REDDIT = 'INVALIDATE_REDDIT';
-
+	
 	function selectReddit(reddit) {
 	    return {
 	        type: SELECT_REDDIT,
 	        reddit
 	    };
 	}
-
+	
 	function invalidateReddit(reddit) {
 	    return {
 	        type: INVALIDATE_REDDIT,
 	        reddit
 	    };
 	}
-
+	
 	function requestPosts(reddit) {
 	    return {
 	        type: REQUEST_POSTS,
 	        reddit
 	    };
 	}
-
+	
 	function receivePosts(reddit, json) {
 	    return {
 	        type: RECEIVE_POSTS,
@@ -457,7 +457,7 @@ module.exports =
 	        receivedAt: Date.now()
 	    };
 	}
-
+	
 	function fetchPosts(reddit) {
 	    return dispatch => {
 	        dispatch(requestPosts(reddit));
@@ -467,7 +467,7 @@ module.exports =
 	        }).then(response => response.json()).then(json => dispatch(receivePosts(reddit, json)));
 	    };
 	}
-
+	
 	function shouldFetchPosts(state, reddit) {
 	    const posts = state.get('postsByReddit').get(reddit);
 	    if (!posts) {
@@ -478,7 +478,7 @@ module.exports =
 	    }
 	    return posts.get('didInvalidate');
 	}
-
+	
 	function fetchPostsIfNeeded(reddit) {
 	    return (dispatch, getState) => {
 	        if (shouldFetchPosts(getState(), reddit)) {
@@ -495,7 +495,7 @@ module.exports =
 /***/ function(module, exports) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
@@ -505,33 +505,33 @@ module.exports =
 	/*
 	 * action 类型
 	 */
-
+	
 	const ADD_TODO = exports.ADD_TODO = 'ADD_TODO';
 	const COMPLETE_TODO = exports.COMPLETE_TODO = 'COMPLETE_TODO';
 	const SET_VISIBILITY_FILTER = exports.SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
-
+	
 	/*
 	 * 其它的常量
 	 */
-
+	
 	const VisibilityFilters = exports.VisibilityFilters = {
 	    SHOW_ALL: 'SHOW_ALL',
 	    SHOW_COMPLETED: 'SHOW_COMPLETED',
 	    SHOW_ACTIVE: 'SHOW_ACTIVE'
 	};
-
+	
 	/*
 	 * action 创建函数
 	 */
-
+	
 	function addTodo(text) {
 	    return { type: ADD_TODO, text };
 	}
-
+	
 	function completeTodo(index) {
 	    return { type: COMPLETE_TODO, index };
 	}
-
+	
 	function setVisibilityFilter(filter) {
 	    return { type: SET_VISIBILITY_FILTER, filter };
 	}
@@ -598,41 +598,41 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _events = __webpack_require__(/*! events */ 11);
-
+	
 	var _events2 = _interopRequireDefault(_events);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	let mediator = new _events2.default();
-
+	
 	class App extends _react.Component {
 	    constructor(props, context) {
 	        super(props, context);
 	    }
-
+	
 	    getChildContext() {
 	        return {
 	            $eventBus: mediator,
 	            $appConfig: this.props.appConfig
 	        };
 	    }
-
+	
 	    componentDidMount() {}
-
+	
 	    componentDidUpdate() {}
-
+	
 	    componentWillUnmount() {}
-
+	
 	    render() {
 	        return _react2.default.createElement(
 	            'div',
@@ -651,7 +651,7 @@ module.exports =
 	    $eventBus: _react.PropTypes.instanceOf(_events2.default),
 	    $appConfig: _react.PropTypes.object
 	};
-
+	
 	exports.default = App;
 
 /***/ },
@@ -662,41 +662,41 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _immutable = __webpack_require__(/*! immutable */ 3);
-
+	
 	var _immutable2 = _interopRequireDefault(_immutable);
-
+	
 	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 4);
-
+	
 	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
-
+	
 	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
-
+	
 	var _Base2 = _interopRequireDefault(_Base);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	class Picker extends _Base2.default {
 	  constructor(props, context) {
 	    super(props, context);
 	  }
-
+	
 	  onChange(e) {
 	    this.props.onChange(e.target.value);
 	  }
-
+	
 	  render() {
 	    const { value, onChange, options } = this.props;
-
+	
 	    return _react2.default.createElement(
 	      'span',
 	      null,
@@ -718,7 +718,7 @@ module.exports =
 	    );
 	  }
 	}
-
+	
 	exports.default = Picker;
 	Picker.propTypes = {
 	  options: _react.PropTypes.arrayOf(_react.PropTypes.string.isRequired).isRequired,
@@ -734,25 +734,25 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 4);
-
+	
 	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
-
+	
 	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
-
+	
 	var _Base2 = _interopRequireDefault(_Base);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	class Posts extends _Base2.default {
 	  render() {
 	    return _react2.default.createElement(
@@ -766,7 +766,7 @@ module.exports =
 	    );
 	  }
 	}
-
+	
 	exports.default = Posts;
 	Posts.propTypes = {
 	  posts: _reactImmutableProptypes2.default.list.isRequired
@@ -780,39 +780,39 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
-
+	
 	var _Base2 = _interopRequireDefault(_Base);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	class ChangeNameForm extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
-
+	
 	        this.state = { newName: '' };
 	    }
-
+	
 	    onKey(e) {
 	        this.setState({ newName: e.target.value });
 	    }
-
+	
 	    onSubmit(e) {
 	        e.preventDefault();
 	        var newName = this.state.newName;
 	        this.props.onChangeName(newName);
 	        this.setState({ newName: '' });
 	    }
-
+	
 	    render() {
 	        return _react2.default.createElement(
 	            'div',
@@ -843,27 +843,27 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	exports.MessageForm = exports.MessageList = exports.Message = undefined;
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
-
+	
 	var _Base2 = _interopRequireDefault(_Base);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	class Message extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
 	    }
-
+	
 	    render() {
 	        return _react2.default.createElement(
 	            'div',
@@ -882,13 +882,13 @@ module.exports =
 	        );
 	    }
 	}
-
+	
 	exports.Message = Message;
 	class MessageList extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
 	    }
-
+	
 	    render() {
 	        return _react2.default.createElement(
 	            'div',
@@ -908,15 +908,15 @@ module.exports =
 	        );
 	    }
 	}
-
+	
 	exports.MessageList = MessageList;
 	class MessageForm extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
-
+	
 	        this.state = { text: '' };
 	    }
-
+	
 	    onSubmit(e) {
 	        e.preventDefault();
 	        var message = {
@@ -926,11 +926,11 @@ module.exports =
 	        this.props.onMessageSubmit(message);
 	        this.setState({ text: '' });
 	    }
-
+	
 	    onChange(e) {
 	        this.setState({ text: e.target.value });
 	    }
-
+	
 	    render() {
 	        return _react2.default.createElement(
 	            'div',
@@ -961,26 +961,26 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
-
+	
 	var _Base2 = _interopRequireDefault(_Base);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	class UsersList extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
 	    }
-
+	
 	    render() {
 	        return _react2.default.createElement(
 	            'div',
@@ -1014,37 +1014,37 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	exports.TabPanel = exports.TabTitle = undefined;
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _classnames = __webpack_require__(/*! classnames */ 44);
-
+	
 	var _classnames2 = _interopRequireDefault(_classnames);
-
+	
 	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
-
+	
 	var _Base2 = _interopRequireDefault(_Base);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	class Tabs extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
-
+	
 	        this.state = {
 	            selectedTab: props.defaultSelectedTab || null
 	        };
-
+	
 	        this.firstTabLabel = null;
 	    }
-
+	
 	    getChildContext() {
 	        return {
 	            onSelect: this.onSelect.bind(this),
@@ -1053,24 +1053,24 @@ module.exports =
 	            firstTabLabel: this.firstTabLabel
 	        };
 	    }
-
+	
 	    onSelect(tab, ...rest) {
 	        if (this.state.selectedTab === tab) return;
-
+	
 	        this.setState({
 	            selectedTab: tab
 	        });
-
+	
 	        if (typeof this.props.onSelect === 'function') {
 	            this.props.onSelect(tab, ...rest);
 	        }
 	    }
-
+	
 	    findFirstTabLabel(children) {
 	        if (typeof children !== 'object' || this.firstTabLabel) {
 	            return;
 	        }
-
+	
 	        _react2.default.Children.forEach(children, child => {
 	            if (child.props && child.props.label) {
 	                if (this.firstTabLabel == null) {
@@ -1078,14 +1078,14 @@ module.exports =
 	                    return;
 	                }
 	            }
-
+	
 	            this.findFirstTabLabel(child.props && child.props.children);
 	        });
 	    }
-
+	
 	    render() {
 	        this.findFirstTabLabel(this.props.children);
-
+	
 	        return _react2.default.createElement(
 	            'div',
 	            { className: this.props.className, style: this.props.style },
@@ -1114,28 +1114,28 @@ module.exports =
 	    activeStyle: _react.PropTypes.object,
 	    firstTabLabel: _react.PropTypes.string
 	};
-
+	
 	const defaultActiveStyle = {
 	    fontWeight: 'bold'
 	};
-
+	
 	class TabTitle extends _react.Component {
 	    constructor(props, context) {
 	        super(props, context);
-
+	
 	        this.onSelect = this.onSelect.bind(this);
 	    }
-
+	
 	    onSelect() {
 	        this.context.onSelect(this.props.label);
 	    }
-
+	
 	    componentDidMount() {
 	        if (this.context.selectedTab === this.props.label || !this.context.selectedTab && this.context.firstTabLabel === this.props.label) {
 	            this.context.onSelect(this.props.label);
 	        }
 	    }
-
+	
 	    render() {
 	        let style = null;
 	        let isActive = this.context.selectedTab === this.props.label;
@@ -1143,7 +1143,7 @@ module.exports =
 	            style = this.context.activeStyle;
 	        }
 	        let clsNames = (0, _classnames2.default)(this.props.className, { active: isActive });
-
+	
 	        return _react2.default.createElement(
 	            'div',
 	            {
@@ -1170,7 +1170,7 @@ module.exports =
 	    activeStyle: _react.PropTypes.object,
 	    selectedTab: _react.PropTypes.string
 	};
-
+	
 	const styles = {
 	    visible: {
 	        display: 'block'
@@ -1179,21 +1179,21 @@ module.exports =
 	        display: 'none'
 	    }
 	};
-
+	
 	class TabPanel extends _react.Component {
 	    constructor(props, context) {
 	        super(props, context);
-
+	
 	        for (let style in styles) {
 	            if (styles.hasOwnProperty(style)) {
 	                Object.assign(styles[style], this.props.style);
 	            }
 	        }
 	    }
-
+	
 	    render() {
 	        let displayStyle = this.context.selectedTab === this.props.for ? styles.visible : styles.hidden;
-
+	
 	        return _react2.default.createElement(
 	            'div',
 	            {
@@ -1226,26 +1226,26 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
-
+	
 	var _Base2 = _interopRequireDefault(_Base);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	class AddTodo extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
 	    }
-
+	
 	    render() {
 	        return _react2.default.createElement(
 	            'div',
@@ -1253,12 +1253,12 @@ module.exports =
 	            _react2.default.createElement('input', { type: 'text', ref: 'input' }),
 	            _react2.default.createElement(
 	                'button',
-	                { onClick: this.handleClick },
+	                { onClick: this.onClick.bind(this) },
 	                'Add'
 	            )
 	        );
 	    }
-
+	
 	    handleClick(e) {
 	        const node = this.refs.input;
 	        const text = node.value.trim();
@@ -1266,7 +1266,7 @@ module.exports =
 	        node.value = '';
 	    }
 	}
-
+	
 	exports.default = AddTodo;
 	AddTodo.propTypes = {
 	    onAddClick: _react.PropTypes.func.isRequired
@@ -1280,31 +1280,31 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
-
+	
 	var _Base2 = _interopRequireDefault(_Base);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	class Footer extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
 	    }
-
+	
 	    renderFilter(filter, name) {
 	        if (filter === this.props.filter) {
 	            return name;
 	        }
-
+	
 	        return _react2.default.createElement(
 	            'a',
 	            { href: '#', onClick: e => {
@@ -1314,7 +1314,7 @@ module.exports =
 	            name
 	        );
 	    }
-
+	
 	    render() {
 	        return _react2.default.createElement(
 	            'p',
@@ -1330,7 +1330,7 @@ module.exports =
 	        );
 	    }
 	}
-
+	
 	exports.default = Footer;
 	Footer.propTypes = {
 	    onFilterChange: _react.PropTypes.func.isRequired,
@@ -1345,21 +1345,21 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
-
+	
 	var _Base2 = _interopRequireDefault(_Base);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	let styles = {
 	    completed: {
 	        textDecoration: 'line-through',
@@ -1370,18 +1370,18 @@ module.exports =
 	        cursor: 'pointer'
 	    }
 	};
-
+	
 	class Todo extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
 	    }
-
+	
 	    componentDidMount() {
 	        this.on('test', function () {
 	            console.log('test event bus');
 	        });
 	    }
-
+	
 	    render() {
 	        return _react2.default.createElement(
 	            'li',
@@ -1411,36 +1411,36 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _immutable = __webpack_require__(/*! immutable */ 3);
-
+	
 	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 4);
-
+	
 	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
-
+	
 	var _Todo = __webpack_require__(/*! ./Todo */ 24);
-
+	
 	var _Todo2 = _interopRequireDefault(_Todo);
-
+	
 	var _Base = __webpack_require__(/*! ../../pages/Base */ 2);
-
+	
 	var _Base2 = _interopRequireDefault(_Base);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	class TodoList extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
 	    }
-
+	
 	    render() {
 	        return _react2.default.createElement(
 	            'ul',
@@ -1452,7 +1452,7 @@ module.exports =
 	        );
 	    }
 	}
-
+	
 	exports.default = TodoList;
 	TodoList.propTypes = {
 	    onTodoClick: _react.PropTypes.func.isRequired,
@@ -1470,70 +1470,70 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
-
+	
 	var _immutable = __webpack_require__(/*! immutable */ 3);
-
+	
 	var _immutable2 = _interopRequireDefault(_immutable);
-
+	
 	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 4);
-
+	
 	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
-
+	
 	var _actions = __webpack_require__(/*! ./actions */ 8);
-
+	
 	var _Picker = __webpack_require__(/*! ../../components/async/Picker.jsx */ 16);
-
+	
 	var _Picker2 = _interopRequireDefault(_Picker);
-
+	
 	var _Posts = __webpack_require__(/*! ../../components/async/Posts.jsx */ 17);
-
+	
 	var _Posts2 = _interopRequireDefault(_Posts);
-
+	
 	var _Base = __webpack_require__(/*! ../Base.jsx */ 2);
-
+	
 	var _Base2 = _interopRequireDefault(_Base);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	class AsyncPage extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
 	    }
-
+	
 	    componentDidMount() {
 	        const { dispatch, selectedReddit } = this.props;
 	        dispatch((0, _actions.fetchPostsIfNeeded)(selectedReddit));
 	    }
-
+	
 	    componentWillReceiveProps(nextProps) {
 	        if (nextProps.selectedReddit !== this.props.selectedReddit) {
 	            const { dispatch, selectedReddit } = nextProps;
 	            dispatch((0, _actions.fetchPostsIfNeeded)(selectedReddit));
 	        }
 	    }
-
+	
 	    onHandleChange(nextReddit) {
 	        this.props.dispatch((0, _actions.selectReddit)(nextReddit));
 	    }
-
+	
 	    onHandleRefreshClick(e) {
 	        e.preventDefault();
-
+	
 	        const { dispatch, selectedReddit } = this.props;
 	        dispatch((0, _actions.invalidateReddit)(selectedReddit));
 	        dispatch((0, _actions.fetchPostsIfNeeded)(selectedReddit));
 	    }
-
+	
 	    render() {
 	        const { selectedReddit, posts, isFetching, lastUpdated } = this.props;
 	        const isEmpty = posts.size === 0;
@@ -1584,7 +1584,7 @@ module.exports =
 	    posts: new _immutable2.default.List(),
 	    isFetching: false,
 	    lastUpdated: 0
-
+	
 	};
 	AsyncPage.propTypes = {
 	    selectedReddit: _react.PropTypes.string.isRequired,
@@ -1592,9 +1592,9 @@ module.exports =
 	    isFetching: _react.PropTypes.bool.isRequired,
 	    lastUpdated: _react.PropTypes.number
 	};
-
+	
 	const defaultOptions = ['reactjs', 'frontend'];
-
+	
 	function mapStateToProps(state) {
 	    const selectedReddit = state.get('selectedReddit');
 	    const postsByReddit = state.get('postsByReddit');
@@ -1605,7 +1605,7 @@ module.exports =
 	    const isFetching = data.get('isFetching');
 	    const lastUpdated = data.get('lastUpdated');
 	    const posts = data.get('items');
-
+	
 	    return {
 	        selectedReddit,
 	        posts,
@@ -1613,7 +1613,7 @@ module.exports =
 	        lastUpdated
 	    };
 	}
-
+	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AsyncPage);
 
 /***/ },
@@ -1624,21 +1624,21 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
+	
 	var _immutable = __webpack_require__(/*! immutable */ 3);
-
+	
 	var _immutable2 = _interopRequireDefault(_immutable);
-
+	
 	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 14);
-
+	
 	var _actions = __webpack_require__(/*! ./actions */ 8);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	function selectedReddit(state = 'reactjs', action) {
 	  switch (action.type) {
 	    case _actions.SELECT_REDDIT:
@@ -1647,8 +1647,8 @@ module.exports =
 	      return state;
 	  }
 	} // import { combineReducers } from 'redux'
-
-
+	
+	
 	function posts(state = new _immutable2.default.Map({
 	  isFetching: false,
 	  didInvalidate: false,
@@ -1673,7 +1673,7 @@ module.exports =
 	      return state;
 	  }
 	}
-
+	
 	function postsByReddit(state = new _immutable2.default.Map(), action) {
 	  switch (action.type) {
 	    case _actions.INVALIDATE_REDDIT:
@@ -1684,12 +1684,12 @@ module.exports =
 	      return state;
 	  }
 	}
-
+	
 	const rootReducer = (0, _reduxImmutablejs.combineReducers)({
 	  postsByReddit,
 	  selectedReddit
 	});
-
+	
 	exports.default = rootReducer;
 
 /***/ },
@@ -1700,48 +1700,48 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
-
+	
 	var _Base = __webpack_require__(/*! ../Base.jsx */ 2);
-
+	
 	var _Base2 = _interopRequireDefault(_Base);
-
+	
 	var _UsersList = __webpack_require__(/*! ../../components/chat/UsersList */ 20);
-
+	
 	var _UsersList2 = _interopRequireDefault(_UsersList);
-
+	
 	var _Messages = __webpack_require__(/*! ../../components/chat/Messages */ 19);
-
+	
 	var _ChangeNameForm = __webpack_require__(/*! ../../components/chat/ChangeNameForm */ 18);
-
+	
 	var _ChangeNameForm2 = _interopRequireDefault(_ChangeNameForm);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	if (process.browser) {
 	    var socket = io.connect();
 	}
-
+	
 	class Page extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
-
+	
 	        this.state = {
 	            users: [],
 	            messages: [],
 	            text: ''
 	        };
 	    }
-
+	
 	    componentDidMount() {
 	        socket.on('init', this.initialize.bind(this));
 	        socket.on('send:message', this.messageRecieve.bind(this));
@@ -1749,24 +1749,24 @@ module.exports =
 	        socket.on('user:left', this.userLeft.bind(this));
 	        socket.on('change:name', this.userChangedName.bind(this));
 	    }
-
+	
 	    initialize(data) {
 	        let { users, name } = data;
 	        this.setState({ users, user: name });
 	    }
-
+	
 	    messageRecieve(message) {
 	        let { messages } = this.state;
-
+	
 	        this.setState({
 	            messages: [...messages, message]
 	        });
 	    }
-
+	
 	    userJoined(data) {
 	        let { users, messages } = this.state;
 	        let { name } = data;
-
+	
 	        this.setState({
 	            users: [users, name],
 	            messages: [...messages, {
@@ -1775,13 +1775,13 @@ module.exports =
 	            }]
 	        });
 	    }
-
+	
 	    userLeft(data) {
 	        let { users, messages } = this.state;
 	        let { name } = data;
 	        let index = users.indexOf(name);
 	        users.splice(index, 1);
-
+	
 	        this.setState({
 	            users: [...users],
 	            messages: [...messages, {
@@ -1790,13 +1790,13 @@ module.exports =
 	            }]
 	        });
 	    }
-
+	
 	    userChangedName(data) {
 	        let { oldName, newName } = data;
 	        let { users, messages } = this.state;
 	        let index = users.indexOf(oldName);
 	        users.splice(index, 1, newName);
-
+	
 	        this.setState({
 	            users: [...users],
 	            messages: [...messages, {
@@ -1805,16 +1805,16 @@ module.exports =
 	            }]
 	        });
 	    }
-
+	
 	    onMessageSubmit(message) {
 	        let { messages } = this.state;
-
+	
 	        this.setState({
 	            messages: [...messages, message]
 	        });
 	        socket.emit('send:message', message);
 	    }
-
+	
 	    onChangeName(newName) {
 	        let oldName = this.state.user;
 	        socket.emit('change:name', { name: newName }, result => {
@@ -1830,7 +1830,7 @@ module.exports =
 	            });
 	        });
 	    }
-
+	
 	    render() {
 	        return _react2.default.createElement(
 	            'div',
@@ -1861,15 +1861,15 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
+	
 	var _redux = __webpack_require__(/*! redux */ 13);
-
+	
 	const rootReducer = (0, _redux.combineReducers)({});
-
+	
 	exports.default = rootReducer;
 
 /***/ },
@@ -1880,54 +1880,54 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
-
+	
 	var _immutable = __webpack_require__(/*! immutable */ 3);
-
+	
 	var _Base = __webpack_require__(/*! ../Base.jsx */ 2);
-
+	
 	var _Base2 = _interopRequireDefault(_Base);
-
+	
 	var _indexActions = __webpack_require__(/*! ./indexActions */ 9);
-
+	
 	var _AddTodo = __webpack_require__(/*! ../../components/index/AddTodo */ 22);
-
+	
 	var _AddTodo2 = _interopRequireDefault(_AddTodo);
-
+	
 	var _TodoList = __webpack_require__(/*! ../../components/index/TodoList */ 25);
-
+	
 	var _TodoList2 = _interopRequireDefault(_TodoList);
-
+	
 	var _Footer = __webpack_require__(/*! ../../components/index/Footer */ 23);
-
+	
 	var _Footer2 = _interopRequireDefault(_Footer);
-
+	
 	var _Tab = __webpack_require__(/*! ../../components/common/Tab */ 21);
-
+	
 	var _Tab2 = _interopRequireDefault(_Tab);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	class Page extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
 	    }
-
+	
 	    componentDidMount() {
 	        console.log(this.context.$appConfig.user);
-
+	
 	        this.emit('test');
 	    }
-
+	
 	    render() {
 	        // Injected by connect() call:
 	        const { dispatch, visibleTodos, visibilityFilter } = this.props;
@@ -1969,7 +1969,7 @@ module.exports =
 	        );
 	    }
 	}
-
+	
 	Page.propTypes = {
 	    visibleTodos: _react.PropTypes.instanceOf(_immutable.List).isRequired,
 	    visibilityFilter: _react.PropTypes.oneOf(['SHOW_ALL', 'SHOW_COMPLETED', 'SHOW_ACTIVE']).isRequired
@@ -1978,7 +1978,7 @@ module.exports =
 	    $appConfig: _react.PropTypes.object,
 	    $eventBus: _react.PropTypes.object
 	};
-
+	
 	function selectTodos(todos, filter) {
 	    switch (filter) {
 	        case _indexActions.VisibilityFilters.SHOW_ALL:
@@ -1989,7 +1989,7 @@ module.exports =
 	            return todos.filter(todo => !todo.get('completed'));
 	    }
 	}
-
+	
 	// Which props do we want to inject, given the global state?
 	// Note: use https://github.com/faassen/reselect for better performance.
 	function select(state) {
@@ -1998,7 +1998,7 @@ module.exports =
 	        visibilityFilter: state.get('visibilityFilter')
 	    };
 	}
-
+	
 	// 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
 	exports.default = (0, _reactRedux.connect)(select)(Page);
 
@@ -2010,20 +2010,20 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
+	
 	var _immutable = __webpack_require__(/*! immutable */ 3);
-
+	
 	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 14);
-
+	
 	var _indexActions = __webpack_require__(/*! ./indexActions */ 9);
-
+	
 	const { SHOW_ALL } = _indexActions.VisibilityFilters; // import { combineReducers } from 'redux'
-
-
+	
+	
 	function visibilityFilter(state = SHOW_ALL, action) {
 	    switch (action.type) {
 	        case _indexActions.SET_VISIBILITY_FILTER:
@@ -2032,7 +2032,7 @@ module.exports =
 	            return state;
 	    }
 	}
-
+	
 	function todos(state = new _immutable.List(), action) {
 	    switch (action.type) {
 	        case _indexActions.ADD_TODO:
@@ -2048,12 +2048,12 @@ module.exports =
 	            return state;
 	    }
 	}
-
+	
 	const todoApp = (0, _reduxImmutablejs.combineReducers)({
 	    visibilityFilter,
 	    todos
 	});
-
+	
 	exports.default = todoApp;
 
 /***/ },
@@ -2064,49 +2064,49 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	exports.default = configureStore;
-
+	
 	var _redux = __webpack_require__(/*! redux */ 13);
-
+	
 	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 54);
-
+	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	if (process.env.NODE_ENV !== 'production' && process.browser) {
 	    var createLogger = __webpack_require__(/*! redux-logger */ 42);
 	}
-
+	
 	const middlewareBuilder = () => {
 	    let middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default);
-
+	
 	    if (process.browser && process.env.NODE_ENV !== 'production') {
 	        if (!window.devToolsExtension) {
 	            middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default, createLogger());
 	        }
 	    }
-
+	
 	    let allComposeElements = [middleware];
-
+	
 	    if (process.browser && process.env.NODE_ENV !== 'production') {
 	        if (window.devToolsExtension) {
 	            allComposeElements.push(window.devToolsExtension());
 	        }
 	    }
-
+	
 	    return allComposeElements;
 	};
-
+	
 	const finalCreateStore = (0, _redux.compose)(...middlewareBuilder())(_redux.createStore);
-
+	
 	function configureStore(initialState, rootReducer) {
 	    const store = finalCreateStore(rootReducer, initialState);
-
+	
 	    return store;
 	}
 
@@ -2129,13 +2129,13 @@ module.exports =
 	 * @typechecks
 	 *
 	 */
-
+	
 	/*eslint-disable no-self-compare */
-
+	
 	'use strict';
-
+	
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
-
+	
 	/**
 	 * inlined Object.is polyfill to avoid requiring consumers ship their own
 	 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
@@ -2154,7 +2154,7 @@ module.exports =
 	        return x !== x && y !== y;
 	    }
 	}
-
+	
 	/**
 	 * Performs equality by iterating through keys on an object and returning false
 	 * when any key has values which are not strictly equal between the arguments.
@@ -2164,28 +2164,28 @@ module.exports =
 	    if (is(objA, objB)) {
 	        return true;
 	    }
-
+	
 	    if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
 	        return false;
 	    }
-
+	
 	    var keysA = Object.keys(objA);
 	    var keysB = Object.keys(objB);
-
+	
 	    if (keysA.length !== keysB.length) {
 	        return false;
 	    }
-
+	
 	    // Test for A's keys different from B.
 	    for (var i = 0; i < keysA.length; i++) {
 	        if (!hasOwnProperty.call(objB, keysA[i]) || !is(objA[keysA[i]], objB[keysA[i]])) {
 	            return false;
 	        }
 	    }
-
+	
 	    return true;
 	}
-
+	
 	module.exports = shallowEqual;
 
 /***/ },
@@ -2196,15 +2196,15 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
+	
 	var _express = __webpack_require__(/*! express */ 6);
-
+	
 	let router = new _express.Router();
-
+	
 	router.post('/ajax', function (req, res, next) {
 	    if (error) {
 	        next();
@@ -2212,7 +2212,7 @@ module.exports =
 	        res.send('test');
 	    }
 	});
-
+	
 	exports.default = router;
 
 /***/ },
@@ -2223,31 +2223,31 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _isomorphicFetch = __webpack_require__(/*! isomorphic-fetch */ 12);
-
+	
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
-
+	
 	var _reducers = __webpack_require__(/*! ../../common/pages/async/reducers */ 27);
-
+	
 	var _reducers2 = _interopRequireDefault(_reducers);
-
+	
 	var _Page = __webpack_require__(/*! ../../common/pages/async/Page.jsx */ 26);
-
+	
 	var _Page2 = _interopRequireDefault(_Page);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	module.exports = function (req, res, next) {
 	    let state = {
 	        postsByReddit: {},
 	        selectedReddit: 'reactjs'
 	    };
-
+	
 	    (0, _isomorphicFetch2.default)(`https://www.reddit.com/r/${ state.selectedReddit }.json`, {
 	        method: 'GET',
 	        timeout: 5000
@@ -2258,7 +2258,7 @@ module.exports =
 	            lastUpdated: Date.now(),
 	            items: json.data.children.map(child => child.data)
 	        };
-
+	
 	        res.renderReactHTML({
 	            component: _react2.default.createElement(_Page2.default, null),
 	            locals: {
@@ -2269,9 +2269,9 @@ module.exports =
 	            rootReducer: _reducers2.default
 	        });
 	    }).catch(msg => {
-
+	
 	        console.log(msg);
-
+	
 	        res.renderReactHTML({
 	            component: _react2.default.createElement(_Page2.default, null),
 	            locals: {
@@ -2292,28 +2292,28 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _reducers = __webpack_require__(/*! ../../common/pages/chat/reducers */ 29);
-
+	
 	var _reducers2 = _interopRequireDefault(_reducers);
-
+	
 	var _Page = __webpack_require__(/*! ../../common/pages/chat/Page */ 28);
-
+	
 	var _Page2 = _interopRequireDefault(_Page);
-
+	
 	var _fs = __webpack_require__(/*! fs */ 7);
-
+	
 	var _fs2 = _interopRequireDefault(_fs);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	let template = _fs2.default.readFileSync(__dirname + '/../views/chat.html', 'utf8');
 	let fakeData = {};
-
+	
 	module.exports = function (req, res, next) {
 	    res.renderReactHTML({
 	        template,
@@ -2337,21 +2337,21 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _indexReducers = __webpack_require__(/*! ../../common/pages/index/indexReducers */ 31);
-
+	
 	var _indexReducers2 = _interopRequireDefault(_indexReducers);
-
+	
 	var _index = __webpack_require__(/*! ../../common/pages/index */ 30);
-
+	
 	var _index2 = _interopRequireDefault(_index);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	let fakeData = {
 	    visibilityFilter: 'SHOW_ALL',
 	    todos: [{
@@ -2362,7 +2362,7 @@ module.exports =
 	        completed: true
 	    }]
 	};
-
+	
 	module.exports = function (req, res, next) {
 	    res.renderReactHTML({
 	        component: _react2.default.createElement(_index2.default, null),
@@ -2386,59 +2386,58 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
+	
 	var _express = __webpack_require__(/*! express */ 6);
-
+	
 	var _fs = __webpack_require__(/*! fs */ 7);
-
+	
 	var _fs2 = _interopRequireDefault(_fs);
-
+	
 	var _index = __webpack_require__(/*! ../controllers/index */ 37);
-
+	
 	var _index2 = _interopRequireDefault(_index);
-
+	
 	var _async = __webpack_require__(/*! ../controllers/async */ 35);
-
+	
 	var _async2 = _interopRequireDefault(_async);
-
+	
 	var _chat = __webpack_require__(/*! ../controllers/chat */ 36);
-
+	
 	var _chat2 = _interopRequireDefault(_chat);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { return step("next", value); }, function (err) { return step("throw", err); }); } } return step("next"); }); }; }
-
+	
 	let router = new _express.Router();
-
+	
 	/**
 	 * 首页请求
 	 */
 	router.get('/', _index2.default);
 	router.get('/async', _async2.default);
 	router.get('/chat', _chat2.default);
-
+	
 	/**
 	 * 静态资源
 	 */
 	let content = _fs2.default.readFileSync(__dirname + '/../../client/js/utils/sw.js', 'utf8');
-
+	
 	router.get('/sw.js', (() => {
 	  var _ref = _asyncToGenerator(function* (req, res) {
-
 	    res.set('Content-Type', 'application/javascript');
 	    res.send(content);
 	  });
-
+	
 	  return function (_x, _x2) {
 	    return _ref.apply(this, arguments);
 	  };
 	})());
-
+	
 	exports.default = router;
 	/* WEBPACK VAR INJECTION */}.call(exports, "server\\routes"))
 
@@ -2450,25 +2449,25 @@ module.exports =
 /***/ function(module, exports) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-
+	
 	exports.default = function (socket) {
 	    let name = userNames.getGuestName();
-
+	
 	    // send the new user their name and a list of users
 	    socket.emit('init', {
 	        name: name,
 	        users: userNames.get()
 	    });
-
+	
 	    // notify other clients that a new user has joined
 	    socket.broadcast.emit('user:join', {
 	        name: name
 	    });
-
+	
 	    // broadcast a user's message to other users
 	    socket.on('send:message', function (data) {
 	        socket.broadcast.emit('send:message', {
@@ -2476,26 +2475,26 @@ module.exports =
 	            text: data.text
 	        });
 	    });
-
+	
 	    // validate a user's name change, and broadcast it on success
 	    socket.on('change:name', function (data, fn) {
 	        if (userNames.claim(data.name)) {
 	            let oldName = name;
 	            userNames.free(oldName);
-
+	
 	            name = data.name;
-
+	
 	            socket.broadcast.emit('change:name', {
 	                oldName: oldName,
 	                newName: name
 	            });
-
+	
 	            fn(true);
 	        } else {
 	            fn(false);
 	        }
 	    });
-
+	
 	    // clean up when a user leaves, and broadcast it to other users
 	    socket.on('disconnect', function () {
 	        socket.broadcast.emit('user:left', {
@@ -2504,11 +2503,11 @@ module.exports =
 	        userNames.free(name);
 	    });
 	};
-
+	
 	// Keep track of which names are used so that there are no duplicates
 	let userNames = function () {
 	    let names = {};
-
+	
 	    let claim = function (name) {
 	        if (!name || names[name]) {
 	            return false;
@@ -2517,36 +2516,36 @@ module.exports =
 	            return true;
 	        }
 	    };
-
+	
 	    // find the lowest unused "guest" name and claim it
 	    let getGuestName = function () {
 	        let name,
 	            nextUserId = 1;
-
+	
 	        do {
 	            name = 'Guest ' + nextUserId;
 	            nextUserId += 1;
 	        } while (!claim(name));
-
+	
 	        return name;
 	    };
-
+	
 	    // serialize claimed names as an array
 	    let get = function () {
 	        let res = [];
 	        for (let user in names) {
 	            res.push(user);
 	        }
-
+	
 	        return res;
 	    };
-
+	
 	    let free = function (name) {
 	        if (names[name]) {
 	            delete names[name];
 	        }
 	    };
-
+	
 	    return {
 	        claim: claim,
 	        free: free,
@@ -2554,7 +2553,7 @@ module.exports =
 	        getGuestName: getGuestName
 	    };
 	}();
-
+	
 	// export function for listening to the socket
 	;
 
@@ -2566,7 +2565,7 @@ module.exports =
 /***/ function(module, exports) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
@@ -2588,52 +2587,52 @@ module.exports =
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 	exports.default = reactRender;
-
+	
 	var _ejs = __webpack_require__(/*! ejs */ 48);
-
+	
 	var _ejs2 = _interopRequireDefault(_ejs);
-
+	
 	var _react = __webpack_require__(/*! react */ 1);
-
+	
 	var _react2 = _interopRequireDefault(_react);
-
+	
 	var _server = __webpack_require__(/*! react-dom/server */ 53);
-
+	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
-
+	
 	var _fs = __webpack_require__(/*! fs */ 7);
-
+	
 	var _fs2 = _interopRequireDefault(_fs);
-
+	
 	var _secureFilters = __webpack_require__(/*! secure-filters */ 55);
-
+	
 	var _secureFilters2 = _interopRequireDefault(_secureFilters);
-
+	
 	var _index = __webpack_require__(/*! ../../common/store/index */ 32);
-
+	
 	var _index2 = _interopRequireDefault(_index);
-
+	
 	var _App = __webpack_require__(/*! ../../common/App.jsx */ 15);
-
+	
 	var _App2 = _interopRequireDefault(_App);
-
+	
 	var _config = __webpack_require__(/*! ../config/config.json */ 10);
-
+	
 	var _config2 = _interopRequireDefault(_config);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	// for xss protection
 	const defaultTemplate = _fs2.default.readFileSync(__dirname + '/../views/index.html', 'utf8');
-
+	
 	function getDefaultJSVersion(name) {
 	    let webpackAssets = _fs2.default.readFileSync(__dirname + '/../../webpack-assets.json', 'utf8');
-
+	
 	    try {
 	        webpackAssets = JSON.parse(webpackAssets);
 	    } catch (ex) {
@@ -2642,7 +2641,7 @@ module.exports =
 	    }
 	    return webpackAssets[name];
 	}
-
+	
 	function reactRender(middlewareConfig = {}) {
 	    return function (req, res, next) {
 	        res.renderReactHTML = function (opts = {}) {
@@ -2659,7 +2658,7 @@ module.exports =
 	            let store = (0, _index2.default)(transformedData, rootReducer);
 	            let html = '';
 	            pageConfig = Object.assign(typeof middlewareConfig.appConfig === 'object' ? middlewareConfig.appConfig : {}, pageConfig);
-
+	
 	            try {
 	                html = (0, _server.renderToString)(_react2.default.createElement(
 	                    _reactRedux.Provider,
@@ -2674,7 +2673,7 @@ module.exports =
 	                html = 'internal server error: \n' + ex.message;
 	                console.error(ex.message);
 	            }
-
+	
 	            let debug = req.query.debug && req.query.debug === _config2.default.application.debugName;
 	            let state = _secureFilters2.default.jsObj(data);
 	            let version = _config2.default.application.version;
@@ -2686,7 +2685,7 @@ module.exports =
 	                jsVersion = getDefaultJSVersion(locals.appName || 'index');
 	            }
 	            template = template || middlewareConfig.defaultTemplate || defaultTemplate;
-
+	
 	            let finalLocals = Object.assign({
 	                html,
 	                state,
@@ -2700,14 +2699,14 @@ module.exports =
 	                    css: version && version.css
 	                }
 	            }, res.locals, locals);
-
+	
 	            let pageStr = _ejs2.default.render(template, finalLocals, {
 	                compileDebug: false
 	            });
-
+	
 	            res.status(200).send(pageStr);
 	        };
-
+	
 	        next();
 	    };
 	}
@@ -2721,11 +2720,11 @@ module.exports =
 /***/ function(module, exports) {
 
 	"use strict";
-
+	
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
+	
 	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-
+	
 	var repeat = function repeat(str, times) {
 	  return new Array(times + 1).join(str);
 	};
@@ -2735,10 +2734,10 @@ module.exports =
 	var formatTime = function formatTime(time) {
 	  return "@ " + pad(time.getHours(), 2) + ":" + pad(time.getMinutes(), 2) + ":" + pad(time.getSeconds(), 2) + "." + pad(time.getMilliseconds(), 3);
 	};
-
+	
 	// Use the new performance api to get better precision if available
 	var timer = typeof performance !== "undefined" && typeof performance.now === "function" ? performance : Date;
-
+	
 	/**
 	 * parse the level option of createLogger
 	 *
@@ -2747,7 +2746,7 @@ module.exports =
 	 * @property {array} payload
 	 * @property {string} type
 	 */
-
+	
 	function getLogLevel(level, action, payload, type) {
 	  switch (typeof level === "undefined" ? "undefined" : _typeof(level)) {
 	    case "object":
@@ -2758,7 +2757,7 @@ module.exports =
 	      return level;
 	  }
 	}
-
+	
 	/**
 	 * Creates logger with followed options
 	 *
@@ -2776,7 +2775,7 @@ module.exports =
 	 * @property {function} options.actionTransformer - transform action before print
 	 * @property {function} options.errorTransformer - transform error before print
 	 */
-
+	
 	function createLogger() {
 	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 	  var _options$level = options.level;
@@ -2823,9 +2822,9 @@ module.exports =
 	      return "#F20404";
 	    }
 	  } : _options$colors;
-
+	
 	  // exit if console undefined
-
+	
 	  if (typeof logger === "undefined") {
 	    return function () {
 	      return function (next) {
@@ -2835,11 +2834,11 @@ module.exports =
 	      };
 	    };
 	  }
-
+	
 	  if (transformer) {
 	    console.error("Option 'transformer' is deprecated, use stateTransformer instead");
 	  }
-
+	
 	  var logBuffer = [];
 	  function printBuffer() {
 	    logBuffer.forEach(function (logEntry, key) {
@@ -2850,7 +2849,7 @@ module.exports =
 	      var error = logEntry.error;
 	      var took = logEntry.took;
 	      var nextState = logEntry.nextState;
-
+	
 	      var nextEntry = logBuffer[key + 1];
 	      if (nextEntry) {
 	        nextState = nextEntry.prevState;
@@ -2861,11 +2860,11 @@ module.exports =
 	      var isCollapsed = typeof collapsed === "function" ? collapsed(function () {
 	        return nextState;
 	      }, action) : collapsed;
-
+	
 	      var formattedTime = formatTime(startedTime);
 	      var titleCSS = colors.title ? "color: " + colors.title(formattedAction) + ";" : null;
 	      var title = "action " + (timestamp ? formattedTime : "") + " " + formattedAction.type + " " + (duration ? "(in " + took.toFixed(2) + " ms)" : "");
-
+	
 	      // render
 	      try {
 	        if (isCollapsed) {
@@ -2876,28 +2875,28 @@ module.exports =
 	      } catch (e) {
 	        logger.log(title);
 	      }
-
+	
 	      var prevStateLevel = getLogLevel(level, formattedAction, [prevState], "prevState");
 	      var actionLevel = getLogLevel(level, formattedAction, [formattedAction], "action");
 	      var errorLevel = getLogLevel(level, formattedAction, [error, prevState], "error");
 	      var nextStateLevel = getLogLevel(level, formattedAction, [nextState], "nextState");
-
+	
 	      if (prevStateLevel) {
 	        if (colors.prevState) logger[prevStateLevel]("%c prev state", "color: " + colors.prevState(prevState) + "; font-weight: bold", prevState);else logger[prevStateLevel]("prev state", prevState);
 	      }
-
+	
 	      if (actionLevel) {
 	        if (colors.action) logger[actionLevel]("%c action", "color: " + colors.action(formattedAction) + "; font-weight: bold", formattedAction);else logger[actionLevel]("action", formattedAction);
 	      }
-
+	
 	      if (error && errorLevel) {
 	        if (colors.error) logger[errorLevel]("%c error", "color: " + colors.error(error, prevState) + "; font-weight: bold", error);else logger[errorLevel]("error", error);
 	      }
-
+	
 	      if (nextStateLevel) {
 	        if (colors.nextState) logger[nextStateLevel]("%c next state", "color: " + colors.nextState(nextState) + "; font-weight: bold", nextState);else logger[nextStateLevel]("next state", nextState);
 	      }
-
+	
 	      try {
 	        logger.groupEnd();
 	      } catch (e) {
@@ -2906,7 +2905,7 @@ module.exports =
 	    });
 	    logBuffer.length = 0;
 	  }
-
+	
 	  return function (_ref) {
 	    var getState = _ref.getState;
 	    return function (next) {
@@ -2915,15 +2914,15 @@ module.exports =
 	        if (typeof predicate === "function" && !predicate(getState, action)) {
 	          return next(action);
 	        }
-
+	
 	        var logEntry = {};
 	        logBuffer.push(logEntry);
-
+	
 	        logEntry.started = timer.now();
 	        logEntry.startedTime = new Date();
 	        logEntry.prevState = stateTransformer(getState());
 	        logEntry.action = action;
-
+	
 	        var returnedValue = undefined;
 	        if (logErrors) {
 	          try {
@@ -2934,19 +2933,19 @@ module.exports =
 	        } else {
 	          returnedValue = next(action);
 	        }
-
+	
 	        logEntry.took = timer.now() - logEntry.started;
 	        logEntry.nextState = stateTransformer(getState());
-
+	
 	        printBuffer();
-
+	
 	        if (logEntry.error) throw logEntry.error;
 	        return returnedValue;
 	      };
 	    };
 	  };
 	}
-
+	
 	module.exports = createLogger;
 
 /***/ },
@@ -3077,3 +3076,4 @@ module.exports =
 
 /***/ }
 /******/ ]);
+//# sourceMappingURL=server.js.map

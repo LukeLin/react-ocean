@@ -1,14 +1,14 @@
 import React from 'react';
 
-import createRender from '../utils/initializeRender';
+import createRender from '../utils/createApp';
 import Page from '../../../common/pages/chat/Page.jsx';
 // import rootReducer from '../../../common/pages/chat/reducers';
 
 import '../../css/main.css';
 
-let initializeRender = createRender();
+let createApp = createRender();
 
-initializeRender({
+createApp({
     null,
     component: <Page/>
 }).then((store) => {
@@ -17,7 +17,7 @@ initializeRender({
         module.hot.accept(['../../../common/pages/chat/Page.jsx', '../../../common/pages/chat/reducers'], () => {
             const NewPage = require('../../../common/pages/chat/Page.jsx').default;
             const newRootReducer = require('../../../common/pages/chat/reducers').default;
-            initializeRender({
+            createApp({
                 rootReducer: newRootReducer,
                 component: <NewPage/>
             });
