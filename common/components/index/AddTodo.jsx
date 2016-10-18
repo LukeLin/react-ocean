@@ -10,9 +10,7 @@ export default class AddTodo extends Base {
         return (
             <div>
                 <input type='text' ref='input' />
-                <button onClick={ this.handleClick }>
-                    Add
-                </button>
+                <button onClick={ this.onClick.bind(this) }>Add</button>
             </div>
         )
     }
