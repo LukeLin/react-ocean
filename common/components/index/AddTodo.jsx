@@ -15,7 +15,7 @@ export default class AddTodo extends Base {
         )
     }
 
-    handleClick(e) {
+    onClick(e) {
         const node = this.refs.input;
         const text = node.value.trim();
         this.props.onAddClick(text);

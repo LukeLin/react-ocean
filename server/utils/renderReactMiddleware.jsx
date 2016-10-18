@@ -58,7 +58,7 @@ export default function reactRender(middlewareConfig = {}) {
             }
 
             let debug = req.query.debug && (req.query.debug === config.application.debugName);
-            let state = SecureFilters.jsObj(data);
+            let state = data;
             let version = config.application.version;
             let jsVersion = '';
             // prefer config version, useful when using CDN config
@@ -71,7 +71,7 @@ export default function reactRender(middlewareConfig = {}) {
 
             let finalLocals = Object.assign({
                 html,
-                state,
+                state: SecureFilters.jsObj(data),
                 appName: 'index',
                 title: '',
                 test: process.env.NODE_ENV !== 'production',

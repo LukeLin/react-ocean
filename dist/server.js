@@ -50,7 +50,7 @@ module.exports =
 
 	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
 	
-	var _http = __webpack_require__(/*! http */ 51);
+	var _http = __webpack_require__(/*! http */ 50);
 	
 	var _http2 = _interopRequireDefault(_http);
 	
@@ -58,31 +58,31 @@ module.exports =
 	
 	var _express2 = _interopRequireDefault(_express);
 	
-	var _compression = __webpack_require__(/*! compression */ 45);
+	var _compression = __webpack_require__(/*! compression */ 44);
 	
 	var _compression2 = _interopRequireDefault(_compression);
 	
-	var _morgan = __webpack_require__(/*! morgan */ 52);
+	var _morgan = __webpack_require__(/*! morgan */ 51);
 	
 	var _morgan2 = _interopRequireDefault(_morgan);
 	
-	var _cookieParser = __webpack_require__(/*! cookie-parser */ 46);
+	var _cookieParser = __webpack_require__(/*! cookie-parser */ 45);
 	
 	var _cookieParser2 = _interopRequireDefault(_cookieParser);
 	
-	var _bodyParser = __webpack_require__(/*! body-parser */ 43);
+	var _bodyParser = __webpack_require__(/*! body-parser */ 42);
 	
 	var _bodyParser2 = _interopRequireDefault(_bodyParser);
 	
-	var _expressSession = __webpack_require__(/*! express-session */ 49);
+	var _expressSession = __webpack_require__(/*! express-session */ 48);
 	
 	var _expressSession2 = _interopRequireDefault(_expressSession);
 	
-	var _csurf = __webpack_require__(/*! csurf */ 47);
+	var _csurf = __webpack_require__(/*! csurf */ 46);
 	
 	var _csurf2 = _interopRequireDefault(_csurf);
 	
-	var _config = __webpack_require__(/*! ./config/config.json */ 10);
+	var _config = __webpack_require__(/*! ./config/config.json */ 8);
 	
 	var _config2 = _interopRequireDefault(_config);
 	
@@ -106,7 +106,7 @@ module.exports =
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
-	var _helmet = __webpack_require__(/*! helmet */ 50);
+	var _helmet = __webpack_require__(/*! helmet */ 49);
 	
 	var _helmet2 = _interopRequireDefault(_helmet);
 	
@@ -398,6 +398,24 @@ module.exports =
 
 /***/ },
 /* 8 */
+/*!***********************************!*\
+  !*** ./server/config/config.json ***!
+  \***********************************/
+/***/ function(module, exports) {
+
+	module.exports = {
+		"application": {
+			"version": {
+				"css": "",
+				"js": ""
+			},
+			"debugName": "test"
+		},
+		"serverName": "isomophic-react-redux-starter"
+	};
+
+/***/ },
+/* 9 */
 /*!***************************************!*\
   !*** ./common/pages/async/actions.js ***!
   \***************************************/
@@ -488,7 +506,7 @@ module.exports =
 	}
 
 /***/ },
-/* 9 */
+/* 10 */
 /*!********************************************!*\
   !*** ./common/pages/index/indexActions.js ***!
   \********************************************/
@@ -535,24 +553,6 @@ module.exports =
 	function setVisibilityFilter(filter) {
 	    return { type: SET_VISIBILITY_FILTER, filter };
 	}
-
-/***/ },
-/* 10 */
-/*!***********************************!*\
-  !*** ./server/config/config.json ***!
-  \***********************************/
-/***/ function(module, exports) {
-
-	module.exports = {
-		"application": {
-			"version": {
-				"css": "",
-				"js": ""
-			},
-			"debugName": "test"
-		},
-		"serverName": "isomophic-react-redux-starter"
-	};
 
 /***/ },
 /* 11 */
@@ -1024,7 +1024,7 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(/*! classnames */ 44);
+	var _classnames = __webpack_require__(/*! classnames */ 43);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -1259,7 +1259,7 @@ module.exports =
 	        );
 	    }
 	
-	    handleClick(e) {
+	    onClick(e) {
 	        const node = this.refs.input;
 	        const text = node.value.trim();
 	        this.props.onAddClick(text);
@@ -1489,7 +1489,7 @@ module.exports =
 	
 	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
 	
-	var _actions = __webpack_require__(/*! ./actions */ 8);
+	var _actions = __webpack_require__(/*! ./actions */ 9);
 	
 	var _Picker = __webpack_require__(/*! ../../components/async/Picker.jsx */ 16);
 	
@@ -1635,7 +1635,7 @@ module.exports =
 	
 	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 14);
 	
-	var _actions = __webpack_require__(/*! ./actions */ 8);
+	var _actions = __webpack_require__(/*! ./actions */ 9);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -1897,7 +1897,7 @@ module.exports =
 	
 	var _Base2 = _interopRequireDefault(_Base);
 	
-	var _indexActions = __webpack_require__(/*! ./indexActions */ 9);
+	var _indexActions = __webpack_require__(/*! ./indexActions */ 10);
 	
 	var _AddTodo = __webpack_require__(/*! ../../components/index/AddTodo */ 22);
 	
@@ -2019,7 +2019,7 @@ module.exports =
 	
 	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 14);
 	
-	var _indexActions = __webpack_require__(/*! ./indexActions */ 9);
+	var _indexActions = __webpack_require__(/*! ./indexActions */ 10);
 	
 	const { SHOW_ALL } = _indexActions.VisibilityFilters; // import { combineReducers } from 'redux'
 	
@@ -2079,7 +2079,7 @@ module.exports =
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	if (process.env.NODE_ENV !== 'production' && process.browser) {
-	    var createLogger = __webpack_require__(/*! redux-logger */ 42);
+	    var createLogger = __webpack_require__(/*! redux-logger */ 53);
 	}
 	
 	const middlewareBuilder = () => {
@@ -2411,7 +2411,7 @@ module.exports =
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { return step("next", value); }, function (err) { return step("throw", err); }); } } return step("next"); }); }; }
+	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
 	let router = new _express.Router();
 	
@@ -2593,7 +2593,7 @@ module.exports =
 	});
 	exports.default = reactRender;
 	
-	var _ejs = __webpack_require__(/*! ejs */ 48);
+	var _ejs = __webpack_require__(/*! ejs */ 47);
 	
 	var _ejs2 = _interopRequireDefault(_ejs);
 	
@@ -2601,7 +2601,7 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _server = __webpack_require__(/*! react-dom/server */ 53);
+	var _server = __webpack_require__(/*! react-dom/server */ 52);
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
 	
@@ -2621,7 +2621,7 @@ module.exports =
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _config = __webpack_require__(/*! ../config/config.json */ 10);
+	var _config = __webpack_require__(/*! ../config/config.json */ 8);
 	
 	var _config2 = _interopRequireDefault(_config);
 	
@@ -2675,7 +2675,7 @@ module.exports =
 	            }
 	
 	            let debug = req.query.debug && req.query.debug === _config2.default.application.debugName;
-	            let state = _secureFilters2.default.jsObj(data);
+	            let state = data;
 	            let version = _config2.default.application.version;
 	            let jsVersion = '';
 	            // prefer config version, useful when using CDN config
@@ -2688,7 +2688,7 @@ module.exports =
 	
 	            let finalLocals = Object.assign({
 	                html,
-	                state,
+	                state: _secureFilters2.default.jsObj(data),
 	                appName: 'index',
 	                title: '',
 	                test: process.env.NODE_ENV !== 'production',
@@ -2714,242 +2714,6 @@ module.exports =
 
 /***/ },
 /* 42 */
-/*!*************************************!*\
-  !*** ./~/redux-logger/lib/index.js ***!
-  \*************************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
-	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-	
-	var repeat = function repeat(str, times) {
-	  return new Array(times + 1).join(str);
-	};
-	var pad = function pad(num, maxLength) {
-	  return repeat("0", maxLength - num.toString().length) + num;
-	};
-	var formatTime = function formatTime(time) {
-	  return "@ " + pad(time.getHours(), 2) + ":" + pad(time.getMinutes(), 2) + ":" + pad(time.getSeconds(), 2) + "." + pad(time.getMilliseconds(), 3);
-	};
-	
-	// Use the new performance api to get better precision if available
-	var timer = typeof performance !== "undefined" && typeof performance.now === "function" ? performance : Date;
-	
-	/**
-	 * parse the level option of createLogger
-	 *
-	 * @property {string | function | object} level - console[level]
-	 * @property {object} action
-	 * @property {array} payload
-	 * @property {string} type
-	 */
-	
-	function getLogLevel(level, action, payload, type) {
-	  switch (typeof level === "undefined" ? "undefined" : _typeof(level)) {
-	    case "object":
-	      return typeof level[type] === "function" ? level[type].apply(level, _toConsumableArray(payload)) : level[type];
-	    case "function":
-	      return level(action);
-	    default:
-	      return level;
-	  }
-	}
-	
-	/**
-	 * Creates logger with followed options
-	 *
-	 * @namespace
-	 * @property {object} options - options for logger
-	 * @property {string | function | object} options.level - console[level]
-	 * @property {boolean} options.duration - print duration of each action?
-	 * @property {boolean} options.timestamp - print timestamp with each action?
-	 * @property {object} options.colors - custom colors
-	 * @property {object} options.logger - implementation of the `console` API
-	 * @property {boolean} options.logErrors - should errors in action execution be caught, logged, and re-thrown?
-	 * @property {boolean} options.collapsed - is group collapsed?
-	 * @property {boolean} options.predicate - condition which resolves logger behavior
-	 * @property {function} options.stateTransformer - transform state before print
-	 * @property {function} options.actionTransformer - transform action before print
-	 * @property {function} options.errorTransformer - transform error before print
-	 */
-	
-	function createLogger() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	  var _options$level = options.level;
-	  var level = _options$level === undefined ? "log" : _options$level;
-	  var _options$logger = options.logger;
-	  var logger = _options$logger === undefined ? console : _options$logger;
-	  var _options$logErrors = options.logErrors;
-	  var logErrors = _options$logErrors === undefined ? true : _options$logErrors;
-	  var collapsed = options.collapsed;
-	  var predicate = options.predicate;
-	  var _options$duration = options.duration;
-	  var duration = _options$duration === undefined ? false : _options$duration;
-	  var _options$timestamp = options.timestamp;
-	  var timestamp = _options$timestamp === undefined ? true : _options$timestamp;
-	  var transformer = options.transformer;
-	  var _options$stateTransfo = options.stateTransformer;
-	  var // deprecated
-	  stateTransformer = _options$stateTransfo === undefined ? function (state) {
-	    return state;
-	  } : _options$stateTransfo;
-	  var _options$actionTransf = options.actionTransformer;
-	  var actionTransformer = _options$actionTransf === undefined ? function (actn) {
-	    return actn;
-	  } : _options$actionTransf;
-	  var _options$errorTransfo = options.errorTransformer;
-	  var errorTransformer = _options$errorTransfo === undefined ? function (error) {
-	    return error;
-	  } : _options$errorTransfo;
-	  var _options$colors = options.colors;
-	  var colors = _options$colors === undefined ? {
-	    title: function title() {
-	      return "#000000";
-	    },
-	    prevState: function prevState() {
-	      return "#9E9E9E";
-	    },
-	    action: function action() {
-	      return "#03A9F4";
-	    },
-	    nextState: function nextState() {
-	      return "#4CAF50";
-	    },
-	    error: function error() {
-	      return "#F20404";
-	    }
-	  } : _options$colors;
-	
-	  // exit if console undefined
-	
-	  if (typeof logger === "undefined") {
-	    return function () {
-	      return function (next) {
-	        return function (action) {
-	          return next(action);
-	        };
-	      };
-	    };
-	  }
-	
-	  if (transformer) {
-	    console.error("Option 'transformer' is deprecated, use stateTransformer instead");
-	  }
-	
-	  var logBuffer = [];
-	  function printBuffer() {
-	    logBuffer.forEach(function (logEntry, key) {
-	      var started = logEntry.started;
-	      var startedTime = logEntry.startedTime;
-	      var action = logEntry.action;
-	      var prevState = logEntry.prevState;
-	      var error = logEntry.error;
-	      var took = logEntry.took;
-	      var nextState = logEntry.nextState;
-	
-	      var nextEntry = logBuffer[key + 1];
-	      if (nextEntry) {
-	        nextState = nextEntry.prevState;
-	        took = nextEntry.started - started;
-	      }
-	      // message
-	      var formattedAction = actionTransformer(action);
-	      var isCollapsed = typeof collapsed === "function" ? collapsed(function () {
-	        return nextState;
-	      }, action) : collapsed;
-	
-	      var formattedTime = formatTime(startedTime);
-	      var titleCSS = colors.title ? "color: " + colors.title(formattedAction) + ";" : null;
-	      var title = "action " + (timestamp ? formattedTime : "") + " " + formattedAction.type + " " + (duration ? "(in " + took.toFixed(2) + " ms)" : "");
-	
-	      // render
-	      try {
-	        if (isCollapsed) {
-	          if (colors.title) logger.groupCollapsed("%c " + title, titleCSS);else logger.groupCollapsed(title);
-	        } else {
-	          if (colors.title) logger.group("%c " + title, titleCSS);else logger.group(title);
-	        }
-	      } catch (e) {
-	        logger.log(title);
-	      }
-	
-	      var prevStateLevel = getLogLevel(level, formattedAction, [prevState], "prevState");
-	      var actionLevel = getLogLevel(level, formattedAction, [formattedAction], "action");
-	      var errorLevel = getLogLevel(level, formattedAction, [error, prevState], "error");
-	      var nextStateLevel = getLogLevel(level, formattedAction, [nextState], "nextState");
-	
-	      if (prevStateLevel) {
-	        if (colors.prevState) logger[prevStateLevel]("%c prev state", "color: " + colors.prevState(prevState) + "; font-weight: bold", prevState);else logger[prevStateLevel]("prev state", prevState);
-	      }
-	
-	      if (actionLevel) {
-	        if (colors.action) logger[actionLevel]("%c action", "color: " + colors.action(formattedAction) + "; font-weight: bold", formattedAction);else logger[actionLevel]("action", formattedAction);
-	      }
-	
-	      if (error && errorLevel) {
-	        if (colors.error) logger[errorLevel]("%c error", "color: " + colors.error(error, prevState) + "; font-weight: bold", error);else logger[errorLevel]("error", error);
-	      }
-	
-	      if (nextStateLevel) {
-	        if (colors.nextState) logger[nextStateLevel]("%c next state", "color: " + colors.nextState(nextState) + "; font-weight: bold", nextState);else logger[nextStateLevel]("next state", nextState);
-	      }
-	
-	      try {
-	        logger.groupEnd();
-	      } catch (e) {
-	        logger.log("—— log end ——");
-	      }
-	    });
-	    logBuffer.length = 0;
-	  }
-	
-	  return function (_ref) {
-	    var getState = _ref.getState;
-	    return function (next) {
-	      return function (action) {
-	        // exit early if predicate function returns false
-	        if (typeof predicate === "function" && !predicate(getState, action)) {
-	          return next(action);
-	        }
-	
-	        var logEntry = {};
-	        logBuffer.push(logEntry);
-	
-	        logEntry.started = timer.now();
-	        logEntry.startedTime = new Date();
-	        logEntry.prevState = stateTransformer(getState());
-	        logEntry.action = action;
-	
-	        var returnedValue = undefined;
-	        if (logErrors) {
-	          try {
-	            returnedValue = next(action);
-	          } catch (e) {
-	            logEntry.error = errorTransformer(e);
-	          }
-	        } else {
-	          returnedValue = next(action);
-	        }
-	
-	        logEntry.took = timer.now() - logEntry.started;
-	        logEntry.nextState = stateTransformer(getState());
-	
-	        printBuffer();
-	
-	        if (logEntry.error) throw logEntry.error;
-	        return returnedValue;
-	      };
-	    };
-	  };
-	}
-	
-	module.exports = createLogger;
-
-/***/ },
-/* 43 */
 /*!******************************!*\
   !*** external "body-parser" ***!
   \******************************/
@@ -2958,7 +2722,7 @@ module.exports =
 	module.exports = require("body-parser");
 
 /***/ },
-/* 44 */
+/* 43 */
 /*!*****************************!*\
   !*** external "classnames" ***!
   \*****************************/
@@ -2967,7 +2731,7 @@ module.exports =
 	module.exports = require("classnames");
 
 /***/ },
-/* 45 */
+/* 44 */
 /*!******************************!*\
   !*** external "compression" ***!
   \******************************/
@@ -2976,7 +2740,7 @@ module.exports =
 	module.exports = require("compression");
 
 /***/ },
-/* 46 */
+/* 45 */
 /*!********************************!*\
   !*** external "cookie-parser" ***!
   \********************************/
@@ -2985,7 +2749,7 @@ module.exports =
 	module.exports = require("cookie-parser");
 
 /***/ },
-/* 47 */
+/* 46 */
 /*!************************!*\
   !*** external "csurf" ***!
   \************************/
@@ -2994,7 +2758,7 @@ module.exports =
 	module.exports = require("csurf");
 
 /***/ },
-/* 48 */
+/* 47 */
 /*!**********************!*\
   !*** external "ejs" ***!
   \**********************/
@@ -3003,7 +2767,7 @@ module.exports =
 	module.exports = require("ejs");
 
 /***/ },
-/* 49 */
+/* 48 */
 /*!**********************************!*\
   !*** external "express-session" ***!
   \**********************************/
@@ -3012,7 +2776,7 @@ module.exports =
 	module.exports = require("express-session");
 
 /***/ },
-/* 50 */
+/* 49 */
 /*!*************************!*\
   !*** external "helmet" ***!
   \*************************/
@@ -3021,7 +2785,7 @@ module.exports =
 	module.exports = require("helmet");
 
 /***/ },
-/* 51 */
+/* 50 */
 /*!***********************!*\
   !*** external "http" ***!
   \***********************/
@@ -3030,7 +2794,7 @@ module.exports =
 	module.exports = require("http");
 
 /***/ },
-/* 52 */
+/* 51 */
 /*!*************************!*\
   !*** external "morgan" ***!
   \*************************/
@@ -3039,13 +2803,22 @@ module.exports =
 	module.exports = require("morgan");
 
 /***/ },
-/* 53 */
+/* 52 */
 /*!***********************************!*\
   !*** external "react-dom/server" ***!
   \***********************************/
 /***/ function(module, exports) {
 
 	module.exports = require("react-dom/server");
+
+/***/ },
+/* 53 */
+/*!*******************************!*\
+  !*** external "redux-logger" ***!
+  \*******************************/
+/***/ function(module, exports) {
+
+	module.exports = require("redux-logger");
 
 /***/ },
 /* 54 */
