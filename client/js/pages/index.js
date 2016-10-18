@@ -14,16 +14,4 @@ let createApp = createRender({
 createApp({
     rootReducer,
     component: <Page/>
-}).then((store) => {
-    if (process.env.NODE_ENV !== 'production' && module.hot) {
-        // Enable Webpack hot module replacement for reducers
-        module.hot.accept(['../../../common/pages/index/Index.jsx', '../../../common/pages/index/indexReducers'], () => {
-            const NewPage = require('../../../common/pages/index/Index.jsx').default;
-            const newRootReducer = require('../../../common/pages/index/indexReducers').default;
-            createApp({
-                rootReducer: newRootReducer,
-                component: <NewPage/>
-            });
-        });
-    }
 });
