@@ -1,7 +1,7 @@
 {
   "name": "react-ocean",
   "license": "ISC",
-  "version": "0.12.9",
+  "version": "0.13.1",
   "author": "LukeLin",
   "keywords": [
     "react",
@@ -10,7 +10,7 @@
     "babel",
     "immutable",
     "isomophic react",
-    "universial react"
+    "universal react"
   ],
   "main": "./dist/server.js",
   "dependencies": {
