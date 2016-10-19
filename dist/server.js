@@ -82,7 +82,7 @@ module.exports =
 	
 	var _csurf2 = _interopRequireDefault(_csurf);
 	
-	var _config = __webpack_require__(/*! ./config/config.json */ 8);
+	var _config = __webpack_require__(/*! ./config/config.json */ 10);
 	
 	var _config2 = _interopRequireDefault(_config);
 	
@@ -398,24 +398,6 @@ module.exports =
 
 /***/ },
 /* 8 */
-/*!***********************************!*\
-  !*** ./server/config/config.json ***!
-  \***********************************/
-/***/ function(module, exports) {
-
-	module.exports = {
-		"application": {
-			"version": {
-				"css": "",
-				"js": ""
-			},
-			"debugName": "test"
-		},
-		"serverName": "isomophic-react-redux-starter"
-	};
-
-/***/ },
-/* 9 */
 /*!***************************************!*\
   !*** ./common/pages/async/actions.js ***!
   \***************************************/
@@ -506,7 +488,7 @@ module.exports =
 	}
 
 /***/ },
-/* 10 */
+/* 9 */
 /*!********************************************!*\
   !*** ./common/pages/index/indexActions.js ***!
   \********************************************/
@@ -553,6 +535,24 @@ module.exports =
 	function setVisibilityFilter(filter) {
 	    return { type: SET_VISIBILITY_FILTER, filter };
 	}
+
+/***/ },
+/* 10 */
+/*!***********************************!*\
+  !*** ./server/config/config.json ***!
+  \***********************************/
+/***/ function(module, exports) {
+
+	module.exports = {
+		"application": {
+			"version": {
+				"css": "",
+				"js": ""
+			},
+			"debugName": "test"
+		},
+		"serverName": "isomophic-react-redux-starter"
+	};
 
 /***/ },
 /* 11 */
@@ -634,11 +634,7 @@ module.exports =
 	    componentWillUnmount() {}
 	
 	    render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            this.props.children
-	        );
+	        return this.props.children;
 	    }
 	}
 	App.defaultProps = {
@@ -1489,7 +1485,7 @@ module.exports =
 	
 	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
 	
-	var _actions = __webpack_require__(/*! ./actions */ 9);
+	var _actions = __webpack_require__(/*! ./actions */ 8);
 	
 	var _Picker = __webpack_require__(/*! ../../components/async/Picker.jsx */ 16);
 	
@@ -1635,7 +1631,7 @@ module.exports =
 	
 	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 14);
 	
-	var _actions = __webpack_require__(/*! ./actions */ 9);
+	var _actions = __webpack_require__(/*! ./actions */ 8);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -1897,7 +1893,7 @@ module.exports =
 	
 	var _Base2 = _interopRequireDefault(_Base);
 	
-	var _indexActions = __webpack_require__(/*! ./indexActions */ 10);
+	var _indexActions = __webpack_require__(/*! ./indexActions */ 9);
 	
 	var _AddTodo = __webpack_require__(/*! ../../components/index/AddTodo */ 22);
 	
@@ -2019,7 +2015,7 @@ module.exports =
 	
 	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 14);
 	
-	var _indexActions = __webpack_require__(/*! ./indexActions */ 10);
+	var _indexActions = __webpack_require__(/*! ./indexActions */ 9);
 	
 	const { SHOW_ALL } = _indexActions.VisibilityFilters; // import { combineReducers } from 'redux'
 	
@@ -2621,7 +2617,7 @@ module.exports =
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _config = __webpack_require__(/*! ../config/config.json */ 8);
+	var _config = __webpack_require__(/*! ../config/config.json */ 10);
 	
 	var _config2 = _interopRequireDefault(_config);
 	
