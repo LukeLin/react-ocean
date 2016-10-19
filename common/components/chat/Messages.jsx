@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Base from '../../pages/Base';
 
 export class Message extends Base {
@@ -15,6 +15,14 @@ export class Message extends Base {
         );
     }
 }
+Message.defaultProps = {
+    user: '',
+    text: ''
+};
+Message.propTypes = {
+    user: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+};
 
 export class MessageList extends Base {
     constructor(props, context) {
