@@ -23,6 +23,11 @@ export default class Todo extends Base {
         });
     }
 
+    componentWillUnmount(){
+        // unregister subscribe
+        super.componentWillUnmount();
+    }
+
     render() {
         return (
             <li onClick={this.props.onClick}

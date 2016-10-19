@@ -50,7 +50,7 @@ module.exports =
 
 	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
 	
-	var _http = __webpack_require__(/*! http */ 50);
+	var _http = __webpack_require__(/*! http */ 48);
 	
 	var _http2 = _interopRequireDefault(_http);
 	
@@ -58,27 +58,27 @@ module.exports =
 	
 	var _express2 = _interopRequireDefault(_express);
 	
-	var _compression = __webpack_require__(/*! compression */ 44);
+	var _compression = __webpack_require__(/*! compression */ 42);
 	
 	var _compression2 = _interopRequireDefault(_compression);
 	
-	var _morgan = __webpack_require__(/*! morgan */ 51);
+	var _morgan = __webpack_require__(/*! morgan */ 49);
 	
 	var _morgan2 = _interopRequireDefault(_morgan);
 	
-	var _cookieParser = __webpack_require__(/*! cookie-parser */ 45);
+	var _cookieParser = __webpack_require__(/*! cookie-parser */ 43);
 	
 	var _cookieParser2 = _interopRequireDefault(_cookieParser);
 	
-	var _bodyParser = __webpack_require__(/*! body-parser */ 42);
+	var _bodyParser = __webpack_require__(/*! body-parser */ 40);
 	
 	var _bodyParser2 = _interopRequireDefault(_bodyParser);
 	
-	var _expressSession = __webpack_require__(/*! express-session */ 48);
+	var _expressSession = __webpack_require__(/*! express-session */ 46);
 	
 	var _expressSession2 = _interopRequireDefault(_expressSession);
 	
-	var _csurf = __webpack_require__(/*! csurf */ 46);
+	var _csurf = __webpack_require__(/*! csurf */ 44);
 	
 	var _csurf2 = _interopRequireDefault(_csurf);
 	
@@ -86,19 +86,19 @@ module.exports =
 	
 	var _config2 = _interopRequireDefault(_config);
 	
-	var _index = __webpack_require__(/*! ./routes/index */ 38);
+	var _index = __webpack_require__(/*! ./routes/index */ 36);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
-	var _index3 = __webpack_require__(/*! ./apis/index */ 34);
+	var _index3 = __webpack_require__(/*! ./apis/index */ 32);
 	
 	var _index4 = _interopRequireDefault(_index3);
 	
-	var _allowCrossDomain = __webpack_require__(/*! ./utils/allowCrossDomain */ 40);
+	var _allowCrossDomain = __webpack_require__(/*! ./utils/allowCrossDomain */ 38);
 	
 	var _allowCrossDomain2 = _interopRequireDefault(_allowCrossDomain);
 	
-	var _renderReactMiddleware = __webpack_require__(/*! ./utils/renderReactMiddleware */ 41);
+	var _renderReactMiddleware = __webpack_require__(/*! ./utils/renderReactMiddleware */ 39);
 	
 	var _renderReactMiddleware2 = _interopRequireDefault(_renderReactMiddleware);
 	
@@ -106,11 +106,11 @@ module.exports =
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
-	var _helmet = __webpack_require__(/*! helmet */ 49);
+	var _helmet = __webpack_require__(/*! helmet */ 47);
 	
 	var _helmet2 = _interopRequireDefault(_helmet);
 	
-	var _socket = __webpack_require__(/*! ./sockets/socket */ 39);
+	var _socket = __webpack_require__(/*! ./sockets/socket */ 37);
 	
 	var _socket2 = _interopRequireDefault(_socket);
 	
@@ -201,7 +201,7 @@ module.exports =
 	let server = _http2.default.createServer(app);
 	
 	/* Socket.io Communication */
-	let io = __webpack_require__(/*! socket.io */ 56).listen(server);
+	let io = __webpack_require__(/*! socket.io */ 55).listen(server);
 	io.sockets.on('connection', _socket2.default);
 	
 	server.listen(app.get('port'), app.get('host'), function () {
@@ -236,7 +236,7 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _shallowEqual = __webpack_require__(/*! ../utils/shallowEqual */ 33);
+	var _shallowEqual = __webpack_require__(/*! ../utils/shallowEqual */ 31);
 	
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 	
@@ -574,15 +574,6 @@ module.exports =
 
 /***/ },
 /* 13 */
-/*!************************!*\
-  !*** external "redux" ***!
-  \************************/
-/***/ function(module, exports) {
-
-	module.exports = require("redux");
-
-/***/ },
-/* 14 */
 /*!************************************!*\
   !*** external "redux-immutablejs" ***!
   \************************************/
@@ -591,7 +582,7 @@ module.exports =
 	module.exports = require("redux-immutablejs");
 
 /***/ },
-/* 15 */
+/* 14 */
 /*!************************!*\
   !*** ./common/App.jsx ***!
   \************************/
@@ -651,7 +642,7 @@ module.exports =
 	exports.default = App;
 
 /***/ },
-/* 16 */
+/* 15 */
 /*!********************************************!*\
   !*** ./common/components/async/Picker.jsx ***!
   \********************************************/
@@ -723,7 +714,7 @@ module.exports =
 	};
 
 /***/ },
-/* 17 */
+/* 16 */
 /*!*******************************************!*\
   !*** ./common/components/async/Posts.jsx ***!
   \*******************************************/
@@ -769,7 +760,7 @@ module.exports =
 	};
 
 /***/ },
-/* 18 */
+/* 17 */
 /*!***************************************************!*\
   !*** ./common/components/chat/ChangeNameForm.jsx ***!
   \***************************************************/
@@ -832,7 +823,7 @@ module.exports =
 	exports.default = ChangeNameForm;
 
 /***/ },
-/* 19 */
+/* 18 */
 /*!*********************************************!*\
   !*** ./common/components/chat/Messages.jsx ***!
   \*********************************************/
@@ -878,8 +869,16 @@ module.exports =
 	        );
 	    }
 	}
-	
 	exports.Message = Message;
+	Message.defaultProps = {
+	    user: '',
+	    text: ''
+	};
+	Message.propTypes = {
+	    user: _react.PropTypes.string.isRequired,
+	    text: _react.PropTypes.string.isRequired
+	};
+	
 	class MessageList extends _Base2.default {
 	    constructor(props, context) {
 	        super(props, context);
@@ -950,7 +949,7 @@ module.exports =
 	exports.MessageForm = MessageForm;
 
 /***/ },
-/* 20 */
+/* 19 */
 /*!**********************************************!*\
   !*** ./common/components/chat/UsersList.jsx ***!
   \**********************************************/
@@ -1003,7 +1002,7 @@ module.exports =
 	exports.default = UsersList;
 
 /***/ },
-/* 21 */
+/* 20 */
 /*!******************************************!*\
   !*** ./common/components/common/Tab.jsx ***!
   \******************************************/
@@ -1020,7 +1019,7 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(/*! classnames */ 43);
+	var _classnames = __webpack_require__(/*! classnames */ 41);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -1215,7 +1214,7 @@ module.exports =
 	};
 
 /***/ },
-/* 22 */
+/* 21 */
 /*!*********************************************!*\
   !*** ./common/components/index/AddTodo.jsx ***!
   \*********************************************/
@@ -1269,7 +1268,7 @@ module.exports =
 	};
 
 /***/ },
-/* 23 */
+/* 22 */
 /*!********************************************!*\
   !*** ./common/components/index/Footer.jsx ***!
   \********************************************/
@@ -1334,7 +1333,7 @@ module.exports =
 	};
 
 /***/ },
-/* 24 */
+/* 23 */
 /*!******************************************!*\
   !*** ./common/components/index/Todo.jsx ***!
   \******************************************/
@@ -1378,6 +1377,11 @@ module.exports =
 	        });
 	    }
 	
+	    componentWillUnmount() {
+	        // unregister subscribe
+	        super.componentWillUnmount();
+	    }
+	
 	    render() {
 	        return _react2.default.createElement(
 	            'li',
@@ -1400,7 +1404,7 @@ module.exports =
 	};
 
 /***/ },
-/* 25 */
+/* 24 */
 /*!**********************************************!*\
   !*** ./common/components/index/TodoList.jsx ***!
   \**********************************************/
@@ -1422,7 +1426,7 @@ module.exports =
 	
 	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
 	
-	var _Todo = __webpack_require__(/*! ./Todo */ 24);
+	var _Todo = __webpack_require__(/*! ./Todo */ 23);
 	
 	var _Todo2 = _interopRequireDefault(_Todo);
 	
@@ -1459,7 +1463,7 @@ module.exports =
 	};
 
 /***/ },
-/* 26 */
+/* 25 */
 /*!*************************************!*\
   !*** ./common/pages/async/Page.jsx ***!
   \*************************************/
@@ -1487,11 +1491,11 @@ module.exports =
 	
 	var _actions = __webpack_require__(/*! ./actions */ 8);
 	
-	var _Picker = __webpack_require__(/*! ../../components/async/Picker.jsx */ 16);
+	var _Picker = __webpack_require__(/*! ../../components/async/Picker.jsx */ 15);
 	
 	var _Picker2 = _interopRequireDefault(_Picker);
 	
-	var _Posts = __webpack_require__(/*! ../../components/async/Posts.jsx */ 17);
+	var _Posts = __webpack_require__(/*! ../../components/async/Posts.jsx */ 16);
 	
 	var _Posts2 = _interopRequireDefault(_Posts);
 	
@@ -1613,7 +1617,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AsyncPage);
 
 /***/ },
-/* 27 */
+/* 26 */
 /*!****************************************!*\
   !*** ./common/pages/async/reducers.js ***!
   \****************************************/
@@ -1629,7 +1633,7 @@ module.exports =
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
-	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 14);
+	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 13);
 	
 	var _actions = __webpack_require__(/*! ./actions */ 8);
 	
@@ -1689,7 +1693,7 @@ module.exports =
 	exports.default = rootReducer;
 
 /***/ },
-/* 28 */
+/* 27 */
 /*!************************************!*\
   !*** ./common/pages/chat/Page.jsx ***!
   \************************************/
@@ -1711,13 +1715,13 @@ module.exports =
 	
 	var _Base2 = _interopRequireDefault(_Base);
 	
-	var _UsersList = __webpack_require__(/*! ../../components/chat/UsersList */ 20);
+	var _UsersList = __webpack_require__(/*! ../../components/chat/UsersList */ 19);
 	
 	var _UsersList2 = _interopRequireDefault(_UsersList);
 	
-	var _Messages = __webpack_require__(/*! ../../components/chat/Messages */ 19);
+	var _Messages = __webpack_require__(/*! ../../components/chat/Messages */ 18);
 	
-	var _ChangeNameForm = __webpack_require__(/*! ../../components/chat/ChangeNameForm */ 18);
+	var _ChangeNameForm = __webpack_require__(/*! ../../components/chat/ChangeNameForm */ 17);
 	
 	var _ChangeNameForm2 = _interopRequireDefault(_ChangeNameForm);
 	
@@ -1850,26 +1854,7 @@ module.exports =
 	exports.default = Page;
 
 /***/ },
-/* 29 */
-/*!***************************************!*\
-  !*** ./common/pages/chat/reducers.js ***!
-  \***************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _redux = __webpack_require__(/*! redux */ 13);
-	
-	const rootReducer = (0, _redux.combineReducers)({});
-	
-	exports.default = rootReducer;
-
-/***/ },
-/* 30 */
+/* 28 */
 /*!**************************************!*\
   !*** ./common/pages/index/index.jsx ***!
   \**************************************/
@@ -1895,19 +1880,19 @@ module.exports =
 	
 	var _indexActions = __webpack_require__(/*! ./indexActions */ 9);
 	
-	var _AddTodo = __webpack_require__(/*! ../../components/index/AddTodo */ 22);
+	var _AddTodo = __webpack_require__(/*! ../../components/index/AddTodo */ 21);
 	
 	var _AddTodo2 = _interopRequireDefault(_AddTodo);
 	
-	var _TodoList = __webpack_require__(/*! ../../components/index/TodoList */ 25);
+	var _TodoList = __webpack_require__(/*! ../../components/index/TodoList */ 24);
 	
 	var _TodoList2 = _interopRequireDefault(_TodoList);
 	
-	var _Footer = __webpack_require__(/*! ../../components/index/Footer */ 23);
+	var _Footer = __webpack_require__(/*! ../../components/index/Footer */ 22);
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _Tab = __webpack_require__(/*! ../../components/common/Tab */ 21);
+	var _Tab = __webpack_require__(/*! ../../components/common/Tab */ 20);
 	
 	var _Tab2 = _interopRequireDefault(_Tab);
 	
@@ -1999,7 +1984,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(select)(Page);
 
 /***/ },
-/* 31 */
+/* 29 */
 /*!*********************************************!*\
   !*** ./common/pages/index/indexReducers.js ***!
   \*********************************************/
@@ -2013,7 +1998,7 @@ module.exports =
 	
 	var _immutable = __webpack_require__(/*! immutable */ 3);
 	
-	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 14);
+	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 13);
 	
 	var _indexActions = __webpack_require__(/*! ./indexActions */ 9);
 	
@@ -2053,7 +2038,7 @@ module.exports =
 	exports.default = todoApp;
 
 /***/ },
-/* 32 */
+/* 30 */
 /*!*******************************!*\
   !*** ./common/store/index.js ***!
   \*******************************/
@@ -2066,16 +2051,16 @@ module.exports =
 	});
 	exports.default = configureStore;
 	
-	var _redux = __webpack_require__(/*! redux */ 13);
+	var _redux = __webpack_require__(/*! redux */ 51);
 	
-	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 54);
+	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 53);
 	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	if (process.env.NODE_ENV !== 'production' && process.browser) {
-	    var createLogger = __webpack_require__(/*! redux-logger */ 53);
+	    var createLogger = __webpack_require__(/*! redux-logger */ 52);
 	}
 	
 	const middlewareBuilder = () => {
@@ -2107,7 +2092,7 @@ module.exports =
 	}
 
 /***/ },
-/* 33 */
+/* 31 */
 /*!**************************************!*\
   !*** ./common/utils/shallowEqual.js ***!
   \**************************************/
@@ -2185,7 +2170,7 @@ module.exports =
 	module.exports = shallowEqual;
 
 /***/ },
-/* 34 */
+/* 32 */
 /*!******************************!*\
   !*** ./server/apis/index.js ***!
   \******************************/
@@ -2212,7 +2197,7 @@ module.exports =
 	exports.default = router;
 
 /***/ },
-/* 35 */
+/* 33 */
 /*!*************************************!*\
   !*** ./server/controllers/async.js ***!
   \*************************************/
@@ -2228,11 +2213,11 @@ module.exports =
 	
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 	
-	var _reducers = __webpack_require__(/*! ../../common/pages/async/reducers */ 27);
+	var _reducers = __webpack_require__(/*! ../../common/pages/async/reducers */ 26);
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
-	var _Page = __webpack_require__(/*! ../../common/pages/async/Page.jsx */ 26);
+	var _Page = __webpack_require__(/*! ../../common/pages/async/Page.jsx */ 25);
 	
 	var _Page2 = _interopRequireDefault(_Page);
 	
@@ -2281,7 +2266,7 @@ module.exports =
 	};
 
 /***/ },
-/* 36 */
+/* 34 */
 /*!************************************!*\
   !*** ./server/controllers/chat.js ***!
   \************************************/
@@ -2293,11 +2278,7 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reducers = __webpack_require__(/*! ../../common/pages/chat/reducers */ 29);
-	
-	var _reducers2 = _interopRequireDefault(_reducers);
-	
-	var _Page = __webpack_require__(/*! ../../common/pages/chat/Page */ 28);
+	var _Page = __webpack_require__(/*! ../../common/pages/chat/Page */ 27);
 	
 	var _Page2 = _interopRequireDefault(_Page);
 	
@@ -2319,14 +2300,14 @@ module.exports =
 	            title: 'chat page'
 	        },
 	        data: fakeData,
-	        rootReducer: _reducers2.default,
+	        rootReducer,
 	        needTransform: false
 	    });
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, "server\\controllers"))
 
 /***/ },
-/* 37 */
+/* 35 */
 /*!*************************************!*\
   !*** ./server/controllers/index.js ***!
   \*************************************/
@@ -2338,11 +2319,11 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _indexReducers = __webpack_require__(/*! ../../common/pages/index/indexReducers */ 31);
+	var _indexReducers = __webpack_require__(/*! ../../common/pages/index/indexReducers */ 29);
 	
 	var _indexReducers2 = _interopRequireDefault(_indexReducers);
 	
-	var _index = __webpack_require__(/*! ../../common/pages/index */ 30);
+	var _index = __webpack_require__(/*! ../../common/pages/index */ 28);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -2375,7 +2356,7 @@ module.exports =
 	};
 
 /***/ },
-/* 38 */
+/* 36 */
 /*!********************************!*\
   !*** ./server/routes/index.js ***!
   \********************************/
@@ -2393,15 +2374,15 @@ module.exports =
 	
 	var _fs2 = _interopRequireDefault(_fs);
 	
-	var _index = __webpack_require__(/*! ../controllers/index */ 37);
+	var _index = __webpack_require__(/*! ../controllers/index */ 35);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
-	var _async = __webpack_require__(/*! ../controllers/async */ 35);
+	var _async = __webpack_require__(/*! ../controllers/async */ 33);
 	
 	var _async2 = _interopRequireDefault(_async);
 	
-	var _chat = __webpack_require__(/*! ../controllers/chat */ 36);
+	var _chat = __webpack_require__(/*! ../controllers/chat */ 34);
 	
 	var _chat2 = _interopRequireDefault(_chat);
 	
@@ -2438,7 +2419,7 @@ module.exports =
 	/* WEBPACK VAR INJECTION */}.call(exports, "server\\routes"))
 
 /***/ },
-/* 39 */
+/* 37 */
 /*!**********************************!*\
   !*** ./server/sockets/socket.js ***!
   \**********************************/
@@ -2554,7 +2535,7 @@ module.exports =
 	;
 
 /***/ },
-/* 40 */
+/* 38 */
 /*!******************************************!*\
   !*** ./server/utils/allowCrossDomain.js ***!
   \******************************************/
@@ -2576,7 +2557,7 @@ module.exports =
 	}
 
 /***/ },
-/* 41 */
+/* 39 */
 /*!************************************************!*\
   !*** ./server/utils/renderReactMiddleware.jsx ***!
   \************************************************/
@@ -2589,7 +2570,7 @@ module.exports =
 	});
 	exports.default = reactRender;
 	
-	var _ejs = __webpack_require__(/*! ejs */ 47);
+	var _ejs = __webpack_require__(/*! ejs */ 45);
 	
 	var _ejs2 = _interopRequireDefault(_ejs);
 	
@@ -2597,7 +2578,7 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _server = __webpack_require__(/*! react-dom/server */ 52);
+	var _server = __webpack_require__(/*! react-dom/server */ 50);
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
 	
@@ -2605,15 +2586,15 @@ module.exports =
 	
 	var _fs2 = _interopRequireDefault(_fs);
 	
-	var _secureFilters = __webpack_require__(/*! secure-filters */ 55);
+	var _secureFilters = __webpack_require__(/*! secure-filters */ 54);
 	
 	var _secureFilters2 = _interopRequireDefault(_secureFilters);
 	
-	var _index = __webpack_require__(/*! ../../common/store/index */ 32);
+	var _index = __webpack_require__(/*! ../../common/store/index */ 30);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
-	var _App = __webpack_require__(/*! ../../common/App.jsx */ 15);
+	var _App = __webpack_require__(/*! ../../common/App.jsx */ 14);
 	
 	var _App2 = _interopRequireDefault(_App);
 	
@@ -2709,7 +2690,7 @@ module.exports =
 	/* WEBPACK VAR INJECTION */}.call(exports, "server\\utils"))
 
 /***/ },
-/* 42 */
+/* 40 */
 /*!******************************!*\
   !*** external "body-parser" ***!
   \******************************/
@@ -2718,7 +2699,7 @@ module.exports =
 	module.exports = require("body-parser");
 
 /***/ },
-/* 43 */
+/* 41 */
 /*!*****************************!*\
   !*** external "classnames" ***!
   \*****************************/
@@ -2727,7 +2708,7 @@ module.exports =
 	module.exports = require("classnames");
 
 /***/ },
-/* 44 */
+/* 42 */
 /*!******************************!*\
   !*** external "compression" ***!
   \******************************/
@@ -2736,7 +2717,7 @@ module.exports =
 	module.exports = require("compression");
 
 /***/ },
-/* 45 */
+/* 43 */
 /*!********************************!*\
   !*** external "cookie-parser" ***!
   \********************************/
@@ -2745,7 +2726,7 @@ module.exports =
 	module.exports = require("cookie-parser");
 
 /***/ },
-/* 46 */
+/* 44 */
 /*!************************!*\
   !*** external "csurf" ***!
   \************************/
@@ -2754,7 +2735,7 @@ module.exports =
 	module.exports = require("csurf");
 
 /***/ },
-/* 47 */
+/* 45 */
 /*!**********************!*\
   !*** external "ejs" ***!
   \**********************/
@@ -2763,7 +2744,7 @@ module.exports =
 	module.exports = require("ejs");
 
 /***/ },
-/* 48 */
+/* 46 */
 /*!**********************************!*\
   !*** external "express-session" ***!
   \**********************************/
@@ -2772,7 +2753,7 @@ module.exports =
 	module.exports = require("express-session");
 
 /***/ },
-/* 49 */
+/* 47 */
 /*!*************************!*\
   !*** external "helmet" ***!
   \*************************/
@@ -2781,7 +2762,7 @@ module.exports =
 	module.exports = require("helmet");
 
 /***/ },
-/* 50 */
+/* 48 */
 /*!***********************!*\
   !*** external "http" ***!
   \***********************/
@@ -2790,7 +2771,7 @@ module.exports =
 	module.exports = require("http");
 
 /***/ },
-/* 51 */
+/* 49 */
 /*!*************************!*\
   !*** external "morgan" ***!
   \*************************/
@@ -2799,7 +2780,7 @@ module.exports =
 	module.exports = require("morgan");
 
 /***/ },
-/* 52 */
+/* 50 */
 /*!***********************************!*\
   !*** external "react-dom/server" ***!
   \***********************************/
@@ -2808,7 +2789,16 @@ module.exports =
 	module.exports = require("react-dom/server");
 
 /***/ },
-/* 53 */
+/* 51 */
+/*!************************!*\
+  !*** external "redux" ***!
+  \************************/
+/***/ function(module, exports) {
+
+	module.exports = require("redux");
+
+/***/ },
+/* 52 */
 /*!*******************************!*\
   !*** external "redux-logger" ***!
   \*******************************/
@@ -2817,7 +2807,7 @@ module.exports =
 	module.exports = require("redux-logger");
 
 /***/ },
-/* 54 */
+/* 53 */
 /*!******************************!*\
   !*** external "redux-thunk" ***!
   \******************************/
@@ -2826,7 +2816,7 @@ module.exports =
 	module.exports = require("redux-thunk");
 
 /***/ },
-/* 55 */
+/* 54 */
 /*!*********************************!*\
   !*** external "secure-filters" ***!
   \*********************************/
@@ -2835,7 +2825,7 @@ module.exports =
 	module.exports = require("secure-filters");
 
 /***/ },
-/* 56 */
+/* 55 */
 /*!****************************!*\
   !*** external "socket.io" ***!
   \****************************/
