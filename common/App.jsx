@@ -27,7 +27,7 @@ class App extends Component {
     }
 
     render() {
-        return this.props.children;
+        return React.Children.only(this.props.children);
     }
 }
 App.defaultProps = {
