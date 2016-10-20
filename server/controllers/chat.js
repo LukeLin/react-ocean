@@ -16,7 +16,6 @@ module.exports = function (req, res, next) {
             title: 'chat page'
         },
         data: fakeData,
-        rootReducer,
         needTransform: false
     });
 };

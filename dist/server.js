@@ -914,7 +914,9 @@ module.exports =
 	
 	    onSubmit(e) {
 	        e.preventDefault();
-	        var message = {
+	        if (!this.state.text) return;
+	
+	        let message = {
 	            user: this.props.user,
 	            text: this.state.text
 	        };
@@ -2300,7 +2302,6 @@ module.exports =
 	            title: 'chat page'
 	        },
 	        data: fakeData,
-	        rootReducer,
 	        needTransform: false
 	    });
 	};

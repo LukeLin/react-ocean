@@ -59,10 +59,12 @@ export class MessageForm extends Base {
 
     onSubmit(e) {
         e.preventDefault();
-        var message = {
+        if(!this.state.text) return;
+
+        let message = {
             user : this.props.user,
             text : this.state.text
-        }
+        };
         this.props.onMessageSubmit(message);
         this.setState({ text: '' });
     }

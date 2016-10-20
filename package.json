@@ -87,7 +87,8 @@
     "build": "npm run build:prod && npm run build:dev",
     "build:prod": "set NODE_ENV=production && gulp build",
     "build:server": "webpack --progress --config ./webpack.config-server.js",
-    "local": "npm run build:server && node ./dist/server.js"
+    "local": "npm run build:server && node ./dist/server.js",
+    "debug": "npm run build:server && node-debug ./dist/server.js"
   },
   "engines": {
     "node": ">=6.0.0"
