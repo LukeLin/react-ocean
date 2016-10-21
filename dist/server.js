@@ -212,12 +212,12 @@ module.exports =
 
 /***/ },
 /* 1 */
-/*!************************!*\
-  !*** external "react" ***!
-  \************************/
+/*!******************************************!*\
+  !*** external "react/dist/react.min.js" ***!
+  \******************************************/
 /***/ function(module, exports) {
 
-	module.exports = require("react");
+	module.exports = require("react/dist/react.min.js");
 
 /***/ },
 /* 2 */

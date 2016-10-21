@@ -33,7 +33,10 @@ module.exports = {
         ],
     },
 
-    externals: Object.keys(packageJson.dependencies).concat([
+    externals: Object.keys(packageJson.dependencies).filter((item) => item !== 'react').concat([
+        {
+            'react': 'react/dist/react.min.js'
+        },
         'react-dom/server'
     ]),
 
