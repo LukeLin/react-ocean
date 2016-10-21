@@ -22,7 +22,7 @@ function todos(state = new List(), action) {
                 }))
         case COMPLETE_TODO:
             return state.update(action.index, function(item){
-                return item.update('completed', true);
+                return item.set('completed', true);
             });
         default:
             return state
