@@ -33,7 +33,9 @@ module.exports = {
         ],
     },
 
-    externals: Object.keys(packageJson.dependencies).filter((item) => item !== 'react').concat([
+    externals: Object.keys(packageJson.dependencies).filter((item) => {
+        return (item !== 'react' || item !== 'react-dom')
+    }).concat([
         {
             'react': 'react/dist/react.min.js'
         },
@@ -62,9 +64,11 @@ module.exports = {
         ],
     },
     plugins: [
-        // new webpack.DefinePlugin({
-        //     '__dirname': '__dirname.replace(new RegExp("\\\\\\\\", "i"), "/")'
-        // }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production')
+            }
+        }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         // new webpack.BannerPlugin('require("source-map-support").install();',

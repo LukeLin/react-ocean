@@ -13,6 +13,15 @@
     "universal react"
   ],
   "main": "./dist/server.js",
+  "babel": {
+    "presets": [
+      "react"
+    ],
+    "plugins": [
+      "transform-es2015-modules-commonjs",
+      "transform-async-to-generator"
+    ]
+  },
   "dependencies": {
     "babel-runtime": "6.11.6",
     "body-parser": "1.15.2",
@@ -89,8 +98,8 @@
     "build": "npm run build:prod && npm run build:dev",
     "build:prod": "set NODE_ENV=production && gulp build",
     "build:server": "webpack --progress --config ./webpack.config-server.js",
-    "local": "npm run build:server && node ./dist/server.js",
-    "debug": "npm run build:server && node-debug ./dist/server.js"
+    "local": "npm run build:server && node index.js",
+    "debug": "npm run build:server && node-debug index.js"
   },
   "engines": {
     "node": ">=6.0.0"

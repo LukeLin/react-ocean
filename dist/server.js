@@ -118,8 +118,8 @@ module.exports =
 	
 	let app = (0, _express2.default)();
 	
-	app.set('host', process.env.IP || '127.0.0.1');
-	app.set('port', process.env.PORT || 3000);
+	app.set('host', ({"NODE_ENV":"production"}).IP || '127.0.0.1');
+	app.set('port', ({"NODE_ENV":"production"}).PORT || 3000);
 	app.disable('x-powered-by');
 	
 	app.use(_helmet2.default.contentSecurityPolicy());
@@ -147,15 +147,15 @@ module.exports =
 	    maxAge: 86400000
 	}));
 	
-	// if(process.env.NODE_ENV !== 'production'){
-	//     let webpack = require('webpack');
-	//     let config = require('../create-webpack.config')(true);
-	//     let webpackDevMiddleware = require('webpack-dev-middleware');
-	//     let webpackHotMiddleware = require('webpack-hot-middleware');
-	//     let compiler = webpack(config);
-	//     app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
-	//     app.use(webpackHotMiddleware(compiler));
-	// }
+	if (false) {
+	    let webpack = require('webpack');
+	    let config = require('../create-webpack.config')(true);
+	    let webpackDevMiddleware = require('webpack-dev-middleware');
+	    let webpackHotMiddleware = require('webpack-hot-middleware');
+	    let compiler = webpack(config);
+	    app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
+	    app.use(webpackHotMiddleware(compiler));
+	}
 	
 	app.use(_allowCrossDomain2.default);
 	
@@ -201,7 +201,7 @@ module.exports =
 	let server = _http2.default.createServer(app);
 	
 	/* Socket.io Communication */
-	let io = __webpack_require__(/*! socket.io */ 55).listen(server);
+	let io = __webpack_require__(/*! socket.io */ 54).listen(server);
 	io.sockets.on('connection', _socket2.default);
 	
 	server.listen(app.get('port'), app.get('host'), function () {
@@ -212,12 +212,12 @@ module.exports =
 
 /***/ },
 /* 1 */
-/*!******************************************!*\
-  !*** external "react/dist/react.min.js" ***!
-  \******************************************/
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
 /***/ function(module, exports) {
 
-	module.exports = require("react/dist/react.min.js");
+	module.exports = require("react");
 
 /***/ },
 /* 2 */
@@ -329,7 +329,7 @@ module.exports =
 	    shouldComponentUpdate(nextProps, nextState) {
 	        let shouldUpdate = !(0, _shallowEqual2.default)(this.props, nextProps) || !(0, _shallowEqual2.default)(this.state, nextState);
 	
-	        if (shouldUpdate && process.env.NODE_ENV !== 'production') {
+	        if (shouldUpdate && ("production") !== 'production') {
 	            console.log('Component: ' + this.constructor.name + ' will update');
 	        }
 	
@@ -2070,20 +2070,20 @@ module.exports =
 	
 	var _redux = __webpack_require__(/*! redux */ 51);
 	
-	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 53);
+	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 52);
 	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	if (process.env.NODE_ENV !== 'production' && process.browser) {
-	    var createLogger = __webpack_require__(/*! redux-logger */ 52);
+	if (false) {
+	    var createLogger = require('redux-logger');
 	}
 	
 	const middlewareBuilder = () => {
 	    let middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default);
 	
-	    if (process.browser && process.env.NODE_ENV !== 'production') {
+	    if (process.browser && ("production") !== 'production') {
 	        if (!window.devToolsExtension) {
 	            middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default, createLogger());
 	        }
@@ -2091,7 +2091,7 @@ module.exports =
 	
 	    let allComposeElements = [middleware];
 	
-	    if (process.browser && process.env.NODE_ENV !== 'production') {
+	    if (process.browser && ("production") !== 'production') {
 	        if (window.devToolsExtension) {
 	            allComposeElements.push(window.devToolsExtension());
 	        }
@@ -2605,7 +2605,7 @@ module.exports =
 	
 	var _fs2 = _interopRequireDefault(_fs);
 	
-	var _secureFilters = __webpack_require__(/*! secure-filters */ 54);
+	var _secureFilters = __webpack_require__(/*! secure-filters */ 53);
 	
 	var _secureFilters2 = _interopRequireDefault(_secureFilters);
 	
@@ -2675,7 +2675,7 @@ module.exports =
 	            let version = _config2.default.application.version;
 	            let jsVersion = '';
 	            // prefer config version, useful when using CDN config
-	            if (process.env.NODE_ENV === 'production') {
+	            if (true) {
 	                jsVersion = version && version.js;
 	            } else {
 	                jsVersion = getDefaultJSVersion(locals.appName || 'index');
@@ -2687,7 +2687,7 @@ module.exports =
 	                state: _secureFilters2.default.jsObj(data),
 	                appName: 'index',
 	                title: '',
-	                test: process.env.NODE_ENV !== 'production',
+	                test: ("production") !== 'production',
 	                debug,
 	                appConfig: _secureFilters2.default.jsObj(pageConfig),
 	                version: {
@@ -2818,15 +2818,6 @@ module.exports =
 
 /***/ },
 /* 52 */
-/*!*******************************!*\
-  !*** external "redux-logger" ***!
-  \*******************************/
-/***/ function(module, exports) {
-
-	module.exports = require("redux-logger");
-
-/***/ },
-/* 53 */
 /*!******************************!*\
   !*** external "redux-thunk" ***!
   \******************************/
@@ -2835,7 +2826,7 @@ module.exports =
 	module.exports = require("redux-thunk");
 
 /***/ },
-/* 54 */
+/* 53 */
 /*!*********************************!*\
   !*** external "secure-filters" ***!
   \*********************************/
@@ -2844,7 +2835,7 @@ module.exports =
 	module.exports = require("secure-filters");
 
 /***/ },
-/* 55 */
+/* 54 */
 /*!****************************!*\
   !*** external "socket.io" ***!
   \****************************/
