@@ -2250,7 +2250,7 @@ module.exports =
 	        };
 	
 	        try {
-	            let response = (0, _isomorphicFetch2.default)(`https://www.reddit.com/r/${ state.selectedReddit }.json`, {
+	            let response = yield (0, _isomorphicFetch2.default)(`https://www.reddit.com/r/${ state.selectedReddit }.json`, {
 	                method: 'GET',
 	                timeout: 5000
 	            }).then(function (response) {

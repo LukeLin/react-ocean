@@ -10,7 +10,7 @@ module.exports = async function (req, res, next) {
     };
 
     try {
-        let response = fetch(`https://www.reddit.com/r/${state.selectedReddit}.json`, {
+        let response = await fetch(`https://www.reddit.com/r/${state.selectedReddit}.json`, {
             method: 'GET',
             timeout: 5000
         }).then(response => response.json());
