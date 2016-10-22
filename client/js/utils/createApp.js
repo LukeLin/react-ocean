@@ -19,6 +19,7 @@ fastclick.attach(document.body);
 export default function createRender(middlewareConfig = {}){
     let store = null;
     let page = document.getElementById('page');
+    let onRenderCompleted = typeof middlewareConfig.onRenderCompleted === 'function' && middlewareConfig.onRenderCompleted;
 
     if (process.env.NODE_ENV !== 'production') {
         // React.addons.Perf性能分析使用
@@ -48,7 +49,7 @@ export default function createRender(middlewareConfig = {}){
                     { component }
                 </App>
             </Provider>
-        ), page);
+        ), page, onRenderCompleted);
 
         return Promise.resolve(store);
     };

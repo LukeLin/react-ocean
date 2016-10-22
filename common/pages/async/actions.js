@@ -37,14 +37,17 @@ function receivePosts(reddit, json) {
 }
 
 function fetchPosts(reddit) {
-    return dispatch => {
+    return async function(dispatch) {
         dispatch(requestPosts(reddit))
-        return fetch(`https://www.reddit.com/r/${reddit}.json`, {
-            method: 'GET',
-            timeout: 5000
-        })
-            .then(response => response.json())
-            .then(json => dispatch(receivePosts(reddit, json)))
+        try {
+            let response = await fetch(`https://www.reddit.com/r/${reddit}.json`, {
+                method: 'GET',
+                timeout: 5000
+            }).then(response => response.json());
+            dispatch(receivePosts(reddit, response))
+        } catch(ex){
+            console.error(ex);
+        }
     }
 }
 

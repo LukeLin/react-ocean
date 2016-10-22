@@ -441,6 +441,8 @@ module.exports =
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+	
 	const REQUEST_POSTS = exports.REQUEST_POSTS = 'REQUEST_POSTS';
 	const RECEIVE_POSTS = exports.RECEIVE_POSTS = 'RECEIVE_POSTS';
 	const SELECT_REDDIT = exports.SELECT_REDDIT = 'SELECT_REDDIT';
@@ -477,13 +479,26 @@ module.exports =
 	}
 	
 	function fetchPosts(reddit) {
-	    return dispatch => {
-	        dispatch(requestPosts(reddit));
-	        return (0, _isomorphicFetch2.default)(`https://www.reddit.com/r/${ reddit }.json`, {
-	            method: 'GET',
-	            timeout: 5000
-	        }).then(response => response.json()).then(json => dispatch(receivePosts(reddit, json)));
-	    };
+	    return (() => {
+	        var _ref = _asyncToGenerator(function* (dispatch) {
+	            dispatch(requestPosts(reddit));
+	            try {
+	                let response = yield (0, _isomorphicFetch2.default)(`https://www.reddit.com/r/${ reddit }.json`, {
+	                    method: 'GET',
+	                    timeout: 5000
+	                }).then(function (response) {
+	                    return response.json();
+	                });
+	                dispatch(receivePosts(reddit, response));
+	            } catch (ex) {
+	                console.error(ex);
+	            }
+	        });
+	
+	        return function (_x) {
+	            return _ref.apply(this, arguments);
+	        };
+	    })();
 	}
 	
 	function shouldFetchPosts(state, reddit) {
@@ -2225,35 +2240,34 @@ module.exports =
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	module.exports = function (req, res, next) {
-	    let state = {
-	        postsByReddit: {},
-	        selectedReddit: 'reactjs'
-	    };
+	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 	
-	    (0, _isomorphicFetch2.default)(`https://www.reddit.com/r/${ state.selectedReddit }.json`, {
-	        method: 'GET',
-	        timeout: 5000
-	    }).then(response => response.json()).then(json => {
-	        state.postsByReddit[state.selectedReddit] = {
-	            didInvalidate: false,
-	            isFetching: false,
-	            lastUpdated: Date.now(),
-	            items: json.data.children.map(child => child.data)
+	module.exports = (() => {
+	    var _ref = _asyncToGenerator(function* (req, res, next) {
+	        let state = {
+	            postsByReddit: {},
+	            selectedReddit: 'reactjs'
 	        };
 	
-	        res.renderReactHTML({
-	            component: _react2.default.createElement(_Page2.default, null),
-	            locals: {
-	                appName: 'async',
-	                title: 'async page'
-	            },
-	            data: state,
-	            rootReducer: _reducers2.default
-	        });
-	    }).catch(msg => {
+	        try {
+	            let response = (0, _isomorphicFetch2.default)(`https://www.reddit.com/r/${ state.selectedReddit }.json`, {
+	                method: 'GET',
+	                timeout: 5000
+	            }).then(function (response) {
+	                return response.json();
+	            });
 	
-	        console.log(msg);
+	            state.postsByReddit[state.selectedReddit] = {
+	                didInvalidate: false,
+	                isFetching: false,
+	                lastUpdated: Date.now(),
+	                items: response.data.children.map(function (child) {
+	                    return child.data;
+	                })
+	            };
+	        } catch (ex) {
+	            console.error(ex);
+	        }
 	
 	        res.renderReactHTML({
 	            component: _react2.default.createElement(_Page2.default, null),
@@ -2265,7 +2279,11 @@ module.exports =
 	            rootReducer: _reducers2.default
 	        });
 	    });
-	};
+	
+	    return function (_x, _x2, _x3) {
+	        return _ref.apply(this, arguments);
+	    };
+	})();
 
 /***/ },
 /* 34 */

@@ -95,6 +95,8 @@ module.exports = function (DEBUG) {
     }
 
     let babelPlugins = [
+        "syntax-async-functions",
+        'transform-regenerator',
         ["transform-runtime", {
             // "helpers": false,
             "polyfill": false,
