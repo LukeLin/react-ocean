@@ -3,7 +3,6 @@ import EventEmitter from 'events';
 
 let mediator = new EventEmitter();
 
-
 class App extends Component {
     constructor(props, context) {
         super(props, context);
@@ -18,7 +17,6 @@ class App extends Component {
 
     componentDidMount(){
     }
-
 
     componentDidUpdate(){
     }

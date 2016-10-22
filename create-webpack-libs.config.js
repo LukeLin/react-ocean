@@ -25,11 +25,7 @@ module.exports = function(DEBUG){
             context: __dirname
         })
     ];
-    if (DEBUG) {
-        plugins.push(
-            new webpack.HotModuleReplacementPlugin()
-        );
-    } else {
+    if (!DEBUG)  {
         plugins.push(
             new webpack.optimize.UglifyJsPlugin({
                 output: {
@@ -77,8 +73,8 @@ module.exports = function(DEBUG){
             loader: 'babel',
             query: {
                 cacheDirectory: true,
-                "presets": ["es2015"],
-                "plugins": ["transform-runtime"]
+                // "presets": ["es2015"],
+                // "plugins": ["transform-runtime"]
             },
             happy: { id: happyId }
         }
