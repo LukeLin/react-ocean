@@ -85,7 +85,10 @@ module.exports = function (DEBUG) {
 
         for (let fileName of filesNames) {
             if (DEBUG) {
-                entries[fileName.split('.').shift() || fileName] = ['webpack-hot-middleware/client', `${dirPath}/${fileName}`];
+                entries[fileName.split('.').shift() || fileName] = [
+                    // 'webpack-hot-middleware/client',
+                    `${dirPath}/${fileName}`
+                ];
             } else {
                 entries[fileName.split('.').shift() || fileName] = [`${dirPath}/${fileName}`];
             }

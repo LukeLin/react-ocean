@@ -63,6 +63,7 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-runtime": "^6.11.6",
+    "browser-sync": "^2.17.5",
     "css-loader": "^0.23.1",
     "del": "^2.2.2",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -70,6 +71,7 @@
     "gulp": ">=3.9.0",
     "happypack": "^2.2.1",
     "json-loader": "^0.5.4",
+    "nodemon": "^1.11.0",
     "progress-bar-webpack-plugin": "^1.9.0",
     "react-addons-perf": "^15.3.2",
     "redux-logger": "^2.7.0",
@@ -88,8 +90,9 @@
     "build": "npm run build:prod && npm run build:dev",
     "build:prod": "set NODE_ENV=production && gulp build",
     "build:server": "webpack --progress --config ./webpack.config-server.js",
-    "local": "npm run build:server && node index.js",
-    "debug": "npm run build:server && node-debug index.js"
+    "local": "npm run build:server && nodemon index.js",
+    "debug": "npm run build:server && node-debug index.js",
+    "watch": "gulp watch"
   },
   "engines": {
     "node": ">=6.0.0"

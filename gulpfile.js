@@ -8,6 +8,7 @@ var webpack = require('webpack');
 var createLibsWebpackConfig = require('./create-webpack-libs.config.js');
 var createWebpackConfig = require('./create-webpack.config.js');
 var del = require('del');
+var browserSync = require('browser-sync').create();
 
 gulp.task('default', ['build-dev', 'build']);
 
@@ -75,6 +76,21 @@ gulp.task('build:dev', ['clean:dev'], function (cb) {
         }
 
         console.log('webpack dev end');
+
+        browserSync.reload();
+
         cb();
     });
+});
+
+gulp.task('watch', ['build:dev'], function(){
+    browserSync.init({
+        files: ['public/**/*.*'],
+        proxy: 'http://127.0.0.1:3000',
+        port: 4000,
+        open: false
+    });
+
+    gulp.watch('client/**', ['build:dev']);
+    gulp.watch('common/**', ['build:dev']);
 });
