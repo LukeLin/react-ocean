@@ -147,15 +147,15 @@ module.exports =
 	    maxAge: 86400000
 	}));
 	
-	if (false) {
-	    let webpack = require('webpack');
-	    let config = require('../create-webpack.config')(true);
-	    let webpackDevMiddleware = require('webpack-dev-middleware');
-	    let webpackHotMiddleware = require('webpack-hot-middleware');
-	    let compiler = webpack(config);
-	    app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
-	    app.use(webpackHotMiddleware(compiler));
-	}
+	// if(process.env.NODE_ENV !== 'production'){
+	//     let webpack = require('webpack');
+	//     let config = require('../create-webpack.config')(true);
+	//     let webpackDevMiddleware = require('webpack-dev-middleware');
+	//     let webpackHotMiddleware = require('webpack-hot-middleware');
+	//     let compiler = webpack(config);
+	//     app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
+	//     app.use(webpackHotMiddleware(compiler));
+	// }
 	
 	app.use(_allowCrossDomain2.default);
 	

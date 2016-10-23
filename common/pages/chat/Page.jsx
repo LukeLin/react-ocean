@@ -118,6 +118,8 @@ class Page extends Base {
 
     onChangeName(newName) {
         let oldName = this.state.user;
+        let {messages} = this.state;
+
         socket.emit('change:name', { name : newName}, (result) => {
             if(!result) {
                 return alert('There was an error changing your name');
@@ -125,11 +127,23 @@ class Page extends Base {
             let {users} = this.state;
             let index = users.indexOf(oldName);
             users.splice(index, 1, newName);
+
+            messages = messages.map((message) => {
+                if(message.user === oldName) {
+                    return Object.assign({}, message, {
+                        user: newName
+                    });
+                } else {
+                    return message;
+                }
+            });
+
             this.setState({
                 users: [
                     ...users
                 ],
-                user: newName
+                user: newName,
+                messages
             });
         });
     }
