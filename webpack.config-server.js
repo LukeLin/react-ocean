@@ -39,7 +39,7 @@ module.exports = {
         // {
         //     'react': 'react/dist/react.min.js'
         // },
-        'react'
+        'react',
         'react-dom/server'
     ]),
 
