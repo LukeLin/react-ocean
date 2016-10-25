@@ -34,7 +34,7 @@ module.exports = {
     },
 
     externals: Object.keys(packageJson.dependencies).filter((item) => {
-        return (item !== 'react' || item !== 'react-dom')
+        return (item !== 'react' && item !== 'react-dom')
     }).concat([
         {
             'react': 'react/dist/react.min.js'
