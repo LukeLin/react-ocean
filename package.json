@@ -45,7 +45,8 @@
     "redux-immutablejs": "0.0.8",
     "redux-thunk": "2.1.0",
     "secure-filters": "1.0.5",
-    "socket.io": "1.5.0"
+    "socket.io": "1.5.0",
+    "source-map-support": "^0.4.5"
   },
   "description": "isomophic-react-redux-starter",
   "devDependencies": {

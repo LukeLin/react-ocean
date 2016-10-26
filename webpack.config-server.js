@@ -70,6 +70,8 @@ module.exports = {
                 NODE_ENV: JSON.stringify('production')
             }
         }),
+        new webpack.BannerPlugin('require("source-map-support").install();',
+            { raw: true, entryOnly: false }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         // new webpack.BannerPlugin('require("source-map-support").install();',
