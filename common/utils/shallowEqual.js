@@ -24,14 +24,11 @@ var hasOwnProperty = Object.prototype.hasOwnProperty;
 function is(x, y) {
     // SameValue algorithm
     if (x === y) {
-        // Steps 1-5, 7-10
-        // Steps 6.b-6.e: +0 != -0
         return true;
     } else {
         if(typeof x === 'function' && typeof y === 'function'){
             return x.toString() === y.toString();
         }
-        // Step 6.a: NaN == NaN
         return false;
     }
 }
