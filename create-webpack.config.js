@@ -81,7 +81,9 @@ module.exports = function (DEBUG) {
 
     function getPagesNames(dirPath) {
         let filesNames = fs.readdirSync(dirPath);
-        let entries = {};
+        let entries = {
+            app: __dirname + '/client/js/utils/universalRender.js'
+        };
 
         for (let fileName of filesNames) {
             if (DEBUG) {

@@ -14,6 +14,7 @@ import reactRender from './utils/renderReactMiddleware';
 import Immutable from 'immutable';
 import helmet from 'helmet';
 import socket from './sockets/socket';
+import universialRenderMatch from './utils/universialRenderMatch';
 
 let app = express();
 
@@ -71,6 +72,7 @@ app.use(reactRender({
 
 app.use('/', routes);
 app.use('/api', apis);
+app.use('*', universialRenderMatch);
 
 // error handlers
 // no stacktraces leaked to user
