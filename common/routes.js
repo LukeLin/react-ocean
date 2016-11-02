@@ -1,8 +1,15 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './universalPage/App';
-import Vote from './universalPage/Vote';
+// import Vote from './universalPage/Vote';
 import About from './universalPage/About';
+
+// require.ensure polyfill for node
+if (typeof require.ensure !== 'function') {
+    require.ensure = function requireModule(deps, callback) {
+        callback(require);
+    };
+}
 
 
 const fetchData = () => {
@@ -41,8 +48,16 @@ export default (store) => {
     };
     return (
         <Route path="/" component={App}>
-            <IndexRoute component={Vote} fetchData={fetchData} />
-            <Route path="vote" component={Vote} fetchData={fetchData}/>
+            <IndexRoute getComponent={(nextState, cb) => {
+                require.ensure([], require => {
+                    cb(null, require('./universalPage/Vote').default);
+                });
+            }} fetchData={fetchData} />
+            <Route path="vote" getComponent={(nextState, cb) => {
+                require.ensure([], require => {
+                    cb(null, require('./universalPage/Vote').default);
+                });
+            }} fetchData={fetchData}/>
             <Route path="about" component={About} />
         </Route>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
+import { match, Router, browserHistory } from 'react-router';
 // import { syncHistoryWithStore } from 'react-router-redux';
 import createRoutes from '../../../common/routes';
 import configureStore from '../../../common/store/universalStore';
@@ -37,12 +37,15 @@ function onUpdate() {
         });
 }
 
-
-// Router converts <Route> element hierarchy to a route config:
+match({ history: browserHistory, routes }, (error, redirectLocation, renderProps) => {
+    // Router converts <Route> element hierarchy to a route config:
 // Read more https://github.com/rackt/react-router/blob/latest/docs/Glossary.md#routeconfig
-render(
-    <Provider store={store}>
-        <Router history={browserHistory} onUpdate={onUpdate}>
-            {routes}
-        </Router>
-    </Provider>, document.getElementById('page'));
+    render(
+        <Provider store={store}>
+            <Router history={browserHistory} onUpdate={onUpdate}>
+                {routes}
+            </Router>
+        </Provider>, document.getElementById('page'));
+})
+
+

@@ -51,55 +51,55 @@ module.exports =
 
 	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
 	
-	var _http = __webpack_require__(/*! http */ 48);
+	var _http = __webpack_require__(/*! http */ 67);
 	
 	var _http2 = _interopRequireDefault(_http);
 	
-	var _express = __webpack_require__(/*! express */ 6);
+	var _express = __webpack_require__(/*! express */ 7);
 	
 	var _express2 = _interopRequireDefault(_express);
 	
-	var _compression = __webpack_require__(/*! compression */ 42);
+	var _compression = __webpack_require__(/*! compression */ 61);
 	
 	var _compression2 = _interopRequireDefault(_compression);
 	
-	var _morgan = __webpack_require__(/*! morgan */ 49);
+	var _morgan = __webpack_require__(/*! morgan */ 68);
 	
 	var _morgan2 = _interopRequireDefault(_morgan);
 	
-	var _cookieParser = __webpack_require__(/*! cookie-parser */ 43);
+	var _cookieParser = __webpack_require__(/*! cookie-parser */ 62);
 	
 	var _cookieParser2 = _interopRequireDefault(_cookieParser);
 	
-	var _bodyParser = __webpack_require__(/*! body-parser */ 40);
+	var _bodyParser = __webpack_require__(/*! body-parser */ 59);
 	
 	var _bodyParser2 = _interopRequireDefault(_bodyParser);
 	
-	var _expressSession = __webpack_require__(/*! express-session */ 46);
+	var _expressSession = __webpack_require__(/*! express-session */ 65);
 	
 	var _expressSession2 = _interopRequireDefault(_expressSession);
 	
-	var _csurf = __webpack_require__(/*! csurf */ 44);
+	var _csurf = __webpack_require__(/*! csurf */ 63);
 	
 	var _csurf2 = _interopRequireDefault(_csurf);
 	
-	var _config = __webpack_require__(/*! ./config/config.json */ 10);
+	var _config = __webpack_require__(/*! ./config/config.json */ 12);
 	
 	var _config2 = _interopRequireDefault(_config);
 	
-	var _index = __webpack_require__(/*! ./routes/index */ 36);
+	var _index = __webpack_require__(/*! ./routes/index */ 49);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
-	var _index3 = __webpack_require__(/*! ./apis/index */ 32);
+	var _index3 = __webpack_require__(/*! ./apis/index */ 45);
 	
 	var _index4 = _interopRequireDefault(_index3);
 	
-	var _allowCrossDomain = __webpack_require__(/*! ./utils/allowCrossDomain */ 38);
+	var _allowCrossDomain = __webpack_require__(/*! ./utils/allowCrossDomain */ 51);
 	
 	var _allowCrossDomain2 = _interopRequireDefault(_allowCrossDomain);
 	
-	var _renderReactMiddleware = __webpack_require__(/*! ./utils/renderReactMiddleware */ 39);
+	var _renderReactMiddleware = __webpack_require__(/*! ./utils/renderReactMiddleware */ 52);
 	
 	var _renderReactMiddleware2 = _interopRequireDefault(_renderReactMiddleware);
 	
@@ -107,13 +107,17 @@ module.exports =
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
-	var _helmet = __webpack_require__(/*! helmet */ 47);
+	var _helmet = __webpack_require__(/*! helmet */ 66);
 	
 	var _helmet2 = _interopRequireDefault(_helmet);
 	
-	var _socket = __webpack_require__(/*! ./sockets/socket */ 37);
+	var _socket = __webpack_require__(/*! ./sockets/socket */ 50);
 	
 	var _socket2 = _interopRequireDefault(_socket);
+	
+	var _universialRenderMatch = __webpack_require__(/*! ./utils/universialRenderMatch */ 53);
+	
+	var _universialRenderMatch2 = _interopRequireDefault(_universialRenderMatch);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -173,6 +177,7 @@ module.exports =
 	
 	app.use('/', _index2.default);
 	app.use('/api', _index4.default);
+	app.use('*', _universialRenderMatch2.default);
 	
 	// error handlers
 	// no stacktraces leaked to user
@@ -202,7 +207,7 @@ module.exports =
 	let server = _http2.default.createServer(app);
 	
 	/* Socket.io Communication */
-	let io = __webpack_require__(/*! socket.io */ 54).listen(server);
+	let io = __webpack_require__(/*! socket.io */ 70).listen(server);
 	io.sockets.on('connection', _socket2.default);
 	
 	server.listen(app.get('port'), app.get('host'), function () {
@@ -237,11 +242,11 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _shallowEqual = __webpack_require__(/*! ../utils/shallowEqual */ 31);
+	var _shallowEqual = __webpack_require__(/*! ../utils/shallowEqual */ 44);
 	
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 	
-	var _events = __webpack_require__(/*! events */ 11);
+	var _events = __webpack_require__(/*! events */ 14);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
@@ -363,15 +368,6 @@ module.exports =
 
 /***/ },
 /* 4 */
-/*!********************************************!*\
-  !*** external "react-immutable-proptypes" ***!
-  \********************************************/
-/***/ function(module, exports) {
-
-	module.exports = require("react-immutable-proptypes");
-
-/***/ },
-/* 5 */
 /*!******************************!*\
   !*** external "react-redux" ***!
   \******************************/
@@ -380,7 +376,25 @@ module.exports =
 	module.exports = require("react-redux");
 
 /***/ },
+/* 5 */
+/*!********************************************!*\
+  !*** external "react-immutable-proptypes" ***!
+  \********************************************/
+/***/ function(module, exports) {
+
+	module.exports = require("react-immutable-proptypes");
+
+/***/ },
 /* 6 */
+/*!************************!*\
+  !*** external "redux" ***!
+  \************************/
+/***/ function(module, exports) {
+
+	module.exports = require("redux");
+
+/***/ },
+/* 7 */
 /*!**************************!*\
   !*** external "express" ***!
   \**************************/
@@ -389,7 +403,7 @@ module.exports =
 	module.exports = require("express");
 
 /***/ },
-/* 7 */
+/* 8 */
 /*!*********************!*\
   !*** external "fs" ***!
   \*********************/
@@ -398,7 +412,16 @@ module.exports =
 	module.exports = require("fs");
 
 /***/ },
-/* 8 */
+/* 9 */
+/*!*******************************!*\
+  !*** external "react-router" ***!
+  \*******************************/
+/***/ function(module, exports) {
+
+	module.exports = require("react-router");
+
+/***/ },
+/* 10 */
 /*!***************************************!*\
   !*** ./common/pages/async/actions.js ***!
   \***************************************/
@@ -414,7 +437,7 @@ module.exports =
 	exports.invalidateReddit = invalidateReddit;
 	exports.fetchPostsIfNeeded = fetchPostsIfNeeded;
 	
-	var _isomorphicFetch = __webpack_require__(/*! isomorphic-fetch */ 12);
+	var _isomorphicFetch = __webpack_require__(/*! isomorphic-fetch */ 15);
 	
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 	
@@ -504,7 +527,7 @@ module.exports =
 	}
 
 /***/ },
-/* 9 */
+/* 11 */
 /*!********************************************!*\
   !*** ./common/pages/index/indexActions.js ***!
   \********************************************/
@@ -553,7 +576,7 @@ module.exports =
 	}
 
 /***/ },
-/* 10 */
+/* 12 */
 /*!***********************************!*\
   !*** ./server/config/config.json ***!
   \***********************************/
@@ -571,7 +594,34 @@ module.exports =
 	};
 
 /***/ },
-/* 11 */
+/* 13 */
+/*!***************************************!*\
+  !*** ./~/redux-logger/lib/helpers.js ***!
+  \***************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var repeat = exports.repeat = function repeat(str, times) {
+	  return new Array(times + 1).join(str);
+	};
+	
+	var pad = exports.pad = function pad(num, maxLength) {
+	  return repeat("0", maxLength - num.toString().length) + num;
+	};
+	
+	var formatTime = exports.formatTime = function formatTime(time) {
+	  return pad(time.getHours(), 2) + ":" + pad(time.getMinutes(), 2) + ":" + pad(time.getSeconds(), 2) + "." + pad(time.getMilliseconds(), 3);
+	};
+	
+	// Use performance API if it's available in order to get better precision
+	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
+
+/***/ },
+/* 14 */
 /*!*************************!*\
   !*** external "events" ***!
   \*************************/
@@ -580,7 +630,7 @@ module.exports =
 	module.exports = require("events");
 
 /***/ },
-/* 12 */
+/* 15 */
 /*!***********************************!*\
   !*** external "isomorphic-fetch" ***!
   \***********************************/
@@ -589,7 +639,16 @@ module.exports =
 	module.exports = require("isomorphic-fetch");
 
 /***/ },
-/* 13 */
+/* 16 */
+/*!***********************************!*\
+  !*** external "react-dom/server" ***!
+  \***********************************/
+/***/ function(module, exports) {
+
+	module.exports = require("react-dom/server");
+
+/***/ },
+/* 17 */
 /*!************************************!*\
   !*** external "redux-immutablejs" ***!
   \************************************/
@@ -598,7 +657,16 @@ module.exports =
 	module.exports = require("redux-immutablejs");
 
 /***/ },
-/* 14 */
+/* 18 */
+/*!******************************!*\
+  !*** external "redux-thunk" ***!
+  \******************************/
+/***/ function(module, exports) {
+
+	module.exports = require("redux-thunk");
+
+/***/ },
+/* 19 */
 /*!************************!*\
   !*** ./common/App.jsx ***!
   \************************/
@@ -614,7 +682,7 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _events = __webpack_require__(/*! events */ 11);
+	var _events = __webpack_require__(/*! events */ 14);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
@@ -658,7 +726,7 @@ module.exports =
 	exports.default = App;
 
 /***/ },
-/* 15 */
+/* 20 */
 /*!********************************************!*\
   !*** ./common/components/async/Picker.jsx ***!
   \********************************************/
@@ -678,7 +746,7 @@ module.exports =
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
-	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 4);
+	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 5);
 	
 	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
 	
@@ -730,7 +798,7 @@ module.exports =
 	};
 
 /***/ },
-/* 16 */
+/* 21 */
 /*!*******************************************!*\
   !*** ./common/components/async/Posts.jsx ***!
   \*******************************************/
@@ -746,7 +814,7 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 4);
+	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 5);
 	
 	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
 	
@@ -776,7 +844,7 @@ module.exports =
 	};
 
 /***/ },
-/* 17 */
+/* 22 */
 /*!***************************************************!*\
   !*** ./common/components/chat/ChangeNameForm.jsx ***!
   \***************************************************/
@@ -839,7 +907,7 @@ module.exports =
 	exports.default = ChangeNameForm;
 
 /***/ },
-/* 18 */
+/* 23 */
 /*!*********************************************!*\
   !*** ./common/components/chat/Messages.jsx ***!
   \*********************************************/
@@ -967,7 +1035,7 @@ module.exports =
 	exports.MessageForm = MessageForm;
 
 /***/ },
-/* 19 */
+/* 24 */
 /*!**********************************************!*\
   !*** ./common/components/chat/UsersList.jsx ***!
   \**********************************************/
@@ -1020,7 +1088,7 @@ module.exports =
 	exports.default = UsersList;
 
 /***/ },
-/* 20 */
+/* 25 */
 /*!******************************************!*\
   !*** ./common/components/common/Tab.jsx ***!
   \******************************************/
@@ -1037,7 +1105,7 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(/*! classnames */ 41);
+	var _classnames = __webpack_require__(/*! classnames */ 60);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -1232,7 +1300,7 @@ module.exports =
 	};
 
 /***/ },
-/* 21 */
+/* 26 */
 /*!*********************************************!*\
   !*** ./common/components/index/AddTodo.jsx ***!
   \*********************************************/
@@ -1286,7 +1354,7 @@ module.exports =
 	};
 
 /***/ },
-/* 22 */
+/* 27 */
 /*!********************************************!*\
   !*** ./common/components/index/Footer.jsx ***!
   \********************************************/
@@ -1351,7 +1419,7 @@ module.exports =
 	};
 
 /***/ },
-/* 23 */
+/* 28 */
 /*!******************************************!*\
   !*** ./common/components/index/Todo.jsx ***!
   \******************************************/
@@ -1422,7 +1490,7 @@ module.exports =
 	};
 
 /***/ },
-/* 24 */
+/* 29 */
 /*!**********************************************!*\
   !*** ./common/components/index/TodoList.jsx ***!
   \**********************************************/
@@ -1440,11 +1508,11 @@ module.exports =
 	
 	var _immutable = __webpack_require__(/*! immutable */ 3);
 	
-	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 4);
+	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 5);
 	
 	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
 	
-	var _Todo = __webpack_require__(/*! ./Todo */ 23);
+	var _Todo = __webpack_require__(/*! ./Todo */ 28);
 	
 	var _Todo2 = _interopRequireDefault(_Todo);
 	
@@ -1481,7 +1549,29 @@ module.exports =
 	};
 
 /***/ },
-/* 25 */
+/* 30 */
+/*!**************************************************!*\
+  !*** ./common/middleware/preRenderMiddleware.js ***!
+  \**************************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	const defaultFetchData = () => Promise.resolve();
+	
+	function preRenderMiddleware({ routes, location, params }) {
+	    const matchedRoute = routes[routes.length - 1];
+	    const fetchDataHandler = matchedRoute.fetchData || defaultFetchData;
+	    return fetchDataHandler(params);
+	}
+	
+	exports.default = preRenderMiddleware;
+
+/***/ },
+/* 31 */
 /*!*************************************!*\
   !*** ./common/pages/async/Page.jsx ***!
   \*************************************/
@@ -1497,23 +1587,23 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
+	var _reactRedux = __webpack_require__(/*! react-redux */ 4);
 	
 	var _immutable = __webpack_require__(/*! immutable */ 3);
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
-	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 4);
+	var _reactImmutableProptypes = __webpack_require__(/*! react-immutable-proptypes */ 5);
 	
 	var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
 	
-	var _actions = __webpack_require__(/*! ./actions */ 8);
+	var _actions = __webpack_require__(/*! ./actions */ 10);
 	
-	var _Picker = __webpack_require__(/*! ../../components/async/Picker.jsx */ 15);
+	var _Picker = __webpack_require__(/*! ../../components/async/Picker.jsx */ 20);
 	
 	var _Picker2 = _interopRequireDefault(_Picker);
 	
-	var _Posts = __webpack_require__(/*! ../../components/async/Posts.jsx */ 16);
+	var _Posts = __webpack_require__(/*! ../../components/async/Posts.jsx */ 21);
 	
 	var _Posts2 = _interopRequireDefault(_Posts);
 	
@@ -1635,7 +1725,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AsyncPage);
 
 /***/ },
-/* 26 */
+/* 32 */
 /*!****************************************!*\
   !*** ./common/pages/async/reducers.js ***!
   \****************************************/
@@ -1651,9 +1741,9 @@ module.exports =
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
-	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 13);
+	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 17);
 	
-	var _actions = __webpack_require__(/*! ./actions */ 8);
+	var _actions = __webpack_require__(/*! ./actions */ 10);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -1711,7 +1801,7 @@ module.exports =
 	exports.default = rootReducer;
 
 /***/ },
-/* 27 */
+/* 33 */
 /*!************************************!*\
   !*** ./common/pages/chat/Page.jsx ***!
   \************************************/
@@ -1727,19 +1817,19 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
+	var _reactRedux = __webpack_require__(/*! react-redux */ 4);
 	
 	var _Base = __webpack_require__(/*! ../Base.jsx */ 2);
 	
 	var _Base2 = _interopRequireDefault(_Base);
 	
-	var _UsersList = __webpack_require__(/*! ../../components/chat/UsersList */ 19);
+	var _UsersList = __webpack_require__(/*! ../../components/chat/UsersList */ 24);
 	
 	var _UsersList2 = _interopRequireDefault(_UsersList);
 	
-	var _Messages = __webpack_require__(/*! ../../components/chat/Messages */ 18);
+	var _Messages = __webpack_require__(/*! ../../components/chat/Messages */ 23);
 	
-	var _ChangeNameForm = __webpack_require__(/*! ../../components/chat/ChangeNameForm */ 17);
+	var _ChangeNameForm = __webpack_require__(/*! ../../components/chat/ChangeNameForm */ 22);
 	
 	var _ChangeNameForm2 = _interopRequireDefault(_ChangeNameForm);
 	
@@ -1886,7 +1976,7 @@ module.exports =
 	exports.default = Page;
 
 /***/ },
-/* 28 */
+/* 34 */
 /*!**************************************!*\
   !*** ./common/pages/index/index.jsx ***!
   \**************************************/
@@ -1902,7 +1992,7 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
+	var _reactRedux = __webpack_require__(/*! react-redux */ 4);
 	
 	var _immutable = __webpack_require__(/*! immutable */ 3);
 	
@@ -1910,21 +2000,21 @@ module.exports =
 	
 	var _Base2 = _interopRequireDefault(_Base);
 	
-	var _indexActions = __webpack_require__(/*! ./indexActions */ 9);
+	var _indexActions = __webpack_require__(/*! ./indexActions */ 11);
 	
-	var _AddTodo = __webpack_require__(/*! ../../components/index/AddTodo */ 21);
+	var _AddTodo = __webpack_require__(/*! ../../components/index/AddTodo */ 26);
 	
 	var _AddTodo2 = _interopRequireDefault(_AddTodo);
 	
-	var _TodoList = __webpack_require__(/*! ../../components/index/TodoList */ 24);
+	var _TodoList = __webpack_require__(/*! ../../components/index/TodoList */ 29);
 	
 	var _TodoList2 = _interopRequireDefault(_TodoList);
 	
-	var _Footer = __webpack_require__(/*! ../../components/index/Footer */ 22);
+	var _Footer = __webpack_require__(/*! ../../components/index/Footer */ 27);
 	
 	var _Footer2 = _interopRequireDefault(_Footer);
 	
-	var _Tab = __webpack_require__(/*! ../../components/common/Tab */ 20);
+	var _Tab = __webpack_require__(/*! ../../components/common/Tab */ 25);
 	
 	var _Tab2 = _interopRequireDefault(_Tab);
 	
@@ -2016,7 +2106,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(select)(Page);
 
 /***/ },
-/* 29 */
+/* 35 */
 /*!*********************************************!*\
   !*** ./common/pages/index/indexReducers.js ***!
   \*********************************************/
@@ -2030,9 +2120,9 @@ module.exports =
 	
 	var _immutable = __webpack_require__(/*! immutable */ 3);
 	
-	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 13);
+	var _reduxImmutablejs = __webpack_require__(/*! redux-immutablejs */ 17);
 	
-	var _indexActions = __webpack_require__(/*! ./indexActions */ 9);
+	var _indexActions = __webpack_require__(/*! ./indexActions */ 11);
 	
 	const { SHOW_ALL } = _indexActions.VisibilityFilters; // import { combineReducers } from 'redux'
 	
@@ -2070,7 +2160,97 @@ module.exports =
 	exports.default = todoApp;
 
 /***/ },
-/* 30 */
+/* 36 */
+/*!**************************!*\
+  !*** ./common/routes.js ***!
+  \**************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 9);
+	
+	var _App = __webpack_require__(/*! ./universalPage/App */ 40);
+	
+	var _App2 = _interopRequireDefault(_App);
+	
+	var _About = __webpack_require__(/*! ./universalPage/About */ 39);
+	
+	var _About2 = _interopRequireDefault(_About);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// require.ensure polyfill for node
+	if (false) {
+	    require.ensure = function requireModule(deps, callback) {
+	        callback(require);
+	    };
+	}
+	// import Vote from './universalPage/Vote';
+	
+	
+	const fetchData = () => {
+	    return new Promise(resolve => {
+	        resolve({
+	            message: 'test'
+	        });
+	    });
+	};
+	
+	/*
+	 * @param {Redux Store}
+	 * We require store as an argument here because we wish to get
+	 * state from the store after it has been authenticated.
+	 */
+	
+	exports.default = store => {
+	    const requireAuth = (nextState, replace, callback) => {
+	        const { user: { authenticated } } = store.getState();
+	        if (!authenticated) {
+	            replace({
+	                pathname: '/login',
+	                state: { nextPathname: nextState.location.pathname }
+	            });
+	        }
+	        callback();
+	    };
+	
+	    const redirectAuth = (nextState, replace, callback) => {
+	        const { user: { authenticated } } = store.getState();
+	        if (authenticated) {
+	            replace({
+	                pathname: '/'
+	            });
+	        }
+	        callback();
+	    };
+	    return _react2.default.createElement(
+	        _reactRouter.Route,
+	        { path: '/', component: _App2.default },
+	        _react2.default.createElement(_reactRouter.IndexRoute, { getComponent: (nextState, cb) => {
+	                !/* require.ensure */(require => {
+	                    cb(null, require('./universalPage/Vote').default);
+	                }(__webpack_require__));
+	            }, fetchData: fetchData }),
+	        _react2.default.createElement(_reactRouter.Route, { path: 'vote', getComponent: (nextState, cb) => {
+	                !/* require.ensure */(require => {
+	                    cb(null, require('./universalPage/Vote').default);
+	                }(__webpack_require__));
+	            }, fetchData: fetchData }),
+	        _react2.default.createElement(_reactRouter.Route, { path: 'about', component: _About2.default })
+	    );
+	};
+
+/***/ },
+/* 37 */
 /*!*******************************!*\
   !*** ./common/store/index.js ***!
   \*******************************/
@@ -2083,9 +2263,9 @@ module.exports =
 	});
 	exports.default = configureStore;
 	
-	var _redux = __webpack_require__(/*! redux */ 51);
+	var _redux = __webpack_require__(/*! redux */ 6);
 	
-	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 52);
+	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 18);
 	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 	
@@ -2124,7 +2304,274 @@ module.exports =
 	}
 
 /***/ },
-/* 31 */
+/* 38 */
+/*!****************************************!*\
+  !*** ./common/store/universalStore.js ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = configureStore;
+	
+	var _redux = __webpack_require__(/*! redux */ 6);
+	
+	var _reduxThunk = __webpack_require__(/*! redux-thunk */ 18);
+	
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+	
+	var _reducers = __webpack_require__(/*! ../universalPage/reducers */ 42);
+	
+	var _reducers2 = _interopRequireDefault(_reducers);
+	
+	var _reduxLogger = __webpack_require__(/*! redux-logger */ 58);
+	
+	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	/*
+	 * @param {Object} initial state to bootstrap our stores with for server-side rendering
+	 * @param {History Object} a history object. We use `createMemoryHistory` for server-side rendering,
+	 *                          while using browserHistory for client-side
+	 *                          rendering.
+	 */
+	function configureStore(initialState, history) {
+	    // Installs hooks that always keep react-router and redux store in sync
+	    // const middleware = [thunk, routerMiddleware(history)];
+	    const middleware = [_reduxThunk2.default];
+	    let store;
+	
+	    if (process.browser) {
+	        middleware.push((0, _reduxLogger2.default)());
+	        store = (0, _redux.createStore)(_reducers2.default, initialState, (0, _redux.compose)((0, _redux.applyMiddleware)(...middleware), typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f));
+	    } else {
+	        store = (0, _redux.createStore)(_reducers2.default, initialState, (0, _redux.compose)((0, _redux.applyMiddleware)(...middleware), f => f));
+	    }
+	
+	    if (false) {
+	        // Enable Webpack hot module replacement for reducers
+	        module.hot.accept('../universalPage/reducers', () => {
+	            const nextReducer = require('../universalPage/reducers');
+	            store.replaceReducer(nextReducer);
+	        });
+	    }
+	
+	    return store;
+	}
+	// import { routerMiddleware } from 'react-router-redux';
+
+/***/ },
+/* 39 */
+/*!****************************************!*\
+  !*** ./common/universalPage/About.jsx ***!
+  \****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 9);
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 4);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// import classNames from 'classnames/bind';
+	// import styles from 'css/components/about';
+	
+	// const cx = classNames.bind(styles);
+	
+	/*
+	 * Note: This is kept as a container-level component,
+	 *  i.e. We should keep this as the container that does the data-fetching
+	 *  and dispatching of actions if you decide to have any sub-components.
+	 */
+	class About extends _react.Component {
+	
+	    render() {
+	        return _react2.default.createElement(
+	            'div',
+	            { className: 'about' },
+	            'this is about page',
+	            _react2.default.createElement(
+	                _reactRouter.Link,
+	                { to: '/vote' },
+	                'vote'
+	            ),
+	            'text: ',
+	            this.props.text
+	        );
+	    }
+	}
+	
+	function mapStateToProps(state) {
+	    return {
+	        text: state.about
+	    };
+	}
+	
+	// Read more about where to place `connect` here:
+	// https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, {})(About);
+
+/***/ },
+/* 40 */
+/*!**************************************!*\
+  !*** ./common/universalPage/App.jsx ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// import Navigation from 'containers/Navigation';
+	// import Message from 'containers/Message';
+	// import classNames from 'classnames/bind';
+	// import styles from 'css/main';
+	
+	// const cx = classNames.bind(styles);
+	
+	
+	/*
+	 * React-router's <Router> component renders <Route>'s
+	 * and replaces `this.props.children` with the proper React Component.
+	 *
+	 * Please refer to `routes.jsx` for the route config.
+	 *
+	 * A better explanation of react-router is available here:
+	 * https://github.com/rackt/react-router/blob/latest/docs/Introduction.md
+	 */
+	const App = ({ children }) => {
+	    return _react2.default.createElement(
+	        "div",
+	        { className: "app" },
+	        children
+	    );
+	};
+	
+	App.propTypes = {
+	    children: _react.PropTypes.object
+	};
+	
+	exports.default = App;
+
+/***/ },
+/* 41 */
+/*!************************************************!*\
+  !*** ./common/universalPage/reducers/about.js ***!
+  \************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = text;
+	
+	var _redux = __webpack_require__(/*! redux */ 6);
+	
+	function text(state = 'test') {
+	    return state;
+	}
+
+/***/ },
+/* 42 */
+/*!************************************************!*\
+  !*** ./common/universalPage/reducers/index.js ***!
+  \************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _redux = __webpack_require__(/*! redux */ 6);
+	
+	var _about = __webpack_require__(/*! ./about */ 41);
+	
+	var _about2 = _interopRequireDefault(_about);
+	
+	var _vote = __webpack_require__(/*! ./vote */ 43);
+	
+	var _vote2 = _interopRequireDefault(_vote);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// import { routerReducer as routing } from 'react-router-redux';
+	
+	const isFetching = (state = false, action) => {
+	    switch (action.type) {
+	        default:
+	            return state;
+	    }
+	};
+	
+	// Combine reducers with routeReducer which keeps track of
+	// router state
+	const rootReducer = (0, _redux.combineReducers)({
+	    isFetching,
+	    about: _about2.default,
+	    vote: _vote2.default
+	});
+	
+	exports.default = rootReducer;
+
+/***/ },
+/* 43 */
+/*!***********************************************!*\
+  !*** ./common/universalPage/reducers/vote.js ***!
+  \***********************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = message;
+	
+	
+	/*
+	 * Message store for global messages, i.e. Network messages / Redirect messages
+	 * that need to be communicated on the page itself. Ideally
+	 * messages/notifications should appear within the component to give the user
+	 * more context. - My 2 cents.
+	 */
+	function message(state = {
+	    message: 'test',
+	    type: 'SUCCESS'
+	}, action = {}) {
+	    switch (action.type) {
+	        default:
+	            return state;
+	    }
+	}
+
+/***/ },
+/* 44 */
 /*!**************************************!*\
   !*** ./common/utils/shallowEqual.js ***!
   \**************************************/
@@ -2156,14 +2603,11 @@ module.exports =
 	function is(x, y) {
 	    // SameValue algorithm
 	    if (x === y) {
-	        // Steps 1-5, 7-10
-	        // Steps 6.b-6.e: +0 != -0
 	        return true;
 	    } else {
 	        if (typeof x === 'function' && typeof y === 'function') {
 	            return x.toString() === y.toString();
 	        }
-	        // Step 6.a: NaN == NaN
 	        return false;
 	    }
 	}
@@ -2202,7 +2646,7 @@ module.exports =
 	module.exports = shallowEqual;
 
 /***/ },
-/* 32 */
+/* 45 */
 /*!******************************!*\
   !*** ./server/apis/index.js ***!
   \******************************/
@@ -2214,7 +2658,7 @@ module.exports =
 	    value: true
 	});
 	
-	var _express = __webpack_require__(/*! express */ 6);
+	var _express = __webpack_require__(/*! express */ 7);
 	
 	let router = new _express.Router();
 	
@@ -2229,7 +2673,7 @@ module.exports =
 	exports.default = router;
 
 /***/ },
-/* 33 */
+/* 46 */
 /*!*************************************!*\
   !*** ./server/controllers/async.js ***!
   \*************************************/
@@ -2241,15 +2685,15 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _isomorphicFetch = __webpack_require__(/*! isomorphic-fetch */ 12);
+	var _isomorphicFetch = __webpack_require__(/*! isomorphic-fetch */ 15);
 	
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 	
-	var _reducers = __webpack_require__(/*! ../../common/pages/async/reducers */ 26);
+	var _reducers = __webpack_require__(/*! ../../common/pages/async/reducers */ 32);
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
-	var _Page = __webpack_require__(/*! ../../common/pages/async/Page.jsx */ 25);
+	var _Page = __webpack_require__(/*! ../../common/pages/async/Page.jsx */ 31);
 	
 	var _Page2 = _interopRequireDefault(_Page);
 	
@@ -2301,7 +2745,7 @@ module.exports =
 	})();
 
 /***/ },
-/* 34 */
+/* 47 */
 /*!************************************!*\
   !*** ./server/controllers/chat.js ***!
   \************************************/
@@ -2313,11 +2757,11 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Page = __webpack_require__(/*! ../../common/pages/chat/Page */ 27);
+	var _Page = __webpack_require__(/*! ../../common/pages/chat/Page */ 33);
 	
 	var _Page2 = _interopRequireDefault(_Page);
 	
-	var _fs = __webpack_require__(/*! fs */ 7);
+	var _fs = __webpack_require__(/*! fs */ 8);
 	
 	var _fs2 = _interopRequireDefault(_fs);
 	
@@ -2341,7 +2785,7 @@ module.exports =
 	/* WEBPACK VAR INJECTION */}.call(exports, "server\\controllers"))
 
 /***/ },
-/* 35 */
+/* 48 */
 /*!*************************************!*\
   !*** ./server/controllers/index.js ***!
   \*************************************/
@@ -2353,11 +2797,11 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _indexReducers = __webpack_require__(/*! ../../common/pages/index/indexReducers */ 29);
+	var _indexReducers = __webpack_require__(/*! ../../common/pages/index/indexReducers */ 35);
 	
 	var _indexReducers2 = _interopRequireDefault(_indexReducers);
 	
-	var _index = __webpack_require__(/*! ../../common/pages/index */ 28);
+	var _index = __webpack_require__(/*! ../../common/pages/index */ 34);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -2390,7 +2834,7 @@ module.exports =
 	};
 
 /***/ },
-/* 36 */
+/* 49 */
 /*!********************************!*\
   !*** ./server/routes/index.js ***!
   \********************************/
@@ -2402,21 +2846,21 @@ module.exports =
 	  value: true
 	});
 	
-	var _express = __webpack_require__(/*! express */ 6);
+	var _express = __webpack_require__(/*! express */ 7);
 	
-	var _fs = __webpack_require__(/*! fs */ 7);
+	var _fs = __webpack_require__(/*! fs */ 8);
 	
 	var _fs2 = _interopRequireDefault(_fs);
 	
-	var _index = __webpack_require__(/*! ../controllers/index */ 35);
+	var _index = __webpack_require__(/*! ../controllers/index */ 48);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
-	var _async = __webpack_require__(/*! ../controllers/async */ 33);
+	var _async = __webpack_require__(/*! ../controllers/async */ 46);
 	
 	var _async2 = _interopRequireDefault(_async);
 	
-	var _chat = __webpack_require__(/*! ../controllers/chat */ 34);
+	var _chat = __webpack_require__(/*! ../controllers/chat */ 47);
 	
 	var _chat2 = _interopRequireDefault(_chat);
 	
@@ -2453,7 +2897,7 @@ module.exports =
 	/* WEBPACK VAR INJECTION */}.call(exports, "server\\routes"))
 
 /***/ },
-/* 37 */
+/* 50 */
 /*!**********************************!*\
   !*** ./server/sockets/socket.js ***!
   \**********************************/
@@ -2569,7 +3013,7 @@ module.exports =
 	;
 
 /***/ },
-/* 38 */
+/* 51 */
 /*!******************************************!*\
   !*** ./server/utils/allowCrossDomain.js ***!
   \******************************************/
@@ -2591,7 +3035,7 @@ module.exports =
 	}
 
 /***/ },
-/* 39 */
+/* 52 */
 /*!************************************************!*\
   !*** ./server/utils/renderReactMiddleware.jsx ***!
   \************************************************/
@@ -2604,7 +3048,7 @@ module.exports =
 	});
 	exports.default = reactRender;
 	
-	var _ejs = __webpack_require__(/*! ejs */ 45);
+	var _ejs = __webpack_require__(/*! ejs */ 64);
 	
 	var _ejs2 = _interopRequireDefault(_ejs);
 	
@@ -2612,27 +3056,27 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _server = __webpack_require__(/*! react-dom/server */ 50);
+	var _server = __webpack_require__(/*! react-dom/server */ 16);
 	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 5);
+	var _reactRedux = __webpack_require__(/*! react-redux */ 4);
 	
-	var _fs = __webpack_require__(/*! fs */ 7);
+	var _fs = __webpack_require__(/*! fs */ 8);
 	
 	var _fs2 = _interopRequireDefault(_fs);
 	
-	var _secureFilters = __webpack_require__(/*! secure-filters */ 53);
+	var _secureFilters = __webpack_require__(/*! secure-filters */ 69);
 	
 	var _secureFilters2 = _interopRequireDefault(_secureFilters);
 	
-	var _index = __webpack_require__(/*! ../../common/store/index */ 30);
+	var _index = __webpack_require__(/*! ../../common/store/index */ 37);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
-	var _App = __webpack_require__(/*! ../../common/App.jsx */ 14);
+	var _App = __webpack_require__(/*! ../../common/App.jsx */ 19);
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _config = __webpack_require__(/*! ../config/config.json */ 10);
+	var _config = __webpack_require__(/*! ../config/config.json */ 12);
 	
 	var _config2 = _interopRequireDefault(_config);
 	
@@ -2724,7 +3168,967 @@ module.exports =
 	/* WEBPACK VAR INJECTION */}.call(exports, "server\\utils"))
 
 /***/ },
-/* 40 */
+/* 53 */
+/*!***********************************************!*\
+  !*** ./server/utils/universialRenderMatch.js ***!
+  \***********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = renderMatch;
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _server = __webpack_require__(/*! react-dom/server */ 16);
+	
+	var _reactRouter = __webpack_require__(/*! react-router */ 9);
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 4);
+	
+	var _routes = __webpack_require__(/*! ../../common/routes */ 36);
+	
+	var _routes2 = _interopRequireDefault(_routes);
+	
+	var _universalStore = __webpack_require__(/*! ../../common/store/universalStore */ 38);
+	
+	var _universalStore2 = _interopRequireDefault(_universalStore);
+	
+	var _preRenderMiddleware = __webpack_require__(/*! ../../common/middleware/preRenderMiddleware */ 30);
+	
+	var _preRenderMiddleware2 = _interopRequireDefault(_preRenderMiddleware);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function renderMatch(req, res) {
+	    // const authenticated = req.isAuthenticated();
+	    const history = (0, _reactRouter.createMemoryHistory)();
+	    const store = (0, _universalStore2.default)({
+	        user: {
+	            // authenticated,
+	            isWaiting: false,
+	            message: '',
+	            isLogin: true
+	        }
+	    }, history);
+	    const routes = (0, _routes2.default)(store);
+	
+	    /*
+	     * From the react-router docs:
+	     *
+	     * This function is to be used for server-side rendering. It matches a set of routes to
+	     * a location, without rendering, and calls a callback(err, redirect, props)
+	     * when it's done.
+	     *
+	     * The function will create a `history` for you, passing additional `options` to create it.
+	     * These options can include `basename` to control the base name for URLs, as well as the pair
+	     * of `parseQueryString` and `stringifyQuery` to control query string parsing and serializing.
+	     * You can also pass in an already instantiated `history` object, which can be constructured
+	     * however you like.
+	     *
+	     * The three arguments to the callback function you pass to `match` are:
+	     * - err:       A javascript Error object if an error occured, `undefined` otherwise.
+	     * - redirect:  A `Location` object if the route is a redirect, `undefined` otherwise
+	     * - props:     The props you should pass to the routing context if the route matched,
+	     *              `undefined` otherwise.
+	     * If all three parameters are `undefined`, this means that there was no route found matching the
+	     * given location.
+	     */
+	    (0, _reactRouter.match)({ routes, location: req.originalUrl }, (err, redirect, props) => {
+	        if (err) {
+	            res.status(500).json(err);
+	        } else if (redirect) {
+	            res.redirect(302, redirect.pathname + redirect.search);
+	        } else if (props) {
+	            // This method waits for all render component
+	            // promises to resolve before returning to browser
+	            // store.dispatch({ type: types.CREATE_REQUEST });
+	            (0, _preRenderMiddleware2.default)(props).then(data => {
+	                store.dispatch({ type: 'REQUEST_SUCCESS', data });
+	                const componentHTML = (0, _server.renderToString)(_react2.default.createElement(
+	                    _reactRedux.Provider,
+	                    { store: store },
+	                    _react2.default.createElement(_reactRouter.RouterContext, props)
+	                ));
+	
+	                const initialState = store.getState();
+	
+	                res.status(200).send(`
+	<!doctype html>
+	<html>
+	    <head>
+	        <meta charset="utf-8">
+	        <meta name="format-detection" content="telephone=no"/>
+	        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	        <meta name="apple-mobile-web-app-capable" content="yes"/>
+	        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	    </head>
+	    <body>
+	        <div id="page">${ componentHTML }</div>
+	        <script>window.__INITIAL_STATE__ = ${ JSON.stringify(initialState) };</script>
+	        <script src="/static/js/libs-debug.js"></script>
+	        <script src="/static/js/debug/app.js"></script>
+	    </body>
+	</html>
+	                `);
+	            }).catch(err => {
+	                console.error(err);
+	                res.status(500).json(err);
+	            });
+	        } else {
+	            res.sendStatus(404);
+	        }
+	    });
+	}
+
+/***/ },
+/* 54 */
+/*!******************************!*\
+  !*** ./~/deep-diff/index.js ***!
+  \******************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	 * deep-diff.
+	 * Licensed under the MIT License.
+	 */
+	;(function(root, factory) {
+	  'use strict';
+	  if (true) {
+	    // AMD. Register as an anonymous module.
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+	      return factory();
+	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports === 'object') {
+	    // Node. Does not work with strict CommonJS, but
+	    // only CommonJS-like environments that support module.exports,
+	    // like Node.
+	    module.exports = factory();
+	  } else {
+	    // Browser globals (root is window)
+	    root.DeepDiff = factory();
+	  }
+	}(this, function(undefined) {
+	  'use strict';
+	
+	  var $scope, conflict, conflictResolution = [];
+	  if (typeof global === 'object' && global) {
+	    $scope = global;
+	  } else if (typeof window !== 'undefined') {
+	    $scope = window;
+	  } else {
+	    $scope = {};
+	  }
+	  conflict = $scope.DeepDiff;
+	  if (conflict) {
+	    conflictResolution.push(
+	      function() {
+	        if ('undefined' !== typeof conflict && $scope.DeepDiff === accumulateDiff) {
+	          $scope.DeepDiff = conflict;
+	          conflict = undefined;
+	        }
+	      });
+	  }
+	
+	  // nodejs compatible on server side and in the browser.
+	  function inherits(ctor, superCtor) {
+	    ctor.super_ = superCtor;
+	    ctor.prototype = Object.create(superCtor.prototype, {
+	      constructor: {
+	        value: ctor,
+	        enumerable: false,
+	        writable: true,
+	        configurable: true
+	      }
+	    });
+	  }
+	
+	  function Diff(kind, path) {
+	    Object.defineProperty(this, 'kind', {
+	      value: kind,
+	      enumerable: true
+	    });
+	    if (path && path.length) {
+	      Object.defineProperty(this, 'path', {
+	        value: path,
+	        enumerable: true
+	      });
+	    }
+	  }
+	
+	  function DiffEdit(path, origin, value) {
+	    DiffEdit.super_.call(this, 'E', path);
+	    Object.defineProperty(this, 'lhs', {
+	      value: origin,
+	      enumerable: true
+	    });
+	    Object.defineProperty(this, 'rhs', {
+	      value: value,
+	      enumerable: true
+	    });
+	  }
+	  inherits(DiffEdit, Diff);
+	
+	  function DiffNew(path, value) {
+	    DiffNew.super_.call(this, 'N', path);
+	    Object.defineProperty(this, 'rhs', {
+	      value: value,
+	      enumerable: true
+	    });
+	  }
+	  inherits(DiffNew, Diff);
+	
+	  function DiffDeleted(path, value) {
+	    DiffDeleted.super_.call(this, 'D', path);
+	    Object.defineProperty(this, 'lhs', {
+	      value: value,
+	      enumerable: true
+	    });
+	  }
+	  inherits(DiffDeleted, Diff);
+	
+	  function DiffArray(path, index, item) {
+	    DiffArray.super_.call(this, 'A', path);
+	    Object.defineProperty(this, 'index', {
+	      value: index,
+	      enumerable: true
+	    });
+	    Object.defineProperty(this, 'item', {
+	      value: item,
+	      enumerable: true
+	    });
+	  }
+	  inherits(DiffArray, Diff);
+	
+	  function arrayRemove(arr, from, to) {
+	    var rest = arr.slice((to || from) + 1 || arr.length);
+	    arr.length = from < 0 ? arr.length + from : from;
+	    arr.push.apply(arr, rest);
+	    return arr;
+	  }
+	
+	  function realTypeOf(subject) {
+	    var type = typeof subject;
+	    if (type !== 'object') {
+	      return type;
+	    }
+	
+	    if (subject === Math) {
+	      return 'math';
+	    } else if (subject === null) {
+	      return 'null';
+	    } else if (Array.isArray(subject)) {
+	      return 'array';
+	    } else if (Object.prototype.toString.call(subject) === '[object Date]') {
+	      return 'date';
+	    } else if (typeof subject.toString !== 'undefined' && /^\/.*\//.test(subject.toString())) {
+	      return 'regexp';
+	    }
+	    return 'object';
+	  }
+	
+	  function deepDiff(lhs, rhs, changes, prefilter, path, key, stack) {
+	    path = path || [];
+	    var currentPath = path.slice(0);
+	    if (typeof key !== 'undefined') {
+	      if (prefilter) {
+	        if (typeof(prefilter) === 'function' && prefilter(currentPath, key)) { return; }
+	        else if (typeof(prefilter) === 'object') {
+	          if (prefilter.prefilter && prefilter.prefilter(currentPath, key)) { return; }
+	          if (prefilter.normalize) {
+	            var alt = prefilter.normalize(currentPath, key, lhs, rhs);
+	            if (alt) {
+	              lhs = alt[0];
+	              rhs = alt[1];
+	            }
+	          }
+	        }
+	      }
+	      currentPath.push(key);
+	    }
+	
+	    // Use string comparison for regexes
+	    if (realTypeOf(lhs) === 'regexp' && realTypeOf(rhs) === 'regexp') {
+	      lhs = lhs.toString();
+	      rhs = rhs.toString();
+	    }
+	
+	    var ltype = typeof lhs;
+	    var rtype = typeof rhs;
+	    if (ltype === 'undefined') {
+	      if (rtype !== 'undefined') {
+	        changes(new DiffNew(currentPath, rhs));
+	      }
+	    } else if (rtype === 'undefined') {
+	      changes(new DiffDeleted(currentPath, lhs));
+	    } else if (realTypeOf(lhs) !== realTypeOf(rhs)) {
+	      changes(new DiffEdit(currentPath, lhs, rhs));
+	    } else if (Object.prototype.toString.call(lhs) === '[object Date]' && Object.prototype.toString.call(rhs) === '[object Date]' && ((lhs - rhs) !== 0)) {
+	      changes(new DiffEdit(currentPath, lhs, rhs));
+	    } else if (ltype === 'object' && lhs !== null && rhs !== null) {
+	      stack = stack || [];
+	      if (stack.indexOf(lhs) < 0) {
+	        stack.push(lhs);
+	        if (Array.isArray(lhs)) {
+	          var i, len = lhs.length;
+	          for (i = 0; i < lhs.length; i++) {
+	            if (i >= rhs.length) {
+	              changes(new DiffArray(currentPath, i, new DiffDeleted(undefined, lhs[i])));
+	            } else {
+	              deepDiff(lhs[i], rhs[i], changes, prefilter, currentPath, i, stack);
+	            }
+	          }
+	          while (i < rhs.length) {
+	            changes(new DiffArray(currentPath, i, new DiffNew(undefined, rhs[i++])));
+	          }
+	        } else {
+	          var akeys = Object.keys(lhs);
+	          var pkeys = Object.keys(rhs);
+	          akeys.forEach(function(k, i) {
+	            var other = pkeys.indexOf(k);
+	            if (other >= 0) {
+	              deepDiff(lhs[k], rhs[k], changes, prefilter, currentPath, k, stack);
+	              pkeys = arrayRemove(pkeys, other);
+	            } else {
+	              deepDiff(lhs[k], undefined, changes, prefilter, currentPath, k, stack);
+	            }
+	          });
+	          pkeys.forEach(function(k) {
+	            deepDiff(undefined, rhs[k], changes, prefilter, currentPath, k, stack);
+	          });
+	        }
+	        stack.length = stack.length - 1;
+	      }
+	    } else if (lhs !== rhs) {
+	      if (!(ltype === 'number' && isNaN(lhs) && isNaN(rhs))) {
+	        changes(new DiffEdit(currentPath, lhs, rhs));
+	      }
+	    }
+	  }
+	
+	  function accumulateDiff(lhs, rhs, prefilter, accum) {
+	    accum = accum || [];
+	    deepDiff(lhs, rhs,
+	      function(diff) {
+	        if (diff) {
+	          accum.push(diff);
+	        }
+	      },
+	      prefilter);
+	    return (accum.length) ? accum : undefined;
+	  }
+	
+	  function applyArrayChange(arr, index, change) {
+	    if (change.path && change.path.length) {
+	      var it = arr[index],
+	          i, u = change.path.length - 1;
+	      for (i = 0; i < u; i++) {
+	        it = it[change.path[i]];
+	      }
+	      switch (change.kind) {
+	        case 'A':
+	          applyArrayChange(it[change.path[i]], change.index, change.item);
+	          break;
+	        case 'D':
+	          delete it[change.path[i]];
+	          break;
+	        case 'E':
+	        case 'N':
+	          it[change.path[i]] = change.rhs;
+	          break;
+	      }
+	    } else {
+	      switch (change.kind) {
+	        case 'A':
+	          applyArrayChange(arr[index], change.index, change.item);
+	          break;
+	        case 'D':
+	          arr = arrayRemove(arr, index);
+	          break;
+	        case 'E':
+	        case 'N':
+	          arr[index] = change.rhs;
+	          break;
+	      }
+	    }
+	    return arr;
+	  }
+	
+	  function applyChange(target, source, change) {
+	    if (target && source && change && change.kind) {
+	      var it = target,
+	          i = -1,
+	          last = change.path ? change.path.length - 1 : 0;
+	      while (++i < last) {
+	        if (typeof it[change.path[i]] === 'undefined') {
+	          it[change.path[i]] = (typeof change.path[i] === 'number') ? [] : {};
+	        }
+	        it = it[change.path[i]];
+	      }
+	      switch (change.kind) {
+	        case 'A':
+	          applyArrayChange(change.path ? it[change.path[i]] : it, change.index, change.item);
+	          break;
+	        case 'D':
+	          delete it[change.path[i]];
+	          break;
+	        case 'E':
+	        case 'N':
+	          it[change.path[i]] = change.rhs;
+	          break;
+	      }
+	    }
+	  }
+	
+	  function revertArrayChange(arr, index, change) {
+	    if (change.path && change.path.length) {
+	      // the structure of the object at the index has changed...
+	      var it = arr[index],
+	          i, u = change.path.length - 1;
+	      for (i = 0; i < u; i++) {
+	        it = it[change.path[i]];
+	      }
+	      switch (change.kind) {
+	        case 'A':
+	          revertArrayChange(it[change.path[i]], change.index, change.item);
+	          break;
+	        case 'D':
+	          it[change.path[i]] = change.lhs;
+	          break;
+	        case 'E':
+	          it[change.path[i]] = change.lhs;
+	          break;
+	        case 'N':
+	          delete it[change.path[i]];
+	          break;
+	      }
+	    } else {
+	      // the array item is different...
+	      switch (change.kind) {
+	        case 'A':
+	          revertArrayChange(arr[index], change.index, change.item);
+	          break;
+	        case 'D':
+	          arr[index] = change.lhs;
+	          break;
+	        case 'E':
+	          arr[index] = change.lhs;
+	          break;
+	        case 'N':
+	          arr = arrayRemove(arr, index);
+	          break;
+	      }
+	    }
+	    return arr;
+	  }
+	
+	  function revertChange(target, source, change) {
+	    if (target && source && change && change.kind) {
+	      var it = target,
+	          i, u;
+	      u = change.path.length - 1;
+	      for (i = 0; i < u; i++) {
+	        if (typeof it[change.path[i]] === 'undefined') {
+	          it[change.path[i]] = {};
+	        }
+	        it = it[change.path[i]];
+	      }
+	      switch (change.kind) {
+	        case 'A':
+	          // Array was modified...
+	          // it will be an array...
+	          revertArrayChange(it[change.path[i]], change.index, change.item);
+	          break;
+	        case 'D':
+	          // Item was deleted...
+	          it[change.path[i]] = change.lhs;
+	          break;
+	        case 'E':
+	          // Item was edited...
+	          it[change.path[i]] = change.lhs;
+	          break;
+	        case 'N':
+	          // Item is new...
+	          delete it[change.path[i]];
+	          break;
+	      }
+	    }
+	  }
+	
+	  function applyDiff(target, source, filter) {
+	    if (target && source) {
+	      var onChange = function(change) {
+	        if (!filter || filter(target, source, change)) {
+	          applyChange(target, source, change);
+	        }
+	      };
+	      deepDiff(target, source, onChange);
+	    }
+	  }
+	
+	  Object.defineProperties(accumulateDiff, {
+	
+	    diff: {
+	      value: accumulateDiff,
+	      enumerable: true
+	    },
+	    observableDiff: {
+	      value: deepDiff,
+	      enumerable: true
+	    },
+	    applyDiff: {
+	      value: applyDiff,
+	      enumerable: true
+	    },
+	    applyChange: {
+	      value: applyChange,
+	      enumerable: true
+	    },
+	    revertChange: {
+	      value: revertChange,
+	      enumerable: true
+	    },
+	    isConflict: {
+	      value: function() {
+	        return 'undefined' !== typeof conflict;
+	      },
+	      enumerable: true
+	    },
+	    noConflict: {
+	      value: function() {
+	        if (conflictResolution) {
+	          conflictResolution.forEach(function(it) {
+	            it();
+	          });
+	          conflictResolution = null;
+	        }
+	        return accumulateDiff;
+	      },
+	      enumerable: true
+	    }
+	  });
+	
+	  return accumulateDiff;
+	}));
+
+
+/***/ },
+/* 55 */
+/*!************************************!*\
+  !*** ./~/redux-logger/lib/core.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.printBuffer = printBuffer;
+	
+	var _helpers = __webpack_require__(/*! ./helpers */ 13);
+	
+	var _diff = __webpack_require__(/*! ./diff */ 57);
+	
+	var _diff2 = _interopRequireDefault(_diff);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+	
+	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+	
+	/**
+	 * Get log level string based on supplied params
+	 *
+	 * @param {string | function | object} level - console[level]
+	 * @param {object} action - selected action
+	 * @param {array} payload - selected payload
+	 * @param {string} type - log entry type
+	 *
+	 * @returns {string} level
+	 */
+	function getLogLevel(level, action, payload, type) {
+	  switch (typeof level === 'undefined' ? 'undefined' : _typeof(level)) {
+	    case 'object':
+	      return typeof level[type] === 'function' ? level[type].apply(level, _toConsumableArray(payload)) : level[type];
+	    case 'function':
+	      return level(action);
+	    default:
+	      return level;
+	  }
+	}
+	
+	function defaultTitleFormatter(options) {
+	  var timestamp = options.timestamp;
+	  var duration = options.duration;
+	
+	  return function (action, time, took) {
+	    return 'action @ ' + (timestamp ? time : '') + ' ' + action.type + ' ' + (duration ? '(in ' + took.toFixed(2) + ' ms)' : '');
+	  };
+	}
+	
+	function printBuffer(buffer, options) {
+	  var logger = options.logger;
+	  var actionTransformer = options.actionTransformer;
+	  var _options$titleFormatt = options.titleFormatter;
+	  var titleFormatter = _options$titleFormatt === undefined ? defaultTitleFormatter(options) : _options$titleFormatt;
+	  var collapsed = options.collapsed;
+	  var colors = options.colors;
+	  var level = options.level;
+	  var diff = options.diff;
+	
+	  buffer.forEach(function (logEntry, key) {
+	    var started = logEntry.started;
+	    var startedTime = logEntry.startedTime;
+	    var action = logEntry.action;
+	    var prevState = logEntry.prevState;
+	    var error = logEntry.error;
+	    var took = logEntry.took;
+	    var nextState = logEntry.nextState;
+	
+	    var nextEntry = buffer[key + 1];
+	
+	    if (nextEntry) {
+	      nextState = nextEntry.prevState;
+	      took = nextEntry.started - started;
+	    }
+	
+	    // Message
+	    var formattedAction = actionTransformer(action);
+	    var isCollapsed = typeof collapsed === 'function' ? collapsed(function () {
+	      return nextState;
+	    }, action) : collapsed;
+	
+	    var formattedTime = (0, _helpers.formatTime)(startedTime);
+	    var titleCSS = colors.title ? 'color: ' + colors.title(formattedAction) + ';' : null;
+	    var title = titleFormatter(formattedAction, formattedTime, took);
+	
+	    // Render
+	    try {
+	      if (isCollapsed) {
+	        if (colors.title) logger.groupCollapsed('%c ' + title, titleCSS);else logger.groupCollapsed(title);
+	      } else {
+	        if (colors.title) logger.group('%c ' + title, titleCSS);else logger.group(title);
+	      }
+	    } catch (e) {
+	      logger.log(title);
+	    }
+	
+	    var prevStateLevel = getLogLevel(level, formattedAction, [prevState], 'prevState');
+	    var actionLevel = getLogLevel(level, formattedAction, [formattedAction], 'action');
+	    var errorLevel = getLogLevel(level, formattedAction, [error, prevState], 'error');
+	    var nextStateLevel = getLogLevel(level, formattedAction, [nextState], 'nextState');
+	
+	    if (prevStateLevel) {
+	      if (colors.prevState) logger[prevStateLevel]('%c prev state', 'color: ' + colors.prevState(prevState) + '; font-weight: bold', prevState);else logger[prevStateLevel]('prev state', prevState);
+	    }
+	
+	    if (actionLevel) {
+	      if (colors.action) logger[actionLevel]('%c action', 'color: ' + colors.action(formattedAction) + '; font-weight: bold', formattedAction);else logger[actionLevel]('action', formattedAction);
+	    }
+	
+	    if (error && errorLevel) {
+	      if (colors.error) logger[errorLevel]('%c error', 'color: ' + colors.error(error, prevState) + '; font-weight: bold', error);else logger[errorLevel]('error', error);
+	    }
+	
+	    if (nextStateLevel) {
+	      if (colors.nextState) logger[nextStateLevel]('%c next state', 'color: ' + colors.nextState(nextState) + '; font-weight: bold', nextState);else logger[nextStateLevel]('next state', nextState);
+	    }
+	
+	    if (diff) {
+	      (0, _diff2.default)(prevState, nextState, logger, isCollapsed);
+	    }
+	
+	    try {
+	      logger.groupEnd();
+	    } catch (e) {
+	      logger.log('—— log end ——');
+	    }
+	  });
+	}
+
+/***/ },
+/* 56 */
+/*!****************************************!*\
+  !*** ./~/redux-logger/lib/defaults.js ***!
+  \****************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = {
+	  level: "log",
+	  logger: console,
+	  logErrors: true,
+	  collapsed: undefined,
+	  predicate: undefined,
+	  duration: false,
+	  timestamp: true,
+	  stateTransformer: function stateTransformer(state) {
+	    return state;
+	  },
+	  actionTransformer: function actionTransformer(action) {
+	    return action;
+	  },
+	  errorTransformer: function errorTransformer(error) {
+	    return error;
+	  },
+	  colors: {
+	    title: function title() {
+	      return "inherit";
+	    },
+	    prevState: function prevState() {
+	      return "#9E9E9E";
+	    },
+	    action: function action() {
+	      return "#03A9F4";
+	    },
+	    nextState: function nextState() {
+	      return "#4CAF50";
+	    },
+	    error: function error() {
+	      return "#F20404";
+	    }
+	  },
+	  diff: false,
+	  diffPredicate: undefined,
+	
+	  // Deprecated options
+	  transformer: undefined
+	};
+	module.exports = exports['default'];
+
+/***/ },
+/* 57 */
+/*!************************************!*\
+  !*** ./~/redux-logger/lib/diff.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = diffLogger;
+	
+	var _deepDiff = __webpack_require__(/*! deep-diff */ 54);
+	
+	var _deepDiff2 = _interopRequireDefault(_deepDiff);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// https://github.com/flitbit/diff#differences
+	var dictionary = {
+	  'E': {
+	    color: '#2196F3',
+	    text: 'CHANGED:'
+	  },
+	  'N': {
+	    color: '#4CAF50',
+	    text: 'ADDED:'
+	  },
+	  'D': {
+	    color: '#F44336',
+	    text: 'DELETED:'
+	  },
+	  'A': {
+	    color: '#2196F3',
+	    text: 'ARRAY:'
+	  }
+	};
+	
+	function style(kind) {
+	  return 'color: ' + dictionary[kind].color + '; font-weight: bold';
+	}
+	
+	function render(diff) {
+	  var kind = diff.kind;
+	  var path = diff.path;
+	  var lhs = diff.lhs;
+	  var rhs = diff.rhs;
+	  var index = diff.index;
+	  var item = diff.item;
+	
+	  switch (kind) {
+	    case 'E':
+	      return path.join('.') + ' ' + lhs + ' → ' + rhs;
+	    case 'N':
+	      return path.join('.') + ' ' + rhs;
+	    case 'D':
+	      return '' + path.join('.');
+	    case 'A':
+	      return [path.join('.') + '[' + index + ']', item];
+	    default:
+	      return null;
+	  }
+	}
+	
+	function diffLogger(prevState, newState, logger, isCollapsed) {
+	  var diff = (0, _deepDiff2.default)(prevState, newState);
+	
+	  try {
+	    if (isCollapsed) {
+	      logger.groupCollapsed('diff');
+	    } else {
+	      logger.group('diff');
+	    }
+	  } catch (e) {
+	    logger.log('diff');
+	  }
+	
+	  if (diff) {
+	    diff.forEach(function (elem) {
+	      var kind = elem.kind;
+	
+	      var output = render(elem);
+	
+	      logger.log('%c ' + dictionary[kind].text, style(kind), output);
+	    });
+	  } else {
+	    logger.log('—— no diff ——');
+	  }
+	
+	  try {
+	    logger.groupEnd();
+	  } catch (e) {
+	    logger.log('—— diff end —— ');
+	  }
+	}
+	module.exports = exports['default'];
+
+/***/ },
+/* 58 */
+/*!*************************************!*\
+  !*** ./~/redux-logger/lib/index.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _core = __webpack_require__(/*! ./core */ 55);
+	
+	var _helpers = __webpack_require__(/*! ./helpers */ 13);
+	
+	var _defaults = __webpack_require__(/*! ./defaults */ 56);
+	
+	var _defaults2 = _interopRequireDefault(_defaults);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	/**
+	 * Creates logger with following options
+	 *
+	 * @namespace
+	 * @param {object} options - options for logger
+	 * @param {string | function | object} options.level - console[level]
+	 * @param {boolean} options.duration - print duration of each action?
+	 * @param {boolean} options.timestamp - print timestamp with each action?
+	 * @param {object} options.colors - custom colors
+	 * @param {object} options.logger - implementation of the `console` API
+	 * @param {boolean} options.logErrors - should errors in action execution be caught, logged, and re-thrown?
+	 * @param {boolean} options.collapsed - is group collapsed?
+	 * @param {boolean} options.predicate - condition which resolves logger behavior
+	 * @param {function} options.stateTransformer - transform state before print
+	 * @param {function} options.actionTransformer - transform action before print
+	 * @param {function} options.errorTransformer - transform error before print
+	 *
+	 * @returns {function} logger middleware
+	 */
+	function createLogger() {
+	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	
+	  var loggerOptions = _extends({}, _defaults2.default, options);
+	
+	  var logger = loggerOptions.logger;
+	  var transformer = loggerOptions.transformer;
+	  var stateTransformer = loggerOptions.stateTransformer;
+	  var errorTransformer = loggerOptions.errorTransformer;
+	  var predicate = loggerOptions.predicate;
+	  var logErrors = loggerOptions.logErrors;
+	  var diffPredicate = loggerOptions.diffPredicate;
+	
+	  // Return if 'console' object is not defined
+	
+	  if (typeof logger === 'undefined') {
+	    return function () {
+	      return function (next) {
+	        return function (action) {
+	          return next(action);
+	        };
+	      };
+	    };
+	  }
+	
+	  if (transformer) {
+	    console.error('Option \'transformer\' is deprecated, use \'stateTransformer\' instead!'); // eslint-disable-line no-console
+	  }
+	
+	  var logBuffer = [];
+	
+	  return function (_ref) {
+	    var getState = _ref.getState;
+	    return function (next) {
+	      return function (action) {
+	        // Exit early if predicate function returns 'false'
+	        if (typeof predicate === 'function' && !predicate(getState, action)) {
+	          return next(action);
+	        }
+	
+	        var logEntry = {};
+	        logBuffer.push(logEntry);
+	
+	        logEntry.started = _helpers.timer.now();
+	        logEntry.startedTime = new Date();
+	        logEntry.prevState = stateTransformer(getState());
+	        logEntry.action = action;
+	
+	        var returnedValue = undefined;
+	        if (logErrors) {
+	          try {
+	            returnedValue = next(action);
+	          } catch (e) {
+	            logEntry.error = errorTransformer(e);
+	          }
+	        } else {
+	          returnedValue = next(action);
+	        }
+	
+	        logEntry.took = _helpers.timer.now() - logEntry.started;
+	        logEntry.nextState = stateTransformer(getState());
+	
+	        var diff = loggerOptions.diff && typeof diffPredicate === 'function' ? diffPredicate(getState, action) : loggerOptions.diff;
+	
+	        (0, _core.printBuffer)(logBuffer, _extends({}, loggerOptions, { diff: diff }));
+	        logBuffer.length = 0;
+	
+	        if (logEntry.error) throw logEntry.error;
+	        return returnedValue;
+	      };
+	    };
+	  };
+	}
+	
+	exports.default = createLogger;
+	module.exports = exports['default'];
+
+/***/ },
+/* 59 */
 /*!******************************!*\
   !*** external "body-parser" ***!
   \******************************/
@@ -2733,7 +4137,7 @@ module.exports =
 	module.exports = require("body-parser");
 
 /***/ },
-/* 41 */
+/* 60 */
 /*!*****************************!*\
   !*** external "classnames" ***!
   \*****************************/
@@ -2742,7 +4146,7 @@ module.exports =
 	module.exports = require("classnames");
 
 /***/ },
-/* 42 */
+/* 61 */
 /*!******************************!*\
   !*** external "compression" ***!
   \******************************/
@@ -2751,7 +4155,7 @@ module.exports =
 	module.exports = require("compression");
 
 /***/ },
-/* 43 */
+/* 62 */
 /*!********************************!*\
   !*** external "cookie-parser" ***!
   \********************************/
@@ -2760,7 +4164,7 @@ module.exports =
 	module.exports = require("cookie-parser");
 
 /***/ },
-/* 44 */
+/* 63 */
 /*!************************!*\
   !*** external "csurf" ***!
   \************************/
@@ -2769,7 +4173,7 @@ module.exports =
 	module.exports = require("csurf");
 
 /***/ },
-/* 45 */
+/* 64 */
 /*!**********************!*\
   !*** external "ejs" ***!
   \**********************/
@@ -2778,7 +4182,7 @@ module.exports =
 	module.exports = require("ejs");
 
 /***/ },
-/* 46 */
+/* 65 */
 /*!**********************************!*\
   !*** external "express-session" ***!
   \**********************************/
@@ -2787,7 +4191,7 @@ module.exports =
 	module.exports = require("express-session");
 
 /***/ },
-/* 47 */
+/* 66 */
 /*!*************************!*\
   !*** external "helmet" ***!
   \*************************/
@@ -2796,7 +4200,7 @@ module.exports =
 	module.exports = require("helmet");
 
 /***/ },
-/* 48 */
+/* 67 */
 /*!***********************!*\
   !*** external "http" ***!
   \***********************/
@@ -2805,7 +4209,7 @@ module.exports =
 	module.exports = require("http");
 
 /***/ },
-/* 49 */
+/* 68 */
 /*!*************************!*\
   !*** external "morgan" ***!
   \*************************/
@@ -2814,34 +4218,7 @@ module.exports =
 	module.exports = require("morgan");
 
 /***/ },
-/* 50 */
-/*!***********************************!*\
-  !*** external "react-dom/server" ***!
-  \***********************************/
-/***/ function(module, exports) {
-
-	module.exports = require("react-dom/server");
-
-/***/ },
-/* 51 */
-/*!************************!*\
-  !*** external "redux" ***!
-  \************************/
-/***/ function(module, exports) {
-
-	module.exports = require("redux");
-
-/***/ },
-/* 52 */
-/*!******************************!*\
-  !*** external "redux-thunk" ***!
-  \******************************/
-/***/ function(module, exports) {
-
-	module.exports = require("redux-thunk");
-
-/***/ },
-/* 53 */
+/* 69 */
 /*!*********************************!*\
   !*** external "secure-filters" ***!
   \*********************************/
@@ -2850,7 +4227,7 @@ module.exports =
 	module.exports = require("secure-filters");
 
 /***/ },
-/* 54 */
+/* 70 */
 /*!****************************!*\
   !*** external "socket.io" ***!
   \****************************/
