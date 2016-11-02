@@ -7,7 +7,7 @@
  * more context. - My 2 cents.
  */
 export default function message(state = {
-    message: '',
+    message: 'test',
     type: 'SUCCESS'
 }, action = {}) {
     switch (action.type) {

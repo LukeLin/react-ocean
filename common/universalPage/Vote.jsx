@@ -13,7 +13,8 @@ class Vote extends Component {
             <div className="vote">
                 this is vote
                 <Link to="/about">about</Link>
-                <Link to="test">test</Link>
+                <Link to="/test">test</Link>
+                message: { this.props.message }
             </div>
         );
     }
@@ -24,6 +25,7 @@ Vote.propTypes = {
 
 function mapStateToProps(state) {
     return {
+        message: state.vote.message
     };
 }
 
