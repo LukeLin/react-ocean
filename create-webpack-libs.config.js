@@ -53,6 +53,7 @@ module.exports = function(DEBUG){
         'react-redux',
         'redux-thunk',
         'react-router',
+        'react-router-redux',
         'immutable',
         'redux-immutablejs',
         'react-immutable-proptypes',

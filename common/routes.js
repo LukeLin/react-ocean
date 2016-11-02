@@ -51,12 +51,12 @@ export default (store) => {
             <IndexRoute getComponent={(nextState, cb) => {
                 require.ensure([], require => {
                     cb(null, require('./universalPage/Vote').default);
-                });
+                }, 'Vote');
             }} fetchData={fetchData} />
             <Route path="vote" getComponent={(nextState, cb) => {
                 require.ensure([], require => {
                     cb(null, require('./universalPage/Vote').default);
-                });
+                }, 'Vote');
             }} fetchData={fetchData}/>
             <Route path="about" component={About} />
         </Route>

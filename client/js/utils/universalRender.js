@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { match, Router, browserHistory } from 'react-router';
-// import { syncHistoryWithStore } from 'react-router-redux';
+import { syncHistoryWithStore } from 'react-router-redux';
 import createRoutes from '../../../common/routes';
 import configureStore from '../../../common/store/universalStore';
 import preRenderMiddleware from '../../../common/middleware/preRenderMiddleware';
@@ -12,7 +12,7 @@ import preRenderMiddleware from '../../../common/middleware/preRenderMiddleware'
 const initialState = window.__INITIAL_STATE__;
 
 const store = configureStore(initialState, browserHistory);
-// const history = syncHistoryWithStore(browserHistory, store);
+const history = syncHistoryWithStore(browserHistory, store);
 const routes = createRoutes(store);
 
 /**
@@ -42,7 +42,7 @@ match({ history: browserHistory, routes }, (error, redirectLocation, renderProps
 // Read more https://github.com/rackt/react-router/blob/latest/docs/Glossary.md#routeconfig
     render(
         <Provider store={store}>
-            <Router history={browserHistory} onUpdate={onUpdate}>
+            <Router history={history} onUpdate={onUpdate}>
                 {routes}
             </Router>
         </Provider>, document.getElementById('page'));
