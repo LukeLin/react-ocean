@@ -2,7 +2,10 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../universalPage/reducers';
-import createLogger from 'redux-logger';
+
+if(process.env.NODE_ENV !== 'production' && process.browser){
+    var createLogger = require('redux-logger');
+}
 
 /*
  * @param {Object} initial state to bootstrap our stores with for server-side rendering
