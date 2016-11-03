@@ -3,8 +3,6 @@ import React from 'react';
 import {renderToString} from 'react-dom/server';
 import {Provider} from 'react-redux';
 import fs from 'fs';
-// for xss protection
-import SecureFilters from 'secure-filters';
 
 import configureStore from '../../common/store/index';
 import App from '../../common/App.jsx';
@@ -22,6 +20,11 @@ function getDefaultJSVersion(name) {
         webpackAssets = {};
     }
     return webpackAssets[name];
+}
+
+function safeJSON(obj){
+    return JSON.stringify(obj).replace(/<\/script/g, '<\\/script')
+        .replace(/<!--/g, '<\\!--');
 }
 
 export default function reactRender(middlewareConfig = {}) {
@@ -71,12 +74,12 @@ export default function reactRender(middlewareConfig = {}) {
 
             let finalLocals = Object.assign({
                 html,
-                state: SecureFilters.jsObj(data),
+                state: safeJSON(data),
                 appName: 'index',
                 title: '',
                 test: process.env.NODE_ENV !== 'production',
                 debug,
-                appConfig: SecureFilters.jsObj(pageConfig),
+                appConfig: safeJSON(pageConfig),
                 version: {
                     js: jsVersion,
                     css: version && version.css
