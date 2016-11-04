@@ -10,7 +10,7 @@ import config from '../config/config.json';
 
 const defaultTemplate = fs.readFileSync(__dirname + '/../views/index.html', 'utf8');
 
-function getDefaultJSVersion(name) {
+export function getDefaultJSVersion(name) {
     let webpackAssets = fs.readFileSync(__dirname + '/../../webpack-assets.json', 'utf8');
 
     try {
@@ -22,7 +22,7 @@ function getDefaultJSVersion(name) {
     return webpackAssets[name];
 }
 
-function safeJSON(obj){
+export function safeJSON(obj){
     return JSON.stringify(obj).replace(/<\/script/g, '<\\/script')
         .replace(/<!--/g, '<\\!--');
 }

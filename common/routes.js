@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import App from './universalPage/App';
+import App from './pages/App/App';
 // import Vote from './universalPage/Vote';
-import About from './universalPage/About';
+import About from './pages/App/About';
 
 // require.ensure polyfill for node
 if (typeof require.ensure !== 'function') {
@@ -12,13 +12,6 @@ if (typeof require.ensure !== 'function') {
 }
 
 
-const fetchData = () => {
-    return new Promise((resolve) => {
-        resolve({
-            message: 'test'
-        });
-    });
-};
 
 /*
  * @param {Redux Store}
@@ -50,14 +43,14 @@ export default (store) => {
         <Route path="/" component={App}>
             <IndexRoute getComponent={(nextState, cb) => {
                 require.ensure([], require => {
-                    cb(null, require('./universalPage/Vote').default);
+                    cb(null, require('./pages/App/Vote').default);
                 }, 'Vote');
-            }} fetchData={fetchData} />
+            }}/>
             <Route path="vote" getComponent={(nextState, cb) => {
                 require.ensure([], require => {
-                    cb(null, require('./universalPage/Vote').default);
+                    cb(null, require('./pages/App/Vote').default);
                 }, 'Vote');
-            }} fetchData={fetchData}/>
+            }}/>
             <Route path="about" component={About} />
         </Route>
     );

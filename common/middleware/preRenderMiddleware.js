@@ -1,9 +1,11 @@
-const defaultFetchData = () => Promise.resolve();
+function preRenderMiddleware(dispatch, { components, location, params }, appConfig) {
+    const promises = components.map((current) => {
+        const component = current.WrappedComponent ? current.WrappedComponent : current;
 
-function preRenderMiddleware({ routes, location, params }) {
-    const matchedRoute = routes[routes.length - 1];
-    const fetchDataHandler = matchedRoute.fetchData || defaultFetchData;
-    return fetchDataHandler(params);
+        return component.fetchData ? component.fetchData({ dispatch, location, params, appConfig }) : null;
+    });
+
+    return Promise.all(promises);
 }
 
 export default preRenderMiddleware;
