@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import about from './about';
 import vote from './vote';
-import { routerReducer as routing } from 'react-router-redux';
 
 const isFetching = ( state = false, action ) => {
     switch (action.type) {
@@ -15,8 +14,7 @@ const isFetching = ( state = false, action ) => {
 const rootReducer = combineReducers({
     isFetching,
     about,
-    vote,
-    routing
+    vote
 });
 
 export default rootReducer;

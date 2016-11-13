@@ -3,12 +3,14 @@ import {renderToString} from 'react-dom/server';
 import {createMemoryHistory, match, RouterContext} from 'react-router';
 import {Provider} from 'react-redux';
 import createRoutes from '../../common/routes';
-import configureStore from '../../common/store/universalStore';
+import configureStore from '../../common/store/spaStore';
 import preRenderMiddleware from '../../common/middleware/preRenderMiddleware';
 import ejs from 'ejs';
 import config from '../config/config.json';
 import { getDefaultJSVersion, safeJSON } from './renderReactMiddleware';
 import App from '../../common/App';
+
+const defaultTemplate = fs.readFileSync(__dirname + '/../views/index.html', 'utf8');
 
 
 export default function renderMatch(req, res) {
@@ -67,11 +69,11 @@ export default function renderMatch(req, res) {
                 console.error(ex);
             }
 
-            let pageStr = ejs.render(config.html.index, Object.assign({
+            let pageStr = ejs.render(defaultTemplate, Object.assign({
                 html: componentHTML,
                 state: safeJSON(initialState),
                 appName: 'app',
-                title: '游戏中心',
+                title: 'title',
                 test: process.env.NODE_ENV !== 'production',
                 debug: debug,
                 config: safeJSON(appConfig),
