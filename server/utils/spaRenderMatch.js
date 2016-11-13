@@ -4,7 +4,7 @@ import {createMemoryHistory, match, RouterContext} from 'react-router';
 import {Provider} from 'react-redux';
 import createRoutes from '../../common/routes';
 import configureStore from '../../common/store/spaStore';
-import preRenderMiddleware from '../../common/middleware/preRenderMiddleware';
+import preRenderMiddleware from '../../common/utils/fetchDataBeforeRender';
 import ejs from 'ejs';
 import config from '../config/config.json';
 import { getDefaultJSVersion, safeJSON } from './renderReactMiddleware';
