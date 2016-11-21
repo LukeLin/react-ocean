@@ -1,0 +1,6 @@
+{
+  "name": "fetch-list",
+  "version": "0.0.1",
+  "browser": "clientFetch.js",
+  "main": "serverFetch.js"
+}

@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+// import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import rootReducer from '../pages/App/reducers';
 
@@ -14,24 +15,35 @@ if(process.env.NODE_ENV !== 'production' && process.browser){
  */
 export default function configureStore(initialState, history) {
     // Installs hooks that always keep react-router and redux store in sync
-    // const middleware = [thunk, routerMiddleware(history)];
-    const middleware = [thunk];
+    const middleware = [
+        thunk,
+        // routerMiddleware(history)
+    ];
+    // const middleware = [thunk];
     let store;
 
     if (process.browser) {
-        middleware.push(createLogger());
-        store = createStore(rootReducer, initialState, compose(
-            applyMiddleware(...middleware),
-            typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
-        ));
+        if(process.env.NODE_ENV !== 'production') {
+            middleware.push(createLogger());
+
+            store = createStore(rootReducer, initialState, compose(
+                applyMiddleware(...middleware),
+                typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
+            ));
+        } else {
+            store = createStore(rootReducer, initialState, compose(
+                applyMiddleware(...middleware)
+            ));
+        }
+
     } else {
         store = createStore(rootReducer, initialState, compose(applyMiddleware(...middleware), f => f));
     }
 
     if (module.hot) {
         // Enable Webpack hot module replacement for reducers
-        module.hot.accept('../pages/App/reducers', () => {
-            const nextReducer = require('../pages/App/reducers');
+        module.hot.accept('../reducers/App', () => {
+            const nextReducer = require('../reducers/App');
             store.replaceReducer(nextReducer);
         });
     }
