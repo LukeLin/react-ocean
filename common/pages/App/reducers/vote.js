@@ -1,16 +1,10 @@
+import * as ACTIONS from '../actions/Vote';
 
 
-/*
- * Message store for global messages, i.e. Network messages / Redirect messages
- * that need to be communicated on the page itself. Ideally
- * messages/notifications should appear within the component to give the user
- * more context. - My 2 cents.
- */
-export default function message(state = {
-    message: 'test',
-    type: 'SUCCESS'
-}, action = {}) {
+export default function Vote(state = {}, action = {}) {
     switch (action.type) {
+        case ACTIONS.LOAD_VOTE_SUCCESS:
+            return action.payload;
         default:
             return state;
     }

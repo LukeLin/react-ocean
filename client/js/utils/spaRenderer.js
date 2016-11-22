@@ -6,8 +6,6 @@ import createRoutes from '../../../common/routes';
 import configureStore from '../../../common/store/spaStore';
 import App from '../../../common/App';
 
-// Grab the state from a global injected into
-// server-generated HTML
 
 const store = configureStore(window.__INITIAL_STATE__, browserHistory);
 const routes = createRoutes(store);
@@ -17,7 +15,6 @@ const routes = createRoutes(store);
 // }
 
 match({ history: browserHistory, routes }, (error, redirectLocation, renderProps) => {
-    // Router converts <Route> element hierarchy to a route config:
     render(
         <Provider store={store}>
             <App appConfig={ window.__APP_CONFIG__ }>

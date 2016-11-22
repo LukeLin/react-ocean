@@ -51,7 +51,7 @@ module.exports =
 
 	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
 	
-	var _http = __webpack_require__(/*! http */ 62);
+	var _http = __webpack_require__(/*! http */ 65);
 	
 	var _http2 = _interopRequireDefault(_http);
 	
@@ -59,27 +59,27 @@ module.exports =
 	
 	var _express2 = _interopRequireDefault(_express);
 	
-	var _compression = __webpack_require__(/*! compression */ 57);
+	var _compression = __webpack_require__(/*! compression */ 60);
 	
 	var _compression2 = _interopRequireDefault(_compression);
 	
-	var _morgan = __webpack_require__(/*! morgan */ 63);
+	var _morgan = __webpack_require__(/*! morgan */ 66);
 	
 	var _morgan2 = _interopRequireDefault(_morgan);
 	
-	var _cookieParser = __webpack_require__(/*! cookie-parser */ 58);
+	var _cookieParser = __webpack_require__(/*! cookie-parser */ 61);
 	
 	var _cookieParser2 = _interopRequireDefault(_cookieParser);
 	
-	var _bodyParser = __webpack_require__(/*! body-parser */ 55);
+	var _bodyParser = __webpack_require__(/*! body-parser */ 58);
 	
 	var _bodyParser2 = _interopRequireDefault(_bodyParser);
 	
-	var _expressSession = __webpack_require__(/*! express-session */ 60);
+	var _expressSession = __webpack_require__(/*! express-session */ 63);
 	
 	var _expressSession2 = _interopRequireDefault(_expressSession);
 	
-	var _csurf = __webpack_require__(/*! csurf */ 59);
+	var _csurf = __webpack_require__(/*! csurf */ 62);
 	
 	var _csurf2 = _interopRequireDefault(_csurf);
 	
@@ -87,15 +87,15 @@ module.exports =
 	
 	var _config2 = _interopRequireDefault(_config);
 	
-	var _index = __webpack_require__(/*! ./routes/index */ 53);
+	var _index = __webpack_require__(/*! ./routes/index */ 56);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
-	var _index3 = __webpack_require__(/*! ./apis/index */ 46);
+	var _index3 = __webpack_require__(/*! ./apis/index */ 49);
 	
 	var _index4 = _interopRequireDefault(_index3);
 	
-	var _allowCrossDomain = __webpack_require__(/*! ./middlewares/allowCrossDomain */ 50);
+	var _allowCrossDomain = __webpack_require__(/*! ./middlewares/allowCrossDomain */ 53);
 	
 	var _allowCrossDomain2 = _interopRequireDefault(_allowCrossDomain);
 	
@@ -107,15 +107,15 @@ module.exports =
 	
 	var _immutable2 = _interopRequireDefault(_immutable);
 	
-	var _helmet = __webpack_require__(/*! helmet */ 61);
+	var _helmet = __webpack_require__(/*! helmet */ 64);
 	
 	var _helmet2 = _interopRequireDefault(_helmet);
 	
-	var _socket = __webpack_require__(/*! ./sockets/socket */ 54);
+	var _socket = __webpack_require__(/*! ./sockets/socket */ 57);
 	
 	var _socket2 = _interopRequireDefault(_socket);
 	
-	var _spaRenderMatch = __webpack_require__(/*! ./middlewares/spaRenderMatch */ 52);
+	var _spaRenderMatch = __webpack_require__(/*! ./middlewares/spaRenderMatch */ 55);
 	
 	var _spaRenderMatch2 = _interopRequireDefault(_spaRenderMatch);
 	
@@ -207,7 +207,7 @@ module.exports =
 	let server = _http2.default.createServer(app);
 	
 	/* Socket.io Communication */
-	let io = __webpack_require__(/*! socket.io */ 64).listen(server);
+	let io = __webpack_require__(/*! socket.io */ 67).listen(server);
 	io.sockets.on('connection', _socket2.default);
 	
 	server.listen(app.get('port'), app.get('host'), function () {
@@ -243,7 +243,7 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _shallowEqual = __webpack_require__(/*! ../utils/shallowEqual */ 45);
+	var _shallowEqual = __webpack_require__(/*! ../utils/shallowEqual */ 48);
 	
 	var _shallowEqual2 = _interopRequireDefault(_shallowEqual);
 	
@@ -689,7 +689,7 @@ module.exports =
 	
 	var _secureFilters = __webpack_require__(/*! secure-filters */ 21);
 	
-	var _index = __webpack_require__(/*! ../../common/store/index */ 43);
+	var _index = __webpack_require__(/*! ../../common/store/index */ 45);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -1232,7 +1232,7 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(/*! classnames */ 56);
+	var _classnames = __webpack_require__(/*! classnames */ 59);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -1686,6 +1686,32 @@ module.exports =
 
 /***/ },
 /* 32 */
+/*!*****************************************!*\
+  !*** ./common/fetchList/serverFetch.js ***!
+  \*****************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = {
+	    getVote(opts, req) {
+	        return new Promise((resolve, reject) => {
+	            setTimeout(() => {
+	                resolve({
+	                    data: {
+	                        message: 123
+	                    }
+	                });
+	            }, 500);
+	        });
+	    }
+	};
+
+/***/ },
+/* 33 */
 /*!************************************!*\
   !*** ./common/pages/App/About.jsx ***!
   \************************************/
@@ -1707,16 +1733,6 @@ module.exports =
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	// import classNames from 'classnames/bind';
-	// import styles from 'css/components/about';
-	
-	// const cx = classNames.bind(styles);
-	
-	/*
-	 * Note: This is kept as a container-level component,
-	 *  i.e. We should keep this as the container that does the data-fetching
-	 *  and dispatching of actions if you decide to have any sub-components.
-	 */
 	let About = class About extends _react.Component {
 	
 	    render() {
@@ -1726,7 +1742,7 @@ module.exports =
 	            'this is about page',
 	            _react2.default.createElement(
 	                _reactRouter.Link,
-	                { to: '/vote' },
+	                { to: '/vote?debug=test' },
 	                'vote'
 	            ),
 	            'text: ',
@@ -1735,6 +1751,9 @@ module.exports =
 	    }
 	};
 	
+	About.pageConfig = {
+	    pageId: 'About'
+	};
 	
 	function mapStateToProps(state) {
 	    return {
@@ -1742,12 +1761,10 @@ module.exports =
 	    };
 	}
 	
-	// Read more about where to place `connect` here:
-	// https://github.com/rackt/react-redux/issues/75#issuecomment-135436563
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, {})(About);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(About);
 
 /***/ },
-/* 33 */
+/* 34 */
 /*!**********************************!*\
   !*** ./common/pages/App/App.jsx ***!
   \**********************************/
@@ -1797,7 +1814,46 @@ module.exports =
 	exports.default = App;
 
 /***/ },
-/* 34 */
+/* 35 */
+/*!******************************************!*\
+  !*** ./common/pages/App/actions/Vote.js ***!
+  \******************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.LOAD_VOTE_FAILED = exports.LOAD_VOTE_SUCCESS = undefined;
+	exports.loadData = loadData;
+	
+	var _fetchList = __webpack_require__(/*! ../../../fetchList */ 32);
+	
+	var _fetchList2 = _interopRequireDefault(_fetchList);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	const LOAD_VOTE_SUCCESS = exports.LOAD_VOTE_SUCCESS = 'LOAD_VOTE_SUCCESS';
+	const LOAD_VOTE_FAILED = exports.LOAD_VOTE_FAILED = 'LOAD_VOTE_FAILED';
+	
+	function loadData(opts, req) {
+	    return dispatch => {
+	        return _fetchList2.default.getVote(opts, req).then(resp => {
+	            dispatch({
+	                type: LOAD_VOTE_SUCCESS,
+	                payload: resp.data
+	            });
+	        }).catch(() => {
+	            dispatch({
+	                type: LOAD_VOTE_FAILED
+	            });
+	        });
+	    };
+	}
+
+/***/ },
+/* 36 */
 /*!********************************************!*\
   !*** ./common/pages/App/reducers/about.js ***!
   \********************************************/
@@ -1817,7 +1873,7 @@ module.exports =
 	}
 
 /***/ },
-/* 35 */
+/* 37 */
 /*!********************************************!*\
   !*** ./common/pages/App/reducers/index.js ***!
   \********************************************/
@@ -1831,27 +1887,17 @@ module.exports =
 	
 	var _redux = __webpack_require__(/*! redux */ 7);
 	
-	var _about = __webpack_require__(/*! ./about */ 34);
+	var _about = __webpack_require__(/*! ./about */ 36);
 	
 	var _about2 = _interopRequireDefault(_about);
 	
-	var _vote = __webpack_require__(/*! ./vote */ 36);
+	var _vote = __webpack_require__(/*! ./vote */ 38);
 	
 	var _vote2 = _interopRequireDefault(_vote);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	const isFetching = (state = false, action) => {
-	    switch (action.type) {
-	        default:
-	            return state;
-	    }
-	};
-	
-	// Combine reducers with routeReducer which keeps track of
-	// router state
 	const rootReducer = (0, _redux.combineReducers)({
-	    isFetching,
 	    about: _about2.default,
 	    vote: _vote2.default
 	});
@@ -1859,38 +1905,36 @@ module.exports =
 	exports.default = rootReducer;
 
 /***/ },
-/* 36 */
+/* 38 */
 /*!*******************************************!*\
   !*** ./common/pages/App/reducers/vote.js ***!
   \*******************************************/
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.default = message;
+	exports.default = Vote;
 	
+	var _Vote = __webpack_require__(/*! ../actions/Vote */ 35);
 	
-	/*
-	 * Message store for global messages, i.e. Network messages / Redirect messages
-	 * that need to be communicated on the page itself. Ideally
-	 * messages/notifications should appear within the component to give the user
-	 * more context. - My 2 cents.
-	 */
-	function message(state = {
-	    message: 'test',
-	    type: 'SUCCESS'
-	}, action = {}) {
+	var ACTIONS = _interopRequireWildcard(_Vote);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	function Vote(state = {}, action = {}) {
 	    switch (action.type) {
+	        case ACTIONS.LOAD_VOTE_SUCCESS:
+	            return action.payload;
 	        default:
 	            return state;
 	    }
 	}
 
 /***/ },
-/* 37 */
+/* 39 */
 /*!*************************************!*\
   !*** ./common/pages/async/Page.jsx ***!
   \*************************************/
@@ -2045,7 +2089,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(AsyncPage);
 
 /***/ },
-/* 38 */
+/* 40 */
 /*!****************************************!*\
   !*** ./common/pages/async/reducers.js ***!
   \****************************************/
@@ -2121,7 +2165,7 @@ module.exports =
 	exports.default = rootReducer;
 
 /***/ },
-/* 39 */
+/* 41 */
 /*!************************************!*\
   !*** ./common/pages/chat/Page.jsx ***!
   \************************************/
@@ -2296,7 +2340,7 @@ module.exports =
 	exports.default = Page;
 
 /***/ },
-/* 40 */
+/* 42 */
 /*!**************************************!*\
   !*** ./common/pages/index/index.jsx ***!
   \**************************************/
@@ -2427,7 +2471,7 @@ module.exports =
 	exports.default = (0, _reactRedux.connect)(select)(Page);
 
 /***/ },
-/* 41 */
+/* 43 */
 /*!*********************************************!*\
   !*** ./common/pages/index/indexReducers.js ***!
   \*********************************************/
@@ -2481,7 +2525,7 @@ module.exports =
 	exports.default = todoApp;
 
 /***/ },
-/* 42 */
+/* 44 */
 /*!**************************!*\
   !*** ./common/routes.js ***!
   \**************************/
@@ -2499,11 +2543,15 @@ module.exports =
 	
 	var _reactRouter = __webpack_require__(/*! react-router */ 10);
 	
-	var _App = __webpack_require__(/*! ./pages/App/App */ 33);
+	var _connectDataFetchers = __webpack_require__(/*! ./utils/connectDataFetchers */ 47);
+	
+	var _connectDataFetchers2 = _interopRequireDefault(_connectDataFetchers);
+	
+	var _App = __webpack_require__(/*! ./pages/App/App */ 34);
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _About = __webpack_require__(/*! ./pages/App/About */ 32);
+	var _About = __webpack_require__(/*! ./pages/App/About */ 33);
 	
 	var _About2 = _interopRequireDefault(_About);
 	
@@ -2519,13 +2567,17 @@ module.exports =
 	
 	
 	function onChange(prevState, nextState, replace, cb) {
-	    let component = nextState.routes[nextState.routes.length - 1].component.WrappedComponent;
-	    let location = nextState.location;
-	    let pageComponent = component.OriginalPage ? component.OriginalPage : component;
+	    let lastRoute = nextState.routes[nextState.routes.length - 1];
 	
-	    Object.assign(window.__APP_CONFIG__, {
-	        pageId: location.query.pageId || pageComponent.pageConfig && pageComponent.pageConfig.pageId
-	    });
+	    if (lastRoute.component) {
+	        let component = lastRoute.component.WrappedComponent;
+	        let location = nextState.location;
+	        let pageComponent = component.OriginalPage ? component.OriginalPage : component;
+	
+	        Object.assign(window.__APP_CONFIG__, {
+	            pageId: location.query.pageId || pageComponent.pageConfig && pageComponent.pageConfig.pageId
+	        });
+	    }
 	
 	    cb();
 	}
@@ -2575,7 +2627,7 @@ module.exports =
 	};
 
 /***/ },
-/* 43 */
+/* 45 */
 /*!*******************************!*\
   !*** ./common/store/index.js ***!
   \*******************************/
@@ -2629,7 +2681,7 @@ module.exports =
 	}
 
 /***/ },
-/* 44 */
+/* 46 */
 /*!**********************************!*\
   !*** ./common/store/spaStore.js ***!
   \**********************************/
@@ -2648,7 +2700,7 @@ module.exports =
 	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 	
-	var _reducers = __webpack_require__(/*! ../pages/App/reducers */ 35);
+	var _reducers = __webpack_require__(/*! ../pages/App/reducers */ 37);
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
@@ -2659,16 +2711,8 @@ module.exports =
 	    var createLogger = require('redux-logger');
 	}
 	
-	/*
-	 * @param {Object} initial state to bootstrap our stores with for server-side rendering
-	 * @param {History Object} a history object. We use `createMemoryHistory` for server-side rendering,
-	 *                          while using browserHistory for client-side
-	 *                          rendering.
-	 */
 	function configureStore(initialState, history) {
-	    // Installs hooks that always keep react-router and redux store in sync
 	    const middleware = [_reduxThunk2.default];
-	    // const middleware = [thunk];
 	    let store;
 	
 	    if (process.browser) {
@@ -2695,7 +2739,113 @@ module.exports =
 	}
 
 /***/ },
-/* 45 */
+/* 47 */
+/*!*********************************************!*\
+  !*** ./common/utils/connectDataFetchers.js ***!
+  \*********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = connectDataFetchers;
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _Base = __webpack_require__(/*! ../pages/Base */ 2);
+	
+	var _Base2 = _interopRequireDefault(_Base);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	let IS_FIRST_MOUNT_AFTER_LOAD = true;
+	
+	function connectDataFetchers(Component, actionCreators, cache) {
+	    if (process.browser) {
+	        if (!Component.pageConfig) {
+	            console.error(`Page Component static propery pageConfig.pageId required!`);
+	        } else {
+	            IS_FIRST_MOUNT_AFTER_LOAD = Component.pageConfig.pageId === window.__APP_CONFIG__.pageId;;
+	        }
+	    }
+	
+	    let DataFetchersWrapper = class DataFetchersWrapper extends _Base2.default {
+	        static fetchData({ dispatch, location, params, appConfig, pageConfig }, req) {
+	            return Promise.all(actionCreators.map(actionCreator => dispatch(actionCreator({ dispatch, location, params, appConfig, pageConfig }, req))));
+	        }
+	
+	        shouldComponentUpdate(nextProps) {
+	            return this.props !== nextProps;
+	        }
+	
+	        componentDidUpdate(prevProps) {
+	            const { location } = this.props;
+	            const { location: prevLocation } = prevProps;
+	
+	            const isUrlChanged = location.pathname !== prevLocation.pathname || location.search.slice(1) !== prevLocation.search.slice(1);
+	
+	            if (isUrlChanged) {
+	                this._fetchDataOnClient();
+	            }
+	        }
+	
+	        componentDidMount() {
+	            if (!cache) {
+	                if (!IS_FIRST_MOUNT_AFTER_LOAD) {
+	                    this._fetchDataOnClient();
+	                }
+	
+	                IS_FIRST_MOUNT_AFTER_LOAD = false;
+	            } else {
+	                if (!IS_FIRST_MOUNT_AFTER_LOAD && !Component.DATA_LOADED) {
+	                    this._fetchDataOnClient();
+	                }
+	
+	                Component.DATA_LOADED = true;
+	                IS_FIRST_MOUNT_AFTER_LOAD = false;
+	            }
+	        }
+	
+	        _fetchDataOnClient() {
+	            this.constructor.fetchData({
+	                dispatch: this.props.dispatch,
+	                params: this.props.params,
+	                location: this.props.location,
+	                appConfig: this.context.$appConfig
+	            });
+	        }
+	
+	        render() {
+	            return _react2.default.createElement(Component, this.props);
+	        }
+	    };
+	
+	
+	    DataFetchersWrapper.propTypes = {
+	        dispatch: _react.PropTypes.func.isRequired,
+	        params: _react.PropTypes.object,
+	        location: _react.PropTypes.shape({
+	            pathname: _react.PropTypes.string.required,
+	            search: _react.PropTypes.string,
+	            query: _react.PropTypes.string.object
+	        }).isRequired
+	    };
+	
+	    DataFetchersWrapper.contextTypes = {
+	        $appConfig: _react.PropTypes.object
+	    };
+	
+	    DataFetchersWrapper.OriginalPage = Component;
+	
+	    return DataFetchersWrapper;
+	}
+
+/***/ },
+/* 48 */
 /*!**************************************!*\
   !*** ./common/utils/shallowEqual.js ***!
   \**************************************/
@@ -2770,7 +2920,7 @@ module.exports =
 	module.exports = shallowEqual;
 
 /***/ },
-/* 46 */
+/* 49 */
 /*!******************************!*\
   !*** ./server/apis/index.js ***!
   \******************************/
@@ -2797,7 +2947,7 @@ module.exports =
 	exports.default = router;
 
 /***/ },
-/* 47 */
+/* 50 */
 /*!*************************************!*\
   !*** ./server/controllers/async.js ***!
   \*************************************/
@@ -2813,11 +2963,11 @@ module.exports =
 	
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 	
-	var _reducers = __webpack_require__(/*! ../../common/pages/async/reducers */ 38);
+	var _reducers = __webpack_require__(/*! ../../common/pages/async/reducers */ 40);
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
-	var _Page = __webpack_require__(/*! ../../common/pages/async/Page.jsx */ 37);
+	var _Page = __webpack_require__(/*! ../../common/pages/async/Page.jsx */ 39);
 	
 	var _Page2 = _interopRequireDefault(_Page);
 	
@@ -2869,7 +3019,7 @@ module.exports =
 	})();
 
 /***/ },
-/* 48 */
+/* 51 */
 /*!************************************!*\
   !*** ./server/controllers/chat.js ***!
   \************************************/
@@ -2881,7 +3031,7 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Page = __webpack_require__(/*! ../../common/pages/chat/Page */ 39);
+	var _Page = __webpack_require__(/*! ../../common/pages/chat/Page */ 41);
 	
 	var _Page2 = _interopRequireDefault(_Page);
 	
@@ -2909,7 +3059,7 @@ module.exports =
 	/* WEBPACK VAR INJECTION */}.call(exports, "server\\controllers"))
 
 /***/ },
-/* 49 */
+/* 52 */
 /*!*************************************!*\
   !*** ./server/controllers/index.js ***!
   \*************************************/
@@ -2921,11 +3071,11 @@ module.exports =
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _indexReducers = __webpack_require__(/*! ../../common/pages/index/indexReducers */ 41);
+	var _indexReducers = __webpack_require__(/*! ../../common/pages/index/indexReducers */ 43);
 	
 	var _indexReducers2 = _interopRequireDefault(_indexReducers);
 	
-	var _index = __webpack_require__(/*! ../../common/pages/index */ 40);
+	var _index = __webpack_require__(/*! ../../common/pages/index */ 42);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -2958,7 +3108,7 @@ module.exports =
 	};
 
 /***/ },
-/* 50 */
+/* 53 */
 /*!************************************************!*\
   !*** ./server/middlewares/allowCrossDomain.js ***!
   \************************************************/
@@ -2980,7 +3130,7 @@ module.exports =
 	}
 
 /***/ },
-/* 51 */
+/* 54 */
 /*!*****************************************!*\
   !*** ./server/middlewares/preRender.js ***!
   \*****************************************/
@@ -3002,7 +3152,7 @@ module.exports =
 	    });
 	
 	    let lastComponent = components[components.length - 1].WrappedComponent ? components[components.length - 1].WrappedComponent : components[components.length - 1];
-	    appConfig.pageId = lastComponent && lastComponent.OriginalPage && lastComponent.OriginalPage.pageConfig.pageId;
+	    appConfig.pageId = lastComponent && lastComponent.OriginalPage && lastComponent.OriginalPage.pageConfig && lastComponent.OriginalPage.pageConfig.pageId;
 	
 	    return Promise.all(promises);
 	}
@@ -3010,7 +3160,7 @@ module.exports =
 	exports.default = preRenderMiddleware;
 
 /***/ },
-/* 52 */
+/* 55 */
 /*!**********************************************!*\
   !*** ./server/middlewares/spaRenderMatch.js ***!
   \**********************************************/
@@ -3033,15 +3183,15 @@ module.exports =
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 4);
 	
-	var _routes = __webpack_require__(/*! ../../common/routes */ 42);
+	var _routes = __webpack_require__(/*! ../../common/routes */ 44);
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
-	var _spaStore = __webpack_require__(/*! ../../common/store/spaStore */ 44);
+	var _spaStore = __webpack_require__(/*! ../../common/store/spaStore */ 46);
 	
 	var _spaStore2 = _interopRequireDefault(_spaStore);
 	
-	var _preRender = __webpack_require__(/*! ./preRender */ 51);
+	var _preRender = __webpack_require__(/*! ./preRender */ 54);
 	
 	var _preRender2 = _interopRequireDefault(_preRender);
 	
@@ -3151,7 +3301,7 @@ module.exports =
 	/* WEBPACK VAR INJECTION */}.call(exports, "server\\middlewares"))
 
 /***/ },
-/* 53 */
+/* 56 */
 /*!********************************!*\
   !*** ./server/routes/index.js ***!
   \********************************/
@@ -3169,15 +3319,15 @@ module.exports =
 	
 	var _fs2 = _interopRequireDefault(_fs);
 	
-	var _index = __webpack_require__(/*! ../controllers/index */ 49);
+	var _index = __webpack_require__(/*! ../controllers/index */ 52);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
-	var _async = __webpack_require__(/*! ../controllers/async */ 47);
+	var _async = __webpack_require__(/*! ../controllers/async */ 50);
 	
 	var _async2 = _interopRequireDefault(_async);
 	
-	var _chat = __webpack_require__(/*! ../controllers/chat */ 48);
+	var _chat = __webpack_require__(/*! ../controllers/chat */ 51);
 	
 	var _chat2 = _interopRequireDefault(_chat);
 	
@@ -3214,7 +3364,7 @@ module.exports =
 	/* WEBPACK VAR INJECTION */}.call(exports, "server\\routes"))
 
 /***/ },
-/* 54 */
+/* 57 */
 /*!**********************************!*\
   !*** ./server/sockets/socket.js ***!
   \**********************************/
@@ -3330,7 +3480,7 @@ module.exports =
 	;
 
 /***/ },
-/* 55 */
+/* 58 */
 /*!******************************!*\
   !*** external "body-parser" ***!
   \******************************/
@@ -3339,7 +3489,7 @@ module.exports =
 	module.exports = require("body-parser");
 
 /***/ },
-/* 56 */
+/* 59 */
 /*!*****************************!*\
   !*** external "classnames" ***!
   \*****************************/
@@ -3348,7 +3498,7 @@ module.exports =
 	module.exports = require("classnames");
 
 /***/ },
-/* 57 */
+/* 60 */
 /*!******************************!*\
   !*** external "compression" ***!
   \******************************/
@@ -3357,7 +3507,7 @@ module.exports =
 	module.exports = require("compression");
 
 /***/ },
-/* 58 */
+/* 61 */
 /*!********************************!*\
   !*** external "cookie-parser" ***!
   \********************************/
@@ -3366,7 +3516,7 @@ module.exports =
 	module.exports = require("cookie-parser");
 
 /***/ },
-/* 59 */
+/* 62 */
 /*!************************!*\
   !*** external "csurf" ***!
   \************************/
@@ -3375,7 +3525,7 @@ module.exports =
 	module.exports = require("csurf");
 
 /***/ },
-/* 60 */
+/* 63 */
 /*!**********************************!*\
   !*** external "express-session" ***!
   \**********************************/
@@ -3384,7 +3534,7 @@ module.exports =
 	module.exports = require("express-session");
 
 /***/ },
-/* 61 */
+/* 64 */
 /*!*************************!*\
   !*** external "helmet" ***!
   \*************************/
@@ -3393,7 +3543,7 @@ module.exports =
 	module.exports = require("helmet");
 
 /***/ },
-/* 62 */
+/* 65 */
 /*!***********************!*\
   !*** external "http" ***!
   \***********************/
@@ -3402,7 +3552,7 @@ module.exports =
 	module.exports = require("http");
 
 /***/ },
-/* 63 */
+/* 66 */
 /*!*************************!*\
   !*** external "morgan" ***!
   \*************************/
@@ -3411,7 +3561,7 @@ module.exports =
 	module.exports = require("morgan");
 
 /***/ },
-/* 64 */
+/* 67 */
 /*!****************************!*\
   !*** external "socket.io" ***!
   \****************************/

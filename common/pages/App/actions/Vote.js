@@ -7,7 +7,8 @@ export function loadData(opts, req){
     return (dispatch) => {
         return fetchList.getVote(opts, req).then((resp) => {
             dispatch({
-                type: LOAD_VOTE_SUCCESS
+                type: LOAD_VOTE_SUCCESS,
+                payload: resp.data
             });
         }).catch(() => {
             dispatch({

@@ -6,26 +6,23 @@ import connectDataFetchers from '../../utils/connectDataFetchers';
 import * as ACTIONS from './actions/Vote';
 
 class Vote extends Component {
-
     render() {
         return (
             <div className="vote">
                 this is vote
-                <Link to="/about">about</Link>
+                <Link to="/about?debug=test">about</Link>
                 <Link to="/test">test</Link>
                 message: { this.props.message }
             </div>
         );
     }
 }
-
-Vote.propTypes = {
+Vote.pageConfig = {
+    pageId: 'Vote'
 };
 
-function mapStateToProps(state) {
+export default connect(function mapStateToProps(state) {
     return {
         message: state.vote.message
     };
-}
-
-export default connect(mapStateToProps)(connectDataFetchers(Vote, [ACTIONS.loadData]));
+})(connectDataFetchers(Vote, [ACTIONS.loadData]));

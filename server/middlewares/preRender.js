@@ -9,7 +9,7 @@ function preRenderMiddleware(dispatch, { components, location, params }, appConf
     });
 
     let lastComponent = components[components.length - 1].WrappedComponent ? components[components.length - 1].WrappedComponent : components[components.length - 1];
-    appConfig.pageId = lastComponent && lastComponent.OriginalPage && lastComponent.OriginalPage.pageConfig.pageId;
+    appConfig.pageId = lastComponent && lastComponent.OriginalPage && lastComponent.OriginalPage.pageConfig && lastComponent.OriginalPage.pageConfig.pageId;
 
     return Promise.all(promises);
 }

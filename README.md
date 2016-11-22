@@ -6,6 +6,7 @@ support multi-page architecture without heavy react-router.
 
 ## Technology Stack:
 - react
+- react-router (for spa route manage)
 - redux
 - immutableJS (optional)
 - express
@@ -33,6 +34,8 @@ support multi-page architecture without heavy react-router.
 
 
 ### How To Add A Page?
+#### For Multi-page:
+
 #### For Server Side
 * register server route
 ``` javascript
@@ -67,7 +70,65 @@ support multi-page architecture without heavy react-router.
 * async action
 * chat room
 
+#### add a SPA page
+``` javascript
+<Route path="/" component={App} onChange={ onChange }>
+    <Route path="vote" getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+            cb(null, require('./pages/App/Vote').default);
+        }, 'Vote');
+    }}/>
+    <Route path="about" component={About} />
+</Route>
+```
+
+``` javascript
+class Vote extends Component {
+    render() {
+        return (
+            <div className="vote">
+                this is vote
+                <Link to="/about?debug=test">about</Link>
+                <Link to="/test">test</Link>
+                message: { this.props.message }
+            </div>
+        );
+    }
+}
+Vote.pageConfig = {
+    pageId: 'Vote'
+};
+
+export default connect(function mapStateToProps(state) {
+    return {
+        message: state.vote.message
+    };
+})(connectDataFetchers(Vote, [ACTIONS.loadData]));
+```
+fetch data according to connectDataFetchers.
+
+``` javascript
+import fetchList from '../../../fetchList';
+
+export const LOAD_VOTE_SUCCESS = 'LOAD_VOTE_SUCCESS';
+export const LOAD_VOTE_FAILED = 'LOAD_VOTE_FAILED';
+
+export function loadData(opts, req){
+    return (dispatch) => {
+        return fetchList.getVote(opts, req).then((resp) => {
+            dispatch({
+                type: LOAD_VOTE_SUCCESS,
+                payload: resp.data
+            });
+        }).catch(() => {
+            dispatch({
+                type: LOAD_VOTE_FAILED
+            });
+        });
+    };
+}
+```
+
 ## TodoList
 * add docker support
-* add cli tool
 

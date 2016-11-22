@@ -4,6 +4,14 @@ import Base from '../pages/Base';
 let IS_FIRST_MOUNT_AFTER_LOAD = true;
 
 export default function connectDataFetchers(Component, actionCreators, cache) {
+    if(process.browser){
+        if(!Component.pageConfig) {
+            console.error(`Page Component static propery pageConfig.pageId required!`);
+        } else {
+            IS_FIRST_MOUNT_AFTER_LOAD = Component.pageConfig.pageId === window.__APP_CONFIG__.pageId;;
+        }
+    }
+
     class DataFetchersWrapper extends Base {
         static fetchData({dispatch, location, params, appConfig, pageConfig}, req) {
             return Promise.all(
@@ -45,7 +53,6 @@ export default function connectDataFetchers(Component, actionCreators, cache) {
         }
 
         _fetchDataOnClient() {
-
             this.constructor.fetchData({
                 dispatch: this.props.dispatch,
                 params: this.props.params,
