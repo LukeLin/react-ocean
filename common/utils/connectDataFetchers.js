@@ -20,7 +20,7 @@ export default function connectDataFetchers(Component, actionCreators, cache) {
             const {location: prevLocation} = prevProps;
 
             const isUrlChanged = (location.pathname !== prevLocation.pathname)
-                || (location.search !== prevLocation.search);
+                || (location.search.slice(1) !== prevLocation.search.slice(1));
 
             if (isUrlChanged) {
                 this._fetchDataOnClient();

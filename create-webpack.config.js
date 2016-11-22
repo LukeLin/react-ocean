@@ -82,7 +82,7 @@ module.exports = function (DEBUG) {
     function getPagesNames(dirPath) {
         let filesNames = fs.readdirSync(dirPath);
         let entries = {
-            app: __dirname + '/client/js/utils/universalRender.js'
+            app: __dirname + '/client/js/utils/spaRenderer.js'
         };
 
         for (let fileName of filesNames) {

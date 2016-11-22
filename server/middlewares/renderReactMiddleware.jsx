@@ -3,6 +3,7 @@ import React from 'react';
 import {renderToString} from 'react-dom/server';
 import {Provider} from 'react-redux';
 import fs from 'fs';
+import { jsObj as safeJSON } from 'secure-filters';
 
 import configureStore from '../../common/store/index';
 import App from '../../common/App.jsx';
@@ -20,11 +21,6 @@ export function getDefaultJSVersion(name) {
         webpackAssets = {};
     }
     return webpackAssets[name];
-}
-
-export function safeJSON(obj){
-    return JSON.stringify(obj).replace(/<\/script/g, '<\\/script')
-        .replace(/<!--/g, '<\\!--');
 }
 
 export default function reactRender(middlewareConfig = {}) {
@@ -61,7 +57,6 @@ export default function reactRender(middlewareConfig = {}) {
             }
 
             let debug = req.query.debug && (req.query.debug === config.application.debugName);
-            let state = data;
             let version = config.application.version;
             let jsVersion = '';
             // prefer config version, useful when using CDN config

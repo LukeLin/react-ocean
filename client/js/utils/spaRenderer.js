@@ -12,16 +12,16 @@ import App from '../../../common/App';
 const store = configureStore(window.__INITIAL_STATE__, browserHistory);
 const routes = createRoutes(store);
 
-function onUpdate(){
-    window.scrollTo(0, 0);
-}
+// function onUpdate(){
+//     window.scrollTo(0, 0);
+// }
 
 match({ history: browserHistory, routes }, (error, redirectLocation, renderProps) => {
     // Router converts <Route> element hierarchy to a route config:
     render(
         <Provider store={store}>
             <App appConfig={ window.__APP_CONFIG__ }>
-                <Router history={browserHistory} { ...renderProps } onUpdate={ onUpdate }/>
+                <Router history={browserHistory} { ...renderProps } onUpdate={ null }/>
             </App>
         </Provider>, document.getElementById('page')
     );
