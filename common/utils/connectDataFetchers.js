@@ -2,13 +2,16 @@ import React, {PropTypes} from 'react';
 import Base from '../pages/Base';
 
 let IS_FIRST_MOUNT_AFTER_LOAD = true;
+if(process.browser){
+    var FIRST_PAGE_ID = window.__APP_CONFIG__.pageId;
+}
 
 export default function connectDataFetchers(Component, actionCreators, cache) {
     if(process.browser){
         if(!Component.pageConfig) {
             console.error(`Page Component static propery pageConfig.pageId required!`);
         } else {
-            IS_FIRST_MOUNT_AFTER_LOAD = Component.pageConfig.pageId === window.__APP_CONFIG__.pageId;;
+            IS_FIRST_MOUNT_AFTER_LOAD = Component.pageConfig.pageId === FIRST_PAGE_ID;
         }
     }
 
