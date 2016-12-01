@@ -55,7 +55,7 @@ export default (store) => {
         <Route path="/" component={App} onChange={ onChange }>
             <IndexRoute getComponent={(nextState, cb) => {
                 require.ensure([], require => {
-                    cb(null, );
+                    cb(null, require('./pages/App/Vote').default);
                 }, 'Vote');
             }}/>
             <Route path="vote" getComponent={(nextState, cb) => {

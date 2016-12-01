@@ -2590,7 +2590,7 @@ module.exports =
 	        { path: '/', component: _App2.default, onChange: onChange },
 	        _react2.default.createElement(_reactRouter.IndexRoute, { getComponent: (nextState, cb) => {
 	                !/* require.ensure */(require => {
-	                    cb(null);
+	                    cb(null, require('./pages/App/Vote').default);
 	                }(__webpack_require__));
 	            } }),
 	        _react2.default.createElement(_reactRouter.Route, { path: 'vote', getComponent: (nextState, cb) => {

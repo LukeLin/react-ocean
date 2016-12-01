@@ -102,7 +102,6 @@ module.exports = function (DEBUG) {
     let babelPlugins = [
         "syntax-async-functions",
         'transform-regenerator',
-        "add-module-exports",
         "transform-decorators-legacy",
         "transform-class-properties",
 
