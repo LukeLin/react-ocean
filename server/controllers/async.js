@@ -1,6 +1,6 @@
 import React from 'react';
 import fetch from 'isomorphic-fetch';
-import rootReducer from '../../common/pages/async/reducers';
+import rootReducer from '../../common/reducers/async';
 import Page from '../../common/pages/async/Page.jsx';
 
 module.exports = async function (req, res, next) {

@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
+function mapStateToProps(state) {
+    return {
+        text: state.about
+    };
+}
 
+@connect(mapStateToProps)
 class About extends Component {
+    static pageConfig = {
+        pageId: 'About'
+    };
 
     render() {
         return (
@@ -15,14 +24,5 @@ class About extends Component {
         );
     }
 }
-About.pageConfig = {
-    pageId: 'About'
-};
 
-function mapStateToProps(state) {
-    return {
-        text: state.about
-    };
-}
-
-export default connect(mapStateToProps)(About);
+export default About;

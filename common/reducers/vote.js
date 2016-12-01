@@ -1,4 +1,4 @@
-import * as ACTIONS from '../actions/Vote';
+import * as ACTIONS from '../actions/vote';
 
 
 export default function Vote(state = {}, action = {}) {

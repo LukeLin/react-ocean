@@ -3,7 +3,7 @@ import fs from 'fs';
 
 let router = new Router();
 
-import IndexPage from '../controllers/index';
+import IndexPage from '../controllers/todo';
 import AsyncPage from '../controllers/async';
 import ChatPage from '../controllers/chat';
 

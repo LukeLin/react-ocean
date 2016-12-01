@@ -4,7 +4,7 @@ import { combineReducers } from 'redux-immutablejs';
 import {
   SELECT_REDDIT, INVALIDATE_REDDIT,
   REQUEST_POSTS, RECEIVE_POSTS
-} from './actions'
+} from '../actions/async'
 
 function selectedReddit(state = 'reactjs', action) {
   switch (action.type) {

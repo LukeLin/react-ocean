@@ -1,4 +1,4 @@
-import fetchList from '../../../fetchList';
+import fetchList from '../fetchList';
 
 export const LOAD_VOTE_SUCCESS = 'LOAD_VOTE_SUCCESS';
 export const LOAD_VOTE_FAILED = 'LOAD_VOTE_FAILED';

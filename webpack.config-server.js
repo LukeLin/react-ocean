@@ -49,15 +49,15 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
-                query: {
-                    presets: [
-                        'react'
-                    ],
-                    plugins: [
-                        "transform-es2015-modules-commonjs",
-                        "transform-async-to-generator",
-                    ]
-                },
+                // query: {
+                //     presets: [
+                //         'react'
+                //     ],
+                //     plugins: [
+                //         "transform-es2015-modules-commonjs",
+                //         "transform-async-to-generator",
+                //     ]
+                // },
             }, {
                 test: /\.json$/,
                 loader: 'json-loader',

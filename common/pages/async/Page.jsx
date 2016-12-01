@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import {selectReddit, fetchPostsIfNeeded, invalidateReddit} from './actions'
+import {selectReddit, fetchPostsIfNeeded, invalidateReddit} from '../../actions/async'
 import Picker from '../../components/async/Picker.jsx'
 import Posts from '../../components/async/Posts.jsx'
 import Base from '../Base.jsx';
