@@ -83,7 +83,19 @@ support multi-page architecture without heavy react-router.
 ```
 
 ``` javascript
+import connectDataFetchers from '../../utils/connectDataFetchers';
+import * as ACTIONS from '../../actions/vote';
+
+@connect(function mapStateToProps(state) {
+    return {
+        message: state.vote.message
+    };
+})
+@connectDataFetchers([ACTIONS.loadData])
 class Vote extends Component {
+    static pageConfig = {
+        pageId: 'Vote'
+    };
     render() {
         return (
             <div className="vote">
@@ -95,15 +107,6 @@ class Vote extends Component {
         );
     }
 }
-Vote.pageConfig = {
-    pageId: 'Vote'
-};
-
-export default connect(function mapStateToProps(state) {
-    return {
-        message: state.vote.message
-    };
-})(connectDataFetchers(Vote, [ACTIONS.loadData]));
 ```
 fetch data according to connectDataFetchers.
 
