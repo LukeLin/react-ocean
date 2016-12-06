@@ -1,10 +1,8 @@
 import React, { PropTypes } from 'react';
 
-const App = ({children}) => {
+let App = ({children}) => {
     return (
-        <div className="app">
-            {children}
-        </div>
+        React.Children.only(children)
     );
 };
 
