@@ -67,7 +67,7 @@ export default function renderMatch(req, res) {
                 html: componentHTML,
                 state: safeJSON(initialState),
                 appName: 'app',
-                title: '游戏中心',
+                title: '',
                 test: process.env.NODE_ENV !== 'production',
                 debug: debug,
                 appConfig: safeJSON(appConfig),
