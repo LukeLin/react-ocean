@@ -8,7 +8,7 @@ if(process.env.NODE_ENV !== 'production' && process.browser){
 const middlewareBuilder = () => {
     let middleware = applyMiddleware(thunk);
 
-    if(process.browser && process.env.NODE_ENV !== 'production'){
+    if(process.env.NODE_ENV !== 'production' && process.browser){
         if(!window.devToolsExtension) {
             middleware = applyMiddleware(thunk, createLogger());
         }
@@ -18,7 +18,7 @@ const middlewareBuilder = () => {
         middleware
     ];
 
-    if(process.browser && process.env.NODE_ENV !== 'production'){
+    if(process.env.NODE_ENV !== 'production' && process.browser){
         if(window.devToolsExtension){
             allComposeElements.push(window.devToolsExtension());
         }

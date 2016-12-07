@@ -1808,7 +1808,7 @@ module.exports =
   \**********************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -1820,12 +1820,8 @@ module.exports =
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	const App = ({ children }) => {
-	    return _react2.default.createElement(
-	        "div",
-	        { className: "app" },
-	        children
-	    );
+	let App = ({ children }) => {
+	    return _react2.default.Children.only(children);
 	};
 	
 	App.propTypes = {
@@ -2631,7 +2627,7 @@ module.exports =
 	const middlewareBuilder = () => {
 	    let middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default);
 	
-	    if (process.browser && ("production") !== 'production') {
+	    if (false) {
 	        if (!window.devToolsExtension) {
 	            middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default, createLogger());
 	        }
@@ -2639,7 +2635,7 @@ module.exports =
 	
 	    let allComposeElements = [middleware];
 	
-	    if (process.browser && ("production") !== 'production') {
+	    if (false) {
 	        if (window.devToolsExtension) {
 	            allComposeElements.push(window.devToolsExtension());
 	        }
